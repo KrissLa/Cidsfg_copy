@@ -1,0 +1,185 @@
+a.gray div.button-primary {
+    background-color: #1B1C17;
+}
+
+.rd-navbar-nav > li.active > a, .rd-navbar-sidebar .rd-navbar-nav > li.opened > a, .rd-navbar-sidebar .rd-navbar-nav > li.active > a {
+    color: #1B1C17;
+    font-weight: 700;
+}
+
+
+.swiper-slide.white-color div a {
+    background-color: #fff;
+    color: #1B1C17;
+    border-color: #fff;
+    opacity: 0.2;
+}
+
+.page .swiper-slide.white-color .button-primary:hover,
+.page .swiper-slide.white-color .button-primary:focus,
+.page .swiper-slide.white-color .button-primary:active,
+.page .swiper-slide.white-color .button-primary:hover {
+    color: #1B1C17;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-color: rgba(255, 255, 255, 0.85);;
+}
+
+.swiper-slide.white-color h2,
+.swiper-slide.white-color h4 {
+    color: #fff;
+
+}
+
+.grid {
+    display: grid;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid-2c {
+    grid-template-areas: "textBox imgBox";
+    grid-template-columns: 40% 60%;
+}
+
+@media (max-width: 767px) {
+    .grid-2c {
+        grid-template-areas: "imgBox" "textBox ";
+        grid-template-columns: unset;
+        grid-template-rows: 50% 50%;
+    }
+}
+
+.padding-100 {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+section.main-screen {
+    width: 100%;
+    min-height: 100vh;
+
+}
+
+.textBox {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    grid-area: textBox;
+}
+
+.imageBox {
+    padding-left: 25px;
+    padding-bottom: 50px;
+    grid-area: imgBox;
+}
+
+.imageBox img {
+    width: 100%;
+}
+
+
+#form-wrapper {
+    max-width: 400px;
+}
+
+
+.form-wrap.phone-number {
+    position: relative;
+}
+
+.form-wrap.phone-number:before {
+    position: absolute;
+    content: "+";
+    left: 5px;
+    top: 13px;
+}
+
+@media (max-width: 767px) {
+    .imageBox {
+        padding-left: 0;
+    }
+
+    .padding-100 {
+        padding: 0;
+    }
+
+    .bg-image-9 {
+        background-image: url("../images/CUBO/interior/4_bg.jpg");
+
+    }
+
+    * + .button {
+        margin-top: 50px;
+    }
+
+    .form-wrap.phone-number:before {
+        top: 17px;
+    }
+}
+
+.form-wrap.checkbox input {
+    position: relative
+}
+
+.form-wrap.checkbox label {
+    position: absolute;
+    margin: 0;
+    top: 1px;
+    left: 34px;
+    color: #000;
+}
+
+.form-wrap.checkbox label a {
+    color: #000;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+img.confirm-spinner {
+    width: 50px;
+}
+
+.form-wrap.checkbox.checkbox-error .checkbox-custom-dummy {
+    border: 2px solid red;
+}
+
+.success-send {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #3dff2f;
+}
+
+.error-send {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: red;
+    /*color: #ff0015;*/
+}
+
+
+
+section.breadcrumbs-custom{
+    margin-top: 100px;
+}
+
+div.ol {
+    padding-left: 40px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

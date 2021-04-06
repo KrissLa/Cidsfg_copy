@@ -1,0 +1,360 @@
+{% extends 'superbase.html' %}
+{% load static %}
+
+<!--{% block seo_title %}{{ home_data.seo_title }}{% endblock seo_title %}-->
+<!--{% block seo_description %}{{ home_data.seo_description }}{% endblock seo_description %}-->
+
+
+{% block content %}
+  <section class="breadcrumbs-custom">
+        <div class="container">
+            <div class="breadcrumbs-custom__inner">
+                <p class="breadcrumbs-custom__title">CUBO VR 134 gray</p>
+                <ul class="breadcrumbs-custom__path">
+                    <li><a href="{% url 'home' %}">Главная</a></li>
+                    <li><a href="{% url 'products_catalog' %}">Каталог</a></li>
+                    <li class="active">CUBO VR 134 gray</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="section-sm bg-default">
+        <div class="container">
+            <div class="row row-60">
+                <div class="col-md-6 col-lg-5">
+                    <!-- Slick Carousel-->
+                    <div class="slick-slider carousel-parent" data-arrows="false" data-loop="false" data-dots="true"
+                         data-swipe="true" data-items="1" data-child="#child-carousel" data-for="#child-carousel"
+                         data-photo-swipe-gallery="gallery">
+                        <div class="item">
+                            <a class="img-thumbnail-variant-2"
+                               href="{% static 'images/CUBO_VR_85_white_2.png' %} "
+                               data-photo-swipe-item="" data-size="3000x2000">
+                                <figure>
+                                    <img
+                                            src="{% static 'images/CUBO_VR_85_white_2.png' %}"
+                                            alt="" width="600" height="400"/>
+                                </figure>
+                                <div class="caption">
+                                    <span class="icon icon-lg linear-icon-magnifier">
+
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a class="img-thumbnail-variant-2"
+                               href="{% static 'images/CUBO VR 85/1 modul fas 1.png' %}"
+                               data-photo-swipe-item="" data-size="3000x2000">
+                                <figure>
+                                    <img
+                                            src="{% static 'images/CUBO VR 85/1 modul fas 1.png' %}"
+                                            alt="" width="600" height="400"/>
+                                </figure>
+                                <div class="caption">
+                                    <span class="icon icon-lg linear-icon-magnifier">
+
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a class="img-thumbnail-variant-2"
+                               href="{% static 'images/CUBO VR 85/1 modul fas 2.png' %}"
+                               data-photo-swipe-item="" data-size="3000x2000">
+                                <figure>
+                                    <img
+                                            src="{% static 'images/CUBO VR 85/1 modul fas 2.png' %}"
+                                            alt="" width="600" height="400"/>
+                                </figure>
+                                <div class="caption">
+                                    <span class="icon icon-lg linear-icon-magnifier">
+
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a class="img-thumbnail-variant-2"
+                               href="{% static 'images/CUBO VR 85/1 modul fas 3.png' %}"
+                               data-photo-swipe-item="" data-size="3000x2000">
+                                <figure>
+                                    <img
+                                            src="{% static 'images/CUBO VR 85/1 modul fas 3.png' %}"
+                                            alt="" width="600" height="400"/>
+                                </figure>
+                                <div class="caption">
+                                    <span class="icon icon-lg linear-icon-magnifier">
+
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a class="img-thumbnail-variant-2"
+                               href="{% static 'images/CUBO VR 85/1 modul fas 4.png' %}"
+                               data-photo-swipe-item="" data-size="3000x2000">
+                                <figure>
+                                    <img
+                                            src="{% static 'images/CUBO VR 85/1 modul fas 4.png' %}"
+                                            alt="" width="600" height="400"/>
+                                </figure>
+                                <div class="caption">
+                                    <span class="icon icon-lg linear-icon-magnifier">
+
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="slick-slider" id="child-carousel" data-for=".carousel-parent" data-arrows="false"
+                         data-loop="false" data-dots="false" data-swipe="true" data-items="3" data-xs-items="4"
+                         data-sm-items="4" data-md-items="4" data-lg-items="4" data-xl-items="5"
+                         data-slide-to-scroll="1">
+                        <div class="item"><img
+                                src="{% static 'images/CUBO_VR_85_white_2.png' %}"
+                                alt="" width="90" height="60"/>
+                        </div>
+                        <div class="item"><img
+                                src="{% static 'images/CUBO VR 85/1 modul fas 1.png' %}"
+                                alt="" width="90" height="60"/></div>
+                        <div class="item"><img
+                                src="{% static 'images/CUBO VR 85/1 modul fas 2.png' %}"
+                                alt="" width="90" height="60"/></div>
+                        <div class="item"><img
+                                src="{% static 'images/CUBO VR 85/1 modul fas 3.png' %}"
+                                alt="" width="90" height="60"/>
+                        </div>
+                        <div class="item"><img
+                                src="{% static 'images/CUBO VR 85/1 modul fas 4.png' %}"
+                                alt="" width="90" height="60"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-7">
+                    <div class="product-single">
+                        <h4>CUBO VR 134 GRAY</h4>
+                        <p class="product-price"><span>500000</span></p>
+                        <p class="product-text">Это описание дома</p>
+                        <div class="form-wrap product-select">
+                            <!--Select 2-->
+                        </div>
+                        <div class="group group-middle">
+                            <button class="button button-primary button-icon button-icon-left"
+                                    type="submit"><span
+                                    class="icon icon-md linear-icon-cart"></span><span>Заказать</span>
+                            </button>
+                        </div>
+                        <ul class="product-meta">
+                            <li>
+                                <dl class="list-terms-minimal">
+                                    <dt>SKU</dt>
+                                    <dd>256</dd>
+                                </dl>
+                            </li>
+                            <li>
+                                <dl class="list-terms-minimal">
+                                    <dt>Category</dt>
+                                    <dd>
+                                        <ul class="product-categories">
+                                            <li><a href="{% url 'products_catalog' %}">Living Room</a></li>
+                                            <li><a href="{% url 'products_catalog' %}">Dining room</a></li>
+                                            <li><a href="{% url 'products_catalog' %}">Bedroom</a></li>
+                                            <li><a href="{% url 'products_catalog' %}">Office</a></li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <!-- Bootstrap tabs-->
+                    <div class="tabs-custom tabs-horizontal" id="tabs-1">
+                        <!-- Nav tabs-->
+                        <ul class="nav-custom nav-custom-tabs nav-custom__align-left nav nav-tabs">
+                            <li class="nav-item" role="presentation"><a class="nav-link active" href="#tabs-1-1"
+                                                                        data-toggle="tab">Описание</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-2"
+                                                                        data-toggle="tab">Параметры</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-content text-left">
+                        <div class="tab-pane fade show active" id="tabs-1-1">
+                            <h5>Описание дома</h5>
+                            <p>Здесь описание</p>
+                            <ul class="list-marked">
+                                <li>Уникальный дизайн</li>
+                                <li>Высокие потолки</li>
+                                <li>Огромные стекла</li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane fade" id="tabs-1-2">
+                            <h5>Параметры</h5>
+                            <table class="table-product-info">
+                                <tbody>
+                                <tr>
+                                    <td>Площадь</td>
+                                    <td>555531м2</td>
+                                </tr>
+                                <tr>
+                                    <td>материал</td>
+                                    <td>пластик</td>
+                                </tr>
+                                <tr>
+                                    <td>Количество панелей</td>
+                                    <td>79</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Divider-->
+    <div class="container">
+        <div class="divider"></div>
+    </div>
+
+    <section class="section-sm bg-default">
+        <div class="container text-center">
+            <h5>Похожие дома</h5>
+            <!-- Owl Carousel-->
+            <div class="owl-carousel carousel-product" data-items="1" data-md-items="2" data-lg-items="3"
+                 data-xl-items="4" data-stage-padding="0" data-loop="false" data-margin="50" data-mouse-drag="false"
+                 data-nav="true">
+                <div class="item">
+                    <div class="product product-grid">
+                        <div class="product-img-wrap"><img
+                                src="{% static 'images/350/CUBO_1_350.png' %}"
+                                alt="" width="300" height="300"/>
+                        </div>
+                        <div class="product-caption">
+                            <ul class="product-categories">
+                                <li><a href="{% url 'products_catalog' %}">CUBO VR</a></li>
+                                <li><a href="{% url 'products_catalog' %}">Одноэтажные</a></li>
+                            </ul>
+                            <h6 class="product-title"><a href="{% url 'products_detail' %}">CUBO VR 85</a></h6>
+                            <!--                                        <p class="product-price"><span>40</span>-->
+                            </p><a class="button-gray-light-outline button button-icon button-icon-left"
+                                   href="{% url 'products_detail' %}"><span
+                                class="icon icon-md"></span><span>ПОСМОТРЕТЬ</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="product product-grid">
+                        <div class="product-img-wrap"><img
+                                src="{% static 'images/350/CUBO_1_350.png' %}"
+                                alt="" width="300" height="300"/>
+                        </div>
+                        <div class="product-caption">
+                            <ul class="product-categories">
+                                <li><a href="{% url 'products_catalog' %}">CUBO VR</a></li>
+                                <li><a href="{% url 'products_catalog' %}">Одноэтажные</a></li>
+                            </ul>
+                            <h6 class="product-title"><a href="{% url 'products_detail' %}">CUBO VR 85</a></h6>
+                            <!--                                        <p class="product-price"><span>40</span>-->
+                            </p><a class="button-gray-light-outline button button-icon button-icon-left"
+                                   href="{% url 'products_detail' %}"><span
+                                class="icon icon-md"></span><span>ПОСМОТРЕТЬ</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="product product-grid">
+                        <div class="product-img-wrap"><img
+                                src="{% static 'images/350/CUBO_1_350.png' %}"
+                                alt="" width="300" height="300"/>
+                        </div>
+                        <div class="product-caption">
+                            <ul class="product-categories">
+                                <li><a href="{% url 'products_catalog' %}">CUBO VR</a></li>
+                                <li><a href="{% url 'products_catalog' %}">Одноэтажные</a></li>
+                            </ul>
+                            <h6 class="product-title"><a href="{% url 'products_detail' %}">CUBO VR 85</a></h6>
+                            <!--                                        <p class="product-price"><span>40</span>-->
+                            </p><a class="button-gray-light-outline button button-icon button-icon-left"
+                                   href="{% url 'products_detail' %}"><span
+                                class="icon icon-md"></span><span>ПОСМОТРЕТЬ</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="product product-grid">
+                        <div class="product-img-wrap"><img
+                                src="{% static 'images/350/CUBO_1_350.png' %}"
+                                alt="" width="300" height="300"/>
+                        </div>
+                        <div class="product-caption">
+                            <ul class="product-categories">
+                                <li><a href="{% url 'products_catalog' %}">CUBO VR</a></li>
+                                <li><a href="{% url 'products_catalog' %}">Одноэтажные</a></li>
+                            </ul>
+                            <h6 class="product-title"><a href="{% url 'products_detail' %}">CUBO VR 85</a></h6>
+                            <!--                                        <p class="product-price"><span>40</span>-->
+                            </p><a class="button-gray-light-outline button button-icon button-icon-left"
+                                   href="{% url 'products_detail' %}"><span
+                                class="icon icon-md"></span><span>ПОСМОТРЕТЬ</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="product product-grid">
+                        <div class="product-img-wrap"><img
+                                src="{% static 'images/350/CUBO_1_350.png' %}"
+                                alt="" width="300" height="300"/>
+                        </div>
+                        <div class="product-caption">
+                            <ul class="product-categories">
+                                <li><a href="{% url 'products_catalog' %}">CUBO VR</a></li>
+                                <li><a href="{% url 'products_catalog' %}">Одноэтажные</a></li>
+                            </ul>
+                            <h6 class="product-title"><a href="{% url 'products_detail' %}">CUBO VR 85</a></h6>
+                            <!--                                        <p class="product-price"><span>40</span>-->
+                            </p><a class="button-gray-light-outline button button-icon button-icon-left"
+                                   href="{% url 'products_detail' %}"><span
+                                class="icon icon-md"></span><span>ПОСМОТРЕТЬ</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- PhotoSwipe Gallery-->
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="pswp__bg"></div>
+        <div class="pswp__scroll-wrap">
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+            <div class="pswp__ui pswp__ui--hidden">
+                <div class="pswp__top-bar">
+                    <div class="pswp__counter"></div>
+                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                            <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+                <div class="pswp__caption">
+                    <div class="pswp__caption__cent"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
