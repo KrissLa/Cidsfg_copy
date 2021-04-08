@@ -64,8 +64,8 @@
                         <ul class="rd-navbar-items-list rd-navbar-search_collapsable">
                             <li>
 
-                                    <a class="icon icon-md linear-icon-heart link-primary"
-                                       href="cart.html"></a>
+                                <a class="icon icon-md linear-icon-heart link-primary"
+                                   href="cart.html"></a>
 
                             </li>
                             <li class="rd-navbar-nav-wrap__shop">
@@ -76,62 +76,135 @@
                         <div class="rd-navbar-search_collapsable">
                             <ul class="rd-navbar-nav">
                                 <li><a href="#">Каталог проектов</a>
-                                     <ul class="rd-navbar-megamenu">
+                                    <ul class="rd-navbar-megamenu">
+                                        <li>
+                                            <a href="{% url 'products_catalog' %}"><h6>Одноэтажные</h6></a>
+                                            <ul class="rd-megamenu-list">
+                                                <li>
+                                                    <a href="{% url 'products_catalog' %}">
+                                                        <img src="{% static 'images/menu_items/menu_min_1.jpg' %}"
+                                                             height="50"
+                                                             width="75" class="menu_min"/>
+                                                        CUBO VR
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{% url 'products_catalog' %}">
+                                                        <img src="{% static 'images/menu_items/menu_min_1.jpg' %}"
+                                                             height="50"
+                                                             width="75" class="menu_min"/>
+                                                        CUBO FR
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#"><h6>Двухэтажные</h6></a>
+                                            <ul class="rd-megamenu-list">
+                                                <li><p>Скоро</p></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#"><h6>Террасные модули</h6></a>
+                                            <ul class="rd-megamenu-list">
+                                                <li>
+                                                    <a href="{% url 'products_catalog' %}">
+                                                        <img src="{% static 'images/menu_items/menu_min_1.jpg' %}"
+                                                             height="50"
+                                                             width="75" class="menu_min"/>
+                                                        CUBO VR
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{% url 'products_catalog' %}">
+                                                        <img src="{% static 'images/menu_items/menu_min_1.jpg' %}"
+                                                             height="50"
+                                                             width="75" class="menu_min"/>
+                                                        CUBO FR
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a href="{% url 'home_decorations_list' %}">Отделка и коммуникации</a>
+                                    <ul class="rd-navbar-megamenu">
                                     <li>
-                                        <a href="{% url 'products_catalog' %}"><h6>Одноэтажные</h6></a>
+                                        <a href="{% url 'home_decorations_list' %}"><h6>Наружнаяя отделка</h6></a>
                                         <ul class="rd-megamenu-list">
                                            <li>
-                                                <a href="{% url 'products_catalog' %}">
-                                                    <img src="{% static 'images/menu_items/menu_min_1.jpg' %}" height="50"
-                                                            width="75" class="menu_min"/>
+                                                <a href="{% url 'home_decorations_list' %}">
                                                     CUBO VR
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="{% url 'products_catalog' %}">
-                                                    <img src="{% static 'images/menu_items/menu_min_1.jpg' %}" height="50"
-                                                            width="75" class="menu_min"/>
+                                                <a href="{% url 'home_decorations_list' %}">
                                                     CUBO FR
                                                 </a>
                                             </li>
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#"><h6>Двухэтажные</h6></a>
+                                        <a href="#"><h6>Внутренняя отделка</h6></a>
                                         <ul class="rd-megamenu-list">
-                                            <li><p>Скоро</p></li>
+                                            <li>
+                                                <a href="{% url 'home_decorations_list' %}">
+                                                    CUBO FR
+                                                </a>
+                                            </li>
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#"><h6>Террасные модули</h6></a>
+                                        <a href="#"><h6>Внутренние коммуникации</h6></a>
                                         <ul class="rd-megamenu-list">
                                             <li>
-                                                <a href="{% url 'products_catalog' %}">
-                                                    <img src="{% static 'images/menu_items/menu_min_1.jpg' %}" height="50"
-                                                            width="75" class="menu_min"/>
+                                                <a href="{% url 'home_decorations_list' %}">
                                                     CUBO VR
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="{% url 'products_catalog' %}">
-                                                    <img src="{% static 'images/menu_items/menu_min_1.jpg' %}" height="50"
-                                                            width="75" class="menu_min"/>
+                                                <a href="{% url 'home_decorations_list' %}">
+                                                    CUBO VR
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{% url 'home_decorations_list' %}">
+                                                    CUBO VR
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{% url 'home_decorations_list' %}">
+                                                    CUBO VR
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{% url 'home_decorations_list' %}">
+                                                    CUBO VR
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{% url 'home_decorations_list' %}">
+                                                    CUBO VR
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{% url 'home_decorations_list' %}">
+                                                    CUBO VR
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{% url 'home_decorations_list' %}">
+                                                    CUBO VR
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{% url 'home_decorations_list' %}">
                                                     CUBO FR
                                                 </a>
                                             </li>
                                         </ul>
                                     </li>
                                 </ul>
-                                </li>
-                                <li><a href="#">Отделка и коммуникации</a>
-                                    <ul class="rd-navbar-dropdown">
-                                        <li><a href="#">Наружная отделка</a>
-                                        </li>
-                                        <li><a href="#">Внутренняя отделка</a>
-                                        </li>
-                                        <li><a href="#">Внутренние коммуникации</a>
-                                        </li>
-                                    </ul>
                                 </li>
                                 <li><a href="#">Завод</a>
                                 <li><a href="#">CUBO business</a>
@@ -165,7 +238,7 @@
                     <h6>Навигация</h6>
                     <ul class="list-xxs">
                         <li><a href="{% url 'products_catalog' %}">КАТАЛОГ ПРОЕКТОВ</a></li>
-                        <li><a href="#">ОТДЕЛКА И КОММУНИКАЦИИ</a></li>
+                        <li><a href="{% url 'home_decorations_list' %}">ОТДЕЛКА И КОММУНИКАЦИИ</a></li>
                         <li><a href="#">ЗАВОД</a></li>
                         <li><a href="#">CUBO BUSINESS</a></li>
                         <li><a href="#">СОТРУДНИЧЕСТВО</a></li>
@@ -178,7 +251,8 @@
                         <li>
                             <!-- Comment minimal-->
                             <article class="comment-minimal">
-                                <p class="comment-minimal__author"><a href="{% url 'products_detail' %}">Дом CUBO VR 300м2</a>
+                                <p class="comment-minimal__author"><a href="{% url 'products_detail' %}">Дом CUBO VR
+                                    300м2</a>
                                 </p>
                                 <!--                                <p class="comment-minimal__link"><a href="standard-post.html">Дом CUBO VR 300м2</a></p>-->
                             </article>
@@ -186,7 +260,8 @@
                         <li>
                             <!-- Comment minimal-->
                             <article class="comment-minimal">
-                                <p class="comment-minimal__author"><a href="{% url 'products_detail' %}">Дом CUBO VR 300м2</a>
+                                <p class="comment-minimal__author"><a href="{% url 'products_detail' %}">Дом CUBO VR
+                                    300м2</a>
                                 </p>
                                 <!--                                <p class="comment-minimal__link"><a href="standard-post.html">Дом CUBO VR 300м2</a></p>-->
                             </article>
@@ -194,7 +269,8 @@
                         <li>
                             <!-- Comment minimal-->
                             <article class="comment-minimal">
-                                <p class="comment-minimal__author"><a href="{% url 'products_detail' %}">Дом CUBO VR 300м2</a>
+                                <p class="comment-minimal__author"><a href="{% url 'products_detail' %}">Дом CUBO VR
+                                    300м2</a>
                                 </p>
                                 <!--                                <p class="comment-minimal__link"><a href="standard-post.html">Дом CUBO VR 300м2</a></p>-->
                             </article>

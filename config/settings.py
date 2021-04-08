@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'backend.orders',
     'backend.privacy',
     'backend.products',
+    'backend.home_decorations',
 
 ]
 
