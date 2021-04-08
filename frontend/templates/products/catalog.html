@@ -20,215 +20,458 @@
     <section class="section-md bg-default">
         <div class="container">
             <div class="row row-60 flex-lg-row-reverse">
-                <div class="col-lg-9 section-divided__main section-divided__main-left">
-                    <div class="section-sm">
+                 <div class="col-lg-9 section-divided__main section-divided__main-left">
+                    <section class="section-sm">
                         <div class="filter-shop-box">
-                            <p>Показано 12 результатов из 50</p>
+                            <p>Показано 1–12 из 15 рузультатов</p>
                             <div class="form-wrap">
                                 <!--Select 2-->
                                 <select class="form-input select-filter" data-placeholder="Default sorting"
                                         data-minimum-results-for-search="Infinity">
-                                    <option>Не выбрано</option>
-                                    <option value="2">Сначала новые</option>
-                                    <option value="3">Сначала дорогие</option>
-                                    <option value="4">Сначала дешевые</option>
+                                    <option>Default sorting</option>
+                                    <option value="2">Sort by popularity</option>
+                                    <option value="3">Sort by average rating</option>
+                                    <option value="4">Sort by newness</option>
+                                    <option value="5">Sort by price: low to high</option>
+                                    <option value="6">Sort by price: high to low</option>
                                 </select>
                             </div>
                         </div>
                         <div class="row justify-content-sm-center row-70">
-                            <div class="col-md-6 col-xl-4">
-                                <div class="item">
-                                <div class="product product-grid">
-                                    <div class="product-img-wrap"><img
-                                            src="{% static 'images/350/CUBO_1_350.png' %}"
-                                            alt="" width="300" height="300"/>
+                            <div class="col-sm-12">
+                                <div class="product product-list unit flex-column flex-md-row unit-spacing-lg">
+                                    <div class="unit__left product-img-wrap">
+                                        <img src="{% static 'images/min/1-modul-fas-2.jpg' %}" height="200"
+                                            width="300"/>
+                                        <div class="product-label-wrap">
+                                            <span class="featured">
+                                                Featured
+                                            </span>
+                                        </div>
                                     </div>
-                                    <div class="product-caption">
+                                    <div class="unit__body product-caption">
                                         <ul class="product-categories">
-                                            <li><a href="#">CUBO VR</a></li>
+                                            <li><a href="#">CUBO FR</a></li>
                                             <li><a href="#">Одноэтажные</a></li>
                                         </ul>
-                                        <h6 class="product-title"><a href="{% url 'products_detail' %}">CUBO VR 85</a></h6>
-                                        <!--                                        <p class="product-price"><span>40</span>-->
-                                        </p><a class="button-gray-light-outline button button-icon button-icon-left"
-                                               href="{% url 'products_detail' %}"><span
-                                            class="icon icon-md"></span><span>ПОСМОТРЕТЬ</span></a>
+                                        <h5 class="product-title"><a href="{% url 'products_detail' %}">CUBO FR 85</a></h5>
+                                        <p class="product-price"><span>150000</span>
+                                        </p>
+                                        <p class="product-text">Здесь идет какое-то коротное описание дома</p>
+                                        <div class="cart-favorites">
+                                            <a
+                                                    class="button-black button button-icon button-icon-left"
+                                                    href="#">
+                                                <span
+                                                        class="icon icon-md icon-gray linear-icon-cart">
+
+                                                </span>
+                                                <span>Добавить в корзину</span>
+                                            </a>
+                                            <div class="product-icon-wrap">
+                                            <span class="icon icon-md linear-icon-heart"
+                                                  data-toggle="tooltip"
+                                                  data-original-title="В избранное">
+
+                                            </span>
+                                            </div>
+
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
-                            </div>
-                            <div class="col-md-6 col-xl-4">
-                                <div class="item">
-                                <div class="product product-grid">
-                                    <div class="product-img-wrap"><img
-                                            src="{% static 'images/350/CUBO_1_350.png' %}"
-                                            alt="" width="300" height="300"/>
+                            <div class="col-sm-12">
+                                <div class="product product-list unit flex-column flex-md-row unit-spacing-lg">
+                                    <div class="unit__left product-img-wrap">
+                                        <img src="{% static 'images/min/1-modul-fas-2.jpg' %}" height="200"
+                                            width="300"/>
+                                        <div class="product-label-wrap">
+                                            <span class="featured">
+                                                Featured
+                                            </span>
+                                        </div>
                                     </div>
-                                    <div class="product-caption">
+                                    <div class="unit__body product-caption">
                                         <ul class="product-categories">
-                                            <li><a href="#">CUBO VR</a></li>
+                                            <li><a href="#">CUBO FR</a></li>
                                             <li><a href="#">Одноэтажные</a></li>
                                         </ul>
-                                        <h6 class="product-title"><a href="{% url 'products_detail' %}">CUBO VR 85</a></h6>
-                                        <!--                                        <p class="product-price"><span>40</span>-->
-                                        </p><a class="button-gray-light-outline button button-icon button-icon-left"
-                                               href="{% url 'products_detail' %}"><span
-                                            class="icon icon-md"></span><span>ПОСМОТРЕТЬ</span></a>
+                                        <h5 class="product-title"><a href="{% url 'products_detail' %}">CUBO FR 85</a></h5>
+                                        <p class="product-price"><span>150000</span>
+                                        </p>
+                                        <p class="product-text">Здесь идет какое-то коротное описание дома</p>
+                                        <div class="cart-favorites">
+                                            <a
+                                                    class="button-black button button-icon button-icon-left"
+                                                    href="#">
+                                                <span
+                                                        class="icon icon-md icon-gray linear-icon-cart">
+
+                                                </span>
+                                                <span>Добавить в корзину</span>
+                                            </a>
+                                            <div class="product-icon-wrap">
+                                            <span class="icon icon-md linear-icon-heart"
+                                                  data-toggle="tooltip"
+                                                  data-original-title="В избранное">
+
+                                            </span>
+                                            </div>
+
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
-                            </div>
-                            <div class="col-md-6 col-xl-4">
-                                <div class="item">
-                                <div class="product product-grid">
-                                    <div class="product-img-wrap"><img
-                                            src="{% static 'images/350/CUBO_1_350.png' %}"
-                                            alt="" width="300" height="300"/>
+                            <div class="col-sm-12">
+                                <div class="product product-list unit flex-column flex-md-row unit-spacing-lg">
+                                    <div class="unit__left product-img-wrap">
+                                        <img src="{% static 'images/min/1-modul-fas-2.jpg' %}" height="200"
+                                            width="300"/>
+                                        <div class="product-label-wrap">
+                                            <span class="featured">
+                                                Featured
+                                            </span>
+                                        </div>
                                     </div>
-                                    <div class="product-caption">
+                                    <div class="unit__body product-caption">
                                         <ul class="product-categories">
-                                            <li><a href="#">CUBO VR</a></li>
+                                            <li><a href="#">CUBO FR</a></li>
                                             <li><a href="#">Одноэтажные</a></li>
                                         </ul>
-                                        <h6 class="product-title"><a href="{% url 'products_detail' %}">CUBO VR 85</a></h6>
-                                        <!--                                        <p class="product-price"><span>40</span>-->
-                                        </p><a class="button-gray-light-outline button button-icon button-icon-left"
-                                               href="{% url 'products_detail' %}"><span
-                                            class="icon icon-md"></span><span>ПОСМОТРЕТЬ</span></a>
+                                        <h5 class="product-title"><a href="{% url 'products_detail' %}">CUBO FR 85</a></h5>
+                                        <p class="product-price"><span>150000</span>
+                                        </p>
+                                        <p class="product-text">Здесь идет какое-то коротное описание дома</p>
+                                        <div class="cart-favorites">
+                                            <a
+                                                    class="button-black button button-icon button-icon-left"
+                                                    href="#">
+                                                <span
+                                                        class="icon icon-md icon-gray linear-icon-cart">
+
+                                                </span>
+                                                <span>Добавить в корзину</span>
+                                            </a>
+                                            <div class="product-icon-wrap">
+                                            <span class="icon icon-md linear-icon-heart"
+                                                  data-toggle="tooltip"
+                                                  data-original-title="В избранное">
+
+                                            </span>
+                                            </div>
+
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
-                            </div>
-                            <!-- 2 row-->
-                            <div class="col-md-6 col-xl-4">
-                                <div class="item">
-                                <div class="product product-grid">
-                                    <div class="product-img-wrap"><img
-                                            src="{% static 'images/350/CUBO_1_350.png' %}"
-                                            alt="" width="300" height="300"/>
+                            <div class="col-sm-12">
+                                <div class="product product-list unit flex-column flex-md-row unit-spacing-lg">
+                                    <div class="unit__left product-img-wrap">
+                                        <img src="{% static 'images/min/1-modul-fas-2.jpg' %}" height="200"
+                                            width="300"/>
+                                        <div class="product-label-wrap">
+                                            <span class="featured">
+                                                Featured
+                                            </span>
+                                        </div>
                                     </div>
-                                    <div class="product-caption">
+                                    <div class="unit__body product-caption">
                                         <ul class="product-categories">
-                                            <li><a href="#">CUBO VR</a></li>
+                                            <li><a href="#">CUBO FR</a></li>
                                             <li><a href="#">Одноэтажные</a></li>
                                         </ul>
-                                        <h6 class="product-title"><a href="{% url 'products_detail' %}">CUBO VR 85</a></h6>
-                                        <!--                                        <p class="product-price"><span>40</span>-->
-                                        </p><a class="button-gray-light-outline button button-icon button-icon-left"
-                                               href="{% url 'products_detail' %}"><span
-                                            class="icon icon-md"></span><span>ПОСМОТРЕТЬ</span></a>
+                                        <h5 class="product-title"><a href="{% url 'products_detail' %}">CUBO FR 85</a></h5>
+                                        <p class="product-price"><span>150000</span>
+                                        </p>
+                                        <p class="product-text">Здесь идет какое-то коротное описание дома</p>
+                                        <div class="cart-favorites">
+                                            <a
+                                                    class="button-black button button-icon button-icon-left"
+                                                    href="#">
+                                                <span
+                                                        class="icon icon-md icon-gray linear-icon-cart">
+
+                                                </span>
+                                                <span>Добавить в корзину</span>
+                                            </a>
+                                            <div class="product-icon-wrap">
+                                            <span class="icon icon-md linear-icon-heart"
+                                                  data-toggle="tooltip"
+                                                  data-original-title="В избранное">
+
+                                            </span>
+                                            </div>
+
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
-                            </div>
-                            <div class="col-md-6 col-xl-4">
-                                <div class="item">
-                                <div class="product product-grid">
-                                    <div class="product-img-wrap"><img
-                                            src="{% static 'images/350/CUBO_1_350.png' %}"
-                                            alt="" width="300" height="300"/>
+                            <div class="col-sm-12">
+                                <div class="product product-list unit flex-column flex-md-row unit-spacing-lg">
+                                    <div class="unit__left product-img-wrap">
+                                        <img src="{% static 'images/min/1-modul-fas-2.jpg' %}" height="200"
+                                            width="300"/>
+                                        <div class="product-label-wrap">
+                                            <span class="featured">
+                                                Featured
+                                            </span>
+                                        </div>
                                     </div>
-                                    <div class="product-caption">
+                                    <div class="unit__body product-caption">
                                         <ul class="product-categories">
-                                            <li><a href="#">CUBO VR</a></li>
+                                            <li><a href="#">CUBO FR</a></li>
                                             <li><a href="#">Одноэтажные</a></li>
                                         </ul>
-                                        <h6 class="product-title"><a href="{% url 'products_detail' %}">CUBO VR 85</a></h6>
-                                        <!--                                        <p class="product-price"><span>40</span>-->
-                                        </p><a class="button-gray-light-outline button button-icon button-icon-left"
-                                               href="{% url 'products_detail' %}"><span
-                                            class="icon icon-md"></span><span>ПОСМОТРЕТЬ</span></a>
+                                        <h5 class="product-title"><a href="{% url 'products_detail' %}">CUBO FR 85</a></h5>
+                                        <p class="product-price"><span>150000</span>
+                                        </p>
+                                        <p class="product-text">Здесь идет какое-то коротное описание дома</p>
+                                        <div class="cart-favorites">
+                                            <a
+                                                    class="button-black button button-icon button-icon-left"
+                                                    href="#">
+                                                <span
+                                                        class="icon icon-md icon-gray linear-icon-cart">
+
+                                                </span>
+                                                <span>Добавить в корзину</span>
+                                            </a>
+                                            <div class="product-icon-wrap">
+                                            <span class="icon icon-md linear-icon-heart"
+                                                  data-toggle="tooltip"
+                                                  data-original-title="В избранное">
+
+                                            </span>
+                                            </div>
+
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
-                            </div>
-                            <div class="col-md-6 col-xl-4">
-                                <div class="item">
-                                <div class="product product-grid">
-                                    <div class="product-img-wrap"><img
-                                            src="{% static 'images/350/CUBO_1_350.png' %}"
-                                            alt="" width="300" height="300"/>
+                            <div class="col-sm-12">
+                                <div class="product product-list unit flex-column flex-md-row unit-spacing-lg">
+                                    <div class="unit__left product-img-wrap">
+                                        <img src="{% static 'images/min/1-modul-fas-2.jpg' %}" height="200"
+                                            width="300"/>
+                                        <div class="product-label-wrap">
+                                            <span class="featured">
+                                                Featured
+                                            </span>
+                                        </div>
                                     </div>
-                                    <div class="product-caption">
+                                    <div class="unit__body product-caption">
                                         <ul class="product-categories">
-                                            <li><a href="#">CUBO VR</a></li>
+                                            <li><a href="#">CUBO FR</a></li>
                                             <li><a href="#">Одноэтажные</a></li>
                                         </ul>
-                                        <h6 class="product-title"><a href="{% url 'products_detail' %}">CUBO VR 85</a></h6>
-                                        <!--                                        <p class="product-price"><span>40</span>-->
-                                        </p><a class="button-gray-light-outline button button-icon button-icon-left"
-                                               href="{% url 'products_detail' %}"><span
-                                            class="icon icon-md"></span><span>ПОСМОТРЕТЬ</span></a>
+                                        <h5 class="product-title"><a href="{% url 'products_detail' %}">CUBO FR 85</a></h5>
+                                        <p class="product-price"><span>150000</span>
+                                        </p>
+                                        <p class="product-text">Здесь идет какое-то коротное описание дома</p>
+                                        <div class="cart-favorites">
+                                            <a
+                                                    class="button-black button button-icon button-icon-left"
+                                                    href="#">
+                                                <span
+                                                        class="icon icon-md icon-gray linear-icon-cart">
+
+                                                </span>
+                                                <span>Добавить в корзину</span>
+                                            </a>
+                                            <div class="product-icon-wrap">
+                                            <span class="icon icon-md linear-icon-heart"
+                                                  data-toggle="tooltip"
+                                                  data-original-title="В избранное">
+
+                                            </span>
+                                            </div>
+
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
-                            </div>
-                            <!-- 3 row-->
-                            <div class="col-md-6 col-xl-4">
-                                <div class="item">
-                                <div class="product product-grid">
-                                    <div class="product-img-wrap"><img
-                                            src="{% static 'images/350/CUBO_1_350.png' %}"
-                                            alt="" width="300" height="300"/>
+                            <div class="col-sm-12">
+                                <div class="product product-list unit flex-column flex-md-row unit-spacing-lg">
+                                    <div class="unit__left product-img-wrap">
+                                        <img src="{% static 'images/min/1-modul-fas-2.jpg' %}" height="200"
+                                            width="300"/>
+                                        <div class="product-label-wrap">
+                                            <span class="featured">
+                                                Featured
+                                            </span>
+                                        </div>
                                     </div>
-                                    <div class="product-caption">
+                                    <div class="unit__body product-caption">
                                         <ul class="product-categories">
-                                            <li><a href="#">CUBO VR</a></li>
+                                            <li><a href="#">CUBO FR</a></li>
                                             <li><a href="#">Одноэтажные</a></li>
                                         </ul>
-                                        <h6 class="product-title"><a href="{% url 'products_detail' %}">CUBO VR 85</a></h6>
-                                        <!--                                        <p class="product-price"><span>40</span>-->
-                                        </p><a class="button-gray-light-outline button button-icon button-icon-left"
-                                               href="{% url 'products_detail' %}"><span
-                                            class="icon icon-md"></span><span>ПОСМОТРЕТЬ</span></a>
+                                        <h5 class="product-title"><a href="{% url 'products_detail' %}">CUBO FR 85</a></h5>
+                                        <p class="product-price"><span>150000</span>
+                                        </p>
+                                        <p class="product-text">Здесь идет какое-то коротное описание дома</p>
+                                        <div class="cart-favorites">
+                                            <a
+                                                    class="button-black button button-icon button-icon-left"
+                                                    href="#">
+                                                <span
+                                                        class="icon icon-md icon-gray linear-icon-cart">
+
+                                                </span>
+                                                <span>Добавить в корзину</span>
+                                            </a>
+                                            <div class="product-icon-wrap">
+                                            <span class="icon icon-md linear-icon-heart"
+                                                  data-toggle="tooltip"
+                                                  data-original-title="В избранное">
+
+                                            </span>
+                                            </div>
+
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
-                            </div>
-                            <div class="col-md-6 col-xl-4">
-                                <div class="item">
-                                <div class="product product-grid">
-                                    <div class="product-img-wrap"><img
-                                            src="{% static 'images/350/CUBO_1_350.png' %}"
-                                            alt="" width="300" height="300"/>
+                            <div class="col-sm-12">
+                                <div class="product product-list unit flex-column flex-md-row unit-spacing-lg">
+                                    <div class="unit__left product-img-wrap">
+                                        <img src="{% static 'images/min/1-modul-fas-2.jpg' %}" height="200"
+                                            width="300"/>
+                                        <div class="product-label-wrap">
+                                            <span class="featured">
+                                                Featured
+                                            </span>
+                                        </div>
                                     </div>
-                                    <div class="product-caption">
+                                    <div class="unit__body product-caption">
                                         <ul class="product-categories">
-                                            <li><a href="#">CUBO VR</a></li>
+                                            <li><a href="#">CUBO FR</a></li>
                                             <li><a href="#">Одноэтажные</a></li>
                                         </ul>
-                                        <h6 class="product-title"><a href="{% url 'products_detail' %}">CUBO VR 85</a></h6>
-                                        <!--                                        <p class="product-price"><span>40</span>-->
-                                        </p><a class="button-gray-light-outline button button-icon button-icon-left"
-                                               href="{% url 'products_detail' %}"><span
-                                            class="icon icon-md"></span><span>ПОСМОТРЕТЬ</span></a>
+                                        <h5 class="product-title"><a href="{% url 'products_detail' %}">CUBO FR 85</a></h5>
+                                        <p class="product-price"><span>150000</span>
+                                        </p>
+                                        <p class="product-text">Здесь идет какое-то коротное описание дома</p>
+                                        <div class="cart-favorites">
+                                            <a
+                                                    class="button-black button button-icon button-icon-left"
+                                                    href="#">
+                                                <span
+                                                        class="icon icon-md icon-gray linear-icon-cart">
+
+                                                </span>
+                                                <span>Добавить в корзину</span>
+                                            </a>
+                                            <div class="product-icon-wrap">
+                                            <span class="icon icon-md linear-icon-heart"
+                                                  data-toggle="tooltip"
+                                                  data-original-title="В избранное">
+
+                                            </span>
+                                            </div>
+
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
-                            </div>
-                            <div class="col-md-6 col-xl-4">
-                                <div class="item">
-                                <div class="product product-grid">
-                                    <div class="product-img-wrap"><img
-                                            src="{% static 'images/350/CUBO_1_350.png' %}"
-                                            alt="" width="300" height="300"/>
+                            <div class="col-sm-12">
+                                <div class="product product-list unit flex-column flex-md-row unit-spacing-lg">
+                                    <div class="unit__left product-img-wrap">
+                                        <img src="{% static 'images/min/1-modul-fas-2.jpg' %}" height="200"
+                                            width="300"/>
+                                        <div class="product-label-wrap">
+                                            <span class="featured">
+                                                Featured
+                                            </span>
+                                        </div>
                                     </div>
-                                    <div class="product-caption">
+                                    <div class="unit__body product-caption">
                                         <ul class="product-categories">
-                                            <li><a href="#">CUBO VR</a></li>
+                                            <li><a href="#">CUBO FR</a></li>
                                             <li><a href="#">Одноэтажные</a></li>
                                         </ul>
-                                        <h6 class="product-title"><a href="{% url 'products_detail' %}">CUBO VR 85</a></h6>
-                                        <!--                                        <p class="product-price"><span>40</span>-->
-                                        </p><a class="button-gray-light-outline button button-icon button-icon-left"
-                                               href="{% url 'products_detail' %}"><span
-                                            class="icon icon-md"></span><span>ПОСМОТРЕТЬ</span></a>
+                                        <h5 class="product-title"><a href="{% url 'products_detail' %}">CUBO FR 85</a></h5>
+                                        <p class="product-price"><span>150000</span>
+                                        </p>
+                                        <p class="product-text">Здесь идет какое-то коротное описание дома</p>
+                                        <div class="cart-favorites">
+                                            <a
+                                                    class="button-black button button-icon button-icon-left"
+                                                    href="#">
+                                                <span
+                                                        class="icon icon-md icon-gray linear-icon-cart">
+
+                                                </span>
+                                                <span>Добавить в корзину</span>
+                                            </a>
+                                            <div class="product-icon-wrap">
+                                            <span class="icon icon-md linear-icon-heart"
+                                                  data-toggle="tooltip"
+                                                  data-original-title="В избранное">
+
+                                            </span>
+                                            </div>
+
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-sm-12">
+                                <div class="product product-list unit flex-column flex-md-row unit-spacing-lg">
+                                    <div class="unit__left product-img-wrap">
+                                        <img src="{% static 'images/min/1-modul-fas-2.jpg' %}" height="200"
+                                            width="300"/>
+                                        <div class="product-label-wrap">
+                                            <span class="featured">
+                                                Featured
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="unit__body product-caption">
+                                        <ul class="product-categories">
+                                            <li><a href="#">CUBO FR</a></li>
+                                            <li><a href="#">Одноэтажные</a></li>
+                                        </ul>
+                                        <h5 class="product-title"><a href="{% url 'products_detail' %}">CUBO FR 85</a></h5>
+                                        <p class="product-price"><span>150000</span>
+                                        </p>
+                                        <p class="product-text">Здесь идет какое-то коротное описание дома</p>
+                                        <div class="cart-favorites">
+                                            <a
+                                                    class="button-black button button-icon button-icon-left"
+                                                    href="#">
+                                                <span
+                                                        class="icon icon-md icon-gray linear-icon-cart">
+
+                                                </span>
+                                                <span>Добавить в корзину</span>
+                                            </a>
+                                            <div class="product-icon-wrap">
+                                            <span class="icon icon-md linear-icon-heart"
+                                                  data-toggle="tooltip"
+                                                  data-original-title="В избранное">
+
+                                            </span>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
                             </div>
+
+
                         </div>
-                    </div>
+                    </section>
                     <!-- Pagination-->
                     <section class="section-sm">
                         <!-- Classic Pagination-->
@@ -251,30 +494,6 @@
                             <li><a href="#">Дома серии CUBO VR</a></li>
                             <li><a href="#">Дома серии CUBO FR</a></li>
                         </ul>
-                    </section>
-
-                    <!-- Filter color-->
-                    <section class="section-sm">
-                        <h5>Фильтр</h5>
-                        <ul class="small list">
-                            <li><a href="#">Одноэтажные (3)</a></li>
-                            <li><a href="#">Двухэтажные (5)</a></li>
-                            <li><a href="#">Террасные модули (6)</a></li>
-                        </ul>
-                    </section>
-
-                    <!-- Range-->
-                    <section class="section-sm">
-                        <h5>По стоимости</h5>
-                        <!--RD Range-->
-                        <div class="rd-range-wrap">
-                            <div class="rd-range-inner"><span>Стоимость: </span><span class="rd-range-input-value-1"></span><span>—</span><span
-                                    class="rd-range-input-value-2"></span></div>
-                            <div class="rd-range" data-min="10" data-max="500" data-start="[75, 244]" data-step="1"
-                                 data-tooltip="true" data-min-diff="10" data-input=".rd-range-input-value-1"
-                                 data-input-2=".rd-range-input-value-2"></div>
-                        </div>
-                        <a class="button button-gray-light-outline" href="#">Показать</a>
                     </section>
 
                 </div>
