@@ -26,6 +26,8 @@ INSTALLED_APPS = [
     'backend.home_decorations',
     'backend.about',
     'backend.cubo_business',
+    'backend.partnership',
+    'backend.contacts',
 
 ]
 
