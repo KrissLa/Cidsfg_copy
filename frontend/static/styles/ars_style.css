@@ -162,8 +162,7 @@ img.confirm-spinner {
 }
 
 
-
-section.breadcrumbs-custom{
+section.breadcrumbs-custom {
     margin-top: 100px;
 }
 
@@ -171,7 +170,31 @@ div.ol {
     padding-left: 40px;
 }
 
+.product-caption {
+    min-width: 350px;
+}
 
+div .cart-favorites {
+    display: flex;
+}
+
+/* MENU */
+
+.rd-megamenu-list > li > p {
+    font-size: 14px;
+    color: #888;
+}
+
+.rd-megamenu-list li {
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.rd-megamenu-list li img{
+    height: 50px;
+    width: 75px;
+    margin-right: 15px;
+}
 
 
 

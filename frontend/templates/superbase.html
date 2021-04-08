@@ -66,22 +66,68 @@
                         <div class="rd-navbar-search_collapsable">
                             <ul class="rd-navbar-nav">
                                 <li><a href="#">Каталог проектов</a>
-                                    <ul class="rd-navbar-dropdown">
-                                        <li><a href="{% url 'products_catalog' %}">Дома серии CUBO VR</a>
-                                            <ul class="rd-navbar-dropdown">
-                                                <li><a href="{% url 'products_catalog' %}">Одноэтажные</a></li>
-                                                <li><a href="{% url 'products_catalog' %}">Двухэтажные</a></li>
-                                                <li><a href="{% url 'products_catalog' %}">Террасные модули</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="{% url 'products_catalog' %}">Дома серии CUBO FR</a>
-                                            <ul class="rd-navbar-dropdown">
-                                                <li><a href="{% url 'products_catalog' %}">Одноэтажные</a></li>
-                                                <li><a href="{% url 'products_catalog' %}">Двухэтажные</a></li>
-                                                <li><a href="{% url 'products_catalog' %}">Террасные модули</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
+                                     <ul class="rd-navbar-megamenu">
+                                    <li>
+                                        <a href="{% url 'products_catalog' %}"><h6>Одноэтажные</h6></a>
+                                        <ul class="rd-megamenu-list">
+                                           <li>
+                                                <a href="{% url 'products_catalog' %}">
+                                                    <img src="{% static 'images/menu_items/menu_min_1.jpg' %}" height="50"
+                                                            width="75" class="menu_min"/>
+                                                    CUBO VR
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{% url 'products_catalog' %}">
+                                                    <img src="{% static 'images/menu_items/menu_min_1.jpg' %}" height="50"
+                                                            width="75" class="menu_min"/>
+                                                    CUBO FR
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#"><h6>Двухэтажные</h6></a>
+                                        <ul class="rd-megamenu-list">
+                                            <li><p>Скоро</p></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#"><h6>Террасные модули</h6></a>
+                                        <ul class="rd-megamenu-list">
+                                            <li>
+                                                <a href="{% url 'products_catalog' %}">
+                                                    <img src="{% static 'images/menu_items/menu_min_1.jpg' %}" height="50"
+                                                            width="75" class="menu_min"/>
+                                                    CUBO VR
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{% url 'products_catalog' %}">
+                                                    <img src="{% static 'images/menu_items/menu_min_1.jpg' %}" height="50"
+                                                            width="75" class="menu_min"/>
+                                                    CUBO FR
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+<!--                                    <ul class="rd-navbar-dropdown">-->
+<!--                                        <li><a href="{% url 'products_catalog' %}">Дома серии CUBO VR</a>-->
+<!--                                            <ul class="rd-navbar-dropdown">-->
+<!--                                                <li><a href="{% url 'products_catalog' %}">Одноэтажные</a></li>-->
+<!--                                                <li><a href="{% url 'products_catalog' %}">Двухэтажные</a></li>-->
+<!--                                                <li><a href="{% url 'products_catalog' %}">Террасные модули</a></li>-->
+<!--                                            </ul>-->
+<!--                                        </li>-->
+<!--                                        <li><a href="{% url 'products_catalog' %}">Дома серии CUBO FR</a>-->
+<!--                                            <ul class="rd-navbar-dropdown">-->
+<!--                                                <li><a href="{% url 'products_catalog' %}">Одноэтажные</a></li>-->
+<!--                                                <li><a href="{% url 'products_catalog' %}">Двухэтажные</a></li>-->
+<!--                                                <li><a href="{% url 'products_catalog' %}">Террасные модули</a></li>-->
+<!--                                            </ul>-->
+<!--                                        </li>-->
+<!--                                    </ul>-->
                                 </li>
                                 <li><a href="#">Отделка и коммуникации</a>
                                     <ul class="rd-navbar-dropdown">
