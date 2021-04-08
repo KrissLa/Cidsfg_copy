@@ -1,12 +1,105 @@
 {% extends 'superbase.html' %}
 {% load static%}
 
-<!--{% block seo_title %}{{ home_data.seo_title }}{% endblock seo_title %}-->
+{% block seo_title %}Контакты{% endblock seo_title %}
 <!--{% block seo_description %}{{ home_data.seo_description }}{% endblock seo_description %}-->
 
 
 {% block content %}
 
-Страничка КОНТАКТЫ
+<section class="breadcrumbs-custom">
+        <div class="container">
+            <div class="breadcrumbs-custom__inner">
+                <p class="breadcrumbs-custom__title">Контакты</p>
+                <ul class="breadcrumbs-custom__path">
+                    <li><a href="index.html">Главная</a></li>
+                    <li class="active">Контакты</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section>
+        <!-- RD Google Map-->
+       <div class="map" style="background-image: url({% static 'images/map.jpg' %})">
+        </div>
+    </section>
+    <section class="section-md bg-default">
+        <div class="container">
+            <div class="row row-50">
+                <div class="col-md-5 col-lg-4">
+                    <h3>Контакты</h3>
+                    <ul class="list-xs contact-info">
+                        <li>
+                            <dl class="list-terms-minimal">
+                                <dt>Адрес</dt>
+                                <dd>4578 Marmora Road, Glasgow, D04 89GR</dd>
+                            </dl>
+                        </li>
+                        <li>
+                            <dl class="list-terms-minimal">
+                                <dt>Телефоны</dt>
+                                <dd>
+                                    <ul class="list-semicolon">
+                                        <li><a href="tel:#">(800) 123-0045</a></li>
+                                        <li><a href="tel:#">(800) 123-0045</a></li>
+                                    </ul>
+                                </dd>
+                            </dl>
+                        </li>
+                        <li>
+                            <dl class="list-terms-minimal">
+                                <dt>E-mail</dt>
+                                <dd><a href="mailto:#">info@demolink.org</a></dd>
+                            </dl>
+                        </li>
+                        <li>
+                            <dl class="list-terms-minimal">
+                                <dt>Время работы</dt>
+                                <dd>Пн - Пт: 10:00 - 20:00</dd>
+                            </dl>
+                        </li>
+                        <li>
+                            <ul class="list-inline-sm">
+                                <li><a class="icon-sm fa-facebook icon" href="#"></a></li>
+                                <li><a class="icon-sm fa-twitter icon" href="#"></a></li>
+                                <li><a class="icon-sm fa-google-plus icon" href="#"></a></li>
+                                <li><a class="icon-sm fa-vimeo icon" href="#"></a></li>
+                                <li><a class="icon-sm fa-youtube icon" href="#"></a></li>
+                                <li><a class="icon-sm fa-pinterest-p icon" href="#"></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-7 col-lg-8">
+                    <h3>Напишите нам</h3>
+                    <!-- RD Mailform-->
+                    <form class="rd-mailform rd-mailform_style-1" data-form-output="form-output-global"
+                          data-form-type="contact" method="post" action="bat/rd-mailform.php">
+                        <div class="form-wrap">
+                            <input class="form-input" id="contact-name" type="text" name="name"
+                                   data-constraints="@Required">
+                            <label class="form-label" for="contact-name">Ваше имя</label>
+                        </div>
+                        <div class="form-wrap">
+                            <input class="form-input" id="contact-email" type="email" name="email"
+                                   data-constraints="@Email @Required">
+                            <label class="form-label" for="contact-email">E-mail</label>
+                        </div>
+                        <div class="form-wrap">
+                            <input class="form-input" id="contact-phone" type="text" name="phone"
+                                   data-constraints="@Numeric">
+                            <label class="form-label" for="contact-phone">Номер телефона</label>
+                        </div>
+                        <div class="form-wrap">
+                            <textarea class="form-input" id="contact-message" name="message"
+                                      data-constraints="@Required"></textarea>
+                            <label class="form-label" for="contact-message">Сообщение</label>
+                        </div>
+                        <button class="button button-primary" type="submit">Отправить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
 {% endblock content %}

@@ -197,6 +197,16 @@ div .cart-favorites {
 }
 
 
+/*CONTACTS*/
+
+.map {
+    margin-top: 90px;
+    min-height:500px;
+    width: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
 
 
