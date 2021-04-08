@@ -12,6 +12,7 @@ urlpatterns = [
     path('catalog/', include('backend.products.urls')),
     path('home_decorations/', include('backend.home_decorations.urls')),
     path('about/', include('backend.about.urls')),
+    path('cubo_business/', include('backend.cubo_business.urls')),
 
     path('api/v1/orders/', include('backend.api.v1.orders.urls')),
 ]

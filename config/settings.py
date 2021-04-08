@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'backend.products',
     'backend.home_decorations',
     'backend.about',
+    'backend.cubo_business',
 
 ]
 
