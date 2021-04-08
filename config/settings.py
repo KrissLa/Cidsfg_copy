@@ -28,6 +28,8 @@ INSTALLED_APPS = [
     'backend.cubo_business',
     'backend.partnership',
     'backend.contacts',
+    'backend.favorites',
+    'backend.cart',
 
 ]
 
