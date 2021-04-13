@@ -1,4 +1,4 @@
-{% load static %}
+{% load static home_decorations_menu %}
 <!DOCTYPE html>
 <html class="wide wow-animation" lang="en">
 <head>
@@ -128,83 +128,7 @@
                                     </ul>
                                 </li>
                                 <li><a href="{% url 'home_decorations_list' %}">Отделка и коммуникации</a>
-                                    <ul class="rd-navbar-megamenu">
-                                        <li>
-                                            <a href="{% url 'home_decorations_list' %}"><h6>Наружнаяя отделка</h6></a>
-                                            <ul class="rd-megamenu-list">
-                                                <li>
-                                                    <a href="{% url 'home_decorations_list' %}">
-                                                        CUBO VR
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="{% url 'home_decorations_list' %}">
-                                                        CUBO FR
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="#"><h6>Внутренняя отделка</h6></a>
-                                            <ul class="rd-megamenu-list">
-                                                <li>
-                                                    <a href="{% url 'home_decorations_list' %}">
-                                                        CUBO FR
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="#"><h6>Внутренние коммуникации</h6></a>
-                                            <ul class="rd-megamenu-list">
-                                                <li>
-                                                    <a href="{% url 'home_decorations_list' %}">
-                                                        CUBO VR
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="{% url 'home_decorations_list' %}">
-                                                        CUBO VR
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="{% url 'home_decorations_list' %}">
-                                                        CUBO VR
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="{% url 'home_decorations_list' %}">
-                                                        CUBO VR
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="{% url 'home_decorations_list' %}">
-                                                        CUBO VR
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="{% url 'home_decorations_list' %}">
-                                                        CUBO VR
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="{% url 'home_decorations_list' %}">
-                                                        CUBO VR
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="{% url 'home_decorations_list' %}">
-                                                        CUBO VR
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="{% url 'home_decorations_list' %}">
-                                                        CUBO FR
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
+                                    {% home_decorations_menu %}
                                 </li>
                                 <li><a href="{% url 'about' %}">Завод</a>
                                 <li><a href="{% url 'cubo_business' %}">CUBO business</a>
@@ -348,5 +272,7 @@
 <script src="{% static 'scripts/core.min.js' %}"></script>
 <script src="{% static 'scripts/script.js' %}"></script>
 <script src="{% static 'scripts/ars_script.js' %}"></script>
+{% block scripts %}
+{% endblock scripts %}
 </body>
 </html>

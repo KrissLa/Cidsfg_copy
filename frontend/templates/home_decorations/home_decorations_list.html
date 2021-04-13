@@ -7,6 +7,35 @@
 
 {% block content %}
 
-Каталог
+<section class="breadcrumbs-custom">
+    <div class="container">
+        <div class="breadcrumbs-custom__inner">
+            <p class="breadcrumbs-custom__title">Отделка и коммуникации</p>
+            <ul class="breadcrumbs-custom__path">
+                <li><a href="#">Главная</a></li>
+                <li class="active">Отделка и коммуникации</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<section class="home_decorations">
+    <div class="container">
+        <div class="hd_wrapper">
+            {% for hd in home_decorations %}
+            <a class="hd_item" href="{{hd.get_absolute_url}}">
+                <span class="hd_black_title">{{hd.hd_name}}</span>
 
+                <span class="bg" style="background-image: url({{ hd.hd_picture.url }})">
+                        <span class="hd_title"><span>{{hd.hd_name}}</span></span>
+                    </span>
+
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
 {% endblock content %}
+
+{% block scripts %}
+<script src="{% static 'scripts/home_decorations.js' %}"></script>
+{% endblock scripts %}

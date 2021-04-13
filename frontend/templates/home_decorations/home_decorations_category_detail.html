@@ -1,0 +1,187 @@
+{% extends 'superbase.html' %}
+{% load static active_filter %}
+
+<!--{% block seo_title %}{{ home_data.seo_title }}{% endblock seo_title %}-->
+<!--{% block seo_description %}{{ home_data.seo_description }}{% endblock seo_description %}-->
+
+
+{% block content %}
+<section class="breadcrumbs-custom">
+    <div class="container">
+        <div class="breadcrumbs-custom__inner">
+            <p class="breadcrumbs-custom__title">{{hd_category}}</p>
+            <ul class="breadcrumbs-custom__path">
+                <li><a href="{% url 'home' %}">Главная</a></li>
+                <li><a href="{% url 'home_decorations_list' %}">Отделка и коммуникации</a></li>
+                <li class="active">{{hd_category}}</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<section class="section-md bg-default">
+    <div class="container">
+        <div class="row row-60 flex-lg-row-reverse">
+            <div class="col-lg-9 section-divided__main section-divided__main-left">
+                <div class="section-sm">
+                    <div class="filter-shop-box">
+                        <p>Показано 12 результатов из 50</p>
+                        <div class="form-wrap">
+                            <!--Select 2-->
+                            <select class="form-input select-filter" data-placeholder="Default sorting"
+                                    data-minimum-results-for-search="Infinity">
+                                <option>Не выбрано</option>
+                                <option value="id">Сначала новые</option>
+                                <option value="-id">Сначала дорогие</option>
+                                <option value="4">Сначала дешевые</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row justify-content-sm-center row-70">
+                        {% for hd in home_decorations %}
+                        <div class="col-md-6 col-xl-4">
+                            <div class="item">
+                                <div class="product product-grid">
+                                    <div class="product-img-wrap"><img
+                                            src="{{hd.picture.url}}"
+                                            alt="" width="300" height="300"/>
+                                    </div>
+                                    <div class="product-caption">
+                                        <ul class="product-categories">
+
+                                            <li><a href="#">{{ hd.type.name }}</a></li>
+                                            <li><a href="#">{{ hd.type.sub_category.name }}</a></li>
+                                        </ul>
+                                        <h6 class="product-title"><a href="single-product.html">{{ hd.name}}</a></h6>
+                                        <!--                                        <p class="product-price"><span>40</span>-->
+                                        </p><a class="button-gray-light-outline button button-icon button-icon-left"
+                                               href="single-product.html"><span
+                                            class="icon icon-md"></span><span>ПОДРОБНЕЕ</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <!-- Pagination-->
+                <section class="section-sm">
+                    <!-- Classic Pagination-->
+                    <nav>
+                        <ul class="pagination-classic">
+                            <li class="active"><span>1</span></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a class="icon linear-icon-arrow-right" href="#"></a></li>
+                        </ul>
+                    </nav>
+                </section>
+            </div>
+            <div class="col-lg-3 section-divided__aside section__aside-left">
+                <!-- Categories-->
+                <section class="section-sm sub_menu">
+                    <h5>Категории</h5>
+                    <div id="accordion" role="tablist">
+                        <!-- Bootstrap panel-->
+                        {% for sub_cat in hd_category.subcategories.all|active_filter %}
+                        <div class="panel panel-custom panel-classic submenu-panel">
+                            <div class="panel-custom-heading" id="{{sub_cat.slug}}" role="tab">
+                                <h6 class="panel-custom-title">
+                                    <a class="{% if not forloop.first %} collapsed {% endif %}" role="button"
+                                       data-toggle="collapse"
+                                       data-parent="#{{ forloop.counter  }}" href="#{{sub_cat.slug}}-body"
+                                       aria-controls="{{sub_cat.slug}}-body"
+
+                                       {% if forloop.first %}
+                                       aria-expanded="true"
+                                       {% endif %}>
+                                        {{sub_cat.name}}
+                                    </a>
+                                </h6>
+                            </div>
+                            <div class="panel-custom-collapse collapse {% if forloop.first %} show {% endif %}"
+                                 id="{{sub_cat.slug}}-body" role="tabpanel"
+                                 aria-labelledby="{{sub_cat.slug}}">
+                                <div class="panel-custom-body sidebar">
+                                    <div class="ol sidebar">
+                                        <form class="sub-menu-form">
+                                            {% for type in sub_cat.types.all|active_filter %}
+                                            <div class="form-wrap checkbox">
+
+                                                <input id="{{type.slug}}{{type.id}}" type="checkbox"
+                                                       name="pokraska-pobeka"
+                                                       {% if forloop.parentloop.first %}
+                                                       checked="checked"
+                                                       {% endif %}
+                                                data-category="{{hd_category.id}}"
+                                                data-subcategory="{{sub_cat.id}}"
+                                                data-type="{{type.id}}">
+                                                <label for="{{type.slug}}{{type.id}}">
+                                                    {{type.name}} ({{type.home_decorations.count}})
+                                                </label>
+                                            </div>
+                                            {% endfor %}
+                                        </form>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+
+                    </div>
+                    <ul class="small list">
+                        {% for cat in subcategories %}
+                        <li {% if forloop.first %}
+                            class="active"
+                            {% endif %}>
+                            <a {% if forloop.first %}
+                               class="active"
+                               {% endif %} href="#">{{ cat.name }}</a>
+
+                            <ul class="rd-navbar-dropdown">
+                                {% for hdt in home_decoration_types %}
+
+                                <li><a {% if forloop.first %}
+                                       class="active"
+                                       {% endif %} href="#">{{hdt.name}}</a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        {% endfor %}
+
+                        <!--                            <li><a href="#">Отделка стен</a>-->
+                        <!--                                <ul class="rd-navbar-dropdown">-->
+                        <!--                                    <li><a class="active" href="index.html">Home Default</a>-->
+                        <!--                                    </li>-->
+                        <!--                                    <li><a href="home-business.html">Home Business</a>-->
+                        <!--                                    </li>-->
+                        <!--                                    <li><a href="home-commercial.html">Home Commercial</a>-->
+                        <!--                                    </li>-->
+                        <!--                                </ul>-->
+                        <!--                            </li>-->
+                        <!--                            <li><a href="#">Отделка пола</a>-->
+                        <!--                                <ul class="rd-navbar-dropdown">-->
+                        <!--                                    <li><a class="active" href="index.html">Home Default</a>-->
+                        <!--                                    </li>-->
+                        <!--                                    <li><a href="home-business.html">Home Business</a>-->
+                        <!--                                    </li>-->
+                        <!--                                    <li><a href="home-commercial.html">Home Commercial</a>-->
+                        <!--                                    </li>-->
+                        <!--                                </ul>-->
+                        <!--                            </li>-->
+                    </ul>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
+
+{% block scripts %}
+{% endblock scripts %}

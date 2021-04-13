@@ -16,6 +16,7 @@ INSTALLED_APPS = [
 
     'corsheaders',
     'rest_framework',
+    'django_filters',
 
     'backend.seo',
     'backend.home_page',
@@ -106,11 +107,17 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
-    )
+    ),
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 2
 }
 
 TG_BOT_TOKEN = os.environ['TG_BOT_TOKEN']
 TG_ADMIN_ID = os.environ['TG_ADMIN_ID']
+
+MEDIA_URL = 'frontend/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'frontend/media')
 
 if os.environ['PROJECT_STATUS'] == 'DEVELOPMENT':
     try:

@@ -1,0 +1,19 @@
+{% load active_filter %}
+<ul class="rd-navbar-megamenu">
+    {% for hd in home_decorations %}
+    <li>
+        <a href="{{hd.get_absolute_url}}"><h6>{{hd.hd_name}}</h6></a>
+
+        <ul class="rd-megamenu-list">
+            {% for sub_cat in hd.subcategories.all|active_filter %}
+            <li>
+                <a href="{{sub_cat.get_absolute_url}}">
+                    {{sub_cat.name}} ({{sub_cat.types.count}})
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </li>
+
+    {% endfor %}
+</ul>
