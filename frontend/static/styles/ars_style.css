@@ -1,3 +1,7 @@
+/**{*/
+/*    scroll-behavior: smooth;*/
+/*}*/
+
 html.modal-show {
     padding-right: 17px;
 }
@@ -415,6 +419,13 @@ form.sub-menu-form .form-wrap.checkbox label {
 
 .product-single h4 {
     margin-bottom: 30px;
+}
+
+.product-single h6.product-text{
+    text-transform: unset;
+    letter-spacing: 0.3px;
+    margin: 0;
+    font-size: 20px;
 }
 
 .product-single p.product-text {

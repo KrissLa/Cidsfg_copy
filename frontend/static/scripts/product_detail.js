@@ -10,7 +10,9 @@ const buttonForRequestInfo = document.querySelector('#show-request-info-modal'),
     priceDataModal = document.querySelector('#modal-price-data'),
     buttonClosePriceData = document.querySelector('#close-price-data'),
     html = document.querySelector('html'),
-    navBar = document.querySelector('nav.rd-navbar');
+    navBar = document.querySelector('nav.rd-navbar'),
+    tabsNavItems = document.querySelectorAll('.nav-item');
+
 
 const showModal = (modelSelector) => {
     if (navBar.classList.contains('rd-navbar--is-stuck')) {
@@ -44,7 +46,7 @@ buttonCloseInfo.addEventListener('click', (e) => {
 })
 
 requestInfoModal.addEventListener('click', (e) => {
-    if( e.target === requestInfoModal) {
+    if (e.target === requestInfoModal) {
         hideModal(requestInfoModal);
     }
 })
@@ -65,7 +67,7 @@ buttonClosePriceInfo.addEventListener('click', (e) => {
 })
 
 priceInfoModal.addEventListener('click', (e) => {
-    if( e.target === priceInfoModal) {
+    if (e.target === priceInfoModal) {
         hideModal(priceInfoModal);
     }
 })
@@ -83,8 +85,22 @@ buttonClosePriceData.addEventListener('click', (e) => {
 })
 
 priceDataModal.addEventListener('click', (e) => {
-    if( e.target === priceDataModal) {
+    if (e.target === priceDataModal) {
         hideModal(priceDataModal);
     }
 })
+
+// Скролл к контенту таба
+
+// tabsNavItems.forEach(e => {
+//     e.addEventListener('click', (e) => {
+//         setTimeout(() => {
+//             const coords = document.querySelector('.tab-content').getBoundingClientRect();
+//             window.scrollTo(coords.left, coords.top + 400);
+//             // coords.scrollIntoView({block: "center - 250px", behavior: "smooth"});
+//         }, 500)
+//
+//         // window.scrollTo()
+//     })
+// })
 
