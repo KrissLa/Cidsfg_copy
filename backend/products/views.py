@@ -14,7 +14,6 @@ class HouseListView(ListView):
     template_name = 'products/catalog.html'
 
     queryset = House.objects.filter(house_active=True).order_by('-id')
-    logger.info(queryset)
     context_object_name = 'houses_list'
     
 
