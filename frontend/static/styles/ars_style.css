@@ -1,5 +1,15 @@
-a.gray div.button-primary {
+html.modal-show {
+    padding-right: 17px;
+}
+
+a.gray div.button-primary,
+button.button.button-primary {
     background-color: #1B1C17;
+    color: #fff;
+}
+
+button.button.button-primary:hover {
+    background-color: #363734;
 }
 
 .rd-navbar-nav > li.active > a, .rd-navbar-sidebar .rd-navbar-nav > li.opened > a, .rd-navbar-sidebar .rd-navbar-nav > li.active > a {
@@ -187,7 +197,7 @@ div.ol {
 /*}*/
 
 @media all and (max-width: 400px) {
-    .product-img-wrap{
+    .product-img-wrap {
         width: unset;
     }
 }
@@ -251,7 +261,7 @@ div .cart-favorites {
 
 /*CATALOG*/
 
-.section__aside-left li a.active{
+.section__aside-left li a.active {
     text-decoration: underline;
 }
 
@@ -367,38 +377,123 @@ span.bg {
     }
 }
 
-.panel-custom.submenu-panel{
+.panel-custom.submenu-panel {
     padding: 15px 0;
 }
 
-.panel-custom.submenu-panel h6{
+.panel-custom.submenu-panel h6 {
     font-size: 12px;
 }
-form.sub-menu-form{
+
+form.sub-menu-form {
     display: flex;
     flex-direction: column;
 }
 
-form.sub-menu-form .form-wrap.checkbox label{
+form.sub-menu-form .form-wrap.checkbox label {
     position: unset;
 }
 
-.form-wrap.checkbox label{
+.form-wrap.checkbox label {
     cursor: pointer;
 }
 
-.panel-custom .panel-custom-collapse .panel-custom-body.sidebar{
+.panel-custom .panel-custom-collapse .panel-custom-body.sidebar {
     padding: 25px 25px 30px 0;
 }
 
-.ol.sidebar{
+.ol.sidebar {
     padding-left: 35px;
 }
 
-.section-divided__aside.section__aside-left > .section-sm.sub_menu{
+.section-divided__aside.section__aside-left > .section-sm.sub_menu {
     margin-right: 25px;
 }
 
+
+/*Product DEtail*/
+
+.product-single h4 {
+    margin-bottom: 30px;
+}
+
+.product-single p.product-text {
+    margin-top: 5px;
+    font-size: 16px;
+    line-height: 23px;
+    letter-spacing: 0.4px;
+}
+
+.product-single button {
+    width: 250px;
+    font-size: 12px;
+    padding: 15px 25px;
+    min-width: 265px;
+    text-transform: uppercase;
+}
+
+.product-single button.button {
+    margin-top: 30px;
+}
+
+.product-single button.button:last-child {
+    margin-top: 8px;
+}
+
+body.show-modal {
+    overflow: hidden;
+}
+
+
+div.modal {
+    position: fixed;
+    overflow-y: scroll;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+div.modal a {
+    text-decoration: underline;
+}
+
+div.modal.active {
+    display: unset;
+}
+
+div.register-form.modal-request form {
+    max-width: 300px;
+}
+
+#modal-price-info form {
+    max-width: unset;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+#modal-price-info form .form-wrap.checkbox {
+    min-height: 25px;
+    margin-top: 0;
+}
+
+@media all and (max-width: 768px) {
+    #modal-price-info form .form-wrap.checkbox {
+        min-height: 55px;
+        margin-top: 0;
+    }
+}
+
+#modal-price-info h6.modal-subtitle{
+    margin: 25px 0;
+}
+
+.modal-dialog.wow {
+    animation-duration: 0.4s;
+}
+
+.select2-dropdown {
+    z-index: 999999;
+}
 
 
 

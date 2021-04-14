@@ -88,19 +88,20 @@
                         <div class="panel panel-custom panel-classic submenu-panel">
                             <div class="panel-custom-heading" id="{{sub_cat.slug}}" role="tab">
                                 <h6 class="panel-custom-title">
-                                    <a class="{% if sub_cat != sub_category %} collapsed {% endif %}" role="button"
+                                    <a class="{% if sub_cat != hd_type.sub_category %} collapsed {% endif %}"
+                                       role="button"
                                        data-toggle="collapse"
                                        data-parent="#{{ forloop.counter  }}" href="#{{sub_cat.slug}}-body"
                                        aria-controls="{{sub_cat.slug}}-body"
 
-                                       {% if sub_cat == sub_category %}
+                                       {% if sub_cat == hd_type.sub_category %}
                                        aria-expanded="true"
                                        {% endif %}>
                                         {{sub_cat.name}}
                                     </a>
                                 </h6>
                             </div>
-                            <div class="panel-custom-collapse collapse {% if sub_cat == sub_category %} show {% endif %}"
+                            <div class="panel-custom-collapse collapse {% if sub_cat == hd_type.sub_category %} show {% endif %}"
                                  id="{{sub_cat.slug}}-body" role="tabpanel"
                                  aria-labelledby="{{sub_cat.slug}}">
                                 <div class="panel-custom-body sidebar">
@@ -111,7 +112,7 @@
 
                                                 <input id="{{type.slug}}{{type.id}}" type="checkbox"
                                                        name="pokraska-pobeka"
-                                                       {% if sub_cat == sub_category %}
+                                                       {% if type == hd_type %}
                                                        checked="checked"
                                                        {% endif %}
                                                        data-category="{{hd_category.id}}"

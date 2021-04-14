@@ -1,5 +1,5 @@
 {% extends 'superbase.html' %}
-{% load static active_filter %}
+{% load static active_filter count_active %}
 
 <!--{% block seo_title %}{{ home_data.seo_title }}{% endblock seo_title %}-->
 <!--{% block seo_description %}{{ home_data.seo_description }}{% endblock seo_description %}-->
@@ -109,16 +109,18 @@
                                             {% for type in sub_cat.types.all|active_filter %}
                                             <div class="form-wrap checkbox">
 
-                                                <input id="{{type.slug}}{{type.id}}" type="checkbox"
+                                                <input id="{{type.slug}}{{type.id}}"
+                                                       type="checkbox"
                                                        name="pokraska-pobeka"
                                                        {% if forloop.parentloop.first %}
                                                        checked="checked"
                                                        {% endif %}
-                                                data-category="{{hd_category.id}}"
-                                                data-subcategory="{{sub_cat.id}}"
-                                                data-type="{{type.id}}">
+                                                       data-category="{{hd_category.id}}"
+                                                       data-subcategory="{{sub_cat.id}}"
+                                                       data-type="{{type.id}}"
+                                                       class="type_for_hd">
                                                 <label for="{{type.slug}}{{type.id}}">
-                                                    {{type.name}} ({{type.home_decorations.count}})
+                                                    {{type.name}} ({{type.home_decorations|count_active}})
                                                 </label>
                                             </div>
                                             {% endfor %}
@@ -184,4 +186,6 @@
 {% endblock content %}
 
 {% block scripts %}
+
+<script src="{% static 'scripts/home_decorations.js' %}"></script>
 {% endblock scripts %}

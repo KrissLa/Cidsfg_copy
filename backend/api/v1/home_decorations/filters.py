@@ -19,19 +19,19 @@ class HomeDecorationsFilter(BaseFilterBackend):
         if categories:
             categories = categories.split(',')
             logger.info(categories)
-            queryset = queryset.filter(type__sub_category__category__hd_slug__in=categories).distinct()
+            queryset = queryset.filter(type__sub_category__category__id__in=categories).distinct()
             logger.info(queryset)
             logger.info(queryset.count())
         if sub_categories:
             sub_categories = sub_categories.split(',')
             logger.info(sub_categories)
-            queryset = queryset.filter(type__sub_category__slug__in=sub_categories).distinct()
+            queryset = queryset.filter(type__sub_category__id__in=sub_categories).distinct()
             logger.info(queryset)
             logger.info(queryset.count())
         if types:
             types = types.split(',')
             logger.info(types)
-            queryset = queryset.filter(type__slug__in=types).distinct()
+            queryset = queryset.filter(type__id__in=types).distinct()
             logger.info(queryset)
             logger.info(queryset.count())
         logger.info(queryset)

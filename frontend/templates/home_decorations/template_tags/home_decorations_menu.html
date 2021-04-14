@@ -1,4 +1,4 @@
-{% load active_filter %}
+{% load active_filter count_active %}
 <ul class="rd-navbar-megamenu">
     {% for hd in home_decorations %}
     <li>
@@ -8,7 +8,7 @@
             {% for sub_cat in hd.subcategories.all|active_filter %}
             <li>
                 <a href="{{sub_cat.get_absolute_url}}">
-                    {{sub_cat.name}} ({{sub_cat.types.count}})
+                    {{sub_cat.name}} ({{sub_cat.types|count_active}})
                 </a>
             </li>
             {% endfor %}

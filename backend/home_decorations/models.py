@@ -70,6 +70,11 @@ class HomeDecorationType(SeoAbstract):
     def __str__(self):
         return f'{self.sub_category} - {self.name}'
 
+    def get_absolute_url(self):
+        return reverse('home_decorations_type_detail', kwargs={'slug': self.slug,
+                                                               'subcategory_slug': self.sub_category.slug,
+                                                               'category_slug': self.sub_category.category.hd_slug})
+
 
 class HomeDecoration(SeoAbstract):
     """ Модель отделки"""
@@ -89,3 +94,6 @@ class HomeDecoration(SeoAbstract):
 
     def __str__(self):
         return f'{self.type} - {self.name}'
+
+    def get_absolute_url(self):
+        return f'url_here'
