@@ -421,7 +421,7 @@ form.sub-menu-form .form-wrap.checkbox label {
     margin-bottom: 30px;
 }
 
-.product-single h6.product-text{
+.product-single h6.product-text {
     text-transform: unset;
     letter-spacing: 0.3px;
     margin: 0;
@@ -494,7 +494,7 @@ div.register-form.modal-request form {
     }
 }
 
-#modal-price-info h6.modal-subtitle{
+h6.modal-subtitle {
     margin: 25px 0;
 }
 
@@ -506,6 +506,205 @@ div.register-form.modal-request form {
     z-index: 999999;
 }
 
+.button-right {
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.buttons-space {
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+div.buttons-space .button,
+.buttons-space .button.left {
+    margin: 0;
+}
+
+/*Products Catalog*/
+
+.row > .col-sm-12 {
+    margin-bottom: 40px;
+}
+
+.product.product-grid .product-img-wrap {
+    max-width: 300px;
+}
+
+/* Уведомления  */
+
+.fetch {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 50px;
+    min-width: 120px;
+    max-width: max-content;
+    background-color: #1B1C17;
+    color: #fff;
+    position: fixed;
+    bottom: 50px;
+    left: 0;
+    z-index: 1000;
+}
+
+.fetch span.caption-1 {
+    margin-left: 15px;
+}
+
+.fetch .fa {
+    font-size: 20px;
+}
+
+@media all and (max-width: 768px) {
+    .fetch {
+        bottom: unset;
+        top: 56px;
+        width: 100%;
+        max-width: unset;
+        justify-content: center;
+    }
+
+}
+
+#personal-layout,
+#standard-layout {
+    margin-top: 25px;
+}
+
+#standard-layout.hide {
+    display: none;
+}
+
+#personal-layout.hide {
+    display: none;
+}
+
+form {
+    margin-top: 25px;
+}
+
+.modal-title-2,
+hr.modal-title-2 {
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.modal-add {
+    display: flex;
+    height: 50px;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 25px 0;
+}
+
+.modal-add * {
+    margin: 0 25px 0 0;
+    font-size: 14px;
+}
+
+button.button.black {
+    padding: 10px 15px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+button.button.black:hover {
+    background-color: #EFEFEF;
+}
+
+.modal-dialog.modal-big {
+    max-width: 90%;
+    margin: 2% auto;
+}
+
+.decorations-select {
+    display: grid;
+    grid-template-areas: 'decorations-choices decoration-info';
+    grid-template-columns: 25% 75%;
+}
+
+.decorations-choices {
+    grid-area: decorations-choices;
+    display: flex;
+    flex-direction: column;
+    padding: 35px;
+    border-right: 1px solid #EFEFEF;
+    border-radius: 30px;
+}
+
+.decoration-info {
+    grid-area: decoration-info;
+    padding: 35px;
+}
+
+.decorations-choices li {
+    padding: 10px 20px;
+    width: max-content;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: all 0.2s;
+}
+
+.decorations-choices li:hover {
+    background-color: #EFEFEF;
+}
+
+.decorations-choices li.active {
+    border: 1px solid #1B1C17;
+    border-radius: 3px;
+}
+
+.decoration-info-item {
+    display: none;
+}
+
+.decoration-info-item.active {
+    display: grid;
+}
+
+.decoration-info-header * {
+    margin: 0;
+}
+
+.decoration-info-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    /*margin-bottom: 50px;*/
+}
+
+.decoration-info-body {
+    display: flex;
+    gap: 50px;
+}
+
+.decoration-info-body .decoration-info-caption {
+    max-width: 60%;
+    padding: 0 100px 50px 0;
+}
+
+/*.decoration-info-body  hr{*/
+/*    margin: 25px auto;*/
+/*}*/
+
+.decoration-info-item hr{
+    margin: 25px auto 30px auto;
+    width: 95%;
+}
+
+.decoration-info-caption h6.option-title{
+    margin-bottom: 10px;
+}
+
+.option-ul{
+    margin-left: 25px;
+}
 
 
 

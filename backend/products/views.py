@@ -13,7 +13,7 @@ class HouseListView(ListView):
     model = House
     template_name = 'products/catalog.html'
 
-    queryset = House.objects.filter(house_active=True).order_by('-id')
+    queryset = House.objects.filter(active=True).order_by('-id')
     context_object_name = 'houses_list'
     
 
@@ -36,15 +36,15 @@ def get_catalog_page(request, slug=None):
     """ Старница с каталогом домомов """
     category = None
     series = None
-    houses = House.objects.filter(house_active=True).order_by('house_category', 'house_series')
-    categories_list = Category.objects.filter(category_active=True).order_by('id')
-    series_list = Series.objects.filter(series_active=True).order_by('id')
+    houses = House.objects.filter(active=True).order_by('house_category', 'house_series')
+    categories_list = Category.objects.filter(active=True).order_by('id')
+    series_list = Series.objects.filter(active=True).order_by('id')
     if slug:
         try:
-            category = get_object_or_404(Category, category_slug=slug)
+            category = get_object_or_404(Category, slug=slug)
         except Http404:
             logger.info('не нашел категорию, приступаю к поиску серии')
-            series = get_object_or_404(Series, series_slug=slug)
+            series = get_object_or_404(Series, slug=slug)
             houses = houses.filter(house_series=series)
         else:
             houses = houses.filter(house_category=category)
@@ -69,4 +69,4 @@ class CatalogPageView(TemplateView):
 
 class ProductDetailPageView(TemplateView):
     """ Страница с детальной информацией о товаре """
-    template_name = 'products/product_detail.html'
+    template_name = 'products/product_detail_1.html'

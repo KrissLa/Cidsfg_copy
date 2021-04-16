@@ -831,7 +831,7 @@
 
                   </span>
                 </button>
-                <h6 class="modal-title">Онлайн калькулятор дома</h6>
+                <h6 class="modal-title">Онлайн калькулятор стоимости дома</h6>
             </div>
             <div class="modal-body">
                 <div class="group-xl">
@@ -839,60 +839,284 @@
                 </div>
                 <hr>
                 <div class="register-form modal-request">
-                    <p>Стоимость дома «под ключ»: 2 150 000 руб</p>
-                    <p>Узнайте, что входит в цену дома на <a href="#">странице описания комплектации «под ключ»</a></p>
-                    <h6 class="modal-subtitle">Регион доставки</h6>
-                    <select>
-                        <option value="id">Москва</option>
-                        <option value="-id">Нальчик</option>
-                        <option value="4">Тверь</option>
-                        <option value="4">Санкт-Петербург</option>
+                    <h6 class="modal-subtitle">Планировка</h6>
+                    <select data-minimum-results-for-search="Infinity" id="layout">
+                        <option value="standard-layout" selected="selected">Стандартная планировка</option>
+                        <option value="personal-layout">Индивидуальная планировка</option>
                     </select>
-                    <p>Стоимость доставки и организации проживания бригады на участке: 95000 руб.</p>
+                    <div id="standard-layout">
+                        <img src="{% static 'images/schema.jpg' %}"/>
+                    </div>
+                    <div id="personal-layout" class="hide">
+                        <p>При выборе индивидуальной планировки стоимость может быть рассчитана только после уточнения
+                            всех деталей</p>
+                    </div>
+                </div>
+                <hr>
+                <h6 class="modal-subtitle">Отделка и коммуникации</h6>
+                <form>
+                    <div class="form-wrap checkbox">
 
-                    <hr>
-                    <form>
-                        <div class="form-wrap checkbox">
+                        <input id="opt1" type="checkbox"
+                               name="pokraska-pobeka"
+                               class="type_for_hd">
+                        <label for="opt1">
+                            Внутренняя отделка
+                        </label>
+                    </div>
+                    <div class="form-wrap checkbox">
 
-                            <input id="opt1" type="checkbox"
-                                   name="pokraska-pobeka"
-                                   class="type_for_hd">
-                            <label for="opt1">
-                                Свайно-винтовой фундамент (+ 125 000₽)
-                            </label>
-                        </div>
-                        <div class="form-wrap checkbox">
+                        <input id="opt2" type="checkbox"
+                               name="pokraska"
+                               class="type_for_hd">
+                        <label for="opt2">
+                            Наружная отделка
+                        </label>
+                    </div>
+                    <div class="form-wrap checkbox">
 
-                            <input id="opt2" type="checkbox"
-                                   name="pokraska"
-                                   class="type_for_hd">
-                            <label for="opt2">
-                                Индивидуальная планировка (+ 10 000₽)
-                            </label>
-                        </div>
-                        <div class="form-wrap checkbox">
+                        <input id="opt3" type="checkbox"
+                               name="pokraska"
+                               class="type_for_hd">
+                        <label for="opt3">
+                            Внутренние коммуникации
+                        </label>
+                    </div>
+                    <div class="form-wrap checkbox">
 
-                            <input id="opt3" type="checkbox"
-                                   name="pokraska"
-                                   class="type_for_hd">
-                            <label for="opt3">
-                                Индивидуальная планировка (+ 10 000₽)
-                            </label>
-                        </div>
+                        <input id="opt4" type="checkbox"
+                               name="pokr"
+                               class="type_for_hd">
+                        <label for="opt4">
+                            Террасные модули
+                        </label>
+                    </div>
 
 
-                    </form>
-                    <hr>
-                    <h6 class="modal-subtitle">Итоговая стоимость дома: 1815000 руб.</h6>
-
-                    <button class="button button-primary" id="price-next">ПОЛУЧИТЬ РАСЧЕТ НА E-MAIL</button>
+                </form>
+                <hr>
+                <p>Промежуточная стоимость: <span>1 452 000 Р</span></p>
+                <div class="button-right">
+                    <button class="button right" id="price-next">Далее</button>
                 </div>
 
             </div>
         </div>
     </div>
 </div>
-<div class="modal text-left" id="modal-price-data" role="dialog">
+<div class="modal text-left " id="modal-price-info-2" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" id="close-price-info-2" type="button" data-dismiss="modal">
+                  <span class="icon icon-md linear-icon-cross">
+
+                  </span>
+                </button>
+                <h6 class="modal-title">Онлайн калькулятор стоимости дома</h6>
+            </div>
+            <div class="modal-body">
+                <div class="group-xl">
+                    <h5>CUBO FLAT 5421</h5>
+                </div>
+                <hr>
+                <h6 class="modal-title-2">Наружная отделка</h6>
+                <hr class="modal-title-2">
+                <h6 class="modal-subtitle">Отделка стен</h6>
+                <div class="modal-add">
+                    <button data-decoration="exterior-wall" class="button black add-decorations">Добавить</button>
+                    <p>Ничего не выбрано</p>
+                </div>
+                <hr>
+                <p>Промежуточная стоимость: <span>1 452 000 Р</span></p>
+                <div class="buttons-space">
+                    <button class="button left" id="price-back-2">Назад</button>
+                    <button class="button" id="price-next-2">Далее</button>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal text-left" data-for-decorations="exterior-wall" role="dialog">
+    <div class="modal-dialog modal-big">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" id="close-exterior-wall" type="button" data-dismiss="modal">
+                  <span class="icon icon-md linear-icon-cross close">
+
+                  </span>
+                </button>
+                <h6 class="modal-title">Наружная отделка стен</h6>
+            </div>
+
+            <div class="decorations-select">
+                <ul class="decorations-choices wall">
+                    <li data-for-item="item-1" class="active">Покраска суперклассная</li>
+                    <li data-for-item="item-2">Cип панели компании "TopPANELS"</li>
+                    <li data-for-item="item-3">Дерево</li>
+                </ul>
+                <div class="decoration-info">
+                    <div data-item="item-1" class="decoration-info-item active">
+                        <div class="decoration-info-header">
+                            <h6 class="decoration-info-title">Покраска суперклассная</h6>
+                            <button data-select-decoration="item-1" class="button black">Выбрать</button>
+                        </div>
+                        <hr>
+                        <div class="decoration-info-body">
+                            <div class="decoration-info-picture">
+                                <img src="https://1pofasady.ru/wp-content/uploads/2018/09/glavnaya-1.gif">
+                            </div>
+                            <div class="decoration-info-caption">
+                                <div class="price">
+                                    Стоимость для выбранного дома: <span>25000</span>р
+                                </div>
+                                <hr>
+                                <div class="decoration">
+                                    Покраска фасадной части здания – это нанесение слоя декора на наружную часть для
+                                    защиты здания. Однако изменения не только визуальны, но и создают прочную, надежную
+                                    защитную пленку, ограждающую поверхность стен от воздействия перепадов температуры,
+                                    проникновения воды, а также минимизирует риск образование грибка или
+                                    плесени.
+                                </div>
+                                <hr>
+                                <div class="options">
+                                    <h6 class="option-title">
+                                        Технические характеристики:
+                                    </h6>
+                                    <table class="table-product-info">
+                                        <tbody>
+                                        <tr>
+                                            <td>Площадь</td>
+                                            <td>555531м2</td>
+                                        </tr>
+                                        <tr>
+                                            <td>материал</td>
+                                            <td>пластик</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Количество панелей</td>
+                                            <td>79</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-item="item-2" class="decoration-info-item ">
+                        <div class="decoration-info-header">
+                            <h6 class="decoration-info-title">Cип панели компании "TopPANELS"</h6>
+                            <button data-select-decoration="item-2" class="button black">Выбрать</button>
+                        </div>
+                        <hr>
+                        <div class="decoration-info-body">
+                            <div class="decoration-info-picture">
+                                <img src="https://technosip.ru/assets/images/stati/kik/2.jpg">
+                            </div>
+                            <div class="decoration-info-caption">
+                                <div class="price">
+                                    Стоимость для выбранного дома: <span>25000</span>р
+                                </div>
+                                <hr>
+                                <div class="decoration">
+                                    Огромным плюсом СИП-панелей, в отличие от многих других стройматериалов, является
+                                    экологичность и гигиеничность – они не опасны для людей и домашних животных. Кроме
+                                    того, материал не вступает в реакцию с химическими средствами для уборки и
+                                    различного рода грибками, он очень плохо горит, что означает высокую
+                                    пожароустойчивость.
+                                </div>
+                                <hr>
+                                <div class="options">
+                                    <h6 class="option-title">
+                                        Технические характеристики:
+                                    </h6>
+                                    <table class="table-product-info">
+                                        <tbody>
+                                        <tr>
+                                            <td>Прочные</td>
+                                            <td>Соединенные вместе в единый комплект сип-панели выдерживают значительную
+                                                горизонтальную нагрузку до 400 кг на 1 кв.м., вертикальную – до 3 тонн.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Пожаробезопасные</td>
+                                            <td>Дома, построенные из нашего материала, соответствует 3-ей степени
+                                                огнестойкости. Время удержания огня без вопламенения – 1 час. Внешняя и
+                                                внутренняя поверхности обрабатываются огнезащитным составом
+                                                (антипиреном), который придает им свойство самозатухания.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Экологичные</td>
+                                            <td>Высокие требования экологической безопасности соотвествуют международным
+                                                стандартам. Соблюдаются все требования при производстве.
+
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-item="item-3" class="decoration-info-item ">
+                        <div class="decoration-info-header">
+                            <h6 class="decoration-info-title">Дерево</h6>
+                            <button data-select-decoration="item-3" class="button black">Выбрать</button>
+                        </div>
+                        <hr>
+                        <div class="decoration-info-body">
+                            <div class="decoration-info-picture">
+                                <img src="https://www.ecosrub.ru/assets/images/articles/dom_891.jpg">
+                            </div>
+                            <div class="decoration-info-caption">
+                                <div class="price">
+                                    Стоимость для выбранного дома: <span>25000</span>р
+                                </div>
+                                <hr>
+                                <div class="decoration">
+                                    Натуральное дерево - теплое на ощупь, благодаря чему полностью отсутствуют
+                                    какие-либо неприятные ощущения во время прикосновении к нему. Дерево обладая
+                                    уникальными природными характеристиками и стабильным уровнем влажности, минимизирует
+                                    вероятность возникновения у людей аллергических реакций.
+                                </div>
+                                <hr>
+                                <div class="options">
+                                    <h6 class="option-title">
+                                        Технические характеристики:
+                                    </h6>
+                                    <table class="table-product-info">
+                                        <tbody>
+                                        <tr>
+                                            <td>Площадь</td>
+                                            <td>555531м2</td>
+                                        </tr>
+                                        <tr>
+                                            <td>материал</td>
+                                            <td>пластик</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Количество панелей</td>
+                                            <td>79</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal text-left " id="modal-price-data" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
@@ -944,5 +1168,5 @@
 {% endblock content %}
 
 {% block scripts %}
-<script src="{% static 'scripts/product_detail.js' %}"></script>
+<script src="{% static 'scripts/product_detail_1.js' %}"></script>
 {% endblock scripts %}
