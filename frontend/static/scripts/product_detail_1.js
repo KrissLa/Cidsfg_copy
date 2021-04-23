@@ -1,3 +1,46 @@
+const swiper = new Swiper('.swiper-container-detail', {
+    pagination: {
+        el: '.swiper-pagination',
+        type: 'bullets',
+        clickable: true,
+    },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+
+    },
+});
+
+const lazyLoadInstance = new LazyLoad({});
+
+// табы
+
+const navItems = document.querySelectorAll('.tabs-controls-item'),
+    bodyItems = document.querySelectorAll('.body-item');
+
+const setActive = (e, itemList) => {
+    itemList.forEach(el => {
+        el.classList.remove('active');
+    });
+    e.classList.add('active');
+}
+
+
+navItems.forEach(e => {
+    e.addEventListener('click', () => {
+        if (!e.classList.contains('active')) {
+            const tabId = e.getAttribute('data-for'),
+                  tabBodyItem = document.querySelector(`#${tabId}`);
+            console.log(tabBodyItem);
+            setActive(e, navItems);
+            setActive(tabBodyItem, bodyItems);
+        }
+
+
+    })
+})
+
+
 const buttonForRequestInfo = document.querySelector('#show-request-info-modal'),
     body = document.querySelector('body'),
     requestInfoModal = document.querySelector('#modal-request-info'),
@@ -163,7 +206,7 @@ for (let i = 0, parent; parent = parentsModal[i]; i++)
             parent.classList.remove('active');
             document.querySelector('[data-decoration="exterior-wall"]').innerHTML = 'Изменить';
             document.querySelector('.modal-add p').innerHTML = `${decorationTitle} (${decorationPrice}р)`;
-        } else if  (e.target.classList.contains('close') || e.target.classList.contains('modal')) {
+        } else if (e.target.classList.contains('close') || e.target.classList.contains('modal')) {
             parent.classList.remove('active');
         }
     });

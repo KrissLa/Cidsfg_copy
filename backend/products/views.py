@@ -69,4 +69,4 @@ class CatalogPageView(TemplateView):
 
 class ProductDetailPageView(TemplateView):
     """ Страница с детальной информацией о товаре """
-    template_name = 'products/product_detail_1.html'
+    template_name = 'products/product_detail_2.html'
