@@ -11,7 +11,7 @@ from .models import House, Category, Series
 class HouseListView(ListView):
     """ Вывод всех доступных домов в каталог """
     model = House
-    template_name = 'products/catalog.html'
+    template_name = 'products/catalog_1.html'
 
     queryset = House.objects.filter(active=True).order_by('-id')
     context_object_name = 'houses_list'
