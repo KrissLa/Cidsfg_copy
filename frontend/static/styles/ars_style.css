@@ -541,6 +541,11 @@ form.sub-menu-form .form-wrap.checkbox label {
     text-align: center;
     overflow: hidden;
     transition: 0.3s all ease;
+    cursor: pointer;
+}
+
+form .btn-a{
+    margin-top: 25px;
 }
 
 @media all and (max-width: 1363px) {
@@ -723,7 +728,7 @@ form.sub-menu-form .form-wrap.checkbox label {
 }
 
 .diagonal:hover::after {
-    height: 600%;
+    height: 700%;
 }
 
 .diagonal {

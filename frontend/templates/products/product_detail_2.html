@@ -160,8 +160,9 @@
                     <div class="min-info-item">Количество санузлов: <span>1</span></div>
                 </div>
                 <div class="buttons">
-                    <a href="#" class="btn-a diagonal black"><span>Получить консультацию</span></a>
-                    <a href="#" class="btn-a diagonal"><span>Конфигуратор стоимости</span></a>
+                    <a href="#" class="btn-a diagonal black"
+                       id="show-request-info-modal"><span>Получить консультацию</span></a>
+                    {#                    <a href="#" class="btn-a diagonal"><span>Конфигуратор стоимости</span></a>#}
 
                 </div>
             </section>
@@ -444,7 +445,7 @@
             <div class="catalog-body">
                 <div class="tabs-content">
                     <div id="tab-10" class="body-item catalog active">
-                        <div class="swiper-container-catalog">
+                        <div class="swiper-container-catalog" id="swiper1">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
                                     <div class="product-item white b-shadow">
@@ -600,11 +601,172 @@
                                 </div>
                             </div>
                             <!-- Add Arrows -->
-                            <div class="swiper-button-next"></div>
-                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next " id="next1"></div>
+                            <div class="swiper-button-prev " id="prev1"></div>
                         </div>
+
                     </div>
                     <div id="tab-20" class="body-item catalog">
+                        <div class="swiper-container-catalog" id="swiper2">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="product-item white b-shadow">
+                                        <div class="item-wrapper">
+                                            <div class="item-category">
+                                                <span>Одноэтажный</span>
+                                            </div>
+                                            <div class="item-title">
+                                                <h4>FLAT F48</h4>
+
+                                            </div>
+                                            <div class="item-picture">
+                                                <img
+                                                        alt="Вид сбоку"
+                                                        class="lazy"
+                                                        src="{% static 'images/CUBO_FLAT_71/4_th.jpg' %}"
+                                                        data-src="{% static 'images/CUBO_FLAT_71/4_400x267.jpg' %}"
+                                                />
+
+                                            </div>
+                                            <div class="item-min-price">
+                                                от <span class="price">1 439 000</span> руб.
+                                            </div>
+                                            <div class="item-full-price">
+                                                <div class="caption">"Под ключ"</div>
+                                                <div class="full-price">
+                                                    от <span class="price">2 152 000</span> руб.
+                                                </div>
+
+                                            </div>
+                                            <div class="item-link">
+                                                <a href="#" class="btn-a diagonal black">
+                                                    <span>Подробнее</span>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="product-item white b-shadow">
+                                        <div class="item-wrapper">
+                                            <div class="item-category">
+                                                <span>Одноэтажный</span>
+                                            </div>
+                                            <div class="item-title">
+                                                <h4>FLAT F48</h4>
+
+                                            </div>
+                                            <div class="item-picture">
+                                                <img
+                                                        alt="Вид сбоку"
+                                                        class="lazy"
+                                                        src="{% static 'images/CUBO_FLAT_71/4_th.jpg' %}"
+                                                        data-src="{% static 'images/CUBO_FLAT_71/4_400x267.jpg' %}"
+                                                />
+
+                                            </div>
+                                            <div class="item-min-price">
+                                                от <span class="price">1 439 000</span> руб.
+                                            </div>
+                                            <div class="item-full-price">
+                                                <div class="caption">"Под ключ"</div>
+                                                <div class="full-price">
+                                                    от <span class="price">2 152 000</span> руб.
+                                                </div>
+
+                                            </div>
+                                            <div class="item-link">
+                                                <a href="#" class="btn-a diagonal black">
+                                                    <span>Подробнее</span>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="product-item white b-shadow">
+                                        <div class="item-wrapper">
+                                            <div class="item-category">
+                                                <span>Одноэтажный</span>
+                                            </div>
+                                            <div class="item-title">
+                                                <h4>FLAT F48</h4>
+
+                                            </div>
+                                            <div class="item-picture">
+                                                <img
+                                                        alt="Вид сбоку"
+                                                        class="lazy"
+                                                        src="{% static 'images/CUBO_FLAT_71/4_th.jpg' %}"
+                                                        data-src="{% static 'images/CUBO_FLAT_71/4_400x267.jpg' %}"
+                                                />
+
+                                            </div>
+                                            <div class="item-min-price">
+                                                от <span class="price">1 439 000</span> руб.
+                                            </div>
+                                            <div class="item-full-price">
+                                                <div class="caption">"Под ключ"</div>
+                                                <div class="full-price">
+                                                    от <span class="price">2 152 000</span> руб.
+                                                </div>
+
+                                            </div>
+                                            <div class="item-link">
+                                                <a href="#" class="btn-a diagonal black">
+                                                    <span>Подробнее</span>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="product-item white b-shadow">
+                                        <div class="item-wrapper">
+                                            <div class="item-category">
+                                                <span>Одноэтажный</span>
+                                            </div>
+                                            <div class="item-title">
+                                                <h4>FLAT F48</h4>
+
+                                            </div>
+                                            <div class="item-picture">
+                                                <img
+                                                        alt="Вид сбоку"
+                                                        class="lazy"
+                                                        src="{% static 'images/CUBO_FLAT_71/4_th.jpg' %}"
+                                                        data-src="{% static 'images/CUBO_FLAT_71/4_400x267.jpg' %}"
+                                                />
+
+                                            </div>
+                                            <div class="item-min-price">
+                                                от <span class="price">1 439 000</span> руб.
+                                            </div>
+                                            <div class="item-full-price">
+                                                <div class="caption">"Под ключ"</div>
+                                                <div class="full-price">
+                                                    от <span class="price">2 152 000</span> руб.
+                                                </div>
+
+                                            </div>
+                                            <div class="item-link">
+                                                <a href="#" class="btn-a diagonal black">
+                                                    <span>Подробнее</span>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Add Arrows -->
+                            <div class="swiper-button-next " id="next2"></div>
+                            <div class="swiper-button-prev " id="prev2"></div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -643,7 +805,12 @@
                                 <label class="form-label" for="email">Телефон</label>
                                 <input class="form-input" id="email" name="email">
                             </div>
-                            <button class="button button-primary">Оставить заявку</button>
+                            <div>
+                                <button href="#" class="btn-a diagonal black">Оставить заявку</button>
+                            </div>
+
+
+                            {#                            <button class="button button-primary">Оставить заявку</button>#}
                         </form>
                         <hr>
                         <p>Нажимая кнопку, я даю согласие на обработку моих персональных данных в соответствии со

@@ -1,8 +1,3 @@
-console.log(document.documentElement.clientWidth);
-
-
-
-
 //Swipers
 
 const getCatalogSlidesPerView = () => {
@@ -42,7 +37,7 @@ const swiper = new Swiper('.swiper-container-detail', {
     },
 });
 
-const swiperCatalog = new Swiper('.swiper-container-catalog', {
+let swiperCatalog = new Swiper('#swiper1', {
     slidesPerView: getCatalogSlidesPerView(),
     spaceBetween: getCatalogSpaceBetween(),
     navigation: {
@@ -115,6 +110,23 @@ navItemsCatalog.forEach(e => {
                 tabBodyItem = document.querySelector(`#${tabId}`);
             setActive(e, navItemsCatalog);
             setActive(tabBodyItem, bodyItemsCatalog);
+            const swiperID = tabBodyItem.querySelector('.swiper-container-catalog').id;
+            const nextID = tabBodyItem.querySelector('.swiper-button-next').id;
+            const prevID = tabBodyItem.querySelector('.swiper-button-prev').id;
+            let swiperCatalog = new Swiper(`#${swiperID}`, {
+                slidesPerView: getCatalogSlidesPerView(),
+                spaceBetween: getCatalogSpaceBetween(),
+                navigation: {
+                    nextEl: `#${nextID}`,
+                    prevEl: `#${prevID}`,
+
+                },
+
+            });
+            window.addEventListener('resize', function () {
+            swiperCatalog.params.slidesPerView = getCatalogSlidesPerView();
+            swiperCatalog.params.spaceBetween = getCatalogSpaceBetween();
+        });
         }
         scrollToActiveTab(e, navArrayCatalog, catalogContainer);
 

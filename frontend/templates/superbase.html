@@ -11,9 +11,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
     <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
-    <!-- Stylesheets-->
-    <link rel="stylesheet" type="text/css"
-          href="//fonts.googleapis.com/css?family=Libre+Franklin:200,300,500,600,300italic%7CCormorant+Garamond:300,400,400i,600,700">
+{#    <!-- Stylesheets-->#}
+{#    <link rel="stylesheet" type="text/css"#}
+{#          href="//fonts.googleapis.com/css?family=Libre+Franklin:200,300,500,600,300italic%7CCormorant+Garamond:300,400,400i,600,700">#}
     <link rel="stylesheet" href="{% static 'styles/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'styles/fonts.css' %}">
 
@@ -21,6 +21,9 @@
 
     <link rel="stylesheet" href="{% static 'styles/style.css' %}">
     <link rel="stylesheet" href="{% static 'styles/ars_style.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+          rel="stylesheet">
     <!--[if lt IE 10]>
     <div style="background: #212121; padding: 10px 0; box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3); clear: both; text-align:center; position: relative; z-index:1;">
         <a href="http://windows.microsoft.com/en-US/internet-explorer/"><img
@@ -64,18 +67,18 @@
                     </div>
                     <!-- RD Navbar Nav-->
                     <div class="rd-navbar-nav-wrap rd-navbar-search_not-collapsable">
-<!--                        <ul class="rd-navbar-items-list rd-navbar-search_collapsable">-->
-<!--                            <li>-->
+                        <!--                        <ul class="rd-navbar-items-list rd-navbar-search_collapsable">-->
+                        <!--                            <li>-->
 
-<!--                                <a class="icon icon-md linear-icon-heart link-primary"-->
-<!--                                   href="{% url 'favorites' %}"></a>-->
+                        <!--                                <a class="icon icon-md linear-icon-heart link-primary"-->
+                        <!--                                   href="{% url 'favorites' %}"></a>-->
 
-<!--                            </li>-->
-<!--                            <li class="rd-navbar-nav-wrap__shop">-->
-<!--                                <a class="icon icon-md linear-icon-cart link-primary"-->
-<!--                                   href="{% url 'cart' %}"></a>-->
-<!--                            </li>-->
-<!--                        </ul>-->
+                        <!--                            </li>-->
+                        <!--                            <li class="rd-navbar-nav-wrap__shop">-->
+                        <!--                                <a class="icon icon-md linear-icon-cart link-primary"-->
+                        <!--                                   href="{% url 'cart' %}"></a>-->
+                        <!--                            </li>-->
+                        <!--                        </ul>-->
                         <div class="rd-navbar-search_collapsable">
                             <ul class="rd-navbar-nav">
                                 <li><a href="#">Модельный ряд</a>
@@ -118,17 +121,17 @@
                                 <li><a href="{% url 'partnership' %}">Сотрудничество</a>
                                 <li><a href="{% url 'contacts' %}">Контакты</a>
                                 </li>
-<!--                                <li class="mobile-menu-item">-->
-<!--                                    <a  href="{% url 'cart' %}" class="icon icon-md linear-icon-cart link-primary">-->
-<!--                                        Корзина-->
-<!--                                    </a>-->
+                                <!--                                <li class="mobile-menu-item">-->
+                                <!--                                    <a  href="{% url 'cart' %}" class="icon icon-md linear-icon-cart link-primary">-->
+                                <!--                                        Корзина-->
+                                <!--                                    </a>-->
 
-<!--                                </li>-->
-<!--                                <li class="mobile-menu-item">-->
-<!--                                    <a  href="{% url 'favorites' %}" class="icon icon-md linear-icon-heart link-primary">-->
-<!--                                        Избранное-->
-<!--                                    </a>-->
-<!--                                </li>-->
+                                <!--                                </li>-->
+                                <!--                                <li class="mobile-menu-item">-->
+                                <!--                                    <a  href="{% url 'favorites' %}" class="icon icon-md linear-icon-heart link-primary">-->
+                                <!--                                        Избранное-->
+                                <!--                                    </a>-->
+                                <!--                                </li>-->
                             </ul>
                         </div>
                     </div>
@@ -237,7 +240,7 @@
         <div class="container">
             <div class="footer-corporate__inner">
                 <p class="rights"><a
-                        href="{% url 'privacy'%}">Политика конфиденциальности</a></p>
+                        href="{% url 'privacy' %}">Политика конфиденциальности</a></p>
                 <ul class="list-inline-xxs">
                     <li><a class="icon icon-xxs icon-gray-4 fa fa-facebook" href="#"></a></li>
                     <li><a class="icon icon-xxs icon-gray-4 fa fa-twitter" href="#"></a></li>
@@ -257,7 +260,6 @@
 <script src="{% static 'scripts/ars_script.js' %}"></script>
 {% block scripts %}
 {% endblock scripts %}
-
 
 
 </body>
