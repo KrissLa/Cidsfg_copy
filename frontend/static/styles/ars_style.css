@@ -614,13 +614,15 @@ form.sub-menu-form .form-wrap.checkbox label {
         justify-content: space-between;
     }
 
-    .min-info{
-        margin:0;
+    .min-info {
+        margin: 0;
     }
-    .btn-a{
-        margin: 0 0 15px  0;
+
+    .btn-a {
+        margin: 0 0 15px 0;
     }
-    .content-info h6 span.fas:hover:after{
+
+    .content-info h6 span.fas:hover:after {
         right: -70px;
         width: 200px;
     }
@@ -634,8 +636,9 @@ form.sub-menu-form .form-wrap.checkbox label {
     .buttons {
         max-width: max-content;
     }
-    .btn-a{
-        margin: 20px  0  10px  0;
+
+    .btn-a {
+        margin: 20px 0 10px 0;
     }
 }
 
@@ -758,13 +761,13 @@ form.sub-menu-form .form-wrap.checkbox label {
 }
 
 .tabs-controls-wrapper .container {
-
-    overflow-x: auto;
+    padding: 0;
+    overflow-x: scroll;
     -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
 }
 
 .tabs-slider {
-    /*position: absolute;*/
     width: max-content;
     height: 100%;
     display: flex;
@@ -782,7 +785,7 @@ form.sub-menu-form .form-wrap.checkbox label {
 
 .tabs-controls-item div {
     height: 100%;
-    padding: 0 15px;
+    padding: 0 10px;
     font-size: 16px;
 }
 
@@ -792,6 +795,19 @@ form.sub-menu-form .form-wrap.checkbox label {
 
 .tabs-content {
     margin-top: 40px;
+}
+
+.tabs-controls-item div span {
+    font-size: 15px;
+}
+@media screen and (max-width: 768px){
+    .tabs-controls-item div span{
+        font-size: 11px;
+    }
+    .tabs-controls{
+        height: 40px;
+    }
+
 }
 
 span.xx {
@@ -828,64 +844,14 @@ span.x {
     }
 }
 
-
-/*.content-tabs {*/
-/*    grid-area: content-tabs;*/
-
-/*}*/
-
-/*.menu-wrapper {*/
-/*    overflow: hidden;*/
-/*    !*-webkit-mask-image: linear-gradient(*!*/
-/*    !*        90deg,*!*/
-/*    !*        #000 18px, #000 calc(100% - 18px),*!*/
-/*    !*        rgba(0, 0, 0, .25) calc(100% - 9px),*!*/
-/*    !*        transparent);*!*/
-/*    mask-image: linear-gradient(*/
-/*            90deg,*/
-/*            #000 18px,*/
-/*            #000 calc(100% - 18px),*/
-/*            rgba(0, 0, 0, .25) calc(100% - 9px),*/
-/*            transparent*/
-/*    );*/
-/*}*/
-
-/*.tabs-nav {*/
-/*    position: relative;*/
-/*    height: 60px;*/
-/*    width: 100%;*/
-/*    overflow-x: scroll;*/
-/*    -webkit-overflow-scrolling: touch;*/
-/*    padding-bottom: 20px;*/
-/*    margin-bottom: -20px;*/
-
-
-/*}*/
-
-/*.tabs-nav ul {*/
-/*    position: absolute;*/
-/*    display: flex;*/
-/*    gap: 20px;*/
-/*    max-height: 50px;*/
-/*    width: max-content;*/
-/*}*/
-
-/*.tabs-nav ul li {*/
-/*    cursor: pointer;*/
-/*    color: #888;*/
-/*    transition: 0.3s all ease;*/
-/*    !*padding: 0 10px;*!*/
-/*}*/
-
-/*.tabs-nav ul li.active {*/
-/*    border-bottom: 2px solid #1B1C17;*/
-/*    color: #1B1C17;*/
-/*    transition: 0.3s all ease;*/
-/*}*/
-
 .tabs-content .body-item {
     display: none;
     transition: 0.3s all ease;
+    font-size: 14px;
+}
+
+.tabs-content .body-item h6 a {
+    font-size: 12px;
 }
 
 .tabs-content .body-item.active {

@@ -16,7 +16,8 @@ const lazyLoadInstance = new LazyLoad({});
 // табы
 
 const navItems = document.querySelectorAll('.tabs-controls-item'),
-    bodyItems = document.querySelectorAll('.body-item');
+    bodyItems = document.querySelectorAll('.body-item'),
+    navArray = Array.prototype.slice.call(navItems);
 
 const setActive = (e, itemList) => {
     itemList.forEach(el => {
@@ -30,13 +31,31 @@ navItems.forEach(e => {
     e.addEventListener('click', () => {
         if (!e.classList.contains('active')) {
             const tabId = e.getAttribute('data-for'),
-                  tabBodyItem = document.querySelector(`#${tabId}`);
+                tabBodyItem = document.querySelector(`#${tabId}`);
             console.log(tabBodyItem);
             setActive(e, navItems);
             setActive(tabBodyItem, bodyItems);
         }
 
 
+    })
+})
+
+navItems.forEach(e => {
+    e.addEventListener('click', () => {
+        let getWidth = 0;
+
+        navArray.every(element => {
+            if (e === element) {
+                return false;
+            } else {
+                getWidth += element.offsetWidth;
+                return true;
+            }
+
+        });
+        console.log(getWidth);
+        document.querySelector('.tabs-controls-wrapper .container').scrollLeft = getWidth - 25;
     })
 })
 
