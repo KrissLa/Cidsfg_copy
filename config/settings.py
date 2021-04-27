@@ -17,6 +17,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'django_filters',
+    'nested_admin',
+    'ckeditor',
 
     'backend.seo',
     'backend.home_page',
