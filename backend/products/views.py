@@ -1,11 +1,32 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import Http404
 from itertools import groupby
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, DetailView
 from django.views.generic.base import View
 from loguru import logger
 
 from .models import House, Category, Series
+
+
+class HouseDetailView(DetailView):
+    """ Станица с детальной информацией о доме """
+    model = House
+    template_name = 'products/product_detail_2.html'
+    context_object_name = 'house'
+
+    def get_object(self, **kwargs):
+        category_slug = self.kwargs.get('category_slug', '')
+        series_slug = self.kwargs.get('series_slug', '')
+        slug = self.kwargs.get('slug', '')
+        house = get_object_or_404(House,
+                                  category__slug=category_slug,
+                                  category__active=True,
+                                  series__slug=series_slug,
+                                  series__active=True,
+                                  slug=slug,
+                                  active=True)
+        logger.info(house)
+        return house
 
 
 class HouseListView(ListView):
@@ -15,7 +36,7 @@ class HouseListView(ListView):
 
     queryset = House.objects.filter(active=True).order_by('-id')
     context_object_name = 'houses_list'
-    
+
 
 class HousesListView(ListView):
     """"""

@@ -64,6 +64,14 @@ class House(SeoAbstract):
     def __str__(self):
         return f'{self.id} - {self.name}'
 
+    def get_absolute_url(self):
+        return reverse('house_detail', kwargs={'category_slug': self.category.slug,
+                                               'series_slug': self.series.slug,
+                                               'slug': self.slug})
+
+    def get_pictures(self):
+        return self.house_pictures.filter(active=True)
+
 
 def generate_picture_path(instance, filename):
     path = 'house_pictures/%s/%s/%s/%s' % (instance.house.category.name,
@@ -78,13 +86,13 @@ class HousePicture(models.Model):
     picture = StdImageField('Изображение', upload_to=generate_picture_path,
                             variations={
                                 'w1000': (1000, 667),
-                                'w800': (800, 534),
-                                'w600': (600, 400),
-                                'w400': (400, 267),
+                                'w720': (720, 480),
+                                'w450': (450, 300),
                                 'admin': (90, 60),
                                 'thumb': (15, 10),
                             }, )
-    house = models.ForeignKey(House, verbose_name='Дом, к которому относятся фотографии', on_delete=models.CASCADE)
+    house = models.ForeignKey(House, verbose_name='Дом, к которому относятся фотографии', on_delete=models.CASCADE,
+                              related_name='house_pictures')
     active = models.BooleanField('Отображать', default=True, help_text='Уберите, чтобы не отображать')
     main = models.BooleanField('Картинка для каталога', default=False,
                                help_text='Установите, чтобы сделать картинкой каталога')
@@ -96,7 +104,8 @@ class HousePicture(models.Model):
 
 class Options(TabBodyAbstract, ActiveAbstract):
     """ Опции и дополнения дома """
-    house = models.OneToOneField(House, verbose_name='Дом, к которому относятся опции', on_delete=models.CASCADE)
+    house = models.OneToOneField(House, verbose_name='Дом, к которому относятся опции', on_delete=models.CASCADE,
+                                 related_name='options')
 
     class Meta:
         verbose_name = 'Опции и дополнения'
@@ -111,7 +120,8 @@ class Options(TabBodyAbstract, ActiveAbstract):
 
 class Turnkey(ActiveAbstract):
     """ Комплектация под ключ """
-    house = models.OneToOneField(House, verbose_name='Дом, к которому относится комплектация', on_delete=models.CASCADE)
+    house = models.OneToOneField(House, verbose_name='Дом, к которому относится комплектация', on_delete=models.CASCADE,
+                                 related_name='turnkey')
 
     class Meta:
         verbose_name = 'Комплектация "Под ключ"'
@@ -123,7 +133,8 @@ class Turnkey(ActiveAbstract):
 
 class NotIncludedInPriceTurnkey(TabBodyAbstract, ActiveAbstract):
     """ Вкладка  Не Включено в стоимость  """
-    turnkey = models.OneToOneField(Turnkey, verbose_name='Комплектаци "Под ключ"', on_delete=models.CASCADE)
+    turnkey = models.OneToOneField(Turnkey, verbose_name='Комплектаци "Под ключ"', on_delete=models.CASCADE,
+                                   related_name='not_included')
 
     class Meta:
         verbose_name = 'Вкладка "Не включено в стоимоть"'
@@ -135,7 +146,8 @@ class NotIncludedInPriceTurnkey(TabBodyAbstract, ActiveAbstract):
 
 class IncludedInPriceTurnkey(ActiveAbstract):
     """ Вкладка Включено в стоимость  """
-    turnkey = models.OneToOneField(Turnkey, verbose_name='Комплектаци "Под ключ"', on_delete=models.CASCADE)
+    turnkey = models.OneToOneField(Turnkey, verbose_name='Комплектаци "Под ключ"', on_delete=models.CASCADE,
+                                   related_name='included')
 
     class Meta:
         verbose_name = 'Вкладка "Включено в стоимоть"'
@@ -144,11 +156,14 @@ class IncludedInPriceTurnkey(ActiveAbstract):
     def __str__(self):
         return f'{self.turnkey.house} - Вкладка "Включено в стоимоть"'
 
+    def get_items(self):
+        return self.items.filter(active=True)
+
 
 class IncludedInPriceTurnkeyItem(TabBodyAbstract, ActiveAbstract):
     """ Пункт вкладки включено в стоимость """
     included_in_price = models.ForeignKey(IncludedInPriceTurnkey, verbose_name='Вкладка "Включено в стоимость"',
-                                          on_delete=models.CASCADE)
+                                          on_delete=models.CASCADE, related_name='items')
     name = models.CharField('Название пункта', max_length=50)
 
     class Meta:
@@ -164,7 +179,8 @@ class IncludedInPriceTurnkeyItem(TabBodyAbstract, ActiveAbstract):
 
 class ForFinishing(ActiveAbstract):
     """ Комплектация ПОД ОТДЕЛКУ """
-    house = models.OneToOneField(House, verbose_name='Дом, к которому относится комплектация', on_delete=models.CASCADE)
+    house = models.OneToOneField(House, verbose_name='Дом, к которому относится комплектация', on_delete=models.CASCADE,
+                                 related_name='for_finishing')
 
     class Meta:
         verbose_name = 'Комплектация "Под отделку"'
@@ -177,7 +193,7 @@ class ForFinishing(ActiveAbstract):
 class NotIncludedInPriceForFinishing(TabBodyAbstract, ActiveAbstract):
     """ Вкладка  Не Включено в стоимость  ПОД ОТДЕЛКУ"""
     for_finishing = models.OneToOneField(ForFinishing, verbose_name='Комплектаци "Под отделку"',
-                                         on_delete=models.CASCADE)
+                                         on_delete=models.CASCADE, related_name='not_included')
 
     class Meta:
         verbose_name = 'Вкладка "Не включено в стоимоть"'
@@ -190,7 +206,7 @@ class NotIncludedInPriceForFinishing(TabBodyAbstract, ActiveAbstract):
 class IncludedInPriceForFinishing(ActiveAbstract):
     """ Вкладка Включено в стоимость  """
     for_finishing = models.OneToOneField(ForFinishing, verbose_name='Комплектаци "Под отделку"',
-                                         on_delete=models.CASCADE)
+                                         on_delete=models.CASCADE, related_name='included')
 
     class Meta:
         verbose_name = 'Вкладка "Включено в стоимоть"'
@@ -199,11 +215,14 @@ class IncludedInPriceForFinishing(ActiveAbstract):
     def __str__(self):
         return f'{self.for_finishing.house} - Вкладка "Включено в стоимоть"'
 
+    def get_items(self):
+        return self.items.filter(active=True)
+
 
 class IncludedInPriceForFinishingItem(TabBodyAbstract, ActiveAbstract):
     """ Пункт вкладки включено в стоимость """
     included_in_price = models.ForeignKey(IncludedInPriceForFinishing, verbose_name='Вкладка "Включено в стоимость"',
-                                          on_delete=models.CASCADE)
+                                          on_delete=models.CASCADE, related_name='items')
     name = models.CharField('Название пункта', max_length=50)
 
     class Meta:
@@ -219,7 +238,8 @@ class IncludedInPriceForFinishingItem(TabBodyAbstract, ActiveAbstract):
 
 class Delivery(ActiveAbstract):
     """ Комплектация ПОСТАВКА С ЗАВОДА """
-    house = models.OneToOneField(House, verbose_name='Дом, к которому относится комплектация', on_delete=models.CASCADE)
+    house = models.OneToOneField(House, verbose_name='Дом, к которому относится комплектация', on_delete=models.CASCADE,
+                                 related_name='delivery')
 
     class Meta:
         verbose_name = 'Комплектация "Поставка с завода"'
@@ -232,7 +252,7 @@ class Delivery(ActiveAbstract):
 class NotIncludedInPriceDelivery(TabBodyAbstract, ActiveAbstract):
     """ Вкладка  Не Включено в стоимость  ПОСТАВКА С ЗАВОДА"""
     delivery = models.OneToOneField(Delivery, verbose_name='Комплектаци "Поставка с завода"',
-                                    on_delete=models.CASCADE)
+                                    on_delete=models.CASCADE, related_name='not_included')
 
     class Meta:
         verbose_name = 'Вкладка "Не включено в стоимоть"'
@@ -245,7 +265,7 @@ class NotIncludedInPriceDelivery(TabBodyAbstract, ActiveAbstract):
 class IncludedInPriceDelivery(ActiveAbstract):
     """ Вкладка Включено в стоимость  """
     delivery = models.OneToOneField(Delivery, verbose_name='Комплектаци "Поставка с завода"',
-                                    on_delete=models.CASCADE)
+                                    on_delete=models.CASCADE, related_name='included')
 
     class Meta:
         verbose_name = 'Вкладка "Включено в стоимоть"'
@@ -254,11 +274,14 @@ class IncludedInPriceDelivery(ActiveAbstract):
     def __str__(self):
         return f'{self.delivery.house} - Вкладка "Включено в стоимоть"'
 
+    def get_items(self):
+        return self.items.filter(active=True)
+
 
 class IncludedInPriceDeliveryItem(TabBodyAbstract, ActiveAbstract):
     """ Пункт вкладки включено в стоимость """
     included_in_price = models.ForeignKey(IncludedInPriceDelivery, verbose_name='Вкладка "Включено в стоимость"',
-                                          on_delete=models.CASCADE)
+                                          on_delete=models.CASCADE, related_name='items')
     name = models.CharField('Название пункта', max_length=50)
 
     class Meta:

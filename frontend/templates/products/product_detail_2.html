@@ -1,8 +1,8 @@
 {% extends 'superbase.html' %}
-{% load static %}
+{% load static price_to_str_filter %}
 
-<!--{% block seo_title %}{{ home_data.seo_title }}{% endblock seo_title %}-->
-<!--{% block seo_description %}{{ home_data.seo_description }}{% endblock seo_description %}-->
+<!--{% block seo_title %}{{ house.seo_title }}{% endblock seo_title %}-->
+<!--{% block seo_description %}{{ house.seo_description }}{% endblock seo_description %}-->
 
 {% block styles %}
     <link rel="stylesheet" href="{% static 'styles/swiper-bundle.min.css' %}">
@@ -12,11 +12,11 @@
     <section class="breadcrumbs-custom">
         <div class="container">
             <div class="breadcrumbs-custom__inner">
-                <p class="breadcrumbs-custom__title">CUBO FLAT F48</p>
+                <p class="breadcrumbs-custom__title">{{ house.name }}</p>
                 <ul class="breadcrumbs-custom__path">
                     <li><a href="{% url 'home' %}">Главная</a></li>
                     <li><a href="{% url 'products_catalog' %}">Каталог</a></li>
-                    <li class="active">CUBO FLAT F48</li>
+                    <li class="active">{{ house.name }}</li>
                 </ul>
             </div>
         </div>
@@ -26,94 +26,22 @@
             <section class="content-slider b-shadow">
                 <div class="swiper-container-detail">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <img
-                                    alt="Вид сбоку"
-                                    class="lazy"
-                                    src="{% static 'images/CUBO_FLAT_71/4_th.jpg' %}"
-                                    data-src="{% static 'images/CUBO_FLAT_71/4_3000x2000.jpg' %}"
-                                    data-srcset="{% static 'images/CUBO_FLAT_71/4_400x267.jpg' %} 400w,
-                                                 {% static 'images/CUBO_FLAT_71/4_600x400.jpg' %} 600w,
-                                                 {% static 'images/CUBO_FLAT_71/4_1000x667.jpg' %} 1000w,
-                                                 {% static 'images/CUBO_FLAT_71/4_1920x1280.jpg' %} 1920w,
-                                                 {% static 'images/CUBO_FLAT_71/4_3000x2000.jpg' %} 3000w,"
-                                    data-sizes="(max-width: 420px) 400px,
-                                                (max-width: 620px) 600px,
-                                                (max-width: 1100px) 1000px,
-                                                (max-width: 2000px) 1920px,
-                                                3000px"
-                            />
-                        </div>
-                        <div class="swiper-slide">
-                            <img
-                                    alt="Вид сбоку"
-                                    class="lazy"
-                                    src="{% static 'images/CUBO_FLAT_71/3_th.jpg' %}"
-                                    data-src="{% static 'images/CUBO_FLAT_71/3_3000x2000.jpg' %}"
-                                    data-srcset="{% static 'images/CUBO_FLAT_71/3_400x267.jpg' %} 400w,
-                                                 {% static 'images/CUBO_FLAT_71/3_600x400.jpg' %} 600w,
-                                                 {% static 'images/CUBO_FLAT_71/3_1000x667.jpg' %} 1000w,
-                                                 {% static 'images/CUBO_FLAT_71/3_1920x1280.jpg' %} 1920w,
-                                                 {% static 'images/CUBO_FLAT_71/3_3000x2000.jpg' %} 3000w,"
-                                    data-sizes="(max-width: 420px) 400px,
-                                                (max-width: 620px) 600px,
-                                                (max-width: 1100px) 1000px,
-                                                (max-width: 2000px) 1920px,
-                                                3000px"
-                            />
-                        </div>
-                        <div class="swiper-slide">
-                            <img
-                                    alt="Вид сбоку"
-                                    class="lazy"
-                                    src="{% static 'images/CUBO_FLAT_71/5_th.jpg' %}"
-                                    data-src="{% static 'images/CUBO_FLAT_71/5_3000x2000.jpg' %}"
-                                    data-srcset="{% static 'images/CUBO_FLAT_71/5_400x267.jpg' %} 400w,
-                                                 {% static 'images/CUBO_FLAT_71/5_600x400.jpg' %} 600w,
-                                                 {% static 'images/CUBO_FLAT_71/5_1000x667.jpg' %} 1000w,
-                                                 {% static 'images/CUBO_FLAT_71/5_1920x1280.jpg' %} 1920w,
-                                                 {% static 'images/CUBO_FLAT_71/5_3000x2000.jpg' %} 3000w,"
-                                    data-sizes="(max-width: 420px) 400px,
-                                                (max-width: 620px) 600px,
-                                                (max-width: 1100px) 1000px,
-                                                (max-width: 2000px) 1920px,
-                                                3000px"
-                            />
-                        </div>
-                        <div class="swiper-slide">
-                            <img
-                                    alt="Вид сбоку"
-                                    class="lazy"
-                                    src="{% static 'images/CUBO_FLAT_71/6_th.jpg' %}"
-                                    data-src="{% static 'images/CUBO_FLAT_71/6_3000x2000.jpg' %}"
-                                    data-srcset="{% static 'images/CUBO_FLAT_71/6_400x267.jpg' %} 400w,
-                                                 {% static 'images/CUBO_FLAT_71/6_600x400.jpg' %} 600w,
-                                                 {% static 'images/CUBO_FLAT_71/6_1000x667.jpg' %} 1000w,
-                                                 {% static 'images/CUBO_FLAT_71/6_1920x1280.jpg' %} 1920w,
-                                                 {% static 'images/CUBO_FLAT_71/6_3000x2000.jpg' %} 3000w,"
-                                    data-sizes="(max-width: 420px) 400px,
-                                                (max-width: 620px) 600px,
-                                                (max-width: 1100px) 1000px,
-                                                (max-width: 2000px) 1920px,
-                                                3000px"
-                            />
-                        </div>
-                        <div class="swiper-slide">
-                            <img
-                                    alt="Вид сбоку"
-                                    class="lazy"
-                                    src="{% static 'images/CUBO_FLAT_71/6_th.jpg' %}"
-                                    data-src="{% static 'images/CUBO_FLAT_71/CUBO Flat 71 grey 1.png' %}"
-                            />
-                        </div>
-                        <div class="swiper-slide">
-                            <img
-                                    alt="Вид сбоку"
-                                    class="lazy"
-                                    src="{% static 'images/CUBO_FLAT_71/6_th.jpg' %}"
-                                    data-src="{% static 'images/CUBO_FLAT_71/CUBO Flat 71 grey 2.png' %}"
-                            />
-                        </div>
+                        {% for pic in house.get_pictures %}
+                            <div class="swiper-slide">
+                                <img
+                                        alt="{{ pic.alt }}"
+                                        class="lazy"
+                                        src="{{ pic.picture.thumb.url }}"
+                                        {#                                    data-src="{% static 'images/CUBO_FLAT_71/4_3000x2000.jpg' %}"#}
+                                        data-srcset="{{ pic.picture.w450.url }} 450w,
+                                                 {{ pic.picture.w720.url }} 720w,
+                                                 {{ pic.picture.w1000.url }} 1000w"
+                                        data-sizes="(max-width: 767px) 450px,
+                                                (max-width: 1199px) 720px,
+                                                1000px"
+                                />
+                            </div>
+                        {% endfor %}
                     </div>
                     <!-- Add Pagination -->
                     <div class="swiper-pagination"></div>
@@ -132,7 +60,7 @@
 
                             </span>
                         </h6>
-                        <span>1 439 000  руб.</span>
+                        <span>{{ house.price_min|price_to_str_filter }} руб.</span>
                     </li>
                     <li>
                         <h6>
@@ -142,7 +70,7 @@
 
                             </span>
                         </h6>
-                        <span>1 599 000  руб.</span>
+                        <span>{{ house.price_medium|price_to_str_filter }} руб.</span>
                     </li>
                     <li>
                         <h6>Комплектация "Под ключ"
@@ -151,13 +79,13 @@
 
                             </span>
                         </h6>
-                        <span>2 152 000 руб.</span>
+                        <span>{{ house.price_full|price_to_str_filter }} руб.</span>
                     </li>
                 </ul>
                 <div class="min-info">
-                    <div class="min-info-item">Площадь: <span>48</span> м2</div>
-                    <div class="min-info-item">Количество комнат: <span>3</span></div>
-                    <div class="min-info-item">Количество санузлов: <span>1</span></div>
+                    <div class="min-info-item">Площадь: <span>{{ house.area }}</span> м&sup2;</div>
+                    <div class="min-info-item">Количество комнат: <span>{{ house.number_of_rooms }}</span></div>
+                    <div class="min-info-item">Количество санузлов: <span>{{ house.number_of_bathrooms }}</span></div>
                 </div>
                 <div class="buttons">
                     <a href="#" class="btn-a diagonal black"
@@ -175,26 +103,72 @@
                     <div class="container">
                         <div class="tabs-slider">
                             <div class="mask"></div>
-                            <div class="tabs-controls-item info active" data-for="tab-1">
+                            <div class="tabs-controls-item info active" data-for="tab-sizes">
                                 <div>
                                     <span>Размеры дома</span>
                                 </div>
                             </div>
-                            <div class="tabs-controls-item info" data-for="tab-2">
-                                <div>
-                                    <span>Включено в стоимость комплектации "Под ключ"</span>
+                            {% if house.turnkey.active %}
+                                {% if house.turnkey.included.active %}
+                                    {% if house.turnkey.included.get_items %}
+                                        <div class="tabs-controls-item info" data-for="tab-include-turnkey">
+                                            <div>
+                                                <span>Включено в стоимость "Под ключ"</span>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endif %}
+                                {% if house.turnkey.not_included.active and house.turnkey.not_included.body %}
+                                    <div class="tabs-controls-item info" data-for="tab-not-include-turnkey">
+                                        <div>
+                                            <span>Не включено в стоимость "Под ключ"</span>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                            {% if house.for_finishing.active %}
+                                {% if house.for_finishing.included.active %}
+                                    {% if house.for_finishing.included.get_items %}
+                                        <div class="tabs-controls-item info" data-for="tab-include-for_finishing">
+                                            <div>
+                                                <span>Включено в стоимость "Под отделку"</span>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endif %}
+                                {% if house.for_finishing.not_included.active and house.for_finishing.not_included.body %}
+                                    <div class="tabs-controls-item info" data-for="tab-not-include-for_finishing">
+                                        <div>
+                                            <span>Не включено в стоимость "Под отделку"</span>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                            {% if house.delivery.active %}
+                                {% if house.delivery.included.active %}
+                                    {% if house.delivery.included.get_items %}
+                                        <div class="tabs-controls-item info" data-for="tab-include-delivery">
+                                            <div>
+                                                <span>Включено в стоимость "Поставка с завода"</span>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endif %}
+                                {% if house.delivery.not_included.active and house.delivery.not_included.body %}
+                                    <div class="tabs-controls-item info" data-for="tab-not-include-delivery">
+                                        <div>
+                                            <span>Не включено в стоимость "Поставка с завода"</span>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                            {% if house.options.body and house.options.active %}
+                                <div class="tabs-controls-item info" data-for="tab-options">
+                                    <div>
+                                        <span>Опции и дополнения</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="tabs-controls-item info" data-for="tab-3">
-                                <div>
-                                    <span>Не включено в стоимость</span>
-                                </div>
-                            </div>
-                            <div class="tabs-controls-item info" data-for="tab-4">
-                                <div>
-                                    <span>Опции и дополнения</span>
-                                </div>
-                            </div>
+                            {% endif %}
 
                         </div>
                     </div>
@@ -207,207 +181,149 @@
 
         <div class="tabs-content">
             <div class="container">
-                <div id="tab-1" class="body-item info active">
+                <div id="tab-sizes" class="body-item info active">
                     <div class="in-cost">
-                        <div class="min-info-item">Полезная площадь: <span>48</span> м2</div>
-                        <div class="min-info-item">Площадь застройки: <span>32</span> м2</div>
+                        <div class="min-info-item">Полезная площадь: <span>{{ house.area }}</span> м&sup2;</div>
+                        <div class="min-info-item">Площадь застройки: <span>{{ house.area_of_buildings }}</span> м&sup2;
+                        </div>
                         <div class="min-info-item">Внешние габаритные размеры (ВхШхД):
-                            <span>4.90</span>
+                            <span>{{ house.height }}</span>
                             <span class="xx"><span class="x">x</span></span>
 
-                            <span>6.60</span>
+                            <span>{{ house.width }}</span>
                             <span class="xx"><span class="x">x</span></span>
-                            <span>5.00</span>
+                            <span>{{ house.length }}</span>
                             м
                         </div>
-                        <div class="min-info-item">Высота потолков: общая <span>2.50-4.62</span> м</div>
+                        <div class="min-info-item">Высота потолков: общая <span>{{ house.ceiling_height }}</span> м
+                        </div>
                     </div>
                 </div>
-                <div id="tab-2" class="body-item info">
-                    <div id="accordion" role="tablist">
-                        <!-- Bootstrap panel-->
-                        <div class="panel panel-custom panel-classic">
-                            <div class="panel-custom-heading" id="1Headingundefined" role="tab">
-                                <h6 class="panel-custom-title">
-                                    <a class="collapsed" role="button"
-                                       data-toggle="collapse"
-                                       data-parent="#1" href="#1Collapseundefined"
-                                       aria-controls="1Collapseundefined">
-                                        Дом сборно-разборный:
-                                    </a>
-                                </h6>
-                            </div>
-                            <div class="panel-custom-collapse collapse" id="1Collapseundefined" role="tabpanel"
-                                 aria-labelledby="1Headingundefined">
-                                <div class="panel-custom-body">
-                                    <div class="ol">
-                                        • каркас панелей из профилированного клеенного бруса хвойных пород, панели
-                                        обшиты ОСП 12 мм,
+                {% if house.turnkey.included.active and house.turnkey.included.get_items %}
+                    <div id="tab-include-turnkey" class="body-item info">
+                        <div id="accordion" role="tablist">
+                            {% for item in house.turnkey.included.get_items %}
+                                <div class="panel panel-custom panel-classic">
+                                    <div class="panel-custom-heading" id="{{ item.pk }}-turnkey-Head" role="tab">
+                                        <h6 class="panel-custom-title">
+                                            <a class="collapsed" role="button"
+                                               data-toggle="collapse"
+                                               data-parent="#{{ item.pk }}" href="#{{ item.pk }}-turnkey-Collapse"
+                                               aria-controls="{{ item.pk }}-turnkey-Collapse">
+                                                {{ item.name }}
+                                            </a>
+                                        </h6>
                                     </div>
-                                    <div class="ol">
-                                        • утепление: 150 мм (материал – базальтовые плиты),
-                                    </div>
-                                    <div class="ol">
-                                        • крыльцо (терраса, лестница, козырек) 1,5х1,2 м
-                                    </div>
+                                    <div class="panel-custom-collapse collapse" id="{{ item.pk }}-turnkey-Collapse"
+                                         role="tabpanel"
+                                         aria-labelledby="{{ item.pk }}-turnkey-Head">
+                                        <div class="panel-custom-body">
+                                            <div class="ol">
+                                                {{ item.body|safe }}
+                                            </div>
 
 
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Bootstrap panel-->
-                        <div class="panel panel-custom panel-classic">
-                            <div class="panel-custom-heading" id="2Headingundefined" role="tab">
-                                <h6 class="panel-custom-title">
-                                    <a class="collapsed" role="button"
-                                       data-toggle="collapse"
-                                       data-parent="#2" href="#2Collapseundefined"
-                                       aria-controls="2Collapseundefined">
-                                        Отделка:
-                                    </a>
-                                </h6>
-                            </div>
-                            <div class="panel-custom-collapse collapse" id="2Collapseundefined" role="tabpanel"
-                                 aria-labelledby="1Headingundefined">
-                                <div class="panel-custom-body">
-                                    <div class="ol">• наружная отделка: кровля - фальцевая, цвет RAL 7024, стены –
-                                        декоративная штукатурка, цвет на выбор, торцевая стена декоративная
-                                        штукатурка, дерево,
-                                    </div>
-                                    <div class="ol">• внутренняя отделка: потолок и стены - покраска, цвет на выбор,
-                                        полы – ламинат Дуб Долтон 34 класс,
-                                    </div>
-                                    <div class="ol">• межкомнатные двери белого цвета,
-                                    </div>
-                                    <div class="ol">• ванная комната: мозаика и массив дерева.
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            {% endfor %}
                         </div>
-                        <!-- Bootstrap panel-->
-                        <div class="panel panel-custom panel-classic">
-                            <div class="panel-custom-heading" id="3Headingundefined" role="tab">
-                                <h6 class="panel-custom-title">
-                                    <a class="collapsed" role="button"
-                                       data-toggle="collapse"
-                                       data-parent="#3" href="#3Collapseundefined"
-                                       aria-controls="3Collapseundefined">
-                                        Остекление:
-                                    </a>
-                                </h6>
-                            </div>
-                            <div class="panel-custom-collapse collapse" id="3Collapseundefined" role="tabpanel"
-                                 aria-labelledby="3Headingundefined">
-                                <div class="panel-custom-body">
-                                    <div class="ol">• окна (деревянные рамы, двухкамерные стеклопакеты толщиной 38
-                                        мм),
-                                    </div>
-                                    <div class="ol">• входные двери (деревянные рамы, двухкамерные стеклопакеты
-                                        толщиной 38 мм),
-                                    </div>
-                                    <div class="ol">• панорамное остекление (двухкамерные стеклопакеты толщиной 38
-                                        мм),
-                                    </div>
-                                    <div class="ol">• остекление площадью: 27,5 м2 (2-х камерный стеклопакет
-                                        толщиной 38 мм).
-                                    </div>
-                                </div>
-                            </div>
+                    </div>
+                {% endif %}
+                {% if house.turnkey.not_included.active and house.turnkey.not_included.body %}
+                    <div id="tab-not-include-turnkey" class="body-item info">
+                        <div class="in-cost">
+                            {{ house.turnkey.not_included.body|safe }}
                         </div>
-                        <!-- Bootstrap panel-->
-                        <div class="panel panel-custom panel-classic">
-                            <div class="panel-custom-heading" id="4Headingundefined" role="tab">
-                                <h6 class="panel-custom-title">
-                                    <a class="collapsed" role="button"
-                                       data-toggle="collapse"
-                                       data-parent="#4" href="#4Collapseundefined"
-                                       aria-controls="4Collapseundefined">
-                                        Коммуникации:
-                                    </a>
-                                </h6>
-                            </div>
-                            <div class="panel-custom-collapse collapse" id="4Collapseundefined" role="tabpanel"
-                                 aria-labelledby="4Headingundefined">
-                                <div class="panel-custom-body">
-                                    <div class="ol">• разводка водопровода и канализации,
+                    </div>
+                {% endif %}
+                {% if house.for_finishing.included.active and house.for_finishing.included.get_items %}
+                    <div id="tab-include-for_finishing" class="body-item info">
+                        <div id="accordion" role="tablist">
+                            {% for item in house.for_finishing.included.get_items %}
+                                <div class="panel panel-custom panel-classic">
+                                    <div class="panel-custom-heading" id="{{ item.pk }}-for_finishing-Head" role="tab">
+                                        <h6 class="panel-custom-title">
+                                            <a class="collapsed" role="button"
+                                               data-toggle="collapse"
+                                               data-parent="#{{ item.pk }}" href="#{{ item.pk }}-for_finishing-Collapse"
+                                               aria-controls="{{ item.pk }}-for_finishing-Collapse">
+                                                {{ item.name }}
+                                            </a>
+                                        </h6>
                                     </div>
-                                    <div class="ol">• разводка электрики в лотках под домом, силовой электрощит,
-                                    </div>
-                                    <div class="ol">• наружное и внутреннее освещение,
-                                    </div>
-                                    <div class="ol">• вентиляция - вентиляционные клапаны,</div>
-                                    <div class="ol">• отопление - электрические конвекторы Ballu Enzo.</div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Bootstrap panel-->
-                        <div class="panel panel-custom panel-classic">
-                            <div class="panel-custom-heading" id="5Headingundefined" role="tab">
-                                <h6 class="panel-custom-title">
-                                    <a class="collapsed" role="button"
-                                       data-toggle="collapse"
-                                       data-parent="#5" href="#5Collapseundefined"
-                                       aria-controls="5Collapseundefined">
-                                        Оборудование и сантехника:
-                                    </a>
-                                </h6>
-                            </div>
-                            <div class="panel-custom-collapse collapse" id="5Collapseundefined" role="tabpanel"
-                                 aria-labelledby="5Headingundefined">
-                                <div class="panel-custom-body">
-                                    <div class="ol">• тёплые полы в ванной комнате,
-                                    </div>
-                                    <div class="ol">• ванная комната: умывальник, ванна, смесители, унитаз,
-                                    </div>
-                                    <div class="ol">• бойлер на 100 литров,</div>
-                                    <div class="ol">• снегозадержатели и водосточная система.</div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Bootstrap panel-->
-                        <div class="panel panel-custom panel-classic">
-                            <div class="panel-custom-heading" id="6Headingundefined" role="tab">
-                                <h6 class="panel-custom-title">
-                                    <a class="collapsed" role="button"
-                                       data-toggle="collapse"
-                                       data-parent="#6" href="#6Collapseundefined"
-                                       aria-controls="6Collapseundefined">
-                                        Монтаж:
-                                    </a>
-                                </h6>
-                            </div>
-                            <div class="panel-custom-collapse collapse" id="6Collapseundefined" role="tabpanel"
-                                 aria-labelledby="6Headingundefined">
-                                <div class="panel-custom-body">
-                                    <div class="ol">• полная сборка дома из панелей с отделкой на расстоянии до 100
-                                        км от Москвы.
-                                    </div>
+                                    <div class="panel-custom-collapse collapse" id="{{ item.pk }}-for_finishing-Collapse"
+                                         role="tabpanel"
+                                         aria-labelledby="{{ item.pk }}-for_finishing-Head">
+                                        <div class="panel-custom-body">
+                                            <div class="ol">
+                                                {{ item.body|safe }}
+                                            </div>
 
+
+                                        </div>
+                                    </div>
                                 </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+                {% if house.for_finishing.not_included.active and house.for_finishing.not_included.body %}
+                    <div id="tab-not-include-for_finishing" class="body-item info">
+                        <div class="in-cost">
+                            {{ house.for_finishing.not_included.body|safe }}
+                        </div>
+                    </div>
+                {% endif %}
+                {% if house.delivery.included.active and house.delivery.included.get_items %}
+                    <div id="tab-include-delivery" class="body-item info">
+                        <div id="accordion" role="tablist">
+                            {% for item in house.delivery.included.get_items %}
+                                <div class="panel panel-custom panel-classic">
+                                    <div class="panel-custom-heading" id="{{ item.pk }}-delivery-Head" role="tab">
+                                        <h6 class="panel-custom-title">
+                                            <a class="collapsed" role="button"
+                                               data-toggle="collapse"
+                                               data-parent="#{{ item.pk }}" href="#{{ item.pk }}-delivery-Collapse"
+                                               aria-controls="{{ item.pk }}-delivery-Collapse">
+                                                {{ item.name }}
+                                            </a>
+                                        </h6>
+                                    </div>
+                                    <div class="panel-custom-collapse collapse" id="{{ item.pk }}-delivery-Collapse"
+                                         role="tabpanel"
+                                         aria-labelledby="{{ item.pk }}-delivery-Head">
+                                        <div class="panel-custom-body">
+                                            <div class="ol">
+                                                {{ item.body|safe }}
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+                {% if house.delivery.not_included.active and house.delivery.not_included.body %}
+                    <div id="tab-not-include-delivery" class="body-item info">
+                        <div class="in-cost">
+                            {{ house.delivery.not_included.body|safe }}
+                        </div>
+                    </div>
+                {% endif %}
+                {% if house.options.body and house.options.active %}
+                    <div id="tab-options" class="body-item info">
+                        <div class="in-cost">
+                            {{ house.options.body|safe }}
+                            <div class="buttons">
+                                <a href="#" class="btn-a diagonal"
+                                   width="250px"><span>Перейти в раздел "Опции"</span></a>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div id="tab-3" class="body-item info">
-                    <div class="in-cost">
-                        <div class="min-info-item">• выезд монтажной бригады далее 100 км от производства,</div>
-                        <div class="min-info-item">• доставка домокомплекта (стоимость доставки),</div>
-                        <div class="min-info-item">• фундамент,</div>
-                        <div class="min-info-item">• мебель и бытовая техника.</div>
-                    </div>
-                </div>
-                <div id="tab-4" class="body-item info">
-                    <div class="in-cost">
-                        <div class="min-info-item">• терраса с торцевой стороны с панорамным остеклением шириной 1.5
-                            м или 3 м,
-                        </div>
-                        <div class="min-info-item">• веранда с торцевой стороны</div>
-                        <div class="buttons">
-                            <a href="#" class="btn-a diagonal"
-                               width="250px"><span>Перейти в раздел "Опции"</span></a>
-                        </div>
-                    </div>
-                </div>
+                {% endif %}
             </div>
         </div>
 
@@ -788,7 +704,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="group-xl">
-                        <h5>CUBO FLAT 5421</h5>
+                        <h5>{{ house.name }}</h5>
                     </div>
                     <hr>
                     <div class="register-form modal-request">
