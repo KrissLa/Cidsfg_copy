@@ -1,6 +1,6 @@
 from django.db import models
 from stdimage import StdImageField
-
+from loguru import logger
 from backend.seo.models import SeoAbstract
 
 # Create your models here.
@@ -29,10 +29,10 @@ class House(SeoAbstract):
     category = models.ForeignKey('Category', verbose_name='Категория по этажам',
                                  on_delete=models.SET_NULL, null=True,
                                  help_text='Для сортировки и навигации по этажам. Если не выбрать, '
-                                           'дом не будет отображен')
+                                           'дом не будет отображен', related_name='houses')
     series = models.ForeignKey('Series', verbose_name='Серия', on_delete=models.SET_NULL, null=True,
                                help_text='Для сортировки и навигации по сериям. Если не выбрать, дом не '
-                                         'будет отображен.')
+                                         'будет отображен.', related_name='houses')
     slug = models.SlugField('SLUG',
                             help_text='Формируется автоматически из названия. Можно изменить. '
                                       'Максимум 50 символов. Будет использован для построения адреса к дому.',
@@ -71,6 +71,15 @@ class House(SeoAbstract):
 
     def get_pictures(self):
         return self.house_pictures.filter(active=True)
+
+    def get_main_picture(self):
+        try:
+            pic = self.house_pictures.filter(active=True, main=True)[0]
+        except Exception:
+            pic = self.house_pictures.filter(active=True)[0]
+        logger.info(pic)
+        logger.info(self.house_pictures.all())
+        return pic
 
 
 def generate_picture_path(instance, filename):
@@ -341,5 +350,8 @@ class Series(SeoAbstract):
         return f'{self.id} - {self.name}'
 
     def get_absolute_url(self):
-        # return reverse('catalog_by_category', args=[self.slug])
-        return f'url_pass'
+        return reverse('houses_list_by_series', kwargs={'series_slug': self.slug})
+
+    def get_houses(self):
+        return self.houses.filter(active=True,
+                                  category__active=True)

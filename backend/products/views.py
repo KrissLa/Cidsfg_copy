@@ -1,11 +1,8 @@
-from django.shortcuts import render, get_object_or_404
-from django.http import Http404
-from itertools import groupby
-from django.views.generic import TemplateView, ListView, DetailView
-from django.views.generic.base import View
+from django.shortcuts import get_object_or_404
+from django.views.generic import ListView, DetailView
 from loguru import logger
 
-from .models import House, Category, Series
+from .models import House, Series
 
 
 class HouseDetailView(DetailView):
@@ -29,65 +26,38 @@ class HouseDetailView(DetailView):
         return house
 
 
-class HouseListView(ListView):
-    """ Вывод всех доступных домов в каталог """
+class HousesListView(ListView):
+    """ Страницы каталога с домами """
     model = House
     template_name = 'products/catalog_1.html'
+    context_object_name = 'houses'
 
-    queryset = House.objects.filter(active=True).order_by('-id')
-    context_object_name = 'houses_list'
-
-
-class HousesListView(ListView):
-    """"""
-    model = House
-    template_name = 'products/catalog.html'
-
-    def get_queryset(self):
-        logger.info(self.args)
-        self.house_category = get_object_or_404(Category, category_slug=self.args[0])
-        self.house_series = get_object_or_404(Series, series_slug=self.args[1])
-        logger.info(self.house_category)
-        logger.info(self.house_series)
-        logger.info(House.objects.filter(house_category=self.house_category, house_series=self.house_series))
-        return House.objects.filter(house_category=self.house_category, house_series=self.house_series)
-
-
-def get_catalog_page(request, slug=None):
-    """ Старница с каталогом домомов """
-    category = None
-    series = None
-    houses = House.objects.filter(active=True).order_by('house_category', 'house_series')
-    categories_list = Category.objects.filter(active=True).order_by('id')
-    series_list = Series.objects.filter(active=True).order_by('id')
-    if slug:
-        try:
-            category = get_object_or_404(Category, slug=slug)
-        except Http404:
-            logger.info('не нашел категорию, приступаю к поиску серии')
-            series = get_object_or_404(Series, slug=slug)
-            houses = houses.filter(house_series=series)
+    def get_queryset(self, **kwargs):
+        series_slug = self.kwargs.get('series_slug', '')
+        logger.info(series_slug)
+        if series_slug:
+            series = get_object_or_404(Series, slug=series_slug, active=True)
+            houses = House.objects.filter(category__active=True,
+                                          series=series,
+                                          active=True).order_by('sort_number', '-id')
         else:
-            houses = houses.filter(house_category=category)
+            houses = House.objects.filter(category__active=True,
+                                          series__active=True,
+                                          active=True).order_by('sort_number', '-id')
+        logger.info(houses)
+        logger.info(houses.count())
+        return houses
 
-    logger.info(slug)
-    logger.info(houses)
-    logger.info(categories_list)
-    logger.info(series_list)
-    logger.info(houses.count())
-
-    return render(request, 'products/catalog.html', {'categories_list': categories_list,
-                                                     'series_list': series_list,
-                                                     'category': category,
-                                                     'series': series,
-                                                     'houses': houses})
-
-
-class CatalogPageView(TemplateView):
-    """ Страница с каталогом """
-    template_name = 'products/catalog.html'
-
-
-class ProductDetailPageView(TemplateView):
-    """ Страница с детальной информацией о товаре """
-    template_name = 'products/product_detail_2.html'
+    def get_context_data(self, **kwargs):
+        series_slug = self.kwargs.get('series_slug', '')
+        series_list = Series.objects.filter(active=True)
+        try:
+            series = get_object_or_404(Series, slug=series_slug, active=True)
+        except Exception:
+            series = None
+        return {'series_slug': series_slug,
+                'series_list': series_list,
+                'series': series,
+                'all_houses': House.objects.filter(category__active=True,
+                                                   series__active=True,
+                                                   active=True).order_by('sort_number', '-id')}

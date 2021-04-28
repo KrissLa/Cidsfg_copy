@@ -12,7 +12,12 @@
                 <p class="breadcrumbs-custom__title">Каталог</p>
                 <ul class="breadcrumbs-custom__path">
                     <li><a href="{% url 'home' %}">Главная</a></li>
-                    <li class="active">Каталог</li>
+                    {% if series %}
+                        <li><a href="{% url 'houses_list' %}">Каталог</a></li>
+                        <li class="active">{{ series.name }}</li>
+                    {% else %}
+                        <li class="active">Каталог</li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
@@ -25,16 +30,25 @@
                         <div class="container">
                             <div class="tabs-slider">
                                 {#                        <div class="mask"></div>#}
-                                <div class="tabs-controls-item active" data-for="tab-1">
+                                {#                                <a href="{% url 'houses_list' %}">#}
+                                <div class="tabs-controls-item
+                                {% if not series %} active {% endif %}"
+                                     data-for="tab-all">
                                     <div>
-                                        <span>CUBO FLAT (4)</span>
+                                        <span>Все ({{ all_houses.count }})</span>
                                     </div>
                                 </div>
-                                <div class="tabs-controls-item " data-for="tab-2">
-                                    <div>
-                                        <span>CUBO BENT (2)</span>
+                                {#                                </a>#}
+                                {% for s in series_list %}
+                                    <div class="tabs-controls-item {% if s == series %}active{% endif %}"
+                                         data-for="tab-{{ s.slug }}">
+                                        {#                                        <a href="{{ s.get_absolute_url }}">#}
+                                        <div>
+                                            <span>{{ s.name }} ({{ s.get_houses.count }})</span>
+                                        </div>
+                                        {#                                        </a>#}
                                     </div>
-                                </div>
+                                {% endfor %}
                             </div>
                         </div>
 
@@ -44,306 +58,96 @@
             </div>
 
 
-                <div class="tabs-content">
-                    <div class="container">
-                        <div id="tab-1" class="body-item active">
-                            <div class="products-wrapper">
-                                <div class="product-item white b-shadow">
-                                    <div class="item-wrapper">
-                                        <div class="item-category">
-                                            <span>Одноэтажный</span>
-                                        </div>
-                                        <div class="item-title">
-                                            <h4>FLAT F48</h4>
-
-                                        </div>
-                                        <div class="item-picture">
-                                            <img
-                                                    alt="Вид сбоку"
-                                                    class="lazy"
-                                                    src="{% static 'images/CUBO_FLAT_71/4_th.jpg' %}"
-                                                    data-src="{% static 'images/CUBO_FLAT_71/4_400x267.jpg' %}"
-                                            />
-
-                                        </div>
-                                        <div class="item-min-price">
-                                            от <span class="price">1 439 000</span> руб.
-                                        </div>
-                                        <div class="item-full-price">
-                                            <div class="caption">"Под ключ"</div>
-                                            <div class="full-price">
-                                                от <span class="price">2 152 000</span> руб.
-                                            </div>
-
-                                        </div>
-                                        <div class="item-link">
-                                            <a href="#" class="btn-a diagonal black">
-                                                <span>Подробнее</span>
-                                            </a>
-                                        </div>
+            <div class="tabs-content">
+                <div class="container">
+                    <div id="tab-all" class="body-item {% if not series %}active{% endif %}">
+                        <div class="products-wrapper">
+                            {% for house in all_houses %}
+                            <div class="product-item white b-shadow">
+                                <div class="item-wrapper">
+                                    <div class="item-category">
+                                        <span>{{ house.category.name }}</span>
                                     </div>
+                                    <div class="item-title">
+                                        <h4>{{ house.name }}</h4>
 
-                                </div>
-                                <div class="product-item white b-shadow">
-                                    <div class="item-wrapper">
-                                        <div class="item-category">
-                                            <span>Одноэтажный</span>
-                                        </div>
-                                        <div class="item-title">
-                                            <h4>FLAT F48</h4>
-
-                                        </div>
-                                        <div class="item-picture">
-                                            <img
-                                                    alt="Вид сбоку"
-                                                    class="lazy"
-                                                    src="{% static 'images/CUBO_FLAT_71/4_th.jpg' %}"
-                                                    data-src="{% static 'images/CUBO_FLAT_71/4_400x267.jpg' %}"
-                                            />
-
-                                        </div>
-                                        <div class="item-min-price">
-                                            от <span class="price">1 439 000</span> руб.
-                                        </div>
-                                        <div class="item-full-price">
-                                            <div class="caption">"Под ключ"</div>
-                                            <div class="full-price">
-                                                от <span class="price">2 152 000</span> руб.
-                                            </div>
-
-                                        </div>
-                                        <div class="item-link">
-                                            <a href="#" class="btn-a diagonal black">
-                                                <span>Подробнее</span>
-                                            </a>
-                                        </div>
                                     </div>
+                                    <div class="item-picture">
+                                        <img
+                                                alt="{{house.get_main_picture.alt}}"
+                                                class="lazy"
+                                                src="{{house.get_main_picture.picture.thumb.url}}"
+                                                data-src="{{house.get_main_picture.picture.w450.url}}"
+                                        />
 
-                                </div>
-                                <div class="product-item white b-shadow">
-                                    <div class="item-wrapper">
-                                        <div class="item-category">
-                                            <span>Одноэтажный</span>
-                                        </div>
-                                        <div class="item-title">
-                                            <h4>FLAT F48</h4>
-
-                                        </div>
-                                        <div class="item-picture">
-                                            <img
-                                                    alt="Вид сбоку"
-                                                    class="lazy"
-                                                    src="{% static 'images/CUBO_FLAT_71/4_th.jpg' %}"
-                                                    data-src="{% static 'images/CUBO_FLAT_71/4_400x267.jpg' %}"
-                                            />
-
-                                        </div>
-                                        <div class="item-min-price">
-                                            от <span class="price">1 439 000</span> руб.
-                                        </div>
-                                        <div class="item-full-price">
-                                            <div class="caption">"Под ключ"</div>
-                                            <div class="full-price">
-                                                от <span class="price">2 152 000</span> руб.
-                                            </div>
-
-                                        </div>
-                                        <div class="item-link">
-                                            <a href="#" class="btn-a diagonal black">
-                                                <span>Подробнее</span>
-                                            </a>
-                                        </div>
                                     </div>
-
-                                </div>
-                                <div class="product-item white b-shadow">
-                                    <div class="item-wrapper">
-                                        <div class="item-category">
-                                            <span>Одноэтажный</span>
-                                        </div>
-                                        <div class="item-title">
-                                            <h4>FLAT F48</h4>
-
-                                        </div>
-                                        <div class="item-picture">
-                                            <img
-                                                    alt="Вид сбоку"
-                                                    class="lazy"
-                                                    src="{% static 'images/CUBO_FLAT_71/4_th.jpg' %}"
-                                                    data-src="{% static 'images/CUBO_FLAT_71/4_400x267.jpg' %}"
-                                            />
-
-                                        </div>
-                                        <div class="item-min-price">
-                                            от <span class="price">1 439 000</span> руб.
-                                        </div>
-                                        <div class="item-full-price">
-                                            <div class="caption">"Под ключ"</div>
-                                            <div class="full-price">
-                                                от <span class="price">2 152 000</span> руб.
-                                            </div>
-
-                                        </div>
-                                        <div class="item-link">
-                                            <a href="#" class="btn-a diagonal black">
-                                                <span>Подробнее</span>
-                                            </a>
-                                        </div>
+                                    <div class="item-min-price">
+                                        от <span class="price">{{ house.price_min}}</span> руб.
                                     </div>
+                                    <div class="item-full-price">
+                                        <div class="caption">"Под ключ"</div>
+                                        <div class="full-price">
+                                            от <span class="price">{{ house.price_full}}</span> руб.
+                                        </div>
 
+                                    </div>
+                                    <div class="item-link">
+                                        <a href="{{ house.get_absolute_url }}" class="btn-a diagonal black">
+                                            <span>Подробнее</span>
+                                        </a>
+                                    </div>
                                 </div>
+
                             </div>
-                        </div>
-                        <div id="tab-2" class="body-item">
-                            <div class="products-wrapper">
-                                <div class="product-item white b-shadow">
-                                    <div class="item-wrapper">
-                                        <div class="item-category">
-                                            <span>Одноэтажный</span>
-                                        </div>
-                                        <div class="item-title">
-                                            <h4>CUBO FLAT F48</h4>
-
-                                        </div>
-                                        <div class="item-picture">
-                                            <img
-                                                    alt="Вид сбоку"
-                                                    class="lazy"
-                                                    src="{% static 'images/CUBO_FLAT_71/4_th.jpg' %}"
-                                                    data-src="{% static 'images/CUBO_FLAT_71/4_400x267.jpg' %}"
-                                            />
-
-                                        </div>
-                                        <div class="item-min-price">
-                                            от <span class="price">1 439 000</span> руб.
-                                        </div>
-                                        <div class="item-full-price">
-                                            <div class="caption">"Под ключ"</div>
-                                            <div class="full-price">
-                                                от <span class="price">2 152 000</span> руб.
-                                            </div>
-
-                                        </div>
-                                        <div class="item-link">
-                                            <a href="#" class="btn-a diagonal black">
-                                                <span>Подробнее</span>
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="product-item white b-shadow">
-                                    <div class="item-wrapper">
-                                        <div class="item-category">
-                                            <span>Одноэтажный</span>
-                                        </div>
-                                        <div class="item-title">
-                                            <h4>CUBO FLAT F48</h4>
-
-                                        </div>
-                                        <div class="item-picture">
-                                            <img
-                                                    alt="Вид сбоку"
-                                                    class="lazy"
-                                                    src="{% static 'images/CUBO_FLAT_71/4_th.jpg' %}"
-                                                    data-src="{% static 'images/CUBO_FLAT_71/4_400x267.jpg' %}"
-                                            />
-
-                                        </div>
-                                        <div class="item-min-price">
-                                            от <span class="price">1 439 000</span> руб.
-                                        </div>
-                                        <div class="item-full-price">
-                                            <div class="caption">"Под ключ"</div>
-                                            <div class="full-price">
-                                                от <span class="price">2 152 000</span> руб.
-                                            </div>
-
-                                        </div>
-                                        <div class="item-link">
-                                            <a href="#" class="btn-a diagonal black">
-                                                <span>Подробнее</span>
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="product-item white b-shadow">
-                                    <div class="item-wrapper">
-                                        <div class="item-category">
-                                            <span>Одноэтажный</span>
-                                        </div>
-                                        <div class="item-title">
-                                            <h4>CUBO FLAT F48</h4>
-
-                                        </div>
-                                        <div class="item-picture">
-                                            <img
-                                                    alt="Вид сбоку"
-                                                    class="lazy"
-                                                    src="{% static 'images/CUBO_FLAT_71/4_th.jpg' %}"
-                                                    data-src="{% static 'images/CUBO_FLAT_71/4_400x267.jpg' %}"
-                                            />
-
-                                        </div>
-                                        <div class="item-min-price">
-                                            от <span class="price">1 439 000</span> руб.
-                                        </div>
-                                        <div class="item-full-price">
-                                            <div class="caption">"Под ключ"</div>
-                                            <div class="full-price">
-                                                от <span class="price">2 152 000</span> руб.
-                                            </div>
-
-                                        </div>
-                                        <div class="item-link">
-                                            <a href="#" class="btn-a diagonal black">
-                                                <span>Подробнее</span>
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="product-item white b-shadow">
-                                    <div class="item-wrapper">
-                                        <div class="item-category">
-                                            <span>Одноэтажный</span>
-                                        </div>
-                                        <div class="item-title">
-                                            <h4>CUBO FLAT F48</h4>
-
-                                        </div>
-                                        <div class="item-picture">
-                                            <img
-                                                    alt="Вид сбоку"
-                                                    class="lazy"
-                                                    src="{% static 'images/CUBO_FLAT_71/4_th.jpg' %}"
-                                                    data-src="{% static 'images/CUBO_FLAT_71/4_400x267.jpg' %}"
-                                            />
-
-                                        </div>
-                                        <div class="item-min-price">
-                                            от <span class="price">1 439 000</span> руб.
-                                        </div>
-                                        <div class="item-full-price">
-                                            <div class="caption">"Под ключ"</div>
-                                            <div class="full-price">
-                                                от <span class="price">2 152 000</span> руб.
-                                            </div>
-
-                                        </div>
-                                        <div class="item-link">
-                                            <a href="#" class="btn-a diagonal black">
-                                                <span>Подробнее</span>
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
+                            {% endfor %}
                         </div>
                     </div>
+                    {% for s in series_list %}
+                        <div id="tab-{{ s.slug }}" class="body-item {% if s == series %}active{% endif %}">
+                            <div class="products-wrapper">
+                                {% for house in s.get_houses %}
+                            <div class="product-item white b-shadow">
+                                <div class="item-wrapper">
+                                    <div class="item-category">
+                                        <span>{{ house.category.name }}</span>
+                                    </div>
+                                    <div class="item-title">
+                                        <h4>{{ house.name }}</h4>
+
+                                    </div>
+                                    <div class="item-picture">
+                                        <img
+                                                alt="{{house.get_main_picture.alt}}"
+                                                class="lazy"
+                                                src="{{house.get_main_picture.picture.thumb.url}}"
+                                                data-src="{{house.get_main_picture.picture.w450.url}}"
+                                        />
+
+                                    </div>
+                                    <div class="item-min-price">
+                                        от <span class="price">{{ house.price_min}}</span> руб.
+                                    </div>
+                                    <div class="item-full-price">
+                                        <div class="caption">"Под ключ"</div>
+                                        <div class="full-price">
+                                            от <span class="price">{{ house.price_full}}</span> руб.
+                                        </div>
+
+                                    </div>
+                                    <div class="item-link">
+                                        <a href="{{ house.get_absolute_url }}" class="btn-a diagonal black">
+                                            <span>Подробнее</span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                            {% endfor %}
+                            </div>
+                        </div>
+                    {% endfor %}
                 </div>
+            </div>
 
 
         </section>
