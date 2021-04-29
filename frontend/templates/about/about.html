@@ -1,13 +1,255 @@
 {% extends 'superbase.html' %}
-{% load static%}
+{% load static %}
 
 <!--{% block seo_title %}{{ home_data.seo_title }}{% endblock seo_title %}-->
 <!--{% block seo_description %}{{ home_data.seo_description }}{% endblock seo_description %}-->
 
 
 {% block content %}
+    <section class="breadcrumbs-custom">
+        <div class="container">
+            <div class="breadcrumbs-custom__inner">
+                <p class="breadcrumbs-custom__title">Завод</p>
+                <ul class="breadcrumbs-custom__path">
+                    <li><a href="{% url 'home' %}">Главная</a></li>
+                    <li class="active">Завод</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-Страничка с подробной информацией о компании
+    <section class="about-nav">
+        <div class="container">
+            <div class="about-wrapper">
+                <div class="about-menu">
+                    <ul>
+                        <li>
+                            <a href="#about">О компании</a>
+                        </li>
+                        <li>
+                            <a href="#factory">О заводе</a>
+                        </li>
+                        <li>
+                            <a href="#capacity">Производственные мощности</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="about-video">
+                    <div class="entry-video embed-responsive embed-responsive-16by9">
+                        <iframe width="886" height="668" src="//www.youtube.com/embed/ccuQoF0vKYU"
+                                allowfullscreen=""></iframe>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section id="about" class="about-section" style="background-image: url({% static 'images/about_bg.jpg' %}">
+        <div class="inner-container">
+            <h2>О компании</h2>
+            <p class="text">
+                Компания JUST CUBO является автором и разработчиком новой технологии строительства домов CUBO.
+                Технология заключается в стандартизации несущих конструкций и позволяет быстро возводить
+                сборно-разборные здания.
+            </p>
+        </div>
+
+    </section>
+
+    <section id="factory" class="about-section right"
+             style="background-image: url({% static 'images/factory_bg.jpg' %}">
+        <div class="inner-container">
+            <h2>О заводе</h2>
+            <p class="text">
+                Деревообрабатывающее предприятие, на котором производятся дома CUBO было основано в 1994 году и ходе
+                развития вышло на производство клееных изделий с полным технологическим циклом.
+                К настоящему времени предприятие имеет свою инфраструктуру, которая начинается заготовкой леса и
+                заканчивается производством изделий деревообработки. Площадь предприятия составляет 1,8 га, из них
+                производственные площади - 3500 м². Численность работающих - 250 человек.
+
+            </p>
+        </div>
+
+    </section>
+
+    <section id="capacity" class="capacity">
+        <div class="container">
+            <header><h4>Производственные мощности</h4></header>
+            <div class="body">
+                <p>Общая площадь производственных цехов составляет более 3 500 м² в том числе:</p>
+                <div class="capacity-cards">
+                    <section class="home_decorations capacity">
+                        <div class="container">
+                            <div class="hd_wrapper">
+                                <a class="hd_item big" href="#">
+                                    <div class="wrap white b-shadow">
+                                        <span class="hd_black_title">Участок распиловки</span>
+
+                                        <span class="bg"
+                                              style="background-image: url({% static 'images/factory_bg.jpg' %})">
+                                        <span class="hd_title">
+                                            <span>Участок распиловки</span>
+                                        </span>
+                                    </span>
+                                    </div>
+
+
+                                </a>
+                                <a class="hd_item big" href="#">
+                                    <div class="wrap white b-shadow">
+                                        <span class="hd_black_title">Сушильный комплекс</span>
+
+                                        <span class="bg"
+                                              style="background-image: url({% static 'images/factory_bg.jpg' %})">
+                                        <span class="hd_title">
+                                            <span>Сушильный комплекс</span>
+                                        </span>
+                                    </span>
+                                    </div>
+
+
+                                </a>
+                                <a class="hd_item big" href="#">
+                                    <div class="wrap white b-shadow">
+                                        <span class="hd_black_title">Столярный комплекс</span>
+
+                                        <span class="bg"
+                                              style="background-image: url({% static 'images/factory_bg.jpg' %})">
+                                        <span class="hd_title">
+                                            <span>Столярный комплекс</span>
+                                        </span>
+                                    </span>
+                                    </div>
+
+
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="home_decorations capacity middle">
+                        <div class="container">
+                            <div class="hd_wrapper">
+                                <a class="hd_item big" href="#">
+                                    <div class="wrap white b-shadow">
+                                        <span class="hd_black_title">Дверной цех</span>
+
+                                        <span class="bg"
+                                              style="background-image: url({% static 'images/factory_bg.jpg' %})">
+                                        <span class="hd_title">
+                                            <span>Дверной цех</span>
+                                        </span>
+                                    </span>
+                                    </div>
+
+
+                                </a>
+                                <a class="hd_item big" href="#">
+                                    <div class="wrap white b-shadow">
+                                        <span class="hd_black_title">Погонажный цех</span>
+
+                                        <span class="bg"
+                                              style="background-image: url({% static 'images/factory_bg.jpg' %})">
+                                        <span class="hd_title">
+                                            <span>Погонажный цех</span>
+                                        </span>
+                                    </span>
+                                    </div>
+
+
+                                </a>
+                                <a class="hd_item big" href="#">
+                                    <div class="wrap white b-shadow">
+                                        <span class="hd_black_title">Прессовый цех</span>
+
+                                        <span class="bg"
+                                              style="background-image: url({% static 'images/factory_bg.jpg' %})">
+                                        <span class="hd_title">
+                                            <span>Прессовый цех</span>
+                                        </span>
+                                    </span>
+                                    </div>
+
+
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="home_decorations capacity">
+                        <div class="container">
+                            <div class="hd_wrapper">
+                                <a class="hd_item big" href="#">
+                                    <div class="wrap white b-shadow">
+                                        <span class="hd_black_title">Механический участок</span>
+
+                                        <span class="bg"
+                                              style="background-image: url({% static 'images/factory_bg.jpg' %})">
+                                        <span class="hd_title">
+                                            <span>Механический участок</span>
+                                        </span>
+                                    </span>
+                                    </div>
+
+
+                                </a>
+                                <a class="hd_item big" href="#">
+                                    <div class="wrap white b-shadow">
+                                        <span class="hd_black_title">Транспортный участок</span>
+
+                                        <span class="bg"
+                                              style="background-image: url({% static 'images/factory_bg.jpg' %})">
+                                        <span class="hd_title">
+                                            <span>Транспортный участок</span>
+                                        </span>
+                                    </span>
+                                    </div>
+
+
+                                </a>
+                                <a class="hd_item big" href="#">
+                                    <div class="wrap white b-shadow">
+                                        <span class="hd_black_title">Складской комплекс</span>
+
+                                        <span class="bg"
+                                              style="background-image: url({% static 'images/factory_bg.jpg' %})">
+                                        <span class="hd_title">
+                                            <span>Складской комплекс</span>
+                                        </span>
+                                    </span>
+                                    </div>
+
+
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                {#                <div class="hd-wrapper capacity-cards">#}
+                {#                    <a class="hd_item" href="#">#}
+                {#                        <span class="hd_black_title">Участок распиловки</span>#}
+                {##}
+                {#                        <span class="bg" style="background-image: url({% static 'images/factory_bg.jpg' %})">#}
+                {#                        <span class="hd_title"><span>Участок распиловки</span></span>#}
+                {#                    </span>#}
+                {##}
+                {#                    </a>#}
+                {#                    <div class="capacity-item b-shadow white">Участок распиловки</div>#}
+                {#                    <div class="capacity-item b-shadow white">Сушильный комплекс</div>#}
+                {#                    <div class="capacity-item b-shadow white">Столярный комплекс</div>#}
+                {#                    <div class="capacity-item b-shadow white">Дверной цех</div>#}
+                {#                    <div class="capacity-item b-shadow white">Погонажный цех</div>#}
+                {#                    <div class="capacity-item b-shadow white">Прессовый цех</div>#}
+                {#                    <div class="capacity-item b-shadow white">Механический участок</div>#}
+                {#                    <div class="capacity-item b-shadow white">Транспортный участок</div>#}
+                {#                    <div class="capacity-item b-shadow white">Складской комплекс</div>#}
+                {#                </div>#}
+            </div>
+        </div>
+    </section>
 
 
 {% endblock content %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{% static 'scripts/about.js' %}"></script>
+{% endblock scripts %}
