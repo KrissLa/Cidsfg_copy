@@ -2092,7 +2092,9 @@ span.price {
 @media all and (max-width: 768px) {
     .main__cards .container {
         flex-direction: column;
-        gap: 25px;
+    }
+    .item{
+        margin-bottom: 25px;
     }
 
     .main__cards {
