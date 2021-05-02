@@ -1,3 +1,5 @@
+from loguru import logger
+
 from backend.home_decorations.models import HomeDecoration
 from rest_framework.filters import OrderingFilter
 from rest_framework.generics import ListAPIView

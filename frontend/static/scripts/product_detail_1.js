@@ -136,6 +136,24 @@ navItemsCatalog.forEach(e => {
 scrollToActiveTab(document.querySelector('.tabs-controls-item.info.active'), navArray, infoContainer);
 scrollToActiveTab(document.querySelector('.tabs-controls-item.container.active'), navArrayCatalog, catalogContainer);
 
+//
+const tabs = document.querySelectorAll('.tabs-controls-wrapper');
+
+const addScrollbar = () => {
+    tabs.forEach(e => {
+        console.log(e);
+        console.log(e.querySelector('.tabs-slider').offsetWidth);
+        console.log(e.querySelector('.container').offsetWidth);
+        console.log(window.clientWidth);
+        if (e.querySelector('.tabs-slider').offsetWidth > e.querySelector('.container').offsetWidth){
+            e.classList.add('scroll');
+        }
+    })
+}
+
+addScrollbar()
+
+
 //modal
 const buttonForRequestInfo = document.querySelector('#show-request-info-modal'),
     body = document.querySelector('body'),
