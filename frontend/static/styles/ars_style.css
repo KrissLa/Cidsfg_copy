@@ -809,9 +809,9 @@ form .btn-a {
 }
 
 .tabs-controls-wrapper .container::-webkit-scrollbar {
-        opacity: 0;
-        height: 0;
-    }
+    opacity: 0;
+    height: 0;
+}
 
 @media all and (min-width: 768px) {
     .tabs-controls-wrapper.scroll .container::-webkit-scrollbar {
@@ -977,7 +977,7 @@ span.x {
     overflow: hidden;
 }
 
-.swiper-container-catalog{
+.swiper-container-catalog {
     width: 100%;
     position: relative
 }
@@ -1933,6 +1933,7 @@ span.price {
     }
 
     .timeline-item {
+        transform: translateY(0);
         align-self: baseline !important;
         width: 100%;
         padding: 0 30px 150px 25px;
@@ -1961,6 +1962,22 @@ span.price {
         max-width: 400px;
         box-shadow: 0 10px 15px rgba(0, 0, 0, .4);
     }
+
+    .timeline-item--active {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0px);
+    }
+
+    .timeline-item--active:before {
+        /*top: 50%;*/
+        transition: 0.3s all 0.2s;
+        opacity: 1;
+    }
+
+    /*.timeline-item--active .timeline__content-title {*/
+    /*    margin: -50px 0 20px 0;*/
+    /*}*/
 }
 
 
@@ -2093,7 +2110,8 @@ span.price {
     .main__cards .container {
         flex-direction: column;
     }
-    .item{
+
+    .item {
         margin-bottom: 25px;
     }
 
