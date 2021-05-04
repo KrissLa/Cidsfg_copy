@@ -87,7 +87,7 @@ const initTimeLine = () => {
         if (!document.querySelector(timelineActiveClass)) {
             setActiveTimeline(timelineItems[0]);
         }
-        document.addEventListener('scroll', () => scrollPage(diapasons));
+        // document.addEventListener('scroll', () => scrollPage(diapasons));
     } else {
         const diapasons = getDiapasonsTimelineItems(1, 700);
         if (!document.querySelector('.bg-active')) {
