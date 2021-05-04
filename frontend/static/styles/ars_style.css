@@ -1831,6 +1831,7 @@ span.price {
 
     .bg_img.mobile {
         display: block;
+        background-attachment: unset;
     }
     .bg_img.pc {
         display: none;
