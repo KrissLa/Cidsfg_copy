@@ -26,17 +26,19 @@
                     {#                                                (max-width: 1300px) 1000px,#}
                     {#                                                2000px"#}
                     {#                    />#}
-                    <div class="bg_img" style="background-image: url({% static 'images/для сайта/Фото 3.jpg' %})"></div>
+                    <div class="bg_img pc" style="background-image: url({% static 'images/header.jpg' %})"></div>
+                    <div class="bg_img mobile"
+                         style="background-image: url({% static 'images/header_mob.jpg' %})"></div>
                     <div class="container">
-                        <div class="header-title"><h1>CUBO</h1></div>
                         <div class="header-card white-text">
                             <h1>CUBO</h1>
-                            <p>мы делаем сборно-разборные дома по уникальной технологии</p>
-                        </div>
-                        <div>
+                            <h2>Современные дома по уникальной технологии</h2>
                             <a class="more-button" href="{% url 'about' %}">
                                 Подробнее <span class="fas fa-chevron-right"></span>
                             </a>
+                        </div>
+                        <div>
+
 
                         </div>
                     </div>
@@ -51,10 +53,12 @@
         </div>
         <div class="timeline">
             <div class="timeline-item" data-text="ГАРАНТИРУЕМ КАЧЕСТВО И НАДЕЖНОСТЬ" data-text-mobile="1">
+                <span class="right title">ГАРАНТИРУЕМ КАЧЕСТВО И НАДЕЖНОСТЬ</span>
                 <div class="timeline__content"><img data-bg-src="{% static 'images/time_line/uniq_1920.jpg' %}"
+                                                    data-bg-src-mobile="{% static 'images/time_line/uniq_1920.jpg' %}"
                                                     class="timeline__img"
                                                     src="{% static 'images/time_line/uniq_460.jpg' %}"/>
-                    <h2 class="timeline__content-title pc">CUBO</h2>
+                    {#                    <h2 class="timeline__content-title pc">CUBO</h2>#}
                     <h2 class="timeline__content-title mobile">ГАРАНТИРУЕМ КАЧЕСТВО И НАДЕЖНОСТЬ</h2>
                     <p class="timeline__content-desc">Компаниия CUBO имеет налаженную инфраструктуру. Мы занимаемся
                         всеми
@@ -67,10 +71,12 @@
                 </div>
             </div>
             <div class="timeline-item" data-text="НЕОГРАНИЧЕННЫЕ ВОЗМОЖНОСТИ ДИЗАЙНА" data-text-mobile="2">
+                <span class="left title">НЕОГРАНИЧЕННЫЕ ВОЗМОЖНОСТИ ДИЗАЙНА</span>
                 <div class="timeline__content"><img data-bg-src="{% static 'images/time_line/design_1920.jpg' %}"
+                                                    data-bg-src-mobile="{% static 'images/time_line/design_1920.jpg' %}"
                                                     class="timeline__img"
                                                     src="{% static 'images/time_line/design_460.jpg' %}"/>
-                    <h2 class="timeline__content-title pc">CUBO</h2>
+                    {#                    <h2 class="timeline__content-title pc">CUBO</h2>#}
                     <h2 class="timeline__content-title mobile">НЕОГРАНИЧЕННЫЕ ВОЗМОЖНОСТИ ДИЗАЙНА</h2>
                     <p class="timeline__content-desc">Дома CUBO имеют уникальный дизайн. Высокие потолки и открытое
                         пространство дают неограниченные вызможности для создания любого дизайна. Все наши покупатели
@@ -78,10 +84,12 @@
                 </div>
             </div>
             <div class="timeline-item" data-text="УНИКАЛЬНЫЕ ВОЗМОЖНОСТИ" data-text-mobile="3">
+                <span class="right title">УНИКАЛЬНЫЕ ВОЗМОЖНОСТИ</span>
                 <div class="timeline__content"><img data-bg-src="{% static 'images/time_line/factory_1920.jpg' %}"
+                                                    data-bg-src-mobile="{% static 'images/time_line/factory_1920.jpg' %}"
                                                     class="timeline__img"
                                                     src="{% static 'images/time_line/factory_460.jpg' %}"/>
-                    <h2 class="timeline__content-title pc">CUBO</h2>
+                    {#                    <h2 class="timeline__content-title pc">CUBO</h2>#}
                     <h2 class="timeline__content-title mobile">УНИКАЛЬНЫЕ ВОЗМОЖНОСТИ</h2>
                     <p class="timeline__content-desc">Нашим покупателям не нужно заниматься получением разрешения на
                         строительство, регистрировать дом и платить налог на недвижимость. Можно даже арендовать землю и
@@ -91,10 +99,12 @@
                 </div>
             </div>
             <div class="timeline-item" data-text="ПРОСТОТА И СКОРОСТЬ СБОРКИ" data-text-mobile="4">
+                <span class="left title">ПРОСТОТА И СКОРОСТЬ СБОРКИ</span>
                 <div class="timeline__content"><img data-bg-src="{% static 'images/time_line/building_1920.jpg' %}"
+                                                    data-bg-src-mobile="{% static 'images/time_line/building_1920.jpg' %}"
                                                     class="timeline__img"
                                                     src="{% static 'images/time_line/building_460.jpg' %}"/>
-                    <h2 class="timeline__content-title pc">CUBO</h2>
+                    {#                    <h2 class="timeline__content-title pc">CUBO</h2>#}
                     <h2 class="timeline__content-title mobile">ПРОСТОТА И СКОРОСТЬ СБОРКИ</h2>
                     <p class="timeline__content-desc">Каждая деталь CUBO разработана и выполнена так, чтобы обеспечить
                         простоту и скорость сборки. Легкий вес деталей упрощает транспортировку. Монтаж не требует
@@ -107,28 +117,29 @@
 
         </div>
     </div>
-    <section class="main__cards">
-        <div class="container">
-            <div class="item b-shadow white">
-                <div class="icon"><img src="{% static 'images/icons/cooperation.png' %}"/></div>
-                <div class="caption">
-                    <a href="#">Сотрудничество</a>
-                </div>
-            </div>
-            <div class="item b-shadow white">
-                <div class="icon"><img src="{% static 'images/icons/business.png' %}"/></div>
-                <div class="caption">
-                    <a href="#">CUBO BUSINESS</a>
-                </div>
-            </div>
-            <div class="item b-shadow white">
-                <div class="icon"><img src="{% static 'images/icons/contacts.png' %}"/></div>
-                <div class="caption">
-                    <a href="{% url 'contacts' %}">Связаться с нами</a>
-                </div>
-            </div>
-        </div>
-    </section>
+
+{#        <section class="main__cards">#}
+{#            <div class="container">#}
+{#                <div class="item b-shadow white">#}
+{#                    <div class="icon"><img src="{% static 'images/icons/cooperation.png' %}"/></div>#}
+{#                    <div class="caption">#}
+{#                        <a href="#">Сотрудничество</a>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="item b-shadow white">#}
+{#                    <div class="icon"><img src="{% static 'images/icons/business.png' %}"/></div>#}
+{#                    <div class="caption">#}
+{#                        <a href="#">CUBO BUSINESS</a>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="item b-shadow white">#}
+{#                    <div class="icon"><img src="{% static 'images/icons/contacts.png' %}"/></div>#}
+{#                    <div class="caption">#}
+{#                        <a href="{% url 'contacts' %}">Связаться с нами</a>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </section>#}
     <section class="catalog-section">
         <div class="container">
             <div class="catalog-header">
@@ -489,6 +500,34 @@
         </div>
 
     </section>
+{#     <section class="main__cards">#}
+{#            <h3>Дом <span>CUBO</span> это просто!</h3>#}
+{#            <div class="container">#}
+{#                <div class="item b-shadow white">#}
+{#                    <div class="number">#}
+{#                        <span>1</span>#}
+{#                    </div>#}
+{#                    <div class="title">#}
+{#                        <h3>Заявка</h3>#}
+{#                    </div>#}
+{#                    <div class="body">#}
+{#                        <p>Вы звоните или оставляете заявку на сайте, мы Вас консультируем и уточняем детали.</p>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="item b-shadow white">#}
+{#                    <div class="icon"><img src="{% static 'images/icons/business.png' %}"/></div>#}
+{#                    <div class="caption">#}
+{#                        <a href="#">CUBO BUSINESS</a>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="item b-shadow white">#}
+{#                    <div class="icon"><img src="{% static 'images/icons/contacts.png' %}"/></div>#}
+{#                    <div class="caption">#}
+{#                        <a href="{% url 'contacts' %}">Связаться с нами</a>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </section>#}
 
 {% endblock content %}
 
@@ -497,5 +536,5 @@
 
     <script src="{% static 'scripts/swiper-bundle.min.js' %}"></script>
     <script src="{% static 'scripts/lazy.min.js' %}"></script>
-    <script src="{% static 'scripts/home.js' %}"></script>
+    <script src="{% static 'scripts/home_1.js' %}"></script>
 {% endblock scripts %}

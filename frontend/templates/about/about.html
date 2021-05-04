@@ -9,7 +9,6 @@
     <section class="breadcrumbs-custom">
         <div class="container">
             <div class="breadcrumbs-custom__inner">
-                <p class="breadcrumbs-custom__title">Завод</p>
                 <ul class="breadcrumbs-custom__path">
                     <li><a href="{% url 'home' %}">Главная</a></li>
                     <li class="active">Завод</li>
@@ -77,152 +76,163 @@
             <header><h4>Производственные мощности</h4></header>
             <div class="body">
                 <p>Общая площадь производственных цехов составляет более 3 500 м² в том числе:</p>
-                <div class="capacity-cards">
-                    <section class="home_decorations capacity">
-                        <div class="container">
-                            <div class="hd_wrapper">
-                                <a class="hd_item big" href="#">
-                                    <div class="wrap white b-shadow">
-                                        <span class="hd_black_title">Участок распиловки</span>
-
-                                        <span class="bg"
-                                              style="background-image: url({% static 'images/factory_bg.jpg' %})">
-                                        <span class="hd_title">
-                                            <span>Участок распиловки</span>
-                                        </span>
-                                    </span>
-                                    </div>
-
-
-                                </a>
-                                <a class="hd_item big" href="#">
-                                    <div class="wrap white b-shadow">
-                                        <span class="hd_black_title">Сушильный комплекс</span>
-
-                                        <span class="bg"
-                                              style="background-image: url({% static 'images/factory_bg.jpg' %})">
-                                        <span class="hd_title">
-                                            <span>Сушильный комплекс</span>
-                                        </span>
-                                    </span>
-                                    </div>
-
-
-                                </a>
-                                <a class="hd_item big" href="#">
-                                    <div class="wrap white b-shadow">
-                                        <span class="hd_black_title">Столярный комплекс</span>
-
-                                        <span class="bg"
-                                              style="background-image: url({% static 'images/factory_bg.jpg' %})">
-                                        <span class="hd_title">
-                                            <span>Столярный комплекс</span>
-                                        </span>
-                                    </span>
-                                    </div>
-
-
-                                </a>
-                            </div>
-                        </div>
-                    </section>
-                    <section class="home_decorations capacity middle">
-                        <div class="container">
-                            <div class="hd_wrapper">
-                                <a class="hd_item big" href="#">
-                                    <div class="wrap white b-shadow">
-                                        <span class="hd_black_title">Дверной цех</span>
-
-                                        <span class="bg"
-                                              style="background-image: url({% static 'images/factory_bg.jpg' %})">
-                                        <span class="hd_title">
-                                            <span>Дверной цех</span>
-                                        </span>
-                                    </span>
-                                    </div>
-
-
-                                </a>
-                                <a class="hd_item big" href="#">
-                                    <div class="wrap white b-shadow">
-                                        <span class="hd_black_title">Погонажный цех</span>
-
-                                        <span class="bg"
-                                              style="background-image: url({% static 'images/factory_bg.jpg' %})">
-                                        <span class="hd_title">
-                                            <span>Погонажный цех</span>
-                                        </span>
-                                    </span>
-                                    </div>
-
-
-                                </a>
-                                <a class="hd_item big" href="#">
-                                    <div class="wrap white b-shadow">
-                                        <span class="hd_black_title">Прессовый цех</span>
-
-                                        <span class="bg"
-                                              style="background-image: url({% static 'images/factory_bg.jpg' %})">
-                                        <span class="hd_title">
-                                            <span>Прессовый цех</span>
-                                        </span>
-                                    </span>
-                                    </div>
-
-
-                                </a>
-                            </div>
-                        </div>
-                    </section>
-                    <section class="home_decorations capacity">
-                        <div class="container">
-                            <div class="hd_wrapper">
-                                <a class="hd_item big" href="#">
-                                    <div class="wrap white b-shadow">
-                                        <span class="hd_black_title">Механический участок</span>
-
-                                        <span class="bg"
-                                              style="background-image: url({% static 'images/factory_bg.jpg' %})">
-                                        <span class="hd_title">
-                                            <span>Механический участок</span>
-                                        </span>
-                                    </span>
-                                    </div>
-
-
-                                </a>
-                                <a class="hd_item big" href="#">
-                                    <div class="wrap white b-shadow">
-                                        <span class="hd_black_title">Транспортный участок</span>
-
-                                        <span class="bg"
-                                              style="background-image: url({% static 'images/factory_bg.jpg' %})">
-                                        <span class="hd_title">
-                                            <span>Транспортный участок</span>
-                                        </span>
-                                    </span>
-                                    </div>
-
-
-                                </a>
-                                <a class="hd_item big" href="#">
-                                    <div class="wrap white b-shadow">
-                                        <span class="hd_black_title">Складской комплекс</span>
-
-                                        <span class="bg"
-                                              style="background-image: url({% static 'images/factory_bg.jpg' %})">
-                                        <span class="hd_title">
-                                            <span>Складской комплекс</span>
-                                        </span>
-                                    </span>
-                                    </div>
-
-
-                                </a>
-                            </div>
-                        </div>
-                    </section>
-                </div>
+                <ul>
+                    <li>Участок распиловки</li>
+                    <li>Сушильный комплекс</li>
+                    <li>Столярный комплекс</li>
+                    <li>Дверной цех</li>
+                    <li>Погонажный цех</li>
+                    <li>Прессовый цех</li>
+                    <li>Механический участок</li>
+                    <li>Транспортный участок</li>
+                    <li>Складской комплекс</li>
+                </ul>
+{#                <div class="capacity-cards">#}
+{#                    <section class="home_decorations capacity">#}
+{#                        <div class="container">#}
+{#                            <div class="hd_wrapper">#}
+{#                                <a class="hd_item big" href="#">#}
+{#                                    <div class="wrap white b-shadow">#}
+{#                                        <span class="hd_black_title">Участок распиловки</span>#}
+{##}
+{#                                        <span class="bg"#}
+{#                                              style="background-image: url({% static 'images/factory_bg.jpg' %})">#}
+{#                                        <span class="hd_title">#}
+{#                                            <span>Участок распиловки</span>#}
+{#                                        </span>#}
+{#                                    </span>#}
+{#                                    </div>#}
+{##}
+{##}
+{#                                </a>#}
+{#                                <a class="hd_item big" href="#">#}
+{#                                    <div class="wrap white b-shadow">#}
+{#                                        <span class="hd_black_title">Сушильный комплекс</span>#}
+{##}
+{#                                        <span class="bg"#}
+{#                                              style="background-image: url({% static 'images/factory_bg.jpg' %})">#}
+{#                                        <span class="hd_title">#}
+{#                                            <span>Сушильный комплекс</span>#}
+{#                                        </span>#}
+{#                                    </span>#}
+{#                                    </div>#}
+{##}
+{##}
+{#                                </a>#}
+{#                                <a class="hd_item big" href="#">#}
+{#                                    <div class="wrap white b-shadow">#}
+{#                                        <span class="hd_black_title">Столярный комплекс</span>#}
+{##}
+{#                                        <span class="bg"#}
+{#                                              style="background-image: url({% static 'images/factory_bg.jpg' %})">#}
+{#                                        <span class="hd_title">#}
+{#                                            <span>Столярный комплекс</span>#}
+{#                                        </span>#}
+{#                                    </span>#}
+{#                                    </div>#}
+{##}
+{##}
+{#                                </a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </section>#}
+{#                    <section class="home_decorations capacity middle">#}
+{#                        <div class="container">#}
+{#                            <div class="hd_wrapper">#}
+{#                                <a class="hd_item big" href="#">#}
+{#                                    <div class="wrap white b-shadow">#}
+{#                                        <span class="hd_black_title">Дверной цех</span>#}
+{##}
+{#                                        <span class="bg"#}
+{#                                              style="background-image: url({% static 'images/factory_bg.jpg' %})">#}
+{#                                        <span class="hd_title">#}
+{#                                            <span>Дверной цех</span>#}
+{#                                        </span>#}
+{#                                    </span>#}
+{#                                    </div>#}
+{##}
+{##}
+{#                                </a>#}
+{#                                <a class="hd_item big" href="#">#}
+{#                                    <div class="wrap white b-shadow">#}
+{#                                        <span class="hd_black_title">Погонажный цех</span>#}
+{##}
+{#                                        <span class="bg"#}
+{#                                              style="background-image: url({% static 'images/factory_bg.jpg' %})">#}
+{#                                        <span class="hd_title">#}
+{#                                            <span>Погонажный цех</span>#}
+{#                                        </span>#}
+{#                                    </span>#}
+{#                                    </div>#}
+{##}
+{##}
+{#                                </a>#}
+{#                                <a class="hd_item big" href="#">#}
+{#                                    <div class="wrap white b-shadow">#}
+{#                                        <span class="hd_black_title">Прессовый цех</span>#}
+{##}
+{#                                        <span class="bg"#}
+{#                                              style="background-image: url({% static 'images/factory_bg.jpg' %})">#}
+{#                                        <span class="hd_title">#}
+{#                                            <span>Прессовый цех</span>#}
+{#                                        </span>#}
+{#                                    </span>#}
+{#                                    </div>#}
+{##}
+{##}
+{#                                </a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </section>#}
+{#                    <section class="home_decorations capacity">#}
+{#                        <div class="container">#}
+{#                            <div class="hd_wrapper">#}
+{#                                <a class="hd_item big" href="#">#}
+{#                                    <div class="wrap white b-shadow">#}
+{#                                        <span class="hd_black_title">Механический участок</span>#}
+{##}
+{#                                        <span class="bg"#}
+{#                                              style="background-image: url({% static 'images/factory_bg.jpg' %})">#}
+{#                                        <span class="hd_title">#}
+{#                                            <span>Механический участок</span>#}
+{#                                        </span>#}
+{#                                    </span>#}
+{#                                    </div>#}
+{##}
+{##}
+{#                                </a>#}
+{#                                <a class="hd_item big" href="#">#}
+{#                                    <div class="wrap white b-shadow">#}
+{#                                        <span class="hd_black_title">Транспортный участок</span>#}
+{##}
+{#                                        <span class="bg"#}
+{#                                              style="background-image: url({% static 'images/factory_bg.jpg' %})">#}
+{#                                        <span class="hd_title">#}
+{#                                            <span>Транспортный участок</span>#}
+{#                                        </span>#}
+{#                                    </span>#}
+{#                                    </div>#}
+{##}
+{##}
+{#                                </a>#}
+{#                                <a class="hd_item big" href="#">#}
+{#                                    <div class="wrap white b-shadow">#}
+{#                                        <span class="hd_black_title">Складской комплекс</span>#}
+{##}
+{#                                        <span class="bg"#}
+{#                                              style="background-image: url({% static 'images/factory_bg.jpg' %})">#}
+{#                                        <span class="hd_title">#}
+{#                                            <span>Складской комплекс</span>#}
+{#                                        </span>#}
+{#                                    </span>#}
+{#                                    </div>#}
+{##}
+{##}
+{#                                </a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </section>#}
+{#                </div>#}
 
                 {#                <div class="hd-wrapper capacity-cards">#}
                 {#                    <a class="hd_item" href="#">#}
