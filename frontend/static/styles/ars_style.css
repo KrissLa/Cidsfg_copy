@@ -1662,7 +1662,7 @@ span.price {
     transition-property: transform;
     box-sizing: content-box;
     position: relative;
-    background-color: rgba(0, 0, 0, 0.3);
+    /*background-color: rgba(0, 0, 0, 0.3);*/
 }
 
 .swiper-container-header .swiper-slide-h img {
@@ -1684,6 +1684,7 @@ span.price {
 
 .swiper-container-header .swiper-slide-h h2 {
     color: #000;
+    font-weight: 400;
 }
 
 .swiper-container-header .swiper-slide-h p {
@@ -1744,20 +1745,20 @@ span.price {
 .swiper-container-header .swiper-slide-h .white-text p,
 .swiper-container-header .swiper-slide-h .white-text h2,
 .swiper-container-header .swiper-slide-h .white-text h1 {
-    color: #fff;
+    color: #000;
 }
 
 .more-button {
     font-weight: 400;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 30px;
     height: 42px;
     width: 155px;
     display: inline-block;
     padding: 5px 10px;
-    border: 1px solid #fff;
-    background-color: #fff;
-    color: #000;
+    border: 1px solid #000;
+    background-color: #000;
+    color: #fff;
     position: relative;
 }
 
@@ -1780,7 +1781,7 @@ span.price {
 }
 
 .more-button:hover {
-    color: #000;
+    color: #fff;
     /*background-color: #ddd;*/
     /*border-color: #ddd;*/
 }
@@ -1884,7 +1885,7 @@ span.price {
 
 .timeline__content-desc {
     margin: 0;
-    font-size: 20px;
+    font-size: 16px;
     box-sizing: border-box;
     color: #fff;
     /*font-family: 'Roboto Condensed', sans-serif;*/
@@ -1909,15 +1910,17 @@ span.price {
 }
 
 .timeline-item {
-    padding: 40px 0;
+    padding: 80px 0;
     opacity: 0.3;
     filter: blur(2px);
     transition: 0.5s;
     box-sizing: border-box;
     width: calc(50% - 40px);
     display: flex;
+    flex-direction: column;
     position: relative;
     transform: translateY(-80px);
+    /*margin-bottom: 60px;*/
 }
 
 /*.timeline-item:before {*/
@@ -1960,13 +1963,14 @@ span.price {
 .timeline-item span.title {
     letter-spacing: 3px;
     width: 100%;
-    position: absolute;
-    color: rgba(255, 255, 255, .8);
-    font-size: 20px;
+    /*position: absolute;*/
+    color: rgba(255, 255, 255, 1);
+    font-size: 25px;
     font-family: 'Pathway Gothic One', sans-serif;
-    border-left: 2px solid rgba(255, 255, 255, .5);
+    /*border-left: 2px solid rgba(255, 255, 255, .5);*/
     top: 70%;
     margin-top: -5px;
+    margin-bottom: 15px;
     padding-left: 15px;
     opacity: 0;
     right: calc(-100% - 56px);
@@ -1979,11 +1983,11 @@ span.price {
 
 .timeline-item span.title.left {
     right: auto;
-    text-align: right;
+    /*text-align: right;*/
     left: calc(-100% - 56px);
     padding-left: 0;
     border-left: none;
-    border-right: 2px solid rgba(255, 255, 255, .5);
+    /*border-right: 2px solid rgba(255, 255, 255, .5);*/
     padding-right: 15px;
 }
 
@@ -2263,11 +2267,15 @@ span.price {
 /*lines*/
 
 .lines{
-    padding: 50px 0;
+    padding: 150px 0;
+
+}
+.lines img{
+    max-width: 400px;
 }
 
-.lines.right .container{
+.lines .container{
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
 }
