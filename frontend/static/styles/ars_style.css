@@ -1833,7 +1833,7 @@ span.price {
         display: block;
     }
     .bg_img.pc {
-        display: block;
+        display: none;
     }
 }
 
