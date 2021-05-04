@@ -2259,3 +2259,15 @@ span.price {
 .main__cards .item .body p{
     font-size: 14px;
 }
+
+/*lines*/
+
+.lines{
+    padding: 50px 0;
+}
+
+.lines.right .container{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
