@@ -1,0 +1,321 @@
+:root {
+    --swiper-theme-color: unset;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+
+/*HEADER MENU*/
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999999999;
+    padding: 0;
+    transition: 0.5s;
+    background-color: rgba(255, 255, 255, 0.7);
+    min-height: 135px;
+}
+
+header.sticky {
+    padding: 5px 0;
+    background-color: #fff;
+    min-height: 65px;
+    transition: 0.5s;
+}
+
+header img {
+    max-width: 100px;
+}
+
+header .container {
+    min-height: 135px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header.sticky .container {
+    min-height: 65px;
+}
+
+header ul.main {
+    height: 135px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+}
+
+header.sticky ul.main{
+    height: 65px;
+}
+
+header ul.main li {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+header a.logo {
+    min-height: 135px;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header.sticky a.logo {
+    min-height: 65px;
+}
+
+.ddb-li-body-item a:after,
+header ul.main li a:after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    -webkit-transform: translateX(-50%) scaleX(0);
+    transform: translateX(-50%) scaleX(0);
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    width: 100%;
+    height: 2px;
+    background-color: rgba(0, 0, 0, 0.9);
+    -webkit-transition: transform 250ms;
+    transition: transform 250ms;
+}
+
+.ddb-li-body-item a:hover:after,
+header ul.main li:hover > a:after {
+    -webkit-transform: translateX(-50%) scaleX(1);
+    transform: translateX(-50%) scaleX(1);
+}
+
+header ul.main li a {
+    position: relative;
+    color: #000;
+}
+
+@media all and (min-width: 768px) {
+    header ul.main li {
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: 500;
+        margin-left: 35px;
+        letter-spacing: 2px;
+        transition: 0.5s;
+    }
+
+    header ul.main li a:hover {
+        color: #000;
+    }
+
+
+    header.sticky ul.main li a {
+        color: #000;
+    }
+
+    header.sticky ul.main li a:hover {
+        color: #000;
+    }
+
+    header.sticky ul.main li a:after {
+        background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    div.hamburger {
+        display: none;
+    }
+}
+
+@media all and (max-width: 769px) {
+    body.menu-active {
+        overflow: hidden;
+    }
+
+    div.hamburger {
+        display: block;
+        position: relative;
+        width: 40px;
+        padding: 5px 0;
+        z-index: 99;
+    }
+
+    div.hamburger span {
+        display: block;
+        width: 40px;
+        height: 4px;
+        margin-bottom: 7px;
+        position: relative;
+        background: #000;
+        border-radius: 3px;
+        z-index: 1;
+        transform-origin: 4px 0;
+        transform: scale(1);
+        transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
+        background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
+        opacity 0.55s ease;
+    }
+
+    header.sticky div.hamburger span {
+        background: #000;
+    }
+
+    div.hamburger span#thirdSpan {
+        margin-bottom: 0;
+    }
+
+    div.hamburger.active span#firstSpan {
+        transform: rotate(41deg) translate(0.5px, -3px) scale(1.25);
+    }
+
+    div.hamburger.active span#secondSpan {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    div.hamburger.active span#thirdSpan {
+        transform: rotate(-41deg) translate(-2px, 1px) scale(1.25);
+    }
+
+    body.menu-active div.hamburger span {
+        background: #000;
+    }
+
+    header ul.main {
+        display: flex;
+        -webkit-transform: translateX(100%);
+        transform: translateX(100%);
+        position: fixed;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 150px 15px;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 4;
+        background-color: #fff;
+        -webkit-transition: all 1s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+        transition: all 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+    }
+
+    header ul.main.active {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+
+    header ul.main li {
+        min-width: 250px;
+        max-width: 460px;
+        width: 100%;
+        /*margin-bottom: 10px;*/
+        /*text-align: center;*/
+    }
+
+    header ul.main li a {
+        color: #000;
+        font-size: 23px;
+        font-weight: 500;
+    }
+
+    header ul.main li a:hover {
+        color: #000;
+    }
+
+    header ul.main li a:after {
+        background-color: rgba(0, 0, 0, 0.9);
+    }
+}
+
+
+/*DROPDOWN*/
+
+
+.dropdown-big {
+    position: relative;
+}
+
+.dropdown-big-item {
+    display: none;
+    position: absolute;
+    right: 0;
+    width: 100%;
+    padding: 25px 0;
+    transition: all 0.5s;
+}
+
+header .dropdown-big-item {
+    top: 135px;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+header.sticky .dropdown-big-item {
+    top: 65px;
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.dropdown-big-item .container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    position: relative;
+}
+
+.ddb-li {
+    min-width: 400px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.ddb-li:not(:first-child) {
+    border-left: 1px solid #000;
+}
+
+.ddb-li .ddb-li-header {
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+.ddb-li-body-item {
+    margin-bottom: 20px;
+}
+
+.ddb-li-body-item a {
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.ddb-li-body-item a:hover {
+    color: #000;
+}
+
+.ddb-li-body-item img {
+    margin-right: 15px;
+}
+
+.ddb-li-body-item span {
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+@media all and (min-width: 768px) {
+    .dropdown-big-item.active {
+        display: block;
+    }
+}
+
+
+
