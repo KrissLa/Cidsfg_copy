@@ -8,6 +8,39 @@ body {
 
 
 /*HEADER MENU*/
+header,
+header .container,
+header ul.main,
+header ul.main li,
+header a.logo {
+    min-height: 135px;
+}
+
+
+
+header.sticky,
+header.sticky .container,
+header.sticky ul.main,
+header.sticky ul.main li,
+header.sticky a.logo {
+    min-height: 65px;
+}
+
+@media all and (max-width: 768px) {
+    header,
+    header .container,
+    header ul.main,
+    header a.logo {
+        min-height: 90px;
+    }
+
+    header ul.main li,
+    header.sticky ul.main li{
+        min-height: 70px;
+    }
+
+}
+
 header {
     position: fixed;
     top: 0;
@@ -17,13 +50,11 @@ header {
     padding: 0;
     transition: 0.5s;
     background-color: rgba(255, 255, 255, 0.7);
-    min-height: 135px;
 }
 
 header.sticky {
     padding: 5px 0;
     background-color: #fff;
-    min-height: 65px;
     transition: 0.5s;
 }
 
@@ -32,31 +63,21 @@ header img {
 }
 
 header .container {
-    min-height: 135px;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-header.sticky .container {
-    min-height: 65px;
-}
-
 header ul.main {
-    height: 135px;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 5;
 }
 
-header.sticky ul.main{
-    height: 65px;
-}
 
 header ul.main li {
-    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -64,15 +85,10 @@ header ul.main li {
 
 
 header a.logo {
-    min-height: 135px;
     z-index: 5;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-header.sticky a.logo {
-    min-height: 65px;
 }
 
 .ddb-li-body-item a:after,
@@ -93,7 +109,8 @@ header ul.main li a:after {
 }
 
 .ddb-li-body-item a:hover:after,
-header ul.main li:hover > a:after {
+header ul.main li:hover > a:after,
+header ul.main li.active > a:after {
     -webkit-transform: translateX(-50%) scaleX(1);
     transform: translateX(-50%) scaleX(1);
 }
@@ -239,81 +256,88 @@ header ul.main li a {
 
 /*DROPDOWN*/
 
-
-.dropdown-big {
-    position: relative;
+@media (max-width: 768px) {
+    .dropdown-big-item,
+    .dropdown-big-item.active {
+        display: none;
+    }
 }
 
-.dropdown-big-item {
-    display: none;
-    position: absolute;
-    right: 0;
-    width: 100%;
-    padding: 25px 0;
-    transition: all 0.5s;
-}
-
-header .dropdown-big-item {
-    top: 135px;
-    background-color: rgba(255, 255, 255, 0.7);
-}
-
-header.sticky .dropdown-big-item {
-    top: 65px;
-    background-color: rgba(255, 255, 255, 1);
-}
-
-.dropdown-big-item .container {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    position: relative;
-}
-
-.ddb-li {
-    min-width: 400px;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.ddb-li:not(:first-child) {
-    border-left: 1px solid #000;
-}
-
-.ddb-li .ddb-li-header {
-    text-transform: uppercase;
-    margin-bottom: 30px;
-    font-weight: 500;
-}
-
-.ddb-li-body-item {
-    margin-bottom: 20px;
-}
-
-.ddb-li-body-item a {
-    position: relative;
-    padding-bottom: 15px;
-}
-
-.ddb-li-body-item a:hover {
-    color: #000;
-}
-
-.ddb-li-body-item img {
-    margin-right: 15px;
-}
-
-.ddb-li-body-item span {
-    font-weight: 500;
-    text-transform: uppercase;
-}
 
 @media all and (min-width: 768px) {
     .dropdown-big-item.active {
         display: block;
+    }
+
+    .dropdown-big {
+        position: relative;
+    }
+
+    .dropdown-big-item {
+        display: none;
+        position: absolute;
+        right: 0;
+        width: 100%;
+        padding: 25px 0;
+        transition: all 0.5s;
+    }
+
+    header .dropdown-big-item {
+        top: 135px;
+        background-color: rgba(255, 255, 255, 0.7);
+    }
+
+    header.sticky .dropdown-big-item {
+        top: 65px;
+        background-color: rgba(255, 255, 255, 1);
+    }
+
+    .dropdown-big-item .container {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        position: relative;
+    }
+
+    .ddb-li {
+        min-width: 400px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .ddb-li:not(:first-child) {
+        border-left: 1px solid #000;
+    }
+
+    .ddb-li .ddb-li-header {
+        text-transform: uppercase;
+        margin-bottom: 30px;
+        font-weight: 500;
+    }
+
+    .ddb-li-body-item {
+        margin-bottom: 20px;
+    }
+
+    .ddb-li-body-item a {
+        position: relative;
+        padding-bottom: 15px;
+    }
+
+    .ddb-li-body-item a:hover {
+        color: #000;
+    }
+
+    .ddb-li-body-item img {
+        margin-right: 15px;
+    }
+
+    .ddb-li-body-item span {
+        font-weight: 500;
+        text-transform: uppercase;
     }
 }
 

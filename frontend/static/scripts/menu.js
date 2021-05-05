@@ -42,23 +42,26 @@ const setLiHeight = (dropdown) => {
     dropdownItems.forEach(e => e.style.height = `${maxHeight}px`);
 }
 
-const showDropdown = (dropdown) => {
+const showDropdown = (dropdown, menuItem) => {
     addClass(dropdown, 'active');
+    addClass(menuItem, 'active');
     setLiHeight(dropdown);
 }
 
-const hideDropdown = (dropdown) => {
+const hideDropdown = (dropdown, menuItem) => {
     if (!dropdown.classList.contains('mouse-in')) {
         removeClass(dropdown, 'active');
+        removeClass(menuItem, 'active');
     }
 }
 
-const mouseInDropdown = (dropdown) => {
+const mouseInDropdown = (dropdown, menuItem) => {
     dropdown.addEventListener('mouseenter', () => addClass(dropdown, 'mouse-in'));
 
     dropdown.addEventListener('mouseleave', () => {
         removeClass(dropdown, 'mouse-in');
         removeClass(dropdown, 'active');
+        removeClass(menuItem, 'active');
     });
 }
 
@@ -66,9 +69,9 @@ const mouseInDropdown = (dropdown) => {
 dropdownMenuItems.forEach(e => {
     const dropdown = document.querySelector(`#${e.getAttribute('data-for')}`);
 
-    e.addEventListener('mouseenter', () => showDropdown(dropdown));
+    e.addEventListener('mouseenter', () => showDropdown(dropdown, e));
 
-    e.addEventListener('mouseleave', () => mouseInDropdown(dropdown));
+    e.addEventListener('mouseleave', () => mouseInDropdown(dropdown, e));
 
-    e.addEventListener('mouseleave', () => setTimeout(hideDropdown, 100, dropdown));
+    e.addEventListener('mouseleave', () => setTimeout(hideDropdown, 100, dropdown, e));
 })
