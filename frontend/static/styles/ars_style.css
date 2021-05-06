@@ -2299,19 +2299,4 @@ span.price {
     font-size: 14px;
 }
 
-/*lines*/
 
-.lines {
-    padding: 150px 0;
-
-}
-
-.lines img {
-    max-width: 400px;
-}
-
-.lines .container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}

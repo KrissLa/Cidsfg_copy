@@ -73,5 +73,5 @@ dropdownMenuItems.forEach(e => {
 
     e.addEventListener('mouseleave', () => mouseInDropdown(dropdown, e));
 
-    e.addEventListener('mouseleave', () => setTimeout(hideDropdown, 100, dropdown, e));
+    e.addEventListener('mouseleave', () => setTimeout(hideDropdown, 300, dropdown, e));
 })
