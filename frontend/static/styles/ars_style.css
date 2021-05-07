@@ -284,6 +284,20 @@ div .cart-favorites {
     background-size: cover;
 }
 
+section.contacts{
+    padding: 100px 0;
+}
+
+section.contacts h1{
+    font-weight:200;
+    font-size: 60px;
+    margin-bottom: 35px;
+}
+
+section.contacts .img{
+    max-width:60%;
+}
+
 
 /*CATALOG*/
 
