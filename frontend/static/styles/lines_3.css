@@ -257,41 +257,96 @@
     transition: all 0.5s ease;
 }
 
-.lines .line span {
-    position: absolute;
-    display: block;
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    border: 1px solid #000;
-    background-color: #000;
+@-webkit-keyframes animate-circle {
+    from {
+        transform: scale(0);
+        opacity: 1;
+    }
+    to {
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+@keyframes animate-circle {
+    from {
+        transform: scale(0);
+        opacity: 1;
+    }
+    to {
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+.lines .line .dot {
     z-index: 2;
+    position: absolute;
+    --size: 2rem;
+
+    /*top: 50%;*/
+    /*left: 50%;*/
+    height: var(--size);
+    width: var(--size);
+
 }
 
-#line-1 span {
+#line-1 .dot {
     right: 30px;
-    bottom: 0;
+    bottom: 1px;
+    transform: translateX(50%) translateY(50%);
 }
 
-#line-2 span {
+#line-2 .dot {
     top: 0;
-    right: -1px;
+    right: 0;
+    transform: translateX(50%) translateY(-50%);
 }
 
-#line-3 span {
-    left: 47px;
-    bottom: 54px;
+#line-3 .dot {
+    left: 50px;
+    bottom: 55px;
+    transform: translateX(-50%) translateY(50%);
 }
 
-#line-4 span {
-    top: 63px;
-    right: 77px;
+#line-4 .dot {
+    top: 64px;
+    right: 80px;
+    transform: translateX(50%) translateY(-50%);
 }
 
-#line-5 span {
-    top: 46px;
-    left: -8px;
+#line-5 .dot {
+    top: 49px;
+    left: -6px;
+    transform: translateX(-50%) translateY(-50%);
 }
+
+.dot > .circle {
+        --duration: 2s;
+
+        position: absolute;
+        height: inherit;
+        width: inherit;
+        background: #000000;
+        border-radius: 50%;
+        -webkit-animation: animate-circle var(--duration) cubic-bezier(.9,.24,.62,.79) infinite;
+                animation: animate-circle var(--duration) cubic-bezier(.9,.24,.62,.79) infinite;
+    }
+
+.dot > .circle:nth-of-type(1) {
+            -webkit-animation-delay: 0;
+                    animation-delay: 0;
+        }
+
+.dot > .circle:nth-of-type(2) {
+            -webkit-animation-delay: calc(var(--duration) / -3);
+                    animation-delay: calc(var(--duration) / -3);
+        }
+
+.dot > .circle:nth-of-type(3) {
+            -webkit-animation-delay: calc(var(--duration) / -6);
+                    animation-delay: calc(var(--duration) / -6);
+        }
 
 #line-1 {
     position: relative;

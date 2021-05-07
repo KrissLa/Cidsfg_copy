@@ -7,9 +7,67 @@
     <link rel="stylesheet" href="{% static 'styles/swiper-bundle.min.css' %}">
 {% endblock styles %}
 
-{% block logo %}
-    {% static 'images/logos/cubo_logo@5x.png' %}
-{% endblock logo %}"
+{% block header %}
+    <header>
+        <ul class="dropdown-big-item" id="categories">
+            <div class="container">
+                <li class="ddb-li">
+                    <div class="ddb-li-header">Одноэтажные</div>
+                    <div class="ddb-li-body">
+                        <div class="ddb-li-body-item">
+                            <a href="#">
+                                <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>
+                                <span>Flat</span>
+                            </a>
+                        </div>
+                        <div class="ddb-li-body-item">
+                            <a href="#">
+                                <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>
+                                <span>Bent</span>
+                            </a>
+                        </div>
+                        <div class="ddb-li-body-item">
+                            <a href="#">
+                                <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>
+                                <span>Flat</span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li class="ddb-li">
+                    <div class="ddb-li-header">Двухэтажные</div>
+                    <div class="ddb-li-body">
+                        <div class="ddb-li-body-item">
+                            <span>Скоро на сайте!</span>
+                        </div>
+                    </div>
+                </li>
+                {#                <li class="ddb-li">#}
+                {##}
+                {#                </li>#}
+            </div>
+
+        </ul>
+        <div class="container">
+            <a href="#" class="logo"><img src="{% static 'images/logos/cubo_logo@8x.png' %}"/></a>
+            <ul class="main">
+                <li class="dropdown-big" data-for="categories">
+                    <a href="#">Модельный ряд</a>
+
+                </li>
+                <li><a href="#">Завод</a></li>
+                <li><a href="#">Контакты</a></li>
+            </ul>
+            <div class="hamburger">
+                <span id="firstSpan"></span>
+                <span id="secondSpan"></span>
+                <span id="thirdSpan"></span>
+            </div>
+
+
+        </div>
+    </header>
+{% endblock header %}
 
 {% block content %}
     <section class="main vh">
@@ -32,7 +90,7 @@
                     {#                    />#}
                     <div class="bg_img pc " style="background-image: url({% static 'images/heade_1r.jpg' %})"></div>
                     <div class="bg_img mobile vh"
-                         style="background-image: url({% static 'images/heade_1r.jpg' %})"></div>
+                         style="background-image: url({% static 'images/header_mob.jpg' %})"></div>
                     <div class="container">
                         <div class="header-card white-text">
                             <h1>CUBO</h1>
@@ -126,7 +184,52 @@
     </div>
     <section class="lines">
         <div class="container">
-            <img src="{% static 'images/CUBO_ines.png' %}"/>
+            <div class="secondary-img" id="sec_1"><img src="{% static 'images/sec_img.jpg' %}"/></div>
+            <div class="secondary-img" id="sec_2"><img src="{% static 'images/sec_img.jpg' %}"/></div>
+            <div class="secondary-img" id="sec_3"><img src="{% static 'images/sec_img.jpg' %}"/></div>
+            <div class="secondary-img" id="sec_4"></div>
+            <div class="secondary-img" id="sec_5"><img src="{% static 'images/sec_img.jpg' %}"/></div>
+
+
+            <div class="text" id="sec-text-1">
+                <span class="">
+                    Утепление базальтовыми плитами толщиной 150 мм
+                </span>
+            </div>
+            <div class="text" id="sec-text-2">
+                <span class="">
+                    Система крепления для сборки дома стальными тросами. Обеспечивает прочность соединения швов панели
+                    и усиление на разрыв более 14 тонн
+                </span>
+            </div>
+            <div class="text" id="sec-text-3">
+                <span class="">
+                    Двустороння обшивка панелей влгостойким ОСП-3 толщиной 12 мм
+                </span>
+            </div>
+            <div class="text" id="sec-text-4">
+                <span class="">
+                    Профессиональный изоляционные метариалы внутренний слой обеспечивает пароизоляцию наружный слой
+                    супердифузионная мембрана
+                </span>
+            </div>
+            <div class="text" id="sec-text-5">
+                <span class="">
+                    Профилированный клееный брус обладает лучшими прочностными характеристиками и обеспечивает
+                    надежное герметичное соединения
+                </span>
+            </div>
+
+
+            <div class="line" id="line-1"><span></span></div>
+            <div class="line" id="line-2"><span></span></div>
+            <div class="line" id="line-3"><span></span></div>
+            <div class="line" id="line-4"><span></span></div>
+            <div class="line" id="line-5"><span></span></div>
+
+
+            <div class="center-img"><img src="{% static 'images/CUBO_ines.png' %}"/></div>
+
         </div>
 
 
@@ -553,4 +656,5 @@
     <script src="{% static 'scripts/swiper-bundle.min.js' %}"></script>
     <script src="{% static 'scripts/lazy.min.js' %}"></script>
     <script src="{% static 'scripts/home_1.js' %}"></script>
+    <script src="{% static 'scripts/lines_2.js' %}"></script>
 {% endblock scripts %}
