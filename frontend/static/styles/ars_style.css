@@ -1678,7 +1678,7 @@ span.price {
 .swiper-container-header .swiper-slide-h .container {
     position: absolute;
     left: 50%;
-    top: 60%;
+    top: 55%;
     -webkit-transform: translate(-50%, -60%);
     transform: translate(-50%, -60%);
     display: flex;
