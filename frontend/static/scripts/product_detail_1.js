@@ -15,11 +15,9 @@ const getCatalogSpaceBetween = () => {
         return 80
     } else if (document.documentElement.clientWidth > 992) {
         return 150
-    }
-    else if (document.documentElement.clientWidth > 768) {
+    } else if (document.documentElement.clientWidth > 768) {
         return 20
-    }
-    else {
+    } else {
         return 5
     }
 }
@@ -124,9 +122,9 @@ navItemsCatalog.forEach(e => {
 
             });
             window.addEventListener('resize', function () {
-            swiperCatalog.params.slidesPerView = getCatalogSlidesPerView();
-            swiperCatalog.params.spaceBetween = getCatalogSpaceBetween();
-        });
+                swiperCatalog.params.slidesPerView = getCatalogSlidesPerView();
+                swiperCatalog.params.spaceBetween = getCatalogSpaceBetween();
+            });
         }
         scrollToActiveTab(e, navArrayCatalog, catalogContainer);
 
@@ -145,7 +143,7 @@ const addScrollbar = () => {
         console.log(e.querySelector('.tabs-slider').offsetWidth);
         console.log(e.querySelector('.container').offsetWidth);
         console.log(window.clientWidth);
-        if (e.querySelector('.tabs-slider').offsetWidth > e.querySelector('.container').offsetWidth){
+        if (e.querySelector('.tabs-slider').offsetWidth > e.querySelector('.container').offsetWidth) {
             e.classList.add('scroll');
         }
     })
@@ -156,7 +154,7 @@ addScrollbar()
 
 //modal
 const buttonForRequestInfo = document.querySelector('#show-request-info-modal'),
-    body = document.querySelector('body'),
+    bodyEl = document.querySelector('body'),
     requestInfoModal = document.querySelector('#modal-request-info'),
     buttonCloseInfo = document.querySelector('#close-info'),
 
@@ -195,7 +193,7 @@ const showModal = (modelSelector) => {
         navBar.style.paddingRight = '32px';
         navBar.style.trasition = 'unset';
     }
-    body.classList.add('show-modal');
+    bodyEl.classList.add('show-modal');
     modelSelector.classList.add('active');
     html.classList.add('modal-show');
 
@@ -203,7 +201,7 @@ const showModal = (modelSelector) => {
 
 const hideModal = (modelSelector) => {
     navBar.style.paddingRight = '15px';
-    body.classList.remove('show-modal');
+    bodyEl.classList.remove('show-modal');
     modelSelector.classList.remove('active');
     html.classList.remove('modal-show');
 
