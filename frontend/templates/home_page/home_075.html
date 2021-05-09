@@ -5,34 +5,18 @@
 {% block seo_description %}{{ home_data.seo_description }}{% endblock seo_description %}
 {% block styles %}
     <link rel="stylesheet" href="{% static 'styles/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/lines.css' %}">
 {% endblock styles %}
 
-{% block logo %}
-    {% static 'images/logos/cubo_logo@7x.png' %}
-{% endblock logo %}"
-
+{% block header_class %}home{% endblock header_class %}
 {% block content %}
     <section class="main vh">
         <div class="swiper-container-header">
             <div class="swiper-wrapper-h">
                 <div class="swiper-slide-h vh">
-                    {#                    <img#}
-                    {#                            alt="альтернативный текст"#}
-                    {#                            class="lazy"#}
-                    {#                            src="{% static 'images/single_page/thumbs/1-modul-fas-1.jpg' %}"#}
-                    {#                            data-src="{% static 'images/для сайта/Фото 3.jpg' %}"#}
-                    {#                            data-srcset="{% static 'images/для сайта/Фото 3.jpg' %} 450w,#}
-                    {#                                                 {% static 'images/для сайта/Фото 3.jpg' %} 720w,#}
-                    {#                                                 {% static 'images/для сайта/Фото 3.jpg' %} 1000w#}
-                    {#                                                {% static 'images/для сайта/Фото 3.jpg' %} 2000w"#}
-                    {#                            data-sizes="(max-width: 767px) 450px,#}
-                    {#                                                (max-width: 1199px) 720px,#}
-                    {#                                                (max-width: 1300px) 1000px,#}
-                    {#                                                2000px"#}
-                    {#                    />#}
                     <div class="bg_img pc " style="background-image: url({% static 'images/heade_1r.jpg' %})"></div>
                     <div class="bg_img mobile vh"
-                         style="background-image: url({% static 'images/heade_1r.jpg' %})"></div>
+                         style="background-image: url({% static 'images/header_mob.jpg' %})"></div>
                     <div class="container">
                         <div class="header-card white-text">
                             <h1>CUBO</h1>
@@ -126,7 +110,52 @@
     </div>
     <section class="lines">
         <div class="container">
-            <img src="{% static 'images/CUBO_ines.png' %}"/>
+            <div class="secondary-img" id="sec_1"><img src="{% static 'images/sec_img.jpg' %}"/></div>
+            <div class="secondary-img" id="sec_2"><img src="{% static 'images/sec_img.jpg' %}"/></div>
+            <div class="secondary-img" id="sec_3"><img src="{% static 'images/sec_img.jpg' %}"/></div>
+            <div class="secondary-img" id="sec_4"></div>
+            <div class="secondary-img" id="sec_5"><img src="{% static 'images/sec_img.jpg' %}"/></div>
+
+
+            <div class="text" id="sec-text-1">
+                <span class="">
+                    Утепление базальтовыми плитами толщиной 150 мм
+                </span>
+            </div>
+            <div class="text" id="sec-text-2">
+                <span class="">
+                    Система крепления для сборки дома стальными тросами. Обеспечивает прочность соединения швов панели
+                    и усиление на разрыв более 14 тонн
+                </span>
+            </div>
+            <div class="text" id="sec-text-3">
+                <span class="">
+                    Двустороння обшивка панелей влгостойким ОСП-3 толщиной 12 мм
+                </span>
+            </div>
+            <div class="text" id="sec-text-4">
+                <span class="">
+                    Профессиональный изоляционные метариалы внутренний слой обеспечивает пароизоляцию наружный слой
+                    супердифузионная мембрана
+                </span>
+            </div>
+            <div class="text" id="sec-text-5">
+                <span class="">
+                    Профилированный клееный брус обладает лучшими прочностными характеристиками и обеспечивает
+                    надежное герметичное соединения
+                </span>
+            </div>
+
+
+            <div class="line" id="line-1"><span></span></div>
+            <div class="line" id="line-2"><span></span></div>
+            <div class="line" id="line-3"><span></span></div>
+            <div class="line" id="line-4"><span></span></div>
+            <div class="line" id="line-5"><span></span></div>
+
+
+            <div class="center-img"><img src="{% static 'images/CUBO_ines.png' %}"/></div>
+
         </div>
 
 
@@ -491,60 +520,6 @@
         </div>
 
     </section>
-
-
-    {#        <section class="main__cards">#}
-    {#            <div class="container">#}
-    {#                <div class="item b-shadow white">#}
-    {#                    <div class="icon"><img src="{% static 'images/icons/cooperation.png' %}"/></div>#}
-    {#                    <div class="caption">#}
-    {#                        <a href="#">Сотрудничество</a>#}
-    {#                    </div>#}
-    {#                </div>#}
-    {#                <div class="item b-shadow white">#}
-    {#                    <div class="icon"><img src="{% static 'images/icons/business.png' %}"/></div>#}
-    {#                    <div class="caption">#}
-    {#                        <a href="#">CUBO BUSINESS</a>#}
-    {#                    </div>#}
-    {#                </div>#}
-    {#                <div class="item b-shadow white">#}
-    {#                    <div class="icon"><img src="{% static 'images/icons/contacts.png' %}"/></div>#}
-    {#                    <div class="caption">#}
-    {#                        <a href="{% url 'contacts' %}">Связаться с нами</a>#}
-    {#                    </div>#}
-    {#                </div>#}
-    {#            </div>#}
-    {#        </section>#}
-
-    {#     <section class="main__cards">#}
-    {#            <h3>Дом <span>CUBO</span> это просто!</h3>#}
-    {#            <div class="container">#}
-    {#                <div class="item b-shadow white">#}
-    {#                    <div class="number">#}
-    {#                        <span>1</span>#}
-    {#                    </div>#}
-    {#                    <div class="title">#}
-    {#                        <h3>Заявка</h3>#}
-    {#                    </div>#}
-    {#                    <div class="body">#}
-    {#                        <p>Вы звоните или оставляете заявку на сайте, мы Вас консультируем и уточняем детали.</p>#}
-    {#                    </div>#}
-    {#                </div>#}
-    {#                <div class="item b-shadow white">#}
-    {#                    <div class="icon"><img src="{% static 'images/icons/business.png' %}"/></div>#}
-    {#                    <div class="caption">#}
-    {#                        <a href="#">CUBO BUSINESS</a>#}
-    {#                    </div>#}
-    {#                </div>#}
-    {#                <div class="item b-shadow white">#}
-    {#                    <div class="icon"><img src="{% static 'images/icons/contacts.png' %}"/></div>#}
-    {#                    <div class="caption">#}
-    {#                        <a href="{% url 'contacts' %}">Связаться с нами</a>#}
-    {#                    </div>#}
-    {#                </div>#}
-    {#            </div>#}
-    {#        </section>#}
-
 {% endblock content %}
 
 
@@ -553,4 +528,5 @@
     <script src="{% static 'scripts/swiper-bundle.min.js' %}"></script>
     <script src="{% static 'scripts/lazy.min.js' %}"></script>
     <script src="{% static 'scripts/home_1.js' %}"></script>
+    <script src="{% static 'scripts/lines_075.js' %}"></script>
 {% endblock scripts %}

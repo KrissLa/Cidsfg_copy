@@ -12,14 +12,6 @@
 //     }
 // }
 
-const toggleClass = (element, className) => {
-    if (!element.classList.contains(className)) {
-        element.classList.add(className);
-    } else {
-        element.classList.remove(className);
-    }
-}
-
 
 ///
 
@@ -44,7 +36,7 @@ const allLinesAnimationOneTime = () => {
         texts.forEach(e => addClass(e, 'active'));
         pictures.forEach(e => addClass(e, 'active'));
 
-    }, 500)
+    }, 1500)
 }
 const linesAnimation = (line, secondLine, text, picture) => {
     addClass(line, 'active');
@@ -53,30 +45,7 @@ const linesAnimation = (line, secondLine, text, picture) => {
         addClass(text, 'active');
         addClass(picture, 'active');
 
-    }, 500)
-}
-
-const linesAnimationToggle = (line, secondLine, text, picture) => {
-
-    if (!line.classList.contains('active')) {
-        toggleClass(line, 'active');
-        setTimeout(() => {
-            toggleClass(secondLine, 'active');
-            toggleClass(text, 'active');
-            toggleClass(picture, 'active');
-
-        }, 500)
-    } else {
-        toggleClass(secondLine, 'active');
-        toggleClass(text, 'active');
-        toggleClass(picture, 'active');
-
-        setTimeout(() => {
-            toggleClass(line, 'active');
-
-        }, 500)
-    }
-
+    }, 1500)
 }
 
 const linesAnimationsInTurn = () => {
@@ -84,34 +53,27 @@ const linesAnimationsInTurn = () => {
         if (i === 0) {
             linesAnimation(lines[i], secondLines[i], texts[i], pictures[i]);
         } else {
-            setTimeout(() => linesAnimation(lines[i], secondLines[i], texts[i], pictures[i]), 500 * i);
+            setTimeout(() => linesAnimation(lines[i], secondLines[i], texts[i], pictures[i]), 1500 * i);
 
         }
     }
 }
 
 const getOffsetLines = () => {
+    console.log(sectionLines.offsetTop);
     return sectionLines.offsetTop;
 }
 
-const dots = document.querySelectorAll('.dot');
-
-
-dots.forEach(e => {
-    e.addEventListener('click', () => {
-        let num = e.parentNode.getAttribute('id').slice(-1);
-        const line = document.querySelector(`#line-${num}`),
-            secondLine = document.querySelector(`#sec-text-${num}`),
-            text = secondLine.querySelector(`span`),
-            picture = document.querySelector(`#sec_${num}`);
-        linesAnimationToggle(line, secondLine, text, picture);
-    })
+document.addEventListener('scroll', () => {
+    if (window.pageYOffset > getOffsetLines() - 400){
+        linesAnimationsInTurn()
+    }
 })
 
-// document.addEventListener('scroll', () => {
-//     if (window.pageYOffset > getOffsetLines() - 400){
-//         allLinesAnimationOneTime()
-//     }
-// })
 
+// bigImage.forEach(e => e.addEventListener('click', linesAnimation));
+bigImage.forEach(e => e.addEventListener('click', linesAnimationsInTurn));
+// linesAnimation();
+
+getOffsetLines()
 

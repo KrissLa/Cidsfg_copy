@@ -36,7 +36,7 @@ const allLinesAnimationOneTime = () => {
         texts.forEach(e => addClass(e, 'active'));
         pictures.forEach(e => addClass(e, 'active'));
 
-    }, 500)
+    }, 1000)
 }
 const linesAnimation = (line, secondLine, text, picture) => {
     addClass(line, 'active');
@@ -45,7 +45,7 @@ const linesAnimation = (line, secondLine, text, picture) => {
         addClass(text, 'active');
         addClass(picture, 'active');
 
-    }, 500)
+    }, 1000)
 }
 
 const linesAnimationsInTurn = () => {
@@ -53,7 +53,7 @@ const linesAnimationsInTurn = () => {
         if (i === 0) {
             linesAnimation(lines[i], secondLines[i], texts[i], pictures[i]);
         } else {
-            setTimeout(() => linesAnimation(lines[i], secondLines[i], texts[i], pictures[i]), 500 * i);
+            setTimeout(() => linesAnimation(lines[i], secondLines[i], texts[i], pictures[i]), 1000 * i);
 
         }
     }
