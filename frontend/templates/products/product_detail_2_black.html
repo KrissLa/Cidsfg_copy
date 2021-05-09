@@ -1,263 +1,329 @@
-{% extends 'superbase.html' %}
-{% load static %}
+{% extends 'superbase_black_menu.html' %}
+{% load static price_to_str_filter %}
 
-{% block seo_title %}{{ home_data.seo_title }}{% endblock seo_title %}
-{% block seo_description %}{{ home_data.seo_description }}{% endblock seo_description %}
+<!--{% block seo_title %}{{ house.seo_title }}{% endblock seo_title %}-->
+<!--{% block seo_description %}{{ house.seo_description }}{% endblock seo_description %}-->
+
 {% block styles %}
     <link rel="stylesheet" href="{% static 'styles/swiper-bundle.min.css' %}">
 {% endblock styles %}
 
-{#{% block header %}#}
-{#    <header>#}
-{#        <ul class="dropdown-big-item" id="categories">#}
-{#            <div class="container">#}
-{#                <li class="ddb-li">#}
-{#                    <div class="ddb-li-header">Одноэтажные</div>#}
-{#                    <div class="ddb-li-body">#}
-{#                        <div class="ddb-li-body-item">#}
-{#                            <a href="#">#}
-{#                                <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>#}
-{#                                <span>Flat</span>#}
-{#                            </a>#}
-{#                        </div>#}
-{#                        <div class="ddb-li-body-item">#}
-{#                            <a href="#">#}
-{#                                <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>#}
-{#                                <span>Flat</span>#}
-{#                            </a>#}
-{#                        </div>#}
-{##}
-{#                        <div class="ddb-li-body-item">#}
-{#                            <a href="#">#}
-{#                                <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>#}
-{#                                <span>Flat</span>#}
-{#                            </a>#}
-{#                        </div>#}
-{##}
-{#                        <div class="ddb-li-body-item">#}
-{#                            <a href="#">#}
-{#                                <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>#}
-{#                                <span>Flat</span>#}
-{#                            </a>#}
-{#                        </div>#}
-{##}
-{#                        <div class="ddb-li-body-item">#}
-{#                            <a href="#">#}
-{#                                <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>#}
-{#                                <span>Bent</span>#}
-{#                            </a>#}
-{#                        </div>#}
-{#                        <div class="ddb-li-body-item">#}
-{#                            <a href="#">#}
-{#                                <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>#}
-{#                                <span>Bent</span>#}
-{#                            </a>#}
-{#                        </div>#}
-{#                        <div class="ddb-li-body-item">#}
-{#                            <a href="#">#}
-{#                                <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>#}
-{#                                <span>Flat</span>#}
-{#                            </a>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </li>#}
-{#                <li class="ddb-li">#}
-{#                    <div class="ddb-li-header">Двухэтажные</div>#}
-{#                    <div class="ddb-li-body">#}
-{#                        <div class="ddb-li-body-item">#}
-{#                            <span class="soon">Скоро на сайте!</span>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </li>#}
-                {#                <li class="ddb-li">#}
-                {##}
-                {#                </li>#}
-{#            </div>#}
-{##}
-{#        </ul>#}
-{#        <div class="container">#}
-{#            <a href="#" class="logo"><img src="{% static 'images/logos/cubo_logo@8x.png' %}"/></a>#}
-{#            <ul class="main">#}
-{#                <li class="dropdown-big" data-for="categories">#}
-{#                    <a href="#">Модельный ряд</a>#}
-{##}
-{#                </li>#}
-{#                <li><a href="#">Завод</a></li>#}
-{#                <li><a href="#">Контакты</a></li>#}
-{#            </ul>#}
-{#            <div class="hamburger">#}
-{#                <span id="firstSpan"></span>#}
-{#                <span id="secondSpan"></span>#}
-{#                <span id="thirdSpan"></span>#}
-{#            </div>#}
-{##}
-{##}
-{#        </div>#}
-{#    </header>#}
-{#{% endblock header %}#}
-
-{% block header_class %}home{% endblock header_class %}
 {% block content %}
-    <section class="main vh">
-        <div class="swiper-container-header">
-            <div class="swiper-wrapper-h">
-                <div class="swiper-slide-h vh">
-                    {#                    <img#}
-                    {#                            alt="альтернативный текст"#}
-                    {#                            class="lazy"#}
-                    {#                            src="{% static 'images/single_page/thumbs/1-modul-fas-1.jpg' %}"#}
-                    {#                            data-src="{% static 'images/для сайта/Фото 3.jpg' %}"#}
-                    {#                            data-srcset="{% static 'images/для сайта/Фото 3.jpg' %} 450w,#}
-                    {#                                                 {% static 'images/для сайта/Фото 3.jpg' %} 720w,#}
-                    {#                                                 {% static 'images/для сайта/Фото 3.jpg' %} 1000w#}
-                    {#                                                {% static 'images/для сайта/Фото 3.jpg' %} 2000w"#}
-                    {#                            data-sizes="(max-width: 767px) 450px,#}
-                    {#                                                (max-width: 1199px) 720px,#}
-                    {#                                                (max-width: 1300px) 1000px,#}
-                    {#                                                2000px"#}
-                    {#                    />#}
-                    <div class="bg_img pc " style="background-image: url({% static 'images/heade_1r.jpg' %})"></div>
-                    <div class="bg_img mobile vh"
-                         style="background-image: url({% static 'images/header_mob.jpg' %})"></div>
-                    <div class="container">
-                        <div class="header-card white-text">
-                            <h1>CUBO</h1>
-                            <h2>Современные дома по уникальной технологии</h2>
-                            <a class="more-button" href="{% url 'about' %}">
-                                Подробнее <span class="fas fa-chevron-right"></span>
-                            </a>
-                        </div>
-                        <div>
-
-
-                        </div>
-                    </div>
-                </div>
+    <section class="breadcrumbs-custom">
+        <div class="container">
+            <div class="breadcrumbs-custom__inner">
+                <ul class="breadcrumbs-custom__path">
+                    <li><a href="{% url 'home' %}">Главная</a></li>
+                    <li><a href="{% url 'houses_list' %}">Каталог</a></li>
+                    <li class="active">{{ house.name }}</li>
+                </ul>
             </div>
         </div>
     </section>
-    <div class="timeline-container" id="timeline-1">
-        <div class="timeline-header">
-            <h2 class="timeline-header__title">ПОЧЕМУ ВЫБИРАЮТ CUBO</h2>
-            <h3 class="timeline-header__subtitle">И ЧТО В НАС УНИКАЛЬНОГО</h3>
-        </div>
-        <div class="timeline">
-            <div class="timeline-item ti-active" data-text="ГАРАНТИРУЕМ КАЧЕСТВО И НАДЕЖНОСТЬ" data-text-mobile="1">
-                <span class="right title">ГАРАНТИРУЕМ КАЧЕСТВО И НАДЕЖНОСТЬ</span>
-                <div class="timeline__content">
-                    <div data-bg-src="{% static 'images/time_line/uniq_1920.jpg' %}"
-                         data-bg-src-mobile="{% static 'images/time_line/uniq_1920.jpg' %}"
-                         class="timeline__img"
-                         src="{% static 'images/time_line/uniq_460.jpg' %}"></div>
-                    {#                    <h2 class="timeline__content-title pc">CUBO</h2>#}
-                    <h2 class="timeline__content-title mobile">ГАРАНТИРУЕМ КАЧЕСТВО И НАДЕЖНОСТЬ</h2>
-                    <p class="timeline__content-desc">Компаниия CUBO имеет налаженную инфраструктуру. Мы занимаемся
-                        всеми
-                        этапами производства. Начиная заготовкой леса и заканчивая изготовлением каждой детали дома.
-                        После
-                        каждого этапа обязательно проводится контроль качества. Наши кострукции из клеенного бруса имеют
-                        высокие тепло и звукоизоляционные характеристики и обеспечивают длительный срок службы. Все
-                        детали
-                        имеют заводское качество и стыкуются как конструктор что исключает ошибки монтажа.</p>
+    <div class="container content">
+        <div class="content-wrapper">
+            <section class="content-slider b-shadow">
+                <div class="swiper-container-detail">
+                    <div class="swiper-wrapper">
+                        {% for pic in house.get_pictures %}
+                            <div class="swiper-slide">
+                                <img
+                                        alt="{{ pic.alt }}"
+                                        class="lazy"
+                                        src="{{ pic.picture.thumb.url }}"
+                                        {#                                    data-src="{% static 'images/CUBO_FLAT_71/4_3000x2000.jpg' %}"#}
+                                        data-srcset="{{ pic.picture.w450.url }} 450w,
+                                                 {{ pic.picture.w720.url }} 720w,
+                                                 {{ pic.picture.w1000.url }} 1000w"
+                                        data-sizes="(max-width: 767px) 450px,
+                                                (max-width: 1199px) 720px,
+                                                1000px"
+                                />
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
                 </div>
-            </div>
-            <div class="timeline-item ti-active" data-text="НЕОГРАНИЧЕННЫЕ ВОЗМОЖНОСТИ ДИЗАЙНА" data-text-mobile="2">
-                <span class="left title">НЕОГРАНИЧЕННЫЕ ВОЗМОЖНОСТИ ДИЗАЙНА</span>
-                <div class="timeline__content">
-                    <div data-bg-src="{% static 'images/time_line/design_1920.jpg' %}"
-                         data-bg-src-mobile="{% static 'images/time_line/design_1920.jpg' %}"
-                         class="timeline__img"
-                         src="{% static 'images/time_line/design_460.jpg' %}"></div>
-                    {#                    <h2 class="timeline__content-title pc">CUBO</h2>#}
-                    <h2 class="timeline__content-title mobile">НЕОГРАНИЧЕННЫЕ ВОЗМОЖНОСТИ ДИЗАЙНА</h2>
-                    <p class="timeline__content-desc">Дома CUBO имеют уникальный дизайн. Высокие потолки и открытое
-                        пространство дают неограниченные вызможности для создания любого дизайна. Все наши покупатели
-                        могут увеличить площадь дома засчет новых модулей.</p>
-                </div>
-            </div>
-            <div class="timeline-item ti-active" data-text="УНИКАЛЬНЫЕ ВОЗМОЖНОСТИ" data-text-mobile="3">
-                <span class="right title">УНИКАЛЬНЫЕ ВОЗМОЖНОСТИ</span>
-                <div class="timeline__content">
-                    <div data-bg-src="{% static 'images/time_line/factory_1920.jpg' %}"
-                         data-bg-src-mobile="{% static 'images/time_line/factory_1920.jpg' %}"
-                         class="timeline__img"
-                         src="{% static 'images/time_line/factory_460.jpg' %}"></div>
-                    {#                    <h2 class="timeline__content-title pc">CUBO</h2>#}
-                    <h2 class="timeline__content-title mobile">УНИКАЛЬНЫЕ ВОЗМОЖНОСТИ</h2>
-                    <p class="timeline__content-desc">Нашим покупателям не нужно заниматься получением разрешения на
-                        строительство, регистрировать дом и платить налог на недвижимость. Можно даже арендовать землю и
-                        поставить дом там, где строительство запрещено (в лесу, в горах или на берегу). А при желании
-                        разобрать на хранение или перевести дом на новое место. Хоть в другую страну для себя или
-                        перепродажи.</p>
-                </div>
-            </div>
-            {#            <div class="timeline-item" data-text="ПРОСТОТА И СКОРОСТЬ СБОРКИ" data-text-mobile="4">#}
-            {#                <span class="left title">ПРОСТОТА И СКОРОСТЬ СБОРКИ</span>#}
-            {#                <div class="timeline__content"><div data-bg-src="{% static 'images/time_line/building_1920.jpg' %}"#}
-            {#                                                    data-bg-src-mobile="{% static 'images/time_line/building_1920.jpg' %}"#}
-            {#                                                    class="timeline__img"#}
-            {#                                                    src="{% static 'images/time_line/building_460.jpg' %}"></div>#}
-            {#                    <h2 class="timeline__content-title pc">CUBO</h2>#}
-            {#                    <h2 class="timeline__content-title mobile">ПРОСТОТА И СКОРОСТЬ СБОРКИ</h2>#}
-            {#                    <p class="timeline__content-desc">Каждая деталь CUBO разработана и выполнена так, чтобы обеспечить#}
-            {#                        простоту и скорость сборки. Легкий вес деталей упрощает транспортировку. Монтаж не требует#}
-            {#                        подъемной#}
-            {#                        техники. Также не нужны саморезы, винты и электроинструмент. В итоге сборка наших домов требует#}
-            {#                        не#}
-            {#                        более двух человек и двух дней.</p>#}
-            {#                </div>#}
-            {#            </div>#}
+            </section>
+            <section class="content-info white b-shadow">
+                <ul>
+                    <li>
+                        <h6>
+                            Комплектация "Поставка с завода"
+                            <span class="fas fa-info-circle" data-title="Домокомплект из упакованных панелей с крепежом
+                                                                      для монтажа, но без окон и дверей. Без доставки.">
 
+                            </span>
+                        </h6>
+                        <span>{{ house.price_min|price_to_str_filter }} руб.</span>
+                    </li>
+                    <li>
+                        <h6>
+                            Комплектация "Под отделку"
+                            <span class="fas fa-info-circle" data-title="Дом с окнами, входной дверью и перегородками,
+                                                                         смонтированный на участке. Без доставки.">
+
+                            </span>
+                        </h6>
+                        <span>{{ house.price_medium|price_to_str_filter }} руб.</span>
+                    </li>
+                    <li>
+                        <h6>Комплектация "Под ключ"
+                            <span class="fas fa-info-circle" data-title="Полностью готовый дом, включая внутреннюю и
+                                                                         наружную отделку.">
+
+                            </span>
+                        </h6>
+                        <span>{{ house.price_full|price_to_str_filter }} руб.</span>
+                    </li>
+                </ul>
+                <div class="min-info">
+                    <div class="min-info-item">Площадь: <span>{{ house.area }}</span> м&sup2;</div>
+                    <div class="min-info-item">Количество комнат: <span>{{ house.number_of_rooms }}</span></div>
+                    <div class="min-info-item">Количество санузлов: <span>{{ house.number_of_bathrooms }}</span></div>
+                </div>
+                <div class="buttons">
+                    <a href="#" class="btn-a diagonal black"
+                       id="show-request-info-modal"><span>Получить консультацию</span></a>
+                    {#                    <a href="#" class="btn-a diagonal"><span>Конфигуратор стоимости</span></a>#}
+
+                </div>
+            </section>
         </div>
     </div>
-    <section class="lines">
-        <div class="container">
-            <div class="secondary-img" id="sec_1"><img src="{% static 'images/sec_img.jpg' %}"/></div>
-            <div class="secondary-img" id="sec_2"><img src="{% static 'images/sec_img.jpg' %}"/></div>
-            <div class="secondary-img" id="sec_3"><img src="{% static 'images/sec_img.jpg' %}"/></div>
-            <div class="secondary-img" id="sec_4"></div>
-            <div class="secondary-img" id="sec_5"><img src="{% static 'images/sec_img.jpg' %}"/></div>
+    <section class="home-info white b-shadow">
+        <div class="container tab">
+            <div class="tabs-controls">
+                <div class="tabs-controls-wrapper info">
+                    <div class="container">
+                        <div class="tabs-slider">
+                            <div class="mask"></div>
+                            <div class="tabs-controls-item info active" data-for="tab-sizes">
+                                <div>
+                                    <span>Размеры дома</span>
+                                </div>
+                            </div>
+                            {% if house.turnkey.active %}
+                                {% if house.turnkey.included.active %}
+                                    {% if house.turnkey.included.get_items %}
+                                        <div class="tabs-controls-item info" data-for="tab-include-turnkey">
+                                            <div>
+                                                <span>Включено в стоимость "Под ключ"</span>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endif %}
+                                {% if house.turnkey.not_included.active and house.turnkey.not_included.body %}
+                                    <div class="tabs-controls-item info" data-for="tab-not-include-turnkey">
+                                        <div>
+                                            <span>Не включено в стоимость "Под ключ"</span>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                            {% if house.for_finishing.active %}
+                                {% if house.for_finishing.included.active %}
+                                    {% if house.for_finishing.included.get_items %}
+                                        <div class="tabs-controls-item info" data-for="tab-include-for_finishing">
+                                            <div>
+                                                <span>Включено в стоимость "Под отделку"</span>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endif %}
+                                {% if house.for_finishing.not_included.active and house.for_finishing.not_included.body %}
+                                    <div class="tabs-controls-item info" data-for="tab-not-include-for_finishing">
+                                        <div>
+                                            <span>Не включено в стоимость "Под отделку"</span>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                            {% if house.delivery.active %}
+                                {% if house.delivery.included.active %}
+                                    {% if house.delivery.included.get_items %}
+                                        <div class="tabs-controls-item info" data-for="tab-include-delivery">
+                                            <div>
+                                                <span>Включено в стоимость "Поставка с завода"</span>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endif %}
+                                {% if house.delivery.not_included.active and house.delivery.not_included.body %}
+                                    <div class="tabs-controls-item info" data-for="tab-not-include-delivery">
+                                        <div>
+                                            <span>Не включено в стоимость "Поставка с завода"</span>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                            {% if house.options.body and house.options.active %}
+                                <div class="tabs-controls-item info" data-for="tab-options">
+                                    <div>
+                                        <span>Опции и дополнения</span>
+                                    </div>
+                                </div>
+                            {% endif %}
 
+                        </div>
+                    </div>
 
-            <div class="text" id="sec-text-1">
-                <span class="">
-                    Утепление базальтовыми плитами толщиной 150 мм
-                </span>
+                </div>
+
             </div>
-            <div class="text" id="sec-text-2">
-                <span class="">
-                    Система крепления для сборки дома стальными тросами. Обеспечивает прочность соединения швов панели
-                    и усиление на разрыв более 14 тонн
-                </span>
+        </div>
+
+
+        <div class="tabs-content">
+            <div class="container">
+                <div id="tab-sizes" class="body-item info active">
+                    <div class="in-cost">
+                        <div class="min-info-item">Полезная площадь: <span>{{ house.area }}</span> м&sup2;</div>
+                        <div class="min-info-item">Площадь застройки: <span>{{ house.area_of_buildings }}</span> м&sup2;
+                        </div>
+                        <div class="min-info-item">Внешние габаритные размеры (ВхШхД):
+                            <span>{{ house.height }}</span>
+                            <span class="xx"><span class="x">x</span></span>
+
+                            <span>{{ house.width }}</span>
+                            <span class="xx"><span class="x">x</span></span>
+                            <span>{{ house.length }}</span>
+                            м
+                        </div>
+                        <div class="min-info-item">Высота потолков: общая <span>{{ house.ceiling_height }}</span> м
+                        </div>
+                    </div>
+                </div>
+                {% if house.turnkey.included.active and house.turnkey.included.get_items %}
+                    <div id="tab-include-turnkey" class="body-item info">
+                        <div id="accordion" role="tablist">
+                            {% for item in house.turnkey.included.get_items %}
+                                <div class="panel panel-custom panel-classic">
+                                    <div class="panel-custom-heading" id="{{ item.pk }}-turnkey-Head" role="tab">
+                                        <h6 class="panel-custom-title">
+                                            <a class="collapsed" role="button"
+                                               data-toggle="collapse"
+                                               data-parent="#{{ item.pk }}" href="#{{ item.pk }}-turnkey-Collapse"
+                                               aria-controls="{{ item.pk }}-turnkey-Collapse">
+                                                {{ item.name }}
+                                            </a>
+                                        </h6>
+                                    </div>
+                                    <div class="panel-custom-collapse collapse" id="{{ item.pk }}-turnkey-Collapse"
+                                         role="tabpanel"
+                                         aria-labelledby="{{ item.pk }}-turnkey-Head">
+                                        <div class="panel-custom-body">
+                                            <div class="ol">
+                                                {{ item.body|safe }}
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+                {% if house.turnkey.not_included.active and house.turnkey.not_included.body %}
+                    <div id="tab-not-include-turnkey" class="body-item info">
+                        <div class="in-cost">
+                            {{ house.turnkey.not_included.body|safe }}
+                        </div>
+                    </div>
+                {% endif %}
+                {% if house.for_finishing.included.active and house.for_finishing.included.get_items %}
+                    <div id="tab-include-for_finishing" class="body-item info">
+                        <div id="accordion" role="tablist">
+                            {% for item in house.for_finishing.included.get_items %}
+                                <div class="panel panel-custom panel-classic">
+                                    <div class="panel-custom-heading" id="{{ item.pk }}-for_finishing-Head" role="tab">
+                                        <h6 class="panel-custom-title">
+                                            <a class="collapsed" role="button"
+                                               data-toggle="collapse"
+                                               data-parent="#{{ item.pk }}" href="#{{ item.pk }}-for_finishing-Collapse"
+                                               aria-controls="{{ item.pk }}-for_finishing-Collapse">
+                                                {{ item.name }}
+                                            </a>
+                                        </h6>
+                                    </div>
+                                    <div class="panel-custom-collapse collapse" id="{{ item.pk }}-for_finishing-Collapse"
+                                         role="tabpanel"
+                                         aria-labelledby="{{ item.pk }}-for_finishing-Head">
+                                        <div class="panel-custom-body">
+                                            <div class="ol">
+                                                {{ item.body|safe }}
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+                {% if house.for_finishing.not_included.active and house.for_finishing.not_included.body %}
+                    <div id="tab-not-include-for_finishing" class="body-item info">
+                        <div class="in-cost">
+                            {{ house.for_finishing.not_included.body|safe }}
+                        </div>
+                    </div>
+                {% endif %}
+                {% if house.delivery.included.active and house.delivery.included.get_items %}
+                    <div id="tab-include-delivery" class="body-item info">
+                        <div id="accordion" role="tablist">
+                            {% for item in house.delivery.included.get_items %}
+                                <div class="panel panel-custom panel-classic">
+                                    <div class="panel-custom-heading" id="{{ item.pk }}-delivery-Head" role="tab">
+                                        <h6 class="panel-custom-title">
+                                            <a class="collapsed" role="button"
+                                               data-toggle="collapse"
+                                               data-parent="#{{ item.pk }}" href="#{{ item.pk }}-delivery-Collapse"
+                                               aria-controls="{{ item.pk }}-delivery-Collapse">
+                                                {{ item.name }}
+                                            </a>
+                                        </h6>
+                                    </div>
+                                    <div class="panel-custom-collapse collapse" id="{{ item.pk }}-delivery-Collapse"
+                                         role="tabpanel"
+                                         aria-labelledby="{{ item.pk }}-delivery-Head">
+                                        <div class="panel-custom-body">
+                                            <div class="ol">
+                                                {{ item.body|safe }}
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+                {% if house.delivery.not_included.active and house.delivery.not_included.body %}
+                    <div id="tab-not-include-delivery" class="body-item info">
+                        <div class="in-cost">
+                            {{ house.delivery.not_included.body|safe }}
+                        </div>
+                    </div>
+                {% endif %}
+                {% if house.options.body and house.options.active %}
+                    <div id="tab-options" class="body-item info">
+                        <div class="in-cost">
+                            {{ house.options.body|safe }}
+                            <div class="buttons">
+                                <a href="#" class="btn-a diagonal"
+                                   width="250px"><span>Перейти в раздел "Опции"</span></a>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
             </div>
-            <div class="text" id="sec-text-3">
-                <span class="">
-                    Двустороння обшивка панелей влгостойким ОСП-3 толщиной 12 мм
-                </span>
-            </div>
-            <div class="text" id="sec-text-4">
-                <span class="">
-                    Профессиональный изоляционные метариалы внутренний слой обеспечивает пароизоляцию наружный слой
-                    супердифузионная мембрана
-                </span>
-            </div>
-            <div class="text" id="sec-text-5">
-                <span class="">
-                    Профилированный клееный брус обладает лучшими прочностными характеристиками и обеспечивает
-                    надежное герметичное соединения
-                </span>
-            </div>
-
-
-            <div class="line" id="line-1"><span></span></div>
-            <div class="line" id="line-2"><span></span></div>
-            <div class="line" id="line-3"><span></span></div>
-            <div class="line" id="line-4"><span></span></div>
-            <div class="line" id="line-5"><span></span></div>
-
-
-            <div class="center-img"><img src="{% static 'images/CUBO_ines.png' %}"/></div>
-
         </div>
 
 
@@ -266,7 +332,7 @@
         <div class="container">
             <div class="catalog-header">
                 <h4>Модельный ряд</h4>
-                <a href="{% url 'houses_list' %}">Перейти в каталог <span class="fas fa-chevron-right"></span></a>
+                <a href="#">Перейти в каталог <span class="fas fa-chevron-right"></span></a>
             </div>
             <div class="catalog-nav">
                 <div class="tabs-controls">
@@ -623,66 +689,61 @@
 
     </section>
 
+    <div class="modal text-left" id="modal-request-info" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" id="close-info" type="button" data-dismiss="modal">
+                  <span class="icon icon-md linear-icon-cross">
 
-    {#        <section class="main__cards">#}
-    {#            <div class="container">#}
-    {#                <div class="item b-shadow white">#}
-    {#                    <div class="icon"><img src="{% static 'images/icons/cooperation.png' %}"/></div>#}
-    {#                    <div class="caption">#}
-    {#                        <a href="#">Сотрудничество</a>#}
-    {#                    </div>#}
-    {#                </div>#}
-    {#                <div class="item b-shadow white">#}
-    {#                    <div class="icon"><img src="{% static 'images/icons/business.png' %}"/></div>#}
-    {#                    <div class="caption">#}
-    {#                        <a href="#">CUBO BUSINESS</a>#}
-    {#                    </div>#}
-    {#                </div>#}
-    {#                <div class="item b-shadow white">#}
-    {#                    <div class="icon"><img src="{% static 'images/icons/contacts.png' %}"/></div>#}
-    {#                    <div class="caption">#}
-    {#                        <a href="{% url 'contacts' %}">Связаться с нами</a>#}
-    {#                    </div>#}
-    {#                </div>#}
-    {#            </div>#}
-    {#        </section>#}
+                  </span>
+                    </button>
+                    <h6 class="modal-title">Заявка на консультацию по дому </h6>
+                </div>
+                <div class="modal-body">
+                    <div class="group-xl">
+                        <h5>{{ house.name }}</h5>
+                    </div>
+                    <hr>
+                    <div class="register-form modal-request">
+                        <p>Оставьте свои данные и мы перезвоним Вам в течение рабочего дня!</p>
+                        <!-- Login form-->
+                        <form>
+                            <div class="rd-mailform-inline-flex">
+                                <div class="form-wrap">
+                                    <label class="form-label" for="name-2">Имя</label>
+                                    <input class="form-input" id="name-2" type="text" name="name">
+                                </div>
+                            </div>
+                            <div class="form-wrap">
+                                <label class="form-label" for="email">Телефон</label>
+                                <input class="form-input" id="email" name="email">
+                            </div>
+                            <div>
+                                <button href="#" class="btn-a diagonal black">Оставить заявку</button>
+                            </div>
 
-    {#     <section class="main__cards">#}
-    {#            <h3>Дом <span>CUBO</span> это просто!</h3>#}
-    {#            <div class="container">#}
-    {#                <div class="item b-shadow white">#}
-    {#                    <div class="number">#}
-    {#                        <span>1</span>#}
-    {#                    </div>#}
-    {#                    <div class="title">#}
-    {#                        <h3>Заявка</h3>#}
-    {#                    </div>#}
-    {#                    <div class="body">#}
-    {#                        <p>Вы звоните или оставляете заявку на сайте, мы Вас консультируем и уточняем детали.</p>#}
-    {#                    </div>#}
-    {#                </div>#}
-    {#                <div class="item b-shadow white">#}
-    {#                    <div class="icon"><img src="{% static 'images/icons/business.png' %}"/></div>#}
-    {#                    <div class="caption">#}
-    {#                        <a href="#">CUBO BUSINESS</a>#}
-    {#                    </div>#}
-    {#                </div>#}
-    {#                <div class="item b-shadow white">#}
-    {#                    <div class="icon"><img src="{% static 'images/icons/contacts.png' %}"/></div>#}
-    {#                    <div class="caption">#}
-    {#                        <a href="{% url 'contacts' %}">Связаться с нами</a>#}
-    {#                    </div>#}
-    {#                </div>#}
-    {#            </div>#}
-    {#        </section>#}
+
+                            {#                            <button class="button button-primary">Оставить заявку</button>#}
+                        </form>
+                        <hr>
+                        <p>Нажимая кнопку, я даю согласие на обработку моих персональных данных в соответствии со
+                            статьей 9
+                            ФЗ
+                            от 27.07.2006 № 152-ФЗ «О персональных данных»</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 {% endblock content %}
 
-
 {% block scripts %}
-
     <script src="{% static 'scripts/swiper-bundle.min.js' %}"></script>
     <script src="{% static 'scripts/lazy.min.js' %}"></script>
-    <script src="{% static 'scripts/home_1.js' %}"></script>
-    <script src="{% static 'scripts/lines.js' %}"></script>
+    <script src="{% static 'scripts/product_detail_1.js' %}"></script>
 {% endblock scripts %}

@@ -1,4 +1,4 @@
-{% extends 'superbase.html' %}
+{% extends 'superbase_black_menu.html' %}
 {% load static %}
 
 {% block seo_title %}{{ home_data.seo_title }}{% endblock seo_title %}
@@ -7,96 +7,8 @@
     <link rel="stylesheet" href="{% static 'styles/swiper-bundle.min.css' %}">
 {% endblock styles %}
 
-{#{% block header %}#}
-{#    <header>#}
-{#        <ul class="dropdown-big-item" id="categories">#}
-{#            <div class="container">#}
-{#                <li class="ddb-li">#}
-{#                    <div class="ddb-li-header">Одноэтажные</div>#}
-{#                    <div class="ddb-li-body">#}
-{#                        <div class="ddb-li-body-item">#}
-{#                            <a href="#">#}
-{#                                <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>#}
-{#                                <span>Flat</span>#}
-{#                            </a>#}
-{#                        </div>#}
-{#                        <div class="ddb-li-body-item">#}
-{#                            <a href="#">#}
-{#                                <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>#}
-{#                                <span>Flat</span>#}
-{#                            </a>#}
-{#                        </div>#}
-{##}
-{#                        <div class="ddb-li-body-item">#}
-{#                            <a href="#">#}
-{#                                <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>#}
-{#                                <span>Flat</span>#}
-{#                            </a>#}
-{#                        </div>#}
-{##}
-{#                        <div class="ddb-li-body-item">#}
-{#                            <a href="#">#}
-{#                                <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>#}
-{#                                <span>Flat</span>#}
-{#                            </a>#}
-{#                        </div>#}
-{##}
-{#                        <div class="ddb-li-body-item">#}
-{#                            <a href="#">#}
-{#                                <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>#}
-{#                                <span>Bent</span>#}
-{#                            </a>#}
-{#                        </div>#}
-{#                        <div class="ddb-li-body-item">#}
-{#                            <a href="#">#}
-{#                                <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>#}
-{#                                <span>Bent</span>#}
-{#                            </a>#}
-{#                        </div>#}
-{#                        <div class="ddb-li-body-item">#}
-{#                            <a href="#">#}
-{#                                <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>#}
-{#                                <span>Flat</span>#}
-{#                            </a>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </li>#}
-{#                <li class="ddb-li">#}
-{#                    <div class="ddb-li-header">Двухэтажные</div>#}
-{#                    <div class="ddb-li-body">#}
-{#                        <div class="ddb-li-body-item">#}
-{#                            <span class="soon">Скоро на сайте!</span>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </li>#}
-                {#                <li class="ddb-li">#}
-                {##}
-                {#                </li>#}
-{#            </div>#}
-{##}
-{#        </ul>#}
-{#        <div class="container">#}
-{#            <a href="#" class="logo"><img src="{% static 'images/logos/cubo_logo@8x.png' %}"/></a>#}
-{#            <ul class="main">#}
-{#                <li class="dropdown-big" data-for="categories">#}
-{#                    <a href="#">Модельный ряд</a>#}
-{##}
-{#                </li>#}
-{#                <li><a href="#">Завод</a></li>#}
-{#                <li><a href="#">Контакты</a></li>#}
-{#            </ul>#}
-{#            <div class="hamburger">#}
-{#                <span id="firstSpan"></span>#}
-{#                <span id="secondSpan"></span>#}
-{#                <span id="thirdSpan"></span>#}
-{#            </div>#}
-{##}
-{##}
-{#        </div>#}
-{#    </header>#}
-{#{% endblock header %}#}
-
 {% block header_class %}home{% endblock header_class %}
+
 {% block content %}
     <section class="main vh">
         <div class="swiper-container-header">

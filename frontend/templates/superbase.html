@@ -43,193 +43,174 @@
 <body>
 <!-- Page-->
 <div class="page">
-    {% block header %}
-        <header class="b-shadow">
-            <ul class="dropdown-big-item" id="categories">
-                <div class="container">
-                    <li class="ddb-li">
-                        <div class="ddb-li-header">Одноэтажные</div>
-                        <div class="ddb-li-body">
-                            <div class="ddb-li-body-item">
-                                <a href="#">
-                                    <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>
-                                    <span>Flat</span>
-                                </a>
-                            </div>
-                            <div class="ddb-li-body-item">
-                                <a href="#">
-                                    <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>
-                                    <span>Flat</span>
-                                </a>
-                            </div>
-
-                            <div class="ddb-li-body-item">
-                                <a href="#">
-                                    <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>
-                                    <span>Flat</span>
-                                </a>
-                            </div>
-
-                            <div class="ddb-li-body-item">
-                                <a href="#">
-                                    <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>
-                                    <span>Flat</span>
-                                </a>
-                            </div>
-
-                            <div class="ddb-li-body-item">
-                                <a href="#">
-                                    <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>
-                                    <span>Bent</span>
-                                </a>
-                            </div>
-                            <div class="ddb-li-body-item">
-                                <a href="#">
-                                    <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>
-                                    <span>Bent</span>
-                                </a>
-                            </div>
-                            <div class="ddb-li-body-item">
-                                <a href="#">
-                                    <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>
-                                    <span>Flat</span>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="ddb-li">
-                        <div class="ddb-li-header">Двухэтажные</div>
-                        <div class="ddb-li-body">
-                            <div class="ddb-li-body-item">
-                                <span class="soon">Скоро на сайте!</span>
-                            </div>
-                        </div>
-                    </li>
-                    {#                <li class="ddb-li">#}
-                    {##}
-                    {#                </li>#}
-                </div>
-
-            </ul>
+    <header class="black-shadow menu {% block header_class %}{% endblock header_class %}">
+        <ul class="dropdown-big-item" id="categories">
             <div class="container">
-                <a href="#" class="logo"><img src="{% static 'images/logos/cubo_logo@8x.png' %}"/></a>
-                <ul class="main">
-                    <li class="dropdown-big" data-for="categories">
-                        <a href="#">Модельный ряд</a>
+                <li class="ddb-li">
+                    <div class="ddb-li-header">Одноэтажные</div>
+                    <div class="ddb-li-body">
+                        <div class="ddb-li-body-item">
+                            <a href="#">
+                                <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>
+                                <span>Flat</span>
+                            </a>
+                        </div>
+                        <div class="ddb-li-body-item">
+                            <a href="#">
+                                <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>
+                                <span>Flat</span>
+                            </a>
+                        </div>
 
-                    </li>
-                    <li><a href="#">Завод</a></li>
-                    <li><a href="#">Контакты</a></li>
-                </ul>
-                <div class="hamburger">
-                    <span id="firstSpan"></span>
-                    <span id="secondSpan"></span>
-                    <span id="thirdSpan"></span>
-                </div>
+                        <div class="ddb-li-body-item">
+                            <a href="#">
+                                <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>
+                                <span>Flat</span>
+                            </a>
+                        </div>
 
+                        <div class="ddb-li-body-item">
+                            <a href="#">
+                                <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>
+                                <span>Flat</span>
+                            </a>
+                        </div>
 
+                    </div>
+                </li>
+                <li class="ddb-li">
+                    <div class="ddb-li-header">Двухэтажные</div>
+                    <div class="ddb-li-body">
+                        <div class="ddb-li-body-item">
+                            <span class="soon">Скоро на сайте!</span>
+                        </div>
+                    </div>
+                </li>
+                {#                <li class="ddb-li">#}
+                {##}
+                {#                </li>#}
             </div>
-        </header>
-        {#        <header class="page-header">#}
-        {#            <!-- RD Navbar-->#}
-        {#            <div class="rd-navbar-wrap">#}
-        {#                <nav class="rd-navbar rd-navbar_transparent" data-layout="rd-navbar-fixed"#}
-        {#                     data-sm-layout="rd-navbar-fixed"#}
-        {#                     data-sm-device-layout="rd-navbar-fixed" data-md-layout="rd-navbar-fixed"#}
-        {#                     data-md-device-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static"#}
-        {#                     data-lg-device-layout="rd-navbar-fixed" data-xl-device-layout="rd-navbar-static"#}
-        {#                     data-xl-layout="rd-navbar-static" data-stick-up-clone="false" data-sm-stick-up="true"#}
-        {#                     data-md-stick-up="true" data-lg-stick-up="true" data-xl-stick-up="true" data-xxl-stick-up="true"#}
-        {#                     data-lg-stick-up-offset="120px" data-xl-stick-up-offset="35px" data-xxl-stick-up-offset="35px"#}
-        {#                     data-body-class="rd-navbar-absolute">#}
-        {#                    <div class="rd-navbar-inner rd-navbar-search-wrap">#}
-        {#                        <!-- RD Navbar Panel-->#}
-        {#                        <div class="rd-navbar-panel rd-navbar-search_collapsable">#}
-        {#                            <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span>#}
-        {#                            </button>#}
-        {#                            <!-- RD Navbar Brand-->#}
-        {#                            <div class="rd-navbar-brand"><a class="brand-name" href="{% url 'home' %}"><img#}
-        {#                                    src="#}
-        {#                                {% block logo %}#}
-        {#                                    {% static 'images/logos/cubo_logo@4x.png' %}#}
-        {#                                {% endblock logo %}"#}
-        {#                                    alt="" width="90px"/></a></div>#}
-        {#                        </div>#}
-        {#                        <!-- RD Navbar Nav-->#}
-        {#                        <div class="rd-navbar-nav-wrap rd-navbar-search_not-collapsable">#}
-        {#                            <!--                        <ul class="rd-navbar-items-list rd-navbar-search_collapsable">-->#}
-        {#                            <!--                            <li>-->#}
-        {##}
-        {#                            <!--                                <a class="icon icon-md linear-icon-heart link-primary"-->#}
-        {#                            <!--                                   href="{% url 'favorites' %}"></a>-->#}
-        {##}
-        {#                            <!--                            </li>-->#}
-        {#                            <!--                            <li class="rd-navbar-nav-wrap__shop">-->#}
-        {#                            <!--                                <a class="icon icon-md linear-icon-cart link-primary"-->#}
-        {#                            <!--                                   href="{% url 'cart' %}"></a>-->#}
-        {#                            <!--                            </li>-->#}
-        {#                            <!--                        </ul>-->#}
-        {#                            <div class="rd-navbar-search_collapsable">#}
-        {#                                <ul class="rd-navbar-nav">#}
-        {#                                    <li><a href="#">Модельный ряд</a>#}
-        {#                                        <ul class="rd-navbar-megamenu">#}
-        {#                                            <li>#}
-        {#                                                <a href="{% url 'houses_list' %}"><h6>Одноэтажные</h6></a>#}
-        {#                                                <ul class="rd-megamenu-list">#}
-        {#                                                    <li>#}
-        {#                                                        <a href="{% url 'houses_list' %}">#}
-        {#                                                            <img src="{% static 'images/menu_items/menu_min_1.jpg' %}"#}
-        {#                                                                 height="50"#}
-        {#                                                                 width="75" class="menu_min"/>#}
-        {#                                                            CUBO VR#}
-        {#                                                        </a>#}
-        {#                                                    </li>#}
-        {#                                                    <li>#}
-        {#                                                        <a href="{% url 'houses_list' %}">#}
-        {#                                                            <img src="{% static 'images/menu_items/menu_min_1.jpg' %}"#}
-        {#                                                                 height="50"#}
-        {#                                                                 width="75" class="menu_min"/>#}
-        {#                                                            CUBO FR#}
-        {#                                                        </a>#}
-        {#                                                    </li>#}
-        {#                                                </ul>#}
-        {#                                            </li>#}
-        {#                                            <li>#}
-        {#                                                <a href="#"><h6>Двухэтажные</h6></a>#}
-        {#                                                <ul class="rd-megamenu-list">#}
-        {#                                                    <li><p>Скоро</p></li>#}
-        {#                                                </ul>#}
-        {#                                            </li>#}
-        {##}
-        {#                                        </ul>#}
-        {#                                    </li>#}
-        {#                                    <li><a href="{% url 'home_decorations_list' %}">Отделка и коммуникации</a>#}
-        {#                                        {% home_decorations_menu %}#}
-        {#                                    </li>#}
-        {#                                    <li><a href="{% url 'about' %}">Завод</a>#}
-        {#                                    <li><a href="{% url 'cubo_business' %}">CUBO business</a>#}
-        {#                                    <li><a href="{% url 'partnership' %}">Сотрудничество</a>#}
-        {#                                    <li><a href="{% url 'contacts' %}">Контакты</a>#}
-        {#                                    </li>#}
-        {#                                    <!--                                <li class="mobile-menu-item">-->#}
-        {#                                    <!--                                    <a  href="{% url 'cart' %}" class="icon icon-md linear-icon-cart link-primary">-->#}
-        {#                                    <!--                                        Корзина-->#}
-        {#                                    <!--                                    </a>-->#}
-        {##}
-        {#                                    <!--                                </li>-->#}
-        {#                                    <!--                                <li class="mobile-menu-item">-->#}
-        {#                                    <!--                                    <a  href="{% url 'favorites' %}" class="icon icon-md linear-icon-heart link-primary">-->#}
-        {#                                    <!--                                        Избранное-->#}
-        {#                                    <!--                                    </a>-->#}
-        {#                                    <!--                                </li>-->#}
-        {#                                </ul>#}
-        {#                            </div>#}
-        {#                        </div>#}
-        {#                    </div>#}
-        {#                </nav>#}
-        {#            </div>#}
-        {#        </header>#}
-    {% endblock header %}
+
+        </ul>
+        <div class="container">
+            <a href="#" class="logo"><img src="{% static 'images/logos/cubo_logo@8x.png' %}"/></a>
+            <ul class="main">
+                <li class="dropdown-big" data-for="categories">
+                    <a href="#">Модельный ряд</a>
+
+                </li>
+                <li><a href="#">Завод</a></li>
+                <li><a href="#">Контакты</a></li>
+            </ul>
+            <div class="hamburger">
+                <span id="firstSpan"></span>
+                <span id="secondSpan"></span>
+                <span id="thirdSpan"></span>
+            </div>
+
+
+        </div>
+    </header>
+    {#        <header class="page-header">#}
+    {#            <!-- RD Navbar-->#}
+    {#            <div class="rd-navbar-wrap">#}
+    {#                <nav class="rd-navbar rd-navbar_transparent" data-layout="rd-navbar-fixed"#}
+    {#                     data-sm-layout="rd-navbar-fixed"#}
+    {#                     data-sm-device-layout="rd-navbar-fixed" data-md-layout="rd-navbar-fixed"#}
+    {#                     data-md-device-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static"#}
+    {#                     data-lg-device-layout="rd-navbar-fixed" data-xl-device-layout="rd-navbar-static"#}
+    {#                     data-xl-layout="rd-navbar-static" data-stick-up-clone="false" data-sm-stick-up="true"#}
+    {#                     data-md-stick-up="true" data-lg-stick-up="true" data-xl-stick-up="true" data-xxl-stick-up="true"#}
+    {#                     data-lg-stick-up-offset="120px" data-xl-stick-up-offset="35px" data-xxl-stick-up-offset="35px"#}
+    {#                     data-body-class="rd-navbar-absolute">#}
+    {#                    <div class="rd-navbar-inner rd-navbar-search-wrap">#}
+    {#                        <!-- RD Navbar Panel-->#}
+    {#                        <div class="rd-navbar-panel rd-navbar-search_collapsable">#}
+    {#                            <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span>#}
+    {#                            </button>#}
+    {#                            <!-- RD Navbar Brand-->#}
+    {#                            <div class="rd-navbar-brand"><a class="brand-name" href="{% url 'home' %}"><img#}
+    {#                                    src="#}
+    {#                                {% block logo %}#}
+    {#                                    {% static 'images/logos/cubo_logo@4x.png' %}#}
+    {#                                {% endblock logo %}"#}
+    {#                                    alt="" width="90px"/></a></div>#}
+    {#                        </div>#}
+    {#                        <!-- RD Navbar Nav-->#}
+    {#                        <div class="rd-navbar-nav-wrap rd-navbar-search_not-collapsable">#}
+    {#                            <!--                        <ul class="rd-navbar-items-list rd-navbar-search_collapsable">-->#}
+    {#                            <!--                            <li>-->#}
+    {##}
+    {#                            <!--                                <a class="icon icon-md linear-icon-heart link-primary"-->#}
+    {#                            <!--                                   href="{% url 'favorites' %}"></a>-->#}
+    {##}
+    {#                            <!--                            </li>-->#}
+    {#                            <!--                            <li class="rd-navbar-nav-wrap__shop">-->#}
+    {#                            <!--                                <a class="icon icon-md linear-icon-cart link-primary"-->#}
+    {#                            <!--                                   href="{% url 'cart' %}"></a>-->#}
+    {#                            <!--                            </li>-->#}
+    {#                            <!--                        </ul>-->#}
+    {#                            <div class="rd-navbar-search_collapsable">#}
+    {#                                <ul class="rd-navbar-nav">#}
+    {#                                    <li><a href="#">Модельный ряд</a>#}
+    {#                                        <ul class="rd-navbar-megamenu">#}
+    {#                                            <li>#}
+    {#                                                <a href="{% url 'houses_list' %}"><h6>Одноэтажные</h6></a>#}
+    {#                                                <ul class="rd-megamenu-list">#}
+    {#                                                    <li>#}
+    {#                                                        <a href="{% url 'houses_list' %}">#}
+    {#                                                            <img src="{% static 'images/menu_items/menu_min_1.jpg' %}"#}
+    {#                                                                 height="50"#}
+    {#                                                                 width="75" class="menu_min"/>#}
+    {#                                                            CUBO VR#}
+    {#                                                        </a>#}
+    {#                                                    </li>#}
+    {#                                                    <li>#}
+    {#                                                        <a href="{% url 'houses_list' %}">#}
+    {#                                                            <img src="{% static 'images/menu_items/menu_min_1.jpg' %}"#}
+    {#                                                                 height="50"#}
+    {#                                                                 width="75" class="menu_min"/>#}
+    {#                                                            CUBO FR#}
+    {#                                                        </a>#}
+    {#                                                    </li>#}
+    {#                                                </ul>#}
+    {#                                            </li>#}
+    {#                                            <li>#}
+    {#                                                <a href="#"><h6>Двухэтажные</h6></a>#}
+    {#                                                <ul class="rd-megamenu-list">#}
+    {#                                                    <li><p>Скоро</p></li>#}
+    {#                                                </ul>#}
+    {#                                            </li>#}
+    {##}
+    {#                                        </ul>#}
+    {#                                    </li>#}
+    {#                                    <li><a href="{% url 'home_decorations_list' %}">Отделка и коммуникации</a>#}
+    {#                                        {% home_decorations_menu %}#}
+    {#                                    </li>#}
+    {#                                    <li><a href="{% url 'about' %}">Завод</a>#}
+    {#                                    <li><a href="{% url 'cubo_business' %}">CUBO business</a>#}
+    {#                                    <li><a href="{% url 'partnership' %}">Сотрудничество</a>#}
+    {#                                    <li><a href="{% url 'contacts' %}">Контакты</a>#}
+    {#                                    </li>#}
+    {#                                    <!--                                <li class="mobile-menu-item">-->#}
+    {#                                    <!--                                    <a  href="{% url 'cart' %}" class="icon icon-md linear-icon-cart link-primary">-->#}
+    {#                                    <!--                                        Корзина-->#}
+    {#                                    <!--                                    </a>-->#}
+    {##}
+    {#                                    <!--                                </li>-->#}
+    {#                                    <!--                                <li class="mobile-menu-item">-->#}
+    {#                                    <!--                                    <a  href="{% url 'favorites' %}" class="icon icon-md linear-icon-heart link-primary">-->#}
+    {#                                    <!--                                        Избранное-->#}
+    {#                                    <!--                                    </a>-->#}
+    {#                                    <!--                                </li>-->#}
+    {#                                </ul>#}
+    {#                            </div>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                </nav>#}
+    {#            </div>#}
+    {#        </header>#}
+
 
     {% block content %}
 
