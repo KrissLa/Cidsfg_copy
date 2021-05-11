@@ -6,9 +6,11 @@
 
 .lines .container {
     display: grid;
+    /*align-items: center;*/
     grid-template-columns: repeat(16, 84px);
     grid-template-rows: repeat(10, 60px);
 }
+
 
 .lines .container .center-img {
     grid-column-start: 7;
@@ -23,8 +25,8 @@
 }
 
 .secondary-img {
-    width: 168px;
-    height: 120px;
+    width: 100%;
+    height: 100%;
     position: relative;
     transition: all 1s ease;
     opacity: 0;
@@ -133,6 +135,7 @@
     grid-row-end: 3;
 }
 
+
 #sec-text-1:after {
     transform: scaleX(0) translateX(0);
     transform-origin: right bottom;
@@ -151,6 +154,7 @@
     grid-row-start: 9;
     grid-row-end: 11;
 }
+
 
 #sec-text-2 span {
     top: 40%;
@@ -174,6 +178,7 @@
     grid-row-start: 1;
     grid-row-end: 3;
 }
+
 
 #sec-text-3 span {
     width: 70%;
@@ -200,6 +205,7 @@
     grid-row-start: 5;
     grid-row-end: 7;
 }
+
 
 #sec-text-4 span {
     top: 10%;
@@ -303,6 +309,7 @@
     grid-row-end: 7;
 }
 
+
 #line-1:after {
     bottom: 0;
     right: 30px;
@@ -310,6 +317,7 @@
     width: 411.4px;
     transform-origin: right bottom;
 }
+
 
 #line-1.active:after {
     transform: rotate(39.2deg) scale(1) translateX(0);
@@ -333,6 +341,7 @@
     transform-origin: right top;
 }
 
+
 #line-2.active:after {
     transform: rotate(-56deg) scale(1) translateX(0);
 }
@@ -355,6 +364,7 @@
     transform-origin: left bottom;
 }
 
+
 #line-3.active:after {
     transform: rotate(-63.4deg) scale(1) translateX(0);
 }
@@ -372,11 +382,12 @@
 
 #line-4:after {
     top: 65px;
-    right: -39px;
+    left: 4px;
     transform: rotate(-56deg) scale(0) translateX(0);
     width: 119px;
     transform-origin: left bottom;
 }
+
 
 #line-4.active:after {
     transform: rotate(-56deg) scale(1) translateX(0);
@@ -402,4 +413,689 @@
 
 #line-5.active:after {
     transform: rotate(56deg) scale(1) translateX(0);
+}
+
+@media all and (max-width: 1400px) {
+
+    .lines .container {
+        grid-template-columns: repeat(16, 58px);
+        grid-template-rows: repeat(10, 42px);
+        max-width: 970px;
+    }
+
+    .lines .text {
+        text-align: left;
+        font-size: 12px;
+        padding: 10px;
+        line-height: 18px;
+        position: relative;
+    }
+
+    #sec-text-1 {
+        width: 206px;
+        height: 84px;
+    }
+
+    #sec-text-1 span {
+        top: 40%;
+    }
+
+    #sec-text-2 {
+        width: 290px;
+        height: 84px;
+    }
+
+    #sec-text-2 span {
+        width: 90%;
+        top: 20%;
+    }
+
+    #sec-text-3 {
+        width: 204px;
+        height: 84px;
+    }
+
+    #sec-text-3:after {
+        width: 85%;
+        left: 59px;
+    }
+
+    #sec-text-3 span {
+        width: 74%;
+        left: 65%;
+        top: 30%;
+    }
+
+    #sec-text-4 {
+        width: 342px;
+        height: 84px;
+    }
+
+    #sec-text-4:after {
+        left: 57px;
+    }
+
+    #sec-text-4 span {
+        width: 87%;
+        top: 15%;
+    }
+
+    #sec-text-5 {
+        width: 232px;
+        height: 84px;
+    }
+
+    #sec-text-5:after {
+        left: 45px;
+    }
+
+    #sec-text-5 span {
+        width: 70%;
+        top: 0;
+    }
+
+    #line-1 {
+        width: 239px;
+        height: 172px;
+    }
+
+    #line-1:after {
+        width: 304.4px;
+    }
+
+    #line-2 {
+        width: 100px;
+    }
+
+    #line-2:after {
+        width: 76px;
+    }
+
+    #line-3 {
+        height: 191px;
+    }
+
+    #line-3:after {
+        left: 39px;
+        width: 175px;
+
+    }
+
+    #line-3 span {
+        left: 37px;
+    }
+
+    #line-4:after {
+        top: 47px;
+        right: -44px;
+        width: 97px;
+    }
+
+    #line-4 span {
+        top: 46px;
+        left: 0;
+    }
+
+    #line-5:after {
+        top: 33px;
+        left: -3px;
+        width: 87px;
+    }
+
+    #line-5 span {
+        top: 30px;
+    }
+
+}
+
+@media all and (max-width: 1000px) {
+
+    .lines .line span {
+        width: 5px;
+        height: 5px;
+    }
+
+    .lines .container {
+        grid-template-columns: repeat(16, 45px);
+        grid-template-rows: repeat(10, 35px);
+        max-width: 750px;
+    }
+
+    .lines .text {
+        font-size: 10px;
+        padding: 5px;
+        line-height: 15px;
+    }
+
+    #sec-text-1 {
+        width: 176px;
+        height: 84px;
+    }
+
+    #sec-text-1 span {
+        top: 40%;
+    }
+
+    #sec-text-2 {
+        width: 230px;
+        height: 84px;
+    }
+
+    #sec-text-2 span {
+        width: 90%;
+        top: 20%;
+    }
+
+    #sec-text-3 {
+        width: 143px;
+        height: 84px;
+    }
+
+    #sec-text-3:after {
+        width: 96%;
+        left: 43px;
+    }
+
+    #sec-text-3 span {
+        width: 77%;
+        left: 77%;
+        top: 30%;
+    }
+
+    #sec-text-4 {
+        width: 251px;
+        height: 84px;
+    }
+
+    #sec-text-4:after {
+        left: 41px;
+        width: 91%;
+    }
+
+    #sec-text-4 span {
+        width: 86%;
+        top: 10%;
+        left: 66%;
+    }
+
+    #sec-text-5 {
+        width: 221px;
+        height: 84px;
+    }
+
+    #sec-text-5:after {
+        left: 56px;
+        width: 57%;
+    }
+
+    #sec-text-5 span {
+        width: 70%;
+        top: 0;
+    }
+
+    #line-1 {
+        width: 191px;
+        height: 129px;
+    }
+
+    #line-1:after {
+        width: 213.4px;
+    }
+
+    #line-2 {
+        width: 100px;
+    }
+
+    #line-2:after {
+        width: 90px;
+        top: -11px;
+    }
+
+    #line-2 span {
+        top: -12px;
+        right: -2px;
+    }
+
+    #line-3 {
+        height: 163px;
+    }
+
+
+    #line-3:after {
+        left: 32px;
+        width: 127px;
+    }
+
+    #line-3 span {
+        left: 29px;
+    }
+
+    #line-4:after {
+        top: 35px;
+        right: -44px;
+        width: 66px;
+    }
+
+    #line-4 span {
+        top: 33px;
+        left: 1px;
+    }
+
+    #line-5:after {
+        top: 10px;
+        left: -3px;
+        width: 106px;
+    }
+
+    #line-5 span {
+        top: 9px;
+        left: -5px;
+    }
+}
+
+
+@media all and (max-width: 768px) {
+
+    .lines {
+        padding: 25px 0;
+    }
+
+    .lines .container {
+        align-items: center;
+        grid-template-columns: repeat(10, 37px);
+        grid-template-rows: repeat(15, 37px);
+        max-width: 400px;
+    }
+
+    .lines .container .center-img {
+        grid-column-start: 6;
+        grid-column-end: 11;
+        grid-row-start: 5;
+        grid-row-end: 12;
+    }
+
+    #sec_1,
+    #sec_2,
+    #sec_3,
+    #sec_5 {
+        display: none;
+    }
+
+
+    #sec-text-1 {
+        width: 100%;
+        height: 100%;
+        grid-column-start: 1;
+        grid-column-end: 6;
+        grid-row-start: 4;
+        grid-row-end: 7;
+    }
+
+    #sec-text-2 {
+        width: 100%;
+        height: 100%;
+        grid-column-start: 1;
+        grid-column-end: 6;
+        grid-row-start: 7;
+        grid-row-end: 10;
+    }
+
+    #sec-text-3 {
+        width: 100%;
+        height: 100%;
+        grid-column-start: 1;
+        grid-column-end: 11;
+        grid-row-start: 1;
+        grid-row-end: 4;
+    }
+
+    #sec-text-4 {
+        width: 100%;
+        height: 100%;
+        grid-column-start: 1;
+        grid-column-end: 11;
+        grid-row-start: 13;
+        grid-row-end: 16;
+    }
+
+    #sec-text-5 {
+        width: 100%;
+        height: 100%;
+        grid-column-start: 1;
+        grid-column-end: 6;
+        grid-row-start: 10;
+        grid-row-end: 13;
+    }
+
+    #sec-text-1 span,
+    #sec-text-2 span,
+    #sec-text-3 span,
+    #sec-text-4 span,
+    #sec-text-5 span {
+        left: 50%;
+        top: 50%;
+        width: 100%;
+    }
+
+    #sec-text-1:after,
+    #sec-text-2:after,
+    #sec-text-3:after,
+    #sec-text-4:after,
+    #sec-text-5:after {
+        left: 0;
+        width: 100%;
+    }
+
+    #line-1,
+    #line-2,
+    #line-3,
+    #line-4,
+    #line-5 {
+        width: 100%;
+        height: 100%;
+    }
+
+    #line-1 {
+        grid-column-start: 10;
+        grid-column-end: 11;
+        grid-row-start: 9;
+        grid-row-end: 10;
+    }
+
+    #line-2 {
+        grid-column-start: 8;
+        grid-column-end: 9;
+        grid-row-start: 11;
+        grid-row-end: 12;
+    }
+
+    #line-3 {
+        grid-column-start: 10;
+        grid-column-end: 11;
+        grid-row-start: 8;
+        grid-row-end: 9;
+    }
+
+    #line-4 {
+        grid-column-start: 10;
+        grid-column-end: 11;
+        grid-row-start: 10;
+        grid-row-end: 11;
+    }
+
+    #line-5 {
+        grid-column-start: 10;
+        grid-column-end: 11;
+        grid-row-start: 11;
+        grid-row-end: 12;
+    }
+
+    #line-1 span {
+        left: 0;
+        bottom: 40%;
+    }
+
+    #line-2 span {
+        top: 20%;
+        right: 50%;
+    }
+
+    #line-3 span {
+        left: 40%;
+        bottom: 20%;
+    }
+
+    #line-4 span {
+        top: 20%;
+        left: 90%;
+    }
+
+    #line-5 span {
+        top: -3px;
+        left: 65%;
+    }
+
+    #line-1:after {
+        width: 179.4px;
+        right: 96%;
+        bottom: 47%;
+    }
+
+    #line-2:after {
+        width: 109px;
+        top: 28%;
+        right: 53%;
+        transform: rotate(39deg) scale(0) translateX(0);
+    }
+
+    #line-2.active:after {
+        transform: rotate(39deg) scale(1) translateX(0);
+    }
+
+    #line-3:after {
+        left: 48%;
+        bottom: 27%;
+        width: 196.5px;
+        transform: rotate(-83.4deg) scale(0) translateX(0);
+    }
+
+    #line-3.active:after {
+        transform: rotate(-83.4deg) scale(1) translateX(0);
+    }
+
+    #line-4:after {
+        top: unset;
+        right: unset;
+        left: 96%;
+        bottom: 68%;
+        width: 178px;
+        transform: rotate(-269deg) scale(0) translateX(0);
+    }
+
+    #line-4.active:after {
+        transform: rotate(-269deg) scale(1) translateX(0);
+    }
+
+    #line-5:after {
+        top: 1%;
+        left: 73%;
+        width: 72px;
+        transform: rotate(131deg) scale(0) translateX(0);
+    }
+
+    #line-5.active:after {
+        transform: rotate(131deg) scale(1) translateX(0);
+    }
+
+    #sec-text-1:after {
+        width: 106%;
+    }
+
+    #sec-text-2:after {
+        width: 104%;
+    }
+
+    #sec-text-3:after {
+        width: 101%;
+    }
+
+    #sec-text-4:after {
+        width: 99%;
+    }
+
+    #sec-text-5:after {
+        width: 170%;
+    }
+
+    #sec-text-1 span {
+        top: 63%;
+    }
+
+    #sec-text-3 span {
+        top: 70%;
+    }
+
+    #sec-text-4 span {
+        width: 90%;
+        left: 45%;
+        top: 45%;
+    }
+
+
+    .lines .text span {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
+
+    #sec-text-1:after,
+    #sec-text-2:after,
+    #sec-text-3:after,
+    #sec-text-4:after,
+    #sec-text-5:after {
+
+        transform: scaleX(1) translateX(0);
+    }
+
+    #line-1:after {
+        transform: rotate(39.2deg) scale(1) translateX(0);
+    }
+
+    #line-2:after {
+        transform: rotate(39deg) scale(1) translateX(0);
+    }
+
+    #line-3:after {
+        transform: rotate(-83.4deg) scale(1) translateX(0);
+    }
+
+    #line-4:after {
+        transform: rotate(-269deg) scale(1) translateX(0);
+    }
+
+    #line-5:after {
+        transform: rotate(131deg) scale(1) translateX(0);
+    }
+
+    .lines .text span {
+        transition: unset;
+    }
+
+    .lines .text:after {
+        transition: unset;
+    }
+
+    .lines .line:after {
+        transition: unset;
+    }
+
+
+}
+
+
+@media all and (max-width: 420px) {
+    .lines .container {
+        grid-template-columns: repeat(10, 25px);
+        grid-template-rows: repeat(15, 25px);
+        max-width: 280px;
+        min-width: unset;
+    }
+
+
+    #sec-text-1 {
+        grid-row-start: 3;
+        grid-row-end: 6;
+    }
+
+    #sec-text-2 {
+        grid-row-start: 5;
+        grid-row-end: 10;
+    }
+
+    #sec-text-2:after {
+        bottom: 10px;
+        width: 106%;
+    }
+
+    #sec-text-1:after {
+        width: 95%;
+    }
+
+
+    #sec-text-1 span {
+        top: 45%;
+    }
+
+    #sec-text-3 span {
+        top: 45%;
+    }
+
+    #sec-text-4 {
+        grid-row-start: 15;
+        grid-row-end: 15;
+    }
+
+    #sec-text-4:after {
+        width: 100%;
+        bottom: -22px;
+    }
+
+    #sec-text-4 span {
+        top: 68%;
+    }
+
+    #sec-text-5 {
+        grid-row-start: 11;
+        grid-row-end: 15;
+    }
+
+    #sec-text-5:after {
+        width: 143%;
+    }
+
+    #sec-text-5 span {
+        top: 26%;
+    }
+
+
+    #line-1:after {
+        width: 152.4px;
+        transform: rotate(45.2deg) scale(1) translateX(0);
+    }
+
+    #line-1.active:after {
+        transform: rotate(45.2deg) scale(1) translateX(0);
+    }
+
+    #line-2:after {
+        width: 69px;
+    }
+
+
+    #line-3 span {
+        left: 39%;
+    }
+
+    #line-3:after {
+        width: 139.5px;
+    }
+
+    #line-4 span {
+        left: 100%;
+    }
+
+    #line-4:after {
+        left: 108%;
+        width: 164px;
+    }
+
+    #line-5 span {
+        left: 78%;
+    }
+
+    #line-5:after {
+        left: 88%;
+        width: 105px;
+    }
+
+
 }

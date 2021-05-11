@@ -49,11 +49,12 @@ const linesAnimation = (line, secondLine, text, picture) => {
 }
 
 const linesAnimationsInTurn = () => {
+    const timeouts = [2000, 750, 5000, 8500, 12000]
     for (let i = 0; i < 5; i++) {
         if (i === 0) {
             linesAnimation(lines[i], secondLines[i], texts[i], pictures[i]);
         } else {
-            setTimeout(() => linesAnimation(lines[i], secondLines[i], texts[i], pictures[i]), 1000 * i);
+            setTimeout(() => linesAnimation(lines[i], secondLines[i], texts[i], pictures[i]), 1000 + timeouts[i]);
 
         }
     }
@@ -65,9 +66,12 @@ const getOffsetLines = () => {
 }
 
 document.addEventListener('scroll', () => {
-    if (window.pageYOffset > getOffsetLines() - 400){
-        linesAnimationsInTurn()
+    if (document.documentElement.clientWidth > 768) {
+        if (window.pageYOffset > getOffsetLines() - 400) {
+            linesAnimationsInTurn()
+        }
     }
+
 })
 
 
