@@ -995,29 +995,29 @@
 @media all and (max-width: 420px) {
     .lines .container {
         grid-template-columns: repeat(10, 25px);
-        grid-template-rows: repeat(15, 25px);
+        grid-template-rows: repeat(24, 25px);
         max-width: 280px;
         min-width: unset;
     }
 
 
     #sec-text-1 {
-        grid-row-start: 3;
-        grid-row-end: 6;
+        grid-row-start: 4;
+        grid-row-end: 7;
     }
 
     #sec-text-2 {
-        grid-row-start: 5;
-        grid-row-end: 10;
+        grid-row-start: 8;
+        grid-row-end: 12;
     }
 
     #sec-text-2:after {
-        bottom: 10px;
-        width: 106%;
+        bottom: 0;
+        width: 107%;
     }
 
     #sec-text-1:after {
-        width: 95%;
+        width: 96%;
     }
 
 
@@ -1030,12 +1030,12 @@
     }
 
     #sec-text-4 {
-        grid-row-start: 15;
-        grid-row-end: 15;
+        grid-row-start: 20;
+        grid-row-end: 21;
     }
 
     #sec-text-4:after {
-        width: 100%;
+        width: 99%;
         bottom: -22px;
     }
 
@@ -1044,12 +1044,12 @@
     }
 
     #sec-text-5 {
-        grid-row-start: 11;
-        grid-row-end: 15;
+        grid-row-start: 15;
+        grid-row-end: 19;
     }
 
     #sec-text-5:after {
-        width: 143%;
+        width: 142%;
     }
 
     #sec-text-5 span {
@@ -1058,16 +1058,19 @@
 
 
     #line-1:after {
-        width: 152.4px;
-        transform: rotate(45.2deg) scale(1) translateX(0);
+        width: 540%;
+        transform: rotate(38.2deg) scale(1) translateX(0);
     }
 
     #line-1.active:after {
-        transform: rotate(45.2deg) scale(1) translateX(0);
+        transform: rotate(38.2deg) scale(1) translateX(0);
     }
 
     #line-2:after {
-        width: 69px;
+
+        width: 224%;
+
+        transform: rotate(-18deg) scale(1) translateX(0);
     }
 
 
@@ -1076,7 +1079,7 @@
     }
 
     #line-3:after {
-        width: 139.5px;
+        width: 558%;
     }
 
     #line-4 span {
@@ -1085,7 +1088,7 @@
 
     #line-4:after {
         left: 108%;
-        width: 164px;
+        width: 1154%;
     }
 
     #line-5 span {
@@ -1094,7 +1097,8 @@
 
     #line-5:after {
         left: 88%;
-        width: 105px;
+        width: 771%;
+        transform: rotate(111deg) scale(1) translateX(0);
     }
 
 
