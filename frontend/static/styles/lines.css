@@ -1018,7 +1018,7 @@
 
     #sec-text-2:after {
         bottom: 0;
-        width: 107%;
+        width: 103%;
     }
 
     #sec-text-1:after {
@@ -1073,9 +1073,9 @@
 
     #line-2:after {
 
-        width: 224%;
+        width: 247%;
 
-        transform: rotate(-18deg) scale(1) translateX(0);
+        transform: rotate(-16deg) scale(1) translateX(0);
     }
 
 
