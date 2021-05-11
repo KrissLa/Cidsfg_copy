@@ -993,9 +993,14 @@
 
 
 @media all and (max-width: 420px) {
+
+    .lines {
+        padding: 75px 0 25px 0;
+    }
+
     .lines .container {
         grid-template-columns: repeat(10, 25px);
-        grid-template-rows: repeat(24, 25px);
+        grid-template-rows:repeat(21, 25px);
         max-width: 280px;
         min-width: unset;
     }
