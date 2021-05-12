@@ -1,4 +1,4 @@
-{% load static home_decorations_menu %}
+{% load static home_decorations_menu products_menu %}
 <!DOCTYPE html>
 <html class="wide wow-animation" lang="en">
 <head>
@@ -44,54 +44,55 @@
 <!-- Page-->
 <div class="page">
     <header class="black-shadow menu {% block header_class %}{% endblock header_class %}">
-        <ul class="dropdown-big-item" id="categories">
-            <div class="container">
-                <li class="ddb-li">
-                    <div class="ddb-li-header">Одноэтажные</div>
-                    <div class="ddb-li-body">
-                        <div class="ddb-li-body-item">
-                            <a href="#">
-                                <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>
-                                <span>Flat</span>
-                            </a>
-                        </div>
-                        <div class="ddb-li-body-item">
-                            <a href="#">
-                                <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>
-                                <span>Flat</span>
-                            </a>
-                        </div>
-
-                        <div class="ddb-li-body-item">
-                            <a href="#">
-                                <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>
-                                <span>Flat</span>
-                            </a>
-                        </div>
-
-                        <div class="ddb-li-body-item">
-                            <a href="#">
-                                <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>
-                                <span>Flat</span>
-                            </a>
-                        </div>
-
-                    </div>
-                </li>
-                <li class="ddb-li">
-                    <div class="ddb-li-header">Двухэтажные</div>
-                    <div class="ddb-li-body">
-                        <div class="ddb-li-body-item">
-                            <span class="soon">Скоро на сайте!</span>
-                        </div>
-                    </div>
-                </li>
+{#        <ul class="dropdown-big-item" id="categories">#}
+{#            <div class="container">#}
+{#                <li class="ddb-li">#}
+{#                    <div class="ddb-li-header">Одноэтажные</div>#}
+{#                    <div class="ddb-li-body">#}
+{#                        <div class="ddb-li-body-item">#}
+{#                            <a href="#">#}
+{#                                <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>#}
+{#                                <span>Flat</span>#}
+{#                            </a>#}
+{#                        </div>#}
+{#                        <div class="ddb-li-body-item">#}
+{#                            <a href="#">#}
+{#                                <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>#}
+{#                                <span>Flat</span>#}
+{#                            </a>#}
+{#                        </div>#}
+{##}
+{#                        <div class="ddb-li-body-item">#}
+{#                            <a href="#">#}
+{#                                <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>#}
+{#                                <span>Flat</span>#}
+{#                            </a>#}
+{#                        </div>#}
+{##}
+{#                        <div class="ddb-li-body-item">#}
+{#                            <a href="#">#}
+{#                                <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>#}
+{#                                <span>Flat</span>#}
+{#                            </a>#}
+{#                        </div>#}
+{##}
+{#                    </div>#}
+{#                </li>#}
+{#                <li class="ddb-li">#}
+{#                    <div class="ddb-li-header">Двухэтажные</div>#}
+{#                    <div class="ddb-li-body">#}
+{#                        <div class="ddb-li-body-item">#}
+{#                            <span class="soon">Скоро на сайте!</span>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </li>#}
                 {#                <li class="ddb-li">#}
                 {##}
                 {#                </li>#}
-            </div>
-
-        </ul>
+{#            </div>#}
+{##}
+{#        </ul>#}
+        {% products_menu %}
         <div class="container">
             <a href="#" class="logo"><img src="{% static 'images/logos/cubo_logo@8x.png' %}"/></a>
             <ul class="main">

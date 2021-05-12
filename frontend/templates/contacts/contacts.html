@@ -4,6 +4,11 @@
 {% block seo_title %}Контакты{% endblock seo_title %}
 <!--{% block seo_description %}{{ home_data.seo_description }}{% endblock seo_description %}-->
 
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'styles/contacts.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/forms.css' %}">
+{% endblock styles %}
+
 
 {% block content %}
 
@@ -49,6 +54,39 @@
         {#       <div class="map" style="background-image: url({% static 'images/map.jpg' %})">#}
         {#        </div>#}
     </section>
+    <section class="contact-form b-shadow white">
+        <div class="container">
+            <h3>Напишите нам</h3>
+            <div class="form">
+                <form method="post">
+                    <div class="input">
+                        <input type="text" name="name" id="input-name" class="text-input">
+                        <label for="input-name" class="input-label">Ваше имя</label>
+                    </div>
+
+                    <div class="input">
+                        <input type="text" name="email" id="input-email" class="text-input">
+                        <label for="input-email" class="input-label">E-mail</label>
+                    </div>
+
+                    <div class="input phone">
+                        <input type="text" name="phone" id="input-phone" class="text-input">
+                        <label for="input-phone" class="input-label">Номер телефона</label>
+                    </div>
+
+                    <div class="input textarea">
+                        <textarea wrap="soft" name="comment" id="input-comment" class="text-input"></textarea>
+                        <label for="input-comment" class="input-label">Сообщение</label>
+                    </div>
+
+
+                    <p><input type="submit" value="Войти"></p>
+
+                </form>
+            </div>
+
+        </div>
+    </section>
     <section class="section-md bg-default">
         <div class="container">
             <div class="row row-50">
@@ -85,3 +123,9 @@
     </section>
 
 {% endblock content %}
+
+
+{% block scripts %}
+
+    <script src="{% static 'scripts/forms.js' %}"></script>
+{% endblock scripts %}

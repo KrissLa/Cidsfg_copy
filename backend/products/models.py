@@ -323,18 +323,33 @@ class Category(SeoAbstract):
     def __str__(self):
         return f'{self.id}  - {self.name}'
 
+    def get_series(self):
+        return self.series.filter(active=True,
+                                  category__active=True)
+
     def get_absolute_url(self):
         # return reverse('catalog_by_category', args=[self.slug])
         return f'url_pass'
 
 
+def generate_picture_to_series_path(instance, filename):
+    path = 'pictures/products/series/%s/%s' % (instance.name,
+                                                     filename)
+    return path
+
+
 class Series(SeoAbstract):
     """ Модель категорий по сериям """
+    category = models.ForeignKey(Category, verbose_name='Категория дома', on_delete=models.SET_NULL, null=True,
+                                 related_name='series')
     name = models.CharField('Название серии', max_length=255, help_text='Например: "FLAT"')
     slug = models.SlugField('SLUG',
                             help_text='Формируется автоматически из названия. Можно изменить. Максимум 50 символов. '
                                       'Будет использован для построения адреса к категории и домам.', unique=True
                             )
+
+    picture = models.ImageField('Изображение серии дома', help_text="В формате png, максимальная ширина - 150px",
+                                upload_to=generate_picture_to_series_path, null=True)
     active = models.BooleanField('Отображать', default=True,
                                  help_text='Уберите, чтобы скрыть категорию и расположенные в ней дома с сайта.')
     sort_number = models.PositiveSmallIntegerField('Номер в меню', unique=True,

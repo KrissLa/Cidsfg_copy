@@ -1,0 +1,50 @@
+{% load active_filter %}
+
+<ul class="dropdown-big-item" id="categories">
+    <div class="container">
+        {% for cat in category %}
+            <li class="ddb-li">
+                <div class="ddb-li-header">{{ cat.name }}</div>
+                <div class="ddb-li-body">
+
+                    <div class="ddb-li-body-item">
+                        <a href="#">
+{#                            <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>#}
+                            <span>Flat</span>
+                        </a>
+                    </div>
+{#                    <div class="ddb-li-body-item">#}
+{#                        <a href="#">#}
+{#                            <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>#}
+{#                            <span>Flat</span>#}
+{#                        </a>#}
+{#                    </div>#}
+{##}
+{#                    <div class="ddb-li-body-item">#}
+{#                        <a href="#">#}
+{#                            <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>#}
+{#                            <span>Flat</span>#}
+{#                        </a>#}
+{#                    </div>#}
+{##}
+{#                    <div class="ddb-li-body-item">#}
+{#                        <a href="#">#}
+{#                            <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>#}
+{#                            <span>Flat</span>#}
+{#                        </a>#}
+{#                    </div>#}
+
+                </div>
+            </li>
+            {#            <li class="ddb-li">#}
+            {#                <div class="ddb-li-header">Двухэтажные</div>#}
+            {#                <div class="ddb-li-body">#}
+            {#                    <div class="ddb-li-body-item">#}
+            {#                        <span class="soon">Скоро на сайте!</span>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {#            </li>#}
+        {% endfor %}
+    </div>
+
+</ul>
