@@ -6,6 +6,8 @@
 
 {% block styles %}
     <link rel="stylesheet" href="{% static 'styles/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/forms.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/modal.css' %}">
 {% endblock styles %}
 
 {% block content %}
@@ -89,7 +91,6 @@
                 <div class="buttons">
                     <a href="#" class="btn-a diagonal black"
                        id="show-request-info-modal"><span>Получить консультацию</span></a>
-                    {#                    <a href="#" class="btn-a diagonal"><span>Конфигуратор стоимости</span></a>#}
 
                 </div>
             </section>
@@ -251,7 +252,8 @@
                                             </a>
                                         </h6>
                                     </div>
-                                    <div class="panel-custom-collapse collapse" id="{{ item.pk }}-for_finishing-Collapse"
+                                    <div class="panel-custom-collapse collapse"
+                                         id="{{ item.pk }}-for_finishing-Collapse"
                                          role="tabpanel"
                                          aria-labelledby="{{ item.pk }}-for_finishing-Head">
                                         <div class="panel-custom-body">
@@ -328,12 +330,12 @@
 
 
     </section>
+
     {% lineup %}
 
 
-    <div class="modal text-left" id="modal-request-info" role="dialog">
+    <div class="modal text-left" id="modal-request-info">
         <div class="modal-dialog">
-            <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
                     <button class="close" id="close-info" type="button" data-dismiss="modal">
@@ -351,29 +353,54 @@
                     <div class="register-form modal-request">
                         <p>Оставьте свои данные и мы перезвоним Вам в течение рабочего дня!</p>
                         <!-- Login form-->
-                        <form>
-                            <div class="rd-mailform-inline-flex">
-                                <div class="form-wrap">
-                                    <label class="form-label" for="name-2">Имя</label>
-                                    <input class="form-input" id="name-2" type="text" name="name">
+                        <div class="form products">
+                            <form method="post" id="form">
+                                <div class="input">
+                                    <input data-required data-length type="text" name="name" id="input-name"
+                                           class="text-input">
+                                    <label for="input-name" class="input-label">Ваше имя*</label>
                                 </div>
-                            </div>
-                            <div class="form-wrap">
-                                <label class="form-label" for="email">Телефон</label>
-                                <input class="form-input" id="email" name="email">
-                            </div>
-                            <div>
-                                <button href="#" class="btn-a diagonal black">Оставить заявку</button>
-                            </div>
+
+                                <div class="input phone">
+                                    <input data-required type="text" name="phone" id="input-phone" class="text-input">
+                                    <label for="input-phone" class="input-label">Номер телефона*</label>
+                                </div>
 
 
-                            {#                            <button class="button button-primary">Оставить заявку</button>#}
-                        </form>
+                                <div class="input">
+                                    <input type="text" name="email" id="input-email" class="text-input">
+                                    <label for="input-email" class="input-label">E-mail</label>
+                                </div>
+
+
+                                <div class="input textarea">
+                        <textarea wrap="soft" name="comment" id="input-comment"
+                                  class="text-input"></textarea>
+                                    <label for="input-comment" class="input-label">Сообщение</label>
+                                </div>
+
+                                <p id="error-server-message">Ошибка сервера! Пожалуйста, попробуйте позже.</p>
+
+
+                                <div class="buttons">
+                                    <a href="#" class="btn-a diagonal black"
+                                       id="send-message"><span>Отправить</span>
+                                        <span class="img">
+                                <img class="spinner hide" src="{% static 'images/spinner.svg' %}" width="30px"/>
+                            </span>
+                                    </a>
+                                </div>
+
+                            </form>
+                            <div id="success-message">
+                                <p>Спасибо! Ваше сообщение получено. Мы свяжемся с Вами в ближайшее время</p>
+                            </div>
+                        </div>
                         <hr>
-                        <p>Нажимая кнопку, я даю согласие на обработку моих персональных данных в соответствии со
-                            статьей 9
-                            ФЗ
-                            от 27.07.2006 № 152-ФЗ «О персональных данных»</p>
+                        <p>Нажимая кнопку, я даю согласие на обработку моих персональных данных в соответствии
+                            со
+                            статьей 9 ФЗ от 27.07.2006 № 152-ФЗ «О персональных данных» и оглашаюсь с
+                            <a href="{% url 'privacy' %}">политикой конфиденциальности</a></p>
                     </div>
 
                 </div>
@@ -387,4 +414,5 @@
 {% block scripts %}
     <script src="{% static 'scripts/swiper-bundle.min.js' %}"></script>
     <script src="{% static 'scripts/product_detail_1.js' %}"></script>
+{#    <script src="{% static 'scripts/form_contacts.js' %}"></script>#}
 {% endblock scripts %}

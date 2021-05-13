@@ -3,6 +3,11 @@
     max-width: 750px;
     padding: 80px 0;
 }
+.form.products {
+    max-width: 750px;
+    padding: unset;
+}
+
 
 .input {
     position: relative;
@@ -31,7 +36,6 @@
 }
 
 .input textarea {
-    height: 200px;
     resize: none;
 }
 
@@ -107,6 +111,7 @@ p.agree {
 }
 
 #send-message {
+    text-decoration: none;
     padding: 14px 30px;
 }
 

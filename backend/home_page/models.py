@@ -10,3 +10,6 @@ class HomePage(SeoAbstract):
     class Meta:
         verbose_name = 'Главная страница'
         verbose_name_plural = 'Главная страница'
+
+    def __str__(self):
+        return 'Главная страница'

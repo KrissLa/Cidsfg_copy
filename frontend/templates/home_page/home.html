@@ -6,6 +6,8 @@
 {% block styles %}
     <link rel="stylesheet" href="{% static 'styles/swiper-bundle.min.css' %}">
     <link rel="stylesheet" href="{% static 'styles/lines.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/collage.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/design.css' %}">
 {% endblock styles %}
 
 {% block header_class %}home{% endblock header_class %}
@@ -34,84 +36,71 @@
             </div>
         </div>
     </section>
-    <div class="timeline-container" id="timeline-1">
+    <div class="timeline-container" id="timeline-1" data-bg-src="{% static 'images/time_line/uniq_1920.jpg' %}"
+         data-bg-src-mobile="{% static 'images/time_line/uniq_1920.jpg' %}">
         <div class="timeline-header">
             <h2 class="timeline-header__title">ПОЧЕМУ ВЫБИРАЮТ CUBO</h2>
             <h3 class="timeline-header__subtitle">И ЧТО В НАС УНИКАЛЬНОГО</h3>
         </div>
         <div class="timeline">
-            <div class="timeline-item ti-active" data-text="ГАРАНТИРУЕМ КАЧЕСТВО И НАДЕЖНОСТЬ" data-text-mobile="1">
-                <span class="right title">ГАРАНТИРУЕМ КАЧЕСТВО И НАДЕЖНОСТЬ</span>
+            <div class="timeline-item ti-active">
+                <span class="right title">КАЧЕСТВО И НАДЕЖНОСТЬ</span>
                 <div class="timeline__content">
-                    <div data-bg-src="{% static 'images/time_line/uniq_1920.jpg' %}"
-                         data-bg-src-mobile="{% static 'images/time_line/uniq_1920.jpg' %}"
-                         class="timeline__img"
-                         src="{% static 'images/time_line/uniq_460.jpg' %}"></div>
-                    {#                    <h2 class="timeline__content-title pc">CUBO</h2>#}
-                    <h2 class="timeline__content-title mobile">ГАРАНТИРУЕМ КАЧЕСТВО И НАДЕЖНОСТЬ</h2>
-                    <p class="timeline__content-desc">Компаниия CUBO имеет налаженную инфраструктуру. Мы занимаемся
-                        всеми
-                        этапами производства. Начиная заготовкой леса и заканчивая изготовлением каждой детали дома.
-                        После
-                        каждого этапа обязательно проводится контроль качества. Наши кострукции из клеенного бруса имеют
-                        высокие тепло и звукоизоляционные характеристики и обеспечивают длительный срок службы. Все
-                        детали
-                        имеют заводское качество и стыкуются как конструктор что исключает ошибки монтажа.</p>
+                    <h2 class="timeline__content-title mobile">КАЧЕСТВО И НАДЕЖНОСТЬ</h2>
+                    <p class="timeline__content-desc">Компания CUBO ДОМ является производителем сборно-разборных домов
+                        CUBO. Благодаря тому, что все элементы изготавливается на заводе процесс сборки домов исключает
+                        ошибки монтажа и занимает считанные дни. Мы имеем всю необходимую инфраструктуру, которая
+                        обеспечивает высокое качество выпускаемой продукции на всех этапах производства. На каждом этапе
+                        проводится контроль качества в соответствии с международными стандартами. Конструкции панелей
+                        выполняются из клеенного бруса что обеспечивает длительный срок службы.</p>
                 </div>
             </div>
-            <div class="timeline-item ti-active" data-text="НЕОГРАНИЧЕННЫЕ ВОЗМОЖНОСТИ ДИЗАЙНА" data-text-mobile="2">
-                <span class="left title">НЕОГРАНИЧЕННЫЕ ВОЗМОЖНОСТИ ДИЗАЙНА</span>
+            <div class="timeline-item ti-active">
+                <span class="left title">ДИЗАЙН БЕЗ ГРАНИЦ</span>
                 <div class="timeline__content">
-                    <div data-bg-src="{% static 'images/time_line/design_1920.jpg' %}"
-                         data-bg-src-mobile="{% static 'images/time_line/design_1920.jpg' %}"
-                         class="timeline__img"
-                         src="{% static 'images/time_line/design_460.jpg' %}"></div>
-                    {#                    <h2 class="timeline__content-title pc">CUBO</h2>#}
-                    <h2 class="timeline__content-title mobile">НЕОГРАНИЧЕННЫЕ ВОЗМОЖНОСТИ ДИЗАЙНА</h2>
-                    <p class="timeline__content-desc">Дома CUBO имеют уникальный дизайн. Высокие потолки и открытое
-                        пространство дают неограниченные вызможности для создания любого дизайна. Все наши покупатели
-                        могут увеличить площадь дома засчет новых модулей.</p>
+                    <h2 class="timeline__content-title mobile">ДИЗАЙН БЕЗ ГРАНИЦ</h2>
+                    <p class="timeline__content-desc">Дома CUBO имеют уникальный экстерьер. Высокие потолки и открытое
+                        пространство дают неограниченные возможности для создания практически любого дизайна, а мульти
+                        модульная концепция позволяет увеличивать площадь дома за счет быстрого возведения новых
+                        модулей.</p>
                 </div>
             </div>
-            <div class="timeline-item ti-active" data-text="УНИКАЛЬНЫЕ ВОЗМОЖНОСТИ" data-text-mobile="3">
-                <span class="right title">УНИКАЛЬНЫЕ ВОЗМОЖНОСТИ</span>
+            <div class="timeline-item ti-active">
+                <span class="right title">СТАЛЬНОЙ ХАРАКТЕР</span>
                 <div class="timeline__content">
-                    <div data-bg-src="{% static 'images/time_line/factory_1920.jpg' %}"
-                         data-bg-src-mobile="{% static 'images/time_line/factory_1920.jpg' %}"
-                         class="timeline__img"
-                         src="{% static 'images/time_line/factory_460.jpg' %}"></div>
-                    {#                    <h2 class="timeline__content-title pc">CUBO</h2>#}
+                    <h2 class="timeline__content-title mobile">СТАЛЬНОЙ ХАРАКТЕР</h2>
+                    <p class="timeline__content-desc">Несмотря на то что дома CUBO являются сборно-разборными, система
+                        натяжных тросов обеспечивает им гораздо большую прочность в сравнении с каркасными и щитовыми
+                        домами. Технология применения натяжных тросов не нова и давно применяется в промышленном
+                        строительстве. Например, система тросов обеспечивает устойчивость и прочность таким объектам как
+                        Останкинская телебашня, подвесные мосты, нефтяные резервуары и другим сложнейшим
+                        сооружениям. </p>
+                </div>
+            </div>
+            <div class="timeline-item ti-active">
+                <span class="left title">УНИКАЛЬНЫЕ ВОЗМОЖНОСТИ</span>
+                <div class="timeline__content">
                     <h2 class="timeline__content-title mobile">УНИКАЛЬНЫЕ ВОЗМОЖНОСТИ</h2>
-                    <p class="timeline__content-desc">Нашим покупателям не нужно заниматься получением разрешения на
-                        строительство, регистрировать дом и платить налог на недвижимость. Можно даже арендовать землю и
-                        поставить дом там, где строительство запрещено (в лесу, в горах или на берегу). А при желании
-                        разобрать на хранение или перевести дом на новое место. Хоть в другую страну для себя или
-                        перепродажи.</p>
+                    <p class="timeline__content-desc">Возможность разобрать и отвезти дом в другую локацию открывает
+                        новые возможности для владельцев домов CUBO. Возможно эта опция и не пригодится, но она
+                        позволяет владельцу выбор действий, например, необходимо ли производить регистрационные действия
+                        с домом и когда. Эти качества домов также позволяют арендовать землю и поставить дом там, где
+                        строительство недвижимого имущества может быть запрещено, а при необходимости разобрать для
+                        хранения или возвести на новом месте (хоть в другой стране для себя или перепродажи).</p>
                 </div>
             </div>
-            {#            <div class="timeline-item" data-text="ПРОСТОТА И СКОРОСТЬ СБОРКИ" data-text-mobile="4">#}
-            {#                <span class="left title">ПРОСТОТА И СКОРОСТЬ СБОРКИ</span>#}
-            {#                <div class="timeline__content"><div data-bg-src="{% static 'images/time_line/building_1920.jpg' %}"#}
-            {#                                                    data-bg-src-mobile="{% static 'images/time_line/building_1920.jpg' %}"#}
-            {#                                                    class="timeline__img"#}
-            {#                                                    src="{% static 'images/time_line/building_460.jpg' %}"></div>#}
-            {#                    <h2 class="timeline__content-title pc">CUBO</h2>#}
-            {#                    <h2 class="timeline__content-title mobile">ПРОСТОТА И СКОРОСТЬ СБОРКИ</h2>#}
-            {#                    <p class="timeline__content-desc">Каждая деталь CUBO разработана и выполнена так, чтобы обеспечить#}
-            {#                        простоту и скорость сборки. Легкий вес деталей упрощает транспортировку. Монтаж не требует#}
-            {#                        подъемной#}
-            {#                        техники. Также не нужны саморезы, винты и электроинструмент. В итоге сборка наших домов требует#}
-            {#                        не#}
-            {#                        более двух человек и двух дней.</p>#}
-            {#                </div>#}
-            {#            </div>#}
-
         </div>
     </div>
     <section class="lines">
         <div class="container">
+            <div class="catalog-header">
+                <h4>Конструкция дома</h4>
+            </div>
+        </div>
+
+        <div class="container content">
             <div id="mobile_lines">
-                <img src="{% static 'images/lines/img_min_400.png'%}">
+                <img src="{% static 'images/lines/img_min_400.png' %}">
             </div>
             <div class="secondary-img" id="sec_1"><img src="{% static 'images/lines/1.png' %}"/></div>
             <div class="secondary-img" id="sec_2"><img src="{% static 'images/lines/2.png' %}"/></div>
@@ -157,379 +146,91 @@
             <div class="line" id="line-5"><span></span></div>
 
 
-            <div class="center-img"><img src="{% static 'images/CUBO_ines.png' %}"/></div>
+            <div class="center-img">
+                <img src="{% static 'images/CUBO_ines.png' %}"/>
+                <div id="roof">крыша</div>
+                <div id="wall">стена</div>
+                <div id="floor">пол</div>
+            </div>
 
         </div>
 
 
     </section>
+    <section class="collage">
+        <div class="container">
+            <div class="collage_wrapper">
+                <div class="item">
+                    <img src="{% static 'images/collage/collage_1.jpg' %}" alt="Профилированный клееный брус вид 1">
+                </div>
+                <div class="item">
+                    <img src="{% static 'images/collage/collage_2.jpg' %}" alt="Профилированный клееный брус вид 2">
+                </div>
+                <div class="item">
+                    <img src="{% static 'images/collage/collage_3.jpg' %}" alt="Профилированный клееный брус вид 3">
+                </div>
+                <div class="item">
+                    <img src="{% static 'images/collage/collage_4.jpg' %}" alt="Профилированный клееный брус вид 4">
+                </div>
+
+
+            </div>
+
+        </div>
+    </section>
+
+    <section class="design">
+        <div class="container">
+            <div class="catalog-header">
+                <h4>Дизайн интерьера</h4>
+            </div>
+            <div class="design_wrapper">
+                <div class="item">
+                    <img
+                            alt="Дизайн интерьера вариант 1"
+                            class="lazy"
+                            src="{% static 'images/design/des_1_th.jpg' %}"
+                            data-srcset="{% static 'images/design/des_1_min.jpg' %} 480w,
+                                                 {% static 'images/design/des_1.jpg' %} 1400w"
+                            data-sizes="(max-width: 767px) 480px,
+                                                1400px"
+                    />
+                </div>
+                <div class="item">
+                    <img
+                            alt="Дизайн интерьера вариант 2"
+                            class="lazy"
+                            src="{% static 'images/design/des_2_th.jpg' %}"
+                            data-srcset="{% static 'images/design/des_2_min.jpg' %} 480w,
+                                                 {% static 'images/design/des_2.jpg' %} 700w"
+                            data-sizes="(max-width: 767px) 480px,
+                                                700px"
+                    />
+                </div>
+                <div class="item">
+                    <img
+                            alt="Дизайн интерьера вариант 3"
+                            class="lazy"
+                            src="{% static 'images/design/des_3_th.jpg' %}"
+                            data-srcset="{% static 'images/design/des_3_min.jpg' %} 480w,
+                                                 {% static 'images/design/des_3.jpg' %} 700w"
+                            data-sizes="(max-width: 767px) 480px,
+                                                700px"
+                    />
+                </div>
+
+
+            </div>
+
+        </div>
+    </section>
     {% lineup %}
-{#    <section class="catalog-section">#}
-{#        <div class="container">#}
-{#            <div class="catalog-header">#}
-{#                <h4>Модельный ряд</h4>#}
-{#                <a href="{% url 'houses_list' %}">Перейти в каталог <span class="fas fa-chevron-right"></span></a>#}
-{#            </div>#}
-{#            <div class="catalog-nav">#}
-{#                <div class="tabs-controls">#}
-{#                    <div class="tabs-controls-wrapper catalog">#}
-{#                        <div class="container">#}
-{#                            <div class="tabs-slider">#}
-                                {#                        <div class="mask"></div>#}
-{#                                <div class="tabs-controls-item catalog active" data-for="tab-10">#}
-{#                                    <div>#}
-{#                                        <span>CUBO FLAT (4)</span>#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                                <div class="tabs-controls-item catalog" data-for="tab-20">#}
-{#                                    <div>#}
-{#                                        <span>CUBO BENT (2)</span>#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        </div>#}
-{##}
-{#                    </div>#}
-{##}
-{#                </div>#}
-{#            </div>#}
-{#            <div class="catalog-body">#}
-{#                <div class="tabs-content">#}
-{#                    <div id="tab-10" class="body-item catalog active">#}
-{#                        <div class="swiper-container-catalog" id="swiper1">#}
-{#                            <div class="swiper-wrapper">#}
-{#                                <div class="swiper-slide">#}
-{#                                    <div class="product-item white b-shadow">#}
-{#                                        <div class="item-wrapper">#}
-{#                                            <div class="item-category">#}
-{#                                                <span>Одноэтажный</span>#}
-{#                                            </div>#}
-{#                                            <div class="item-title">#}
-{#                                                <h4>FLAT F48</h4>#}
-{##}
-{#                                            </div>#}
-{#                                            <div class="item-picture">#}
-{#                                                <img#}
-{#                                                        alt="Вид сбоку"#}
-{#                                                        class="lazy"#}
-{#                                                        src="{% static 'images/CUBO_FLAT_71/4_th.jpg' %}"#}
-{#                                                        data-src="{% static 'images/CUBO_FLAT_71/4_400x267.jpg' %}"#}
-{#                                                />#}
-{##}
-{#                                            </div>#}
-{#                                            <div class="item-min-price">#}
-{#                                                от <span class="price">1 439 000</span> руб.#}
-{#                                            </div>#}
-{#                                            <div class="item-full-price">#}
-{#                                                <div class="caption">"Под ключ"</div>#}
-{#                                                <div class="full-price">#}
-{#                                                    от <span class="price">2 152 000</span> руб.#}
-{#                                                </div>#}
-{##}
-{#                                            </div>#}
-{#                                            <div class="item-link">#}
-{#                                                <a href="#" class="btn-a diagonal black">#}
-{#                                                    <span>Подробнее</span>#}
-{#                                                </a>#}
-{#                                            </div>#}
-{#                                        </div>#}
-{##}
-{#                                    </div>#}
-{#                                </div>#}
-{#                                <div class="swiper-slide">#}
-{#                                    <div class="product-item white b-shadow">#}
-{#                                        <div class="item-wrapper">#}
-{#                                            <div class="item-category">#}
-{#                                                <span>Одноэтажный</span>#}
-{#                                            </div>#}
-{#                                            <div class="item-title">#}
-{#                                                <h4>FLAT F48</h4>#}
-{##}
-{#                                            </div>#}
-{#                                            <div class="item-picture">#}
-{#                                                <img#}
-{#                                                        alt="Вид сбоку"#}
-{#                                                        class="lazy"#}
-{#                                                        src="{% static 'images/CUBO_FLAT_71/4_th.jpg' %}"#}
-{#                                                        data-src="{% static 'images/CUBO_FLAT_71/4_400x267.jpg' %}"#}
-{#                                                />#}
-{##}
-{#                                            </div>#}
-{#                                            <div class="item-min-price">#}
-{#                                                от <span class="price">1 439 000</span> руб.#}
-{#                                            </div>#}
-{#                                            <div class="item-full-price">#}
-{#                                                <div class="caption">"Под ключ"</div>#}
-{#                                                <div class="full-price">#}
-{#                                                    от <span class="price">2 152 000</span> руб.#}
-{#                                                </div>#}
-{##}
-{#                                            </div>#}
-{#                                            <div class="item-link">#}
-{#                                                <a href="#" class="btn-a diagonal black">#}
-{#                                                    <span>Подробнее</span>#}
-{#                                                </a>#}
-{#                                            </div>#}
-{#                                        </div>#}
-{##}
-{#                                    </div>#}
-{#                                </div>#}
-{#                                <div class="swiper-slide">#}
-{#                                    <div class="product-item white b-shadow">#}
-{#                                        <div class="item-wrapper">#}
-{#                                            <div class="item-category">#}
-{#                                                <span>Одноэтажный</span>#}
-{#                                            </div>#}
-{#                                            <div class="item-title">#}
-{#                                                <h4>FLAT F48</h4>#}
-{##}
-{#                                            </div>#}
-{#                                            <div class="item-picture">#}
-{#                                                <img#}
-{#                                                        alt="Вид сбоку"#}
-{#                                                        class="lazy"#}
-{#                                                        src="{% static 'images/CUBO_FLAT_71/4_th.jpg' %}"#}
-{#                                                        data-src="{% static 'images/CUBO_FLAT_71/4_400x267.jpg' %}"#}
-{#                                                />#}
-{##}
-{#                                            </div>#}
-{#                                            <div class="item-min-price">#}
-{#                                                от <span class="price">1 439 000</span> руб.#}
-{#                                            </div>#}
-{#                                            <div class="item-full-price">#}
-{#                                                <div class="caption">"Под ключ"</div>#}
-{#                                                <div class="full-price">#}
-{#                                                    от <span class="price">2 152 000</span> руб.#}
-{#                                                </div>#}
-{##}
-{#                                            </div>#}
-{#                                            <div class="item-link">#}
-{#                                                <a href="#" class="btn-a diagonal black">#}
-{#                                                    <span>Подробнее</span>#}
-{#                                                </a>#}
-{#                                            </div>#}
-{#                                        </div>#}
-{##}
-{#                                    </div>#}
-{#                                </div>#}
-{#                                <div class="swiper-slide">#}
-{#                                    <div class="product-item white b-shadow">#}
-{#                                        <div class="item-wrapper">#}
-{#                                            <div class="item-category">#}
-{#                                                <span>Одноэтажный</span>#}
-{#                                            </div>#}
-{#                                            <div class="item-title">#}
-{#                                                <h4>FLAT F48</h4>#}
-{##}
-{#                                            </div>#}
-{#                                            <div class="item-picture">#}
-{#                                                <img#}
-{#                                                        alt="Вид сбоку"#}
-{#                                                        class="lazy"#}
-{#                                                        src="{% static 'images/CUBO_FLAT_71/4_th.jpg' %}"#}
-{#                                                        data-src="{% static 'images/CUBO_FLAT_71/4_400x267.jpg' %}"#}
-{#                                                />#}
-{##}
-{#                                            </div>#}
-{#                                            <div class="item-min-price">#}
-{#                                                от <span class="price">1 439 000</span> руб.#}
-{#                                            </div>#}
-{#                                            <div class="item-full-price">#}
-{#                                                <div class="caption">"Под ключ"</div>#}
-{#                                                <div class="full-price">#}
-{#                                                    от <span class="price">2 152 000</span> руб.#}
-{#                                                </div>#}
-{##}
-{#                                            </div>#}
-{#                                            <div class="item-link">#}
-{#                                                <a href="#" class="btn-a diagonal black">#}
-{#                                                    <span>Подробнее</span>#}
-{#                                                </a>#}
-{#                                            </div>#}
-{#                                        </div>#}
-{##}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                            <!-- Add Arrows -->#}
-{#                            <div class="swiper-button-next " id="next1"></div>#}
-{#                            <div class="swiper-button-prev " id="prev1"></div>#}
-{#                        </div>#}
-{##}
-{#                    </div>#}
-{#                    <div id="tab-20" class="body-item catalog">#}
-{#                        <div class="swiper-container-catalog" id="swiper2">#}
-{#                            <div class="swiper-wrapper">#}
-{#                                <div class="swiper-slide">#}
-{#                                    <div class="product-item white b-shadow">#}
-{#                                        <div class="item-wrapper">#}
-{#                                            <div class="item-category">#}
-{#                                                <span>Одноэтажный</span>#}
-{#                                            </div>#}
-{#                                            <div class="item-title">#}
-{#                                                <h4>FLAT F48</h4>#}
-{##}
-{#                                            </div>#}
-{#                                            <div class="item-picture">#}
-{#                                                <img#}
-{#                                                        alt="Вид сбоку"#}
-{#                                                        class="lazy"#}
-{#                                                        src="{% static 'images/CUBO_FLAT_71/4_th.jpg' %}"#}
-{#                                                        data-src="{% static 'images/CUBO_FLAT_71/4_400x267.jpg' %}"#}
-{#                                                />#}
-{##}
-{#                                            </div>#}
-{#                                            <div class="item-min-price">#}
-{#                                                от <span class="price">1 439 000</span> руб.#}
-{#                                            </div>#}
-{#                                            <div class="item-full-price">#}
-{#                                                <div class="caption">"Под ключ"</div>#}
-{#                                                <div class="full-price">#}
-{#                                                    от <span class="price">2 152 000</span> руб.#}
-{#                                                </div>#}
-{##}
-{#                                            </div>#}
-{#                                            <div class="item-link">#}
-{#                                                <a href="#" class="btn-a diagonal black">#}
-{#                                                    <span>Подробнее</span>#}
-{#                                                </a>#}
-{#                                            </div>#}
-{#                                        </div>#}
-{##}
-{#                                    </div>#}
-{#                                </div>#}
-{#                                <div class="swiper-slide">#}
-{#                                    <div class="product-item white b-shadow">#}
-{#                                        <div class="item-wrapper">#}
-{#                                            <div class="item-category">#}
-{#                                                <span>Одноэтажный</span>#}
-{#                                            </div>#}
-{#                                            <div class="item-title">#}
-{#                                                <h4>FLAT F48</h4>#}
-{##}
-{#                                            </div>#}
-{#                                            <div class="item-picture">#}
-{#                                                <img#}
-{#                                                        alt="Вид сбоку"#}
-{#                                                        class="lazy"#}
-{#                                                        src="{% static 'images/CUBO_FLAT_71/4_th.jpg' %}"#}
-{#                                                        data-src="{% static 'images/CUBO_FLAT_71/4_400x267.jpg' %}"#}
-{#                                                />#}
-{##}
-{#                                            </div>#}
-{#                                            <div class="item-min-price">#}
-{#                                                от <span class="price">1 439 000</span> руб.#}
-{#                                            </div>#}
-{#                                            <div class="item-full-price">#}
-{#                                                <div class="caption">"Под ключ"</div>#}
-{#                                                <div class="full-price">#}
-{#                                                    от <span class="price">2 152 000</span> руб.#}
-{#                                                </div>#}
-{##}
-{#                                            </div>#}
-{#                                            <div class="item-link">#}
-{#                                                <a href="#" class="btn-a diagonal black">#}
-{#                                                    <span>Подробнее</span>#}
-{#                                                </a>#}
-{#                                            </div>#}
-{#                                        </div>#}
-{##}
-{#                                    </div>#}
-{#                                </div>#}
-{#                                <div class="swiper-slide">#}
-{#                                    <div class="product-item white b-shadow">#}
-{#                                        <div class="item-wrapper">#}
-{#                                            <div class="item-category">#}
-{#                                                <span>Одноэтажный</span>#}
-{#                                            </div>#}
-{#                                            <div class="item-title">#}
-{#                                                <h4>FLAT F48</h4>#}
-{##}
-{#                                            </div>#}
-{#                                            <div class="item-picture">#}
-{#                                                <img#}
-{#                                                        alt="Вид сбоку"#}
-{#                                                        class="lazy"#}
-{#                                                        src="{% static 'images/CUBO_FLAT_71/4_th.jpg' %}"#}
-{#                                                        data-src="{% static 'images/CUBO_FLAT_71/4_400x267.jpg' %}"#}
-{#                                                />#}
-{##}
-{#                                            </div>#}
-{#                                            <div class="item-min-price">#}
-{#                                                от <span class="price">1 439 000</span> руб.#}
-{#                                            </div>#}
-{#                                            <div class="item-full-price">#}
-{#                                                <div class="caption">"Под ключ"</div>#}
-{#                                                <div class="full-price">#}
-{#                                                    от <span class="price">2 152 000</span> руб.#}
-{#                                                </div>#}
-{##}
-{#                                            </div>#}
-{#                                            <div class="item-link">#}
-{#                                                <a href="#" class="btn-a diagonal black">#}
-{#                                                    <span>Подробнее</span>#}
-{#                                                </a>#}
-{#                                            </div>#}
-{#                                        </div>#}
-{##}
-{#                                    </div>#}
-{#                                </div>#}
-{#                                <div class="swiper-slide">#}
-{#                                    <div class="product-item white b-shadow">#}
-{#                                        <div class="item-wrapper">#}
-{#                                            <div class="item-category">#}
-{#                                                <span>Одноэтажный</span>#}
-{#                                            </div>#}
-{#                                            <div class="item-title">#}
-{#                                                <h4>FLAT F48</h4>#}
-{##}
-{#                                            </div>#}
-{#                                            <div class="item-picture">#}
-{#                                                <img#}
-{#                                                        alt="Вид сбоку"#}
-{#                                                        class="lazy"#}
-{#                                                        src="{% static 'images/CUBO_FLAT_71/4_th.jpg' %}"#}
-{#                                                        data-src="{% static 'images/CUBO_FLAT_71/4_400x267.jpg' %}"#}
-{#                                                />#}
-{##}
-{#                                            </div>#}
-{#                                            <div class="item-min-price">#}
-{#                                                от <span class="price">1 439 000</span> руб.#}
-{#                                            </div>#}
-{#                                            <div class="item-full-price">#}
-{#                                                <div class="caption">"Под ключ"</div>#}
-{#                                                <div class="full-price">#}
-{#                                                    от <span class="price">2 152 000</span> руб.#}
-{#                                                </div>#}
-{##}
-{#                                            </div>#}
-{#                                            <div class="item-link">#}
-{#                                                <a href="#" class="btn-a diagonal black">#}
-{#                                                    <span>Подробнее</span>#}
-{#                                                </a>#}
-{#                                            </div>#}
-{#                                        </div>#}
-{##}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                            <!-- Add Arrows -->#}
-{#                            <div class="swiper-button-next " id="next2"></div>#}
-{#                            <div class="swiper-button-prev " id="prev2"></div>#}
-{#                        </div>#}
-{##}
-{#                    </div>#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
-{##}
-{#    </section>#}
 {% endblock content %}
 
 
 {% block scripts %}
 
     <script src="{% static 'scripts/swiper-bundle.min.js' %}"></script>
-    <script src="{% static 'scripts/home_1.js' %}"></script>
+    <script src="{% static 'scripts/home.js' %}"></script>
     <script src="{% static 'scripts/lines.js' %}"></script>
 {% endblock scripts %}

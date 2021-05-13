@@ -1,73 +1,19 @@
-(function ($) {
-    $.fn.timeline = function () {
-        var selectors = {
-            id: $(this),
-            item: $(this).find(".timeline-item"),
-            activeClass: "timeline-item--active",
-            img: ".timeline__img"
-        };
-        selectors.item.eq(0).addClass(selectors.activeClass);
-        selectors.id.css(
-            "background-image",
-            "url(" +
-            selectors.item
-                .first()
-                .find(selectors.img)
-                .attr("data-bg-src") +
-            ")"
-        );
-        selectors.id.css(
-            "background-position",
-            "center center"
-        );
-        var itemLength = selectors.item.length;
-        $(window).scroll(function () {
-            var max, min;
-            var pos = $(this).scrollTop();
-            selectors.item.each(function (i) {
-                min = $(this).offset().top - 200;
-                max = $(this).height() + $(this).offset().top + 200;
-                var that = $(this);
-                if (i == itemLength - 2 && pos > min + $(this).height() / 2) {
-                    selectors.item.removeClass(selectors.activeClass);
-                    selectors.id.css(
-                        "background-image",
-                        "url(" +
-                        selectors.item
-                            .last()
-                            .find(selectors.img)
-                            .attr("data-bg-src") +
-                        ")"
-                    );
-                    selectors.id.css(
-                        "background-position",
-                        "center center"
-                    );
-                    selectors.item.last().addClass(selectors.activeClass);
-                } else if (pos <= max - 230 && pos >= min) {
-                    selectors.id.css(
-                        "background-image",
-                        "url(" +
-                        $(this)
-                            .find(selectors.img)
-                            .attr("data-bg-src") +
-                        ")"
-                    );
-                    selectors.id.css(
-                        "background-position",
-                        "center center"
-                    );
-                    selectors.item.removeClass(selectors.activeClass);
-                    $(this).addClass(selectors.activeClass);
-                }
-            });
-        });
-    };
-})(jQuery);
+//
 
-$("#timeline-1").timeline();
+timeline = document.querySelector('#timeline-1');
 
-const lazyLoadInstance = new LazyLoad({});
+const setTimeLineBackground = () => {
+    if (document.documentElement.clientWidth > 768) {
+        bgImage = timeline.getAttribute('data-bg-src');
+    } else {
+        bgImage = timeline.getAttribute('data-bg-src-mobile');
+    }
+
+    timeline.style.backgroundImage = `url(${bgImage})`;
+}
+
+setTimeLineBackground()
+
 
 //Swipers
 
@@ -86,11 +32,9 @@ const getCatalogSpaceBetween = () => {
         return 80
     } else if (document.documentElement.clientWidth > 992) {
         return 150
-    }
-    else if (document.documentElement.clientWidth > 768) {
+    } else if (document.documentElement.clientWidth > 768) {
         return 20
-    }
-    else {
+    } else {
         return 5
     }
 }
@@ -175,9 +119,9 @@ navItemsCatalog.forEach(e => {
 
             });
             window.addEventListener('resize', function () {
-            swiperCatalog.params.slidesPerView = getCatalogSlidesPerView();
-            swiperCatalog.params.spaceBetween = getCatalogSpaceBetween();
-        });
+                swiperCatalog.params.slidesPerView = getCatalogSlidesPerView();
+                swiperCatalog.params.spaceBetween = getCatalogSpaceBetween();
+            });
         }
         scrollToActiveTab(e, navArrayCatalog, catalogContainer);
 
@@ -196,7 +140,7 @@ const addScrollbar = () => {
         console.log(e.querySelector('.tabs-slider').offsetWidth);
         console.log(e.querySelector('.container').offsetWidth);
         console.log(window.clientWidth);
-        if (e.querySelector('.tabs-slider').offsetWidth > e.querySelector('.container').offsetWidth){
+        if (e.querySelector('.tabs-slider').offsetWidth > e.querySelector('.container').offsetWidth) {
             e.classList.add('scroll');
         }
     })

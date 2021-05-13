@@ -1,6 +1,13 @@
 from rest_framework import serializers
 
-from backend.products.models import House, Category, Series
+from backend.products.models import House, Category, Series, ConsultationRequest
+
+
+class ConsultationRequestSerializer(serializers.ModelSerializer):
+    """ Сериализация заявки на консультацию """
+    class Meta:
+        model = ConsultationRequest
+        fields = "__all__"
 
 
 class CategorySerializer(serializers.ModelSerializer):

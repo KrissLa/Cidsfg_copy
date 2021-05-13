@@ -2,7 +2,6 @@ console.log(document.documentElement.clientWidth);
 
 
 
-
 //Swipers
 
 const getCatalogSlidesPerView = () => {

@@ -1086,7 +1086,7 @@ div.modal.active {
 }
 
 div.register-form.modal-request form {
-    max-width: 300px;
+    /*max-width: 300px;*/
 }
 
 #modal-price-info form {
@@ -1352,7 +1352,7 @@ button.button.black:hover {
     }
 }
 
-@media all and(max-width: 768px) {
+@media all and (max-width: 768px) {
     .products-wrapper {
         grid-template-columns: 1fr;
         gap: 50px;
@@ -1586,6 +1586,10 @@ span.price {
     .text {
         text-align: unset;
     }
+}
+
+#capacity{
+    padding-bottom: 75px;
 }
 
 .capacity .container {
@@ -1953,13 +1957,19 @@ span.price {
 /*}*/
 
 @media all and (max-width: 767px) {
-    .timeline:before {
-        left: 15px;
+    #timeline-1:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        content: "";
+        background: rgba(0, 0, 0, .6);
     }
 }
 
 .timeline-item {
-    padding: 80px 0;
+    padding: 80px 60px;
     opacity: 0.3;
     filter: blur(2px);
     transition: 0.5s;
@@ -1969,7 +1979,14 @@ span.price {
     flex-direction: column;
     position: relative;
     transform: translateY(-80px);
+    background: rgba(0, 0, 0, 0.5);
     /*margin-bottom: 60px;*/
+}
+
+@media all and (max-width: 767px) {
+    .timeline-item {
+        background: unset;
+    }
 }
 
 /*.timeline-item:before {*/
@@ -2138,17 +2155,18 @@ span.price {
     transition: 0.3s ease 0s;
     background-attachment: fixed;
     background-size: cover;
+    background-position: center center;
 }
 
-.timeline-container:before {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    content: "";
-}
+/*.timeline-container:before {*/
+/*    position: absolute;*/
+/*    left: 0;*/
+/*    top: 0;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    background: rgba(0, 0, 0, 0.6);*/
+/*    content: "";*/
+/*}*/
 
 .timeline-header {
     width: 100%;
