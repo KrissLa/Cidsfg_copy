@@ -45,14 +45,16 @@ let swiperCatalog = new Swiper('#swiper1', {
     },
 });
 
+swiperCatalog.params.slidesPerView = getCatalogSlidesPerView();
+swiperCatalog.params.spaceBetween = getCatalogSpaceBetween();
+swiperCatalog.init();
+
 window.addEventListener('resize', function () {
     swiperCatalog.params.slidesPerView = getCatalogSlidesPerView();
     swiperCatalog.params.spaceBetween = getCatalogSpaceBetween();
     // swiperCatalog.reInit();
 
 });
-
-const lazyLoadInstance = new LazyLoad({});
 
 // табы
 
@@ -111,7 +113,7 @@ navItemsCatalog.forEach(e => {
             const swiperID = tabBodyItem.querySelector('.swiper-container-catalog').id;
             const nextID = tabBodyItem.querySelector('.swiper-button-next').id;
             const prevID = tabBodyItem.querySelector('.swiper-button-prev').id;
-            let swiperCatalog = new Swiper(`#${swiperID}`, {
+            swiperCatalog = new Swiper(`#${swiperID}`, {
                 slidesPerView: getCatalogSlidesPerView(),
                 spaceBetween: getCatalogSpaceBetween(),
                 navigation: {
@@ -125,6 +127,7 @@ navItemsCatalog.forEach(e => {
                 swiperCatalog.params.slidesPerView = getCatalogSlidesPerView();
                 swiperCatalog.params.spaceBetween = getCatalogSpaceBetween();
             });
+            swiperCatalog.init();
         }
         scrollToActiveTab(e, navArrayCatalog, catalogContainer);
 

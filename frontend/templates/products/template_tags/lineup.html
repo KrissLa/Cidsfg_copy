@@ -1,0 +1,93 @@
+{% load price_to_str_filter%}
+
+<section class="catalog-section">
+    <div class="container">
+        <div class="catalog-header">
+            <h4>Модельный ряд</h4>
+            <a href="{% url 'houses_list' %}">Перейти в каталог <span class="fas fa-chevron-right"></span></a>
+        </div>
+        <div class="catalog-nav">
+            <div class="tabs-controls">
+                <div class="tabs-controls-wrapper catalog">
+                    <div class="container">
+                        <div class="tabs-slider">
+                            {% for ser in series %}
+                                <div class="tabs-controls-item catalog {% if forloop.first %}active{% endif %}"
+                                     data-for="tab-{{ forloop.counter0 }}0">
+                                    <div>
+                                        <span>{{ ser.name }} ({{ ser.get_houses.count }})</span>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="catalog-body">
+            <div class="tabs-content">
+                {% for ser in series %}
+                    <div id="tab-{{ forloop.counter0 }}0"
+                         class="body-item catalog {% if forloop.first %}active{% endif %}">
+                        <div class="swiper-container-catalog"
+                             id="{% if forloop.first %}swiper1{% else %}swiper1{{ forloop.counter0 }}{% endif %}">
+                            <div class="swiper-wrapper">
+                                {% for house in ser.get_houses %}
+                                    <div class="swiper-slide">
+                                        <div class="product-item white b-shadow">
+                                            <div class="item-wrapper">
+                                                <div class="item-category">
+                                                    <span>{{ house.category.name }}</span>
+                                                </div>
+                                                <div class="item-title">
+                                                    <h4>{{ house.name }}</h4>
+
+                                                </div>
+                                                <div class="item-picture">
+                                                    <img
+                                                            alt="{{ house.get_main_picture.alt }}"
+                                                            class="lazy"
+                                                            src="{{ house.get_main_picture.picture.thumb.url }}"
+                                                            data-src="{{ house.get_main_picture.picture.w450.url }}"
+                                                    />
+
+                                                </div>
+                                                <div class="item-min-price">
+                                                    от <span class="price">{{ house.price_min|price_to_str_filter }}</span> руб.
+                                                </div>
+                                                <div class="item-full-price">
+                                                    <div class="caption">"Под ключ"</div>
+                                                    <div class="full-price">
+                                                        от <span class="price">{{ house.price_full|price_to_str_filter }}</span> руб.
+                                                    </div>
+
+                                                </div>
+                                                <div class="item-link">
+                                                    <a href="{{ house.get_absolute_url }}" class="btn-a diagonal black">
+                                                        <span>Подробнее</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                {% endfor %}
+
+                            </div>
+                            <!-- Add Arrows -->
+                            <div class="swiper-button-next" {% if ser.get_houses.count < 4 %}style="opacity: 0"{% endif %}
+                                 id="next{{ forloop.counter0 }}"></div>
+                            <div class="swiper-button-prev" {% if ser.get_houses.count < 4 %}style="opacity: 0"{% endif %}
+                                 id="prev{{ forloop.counter0 }}"></div>
+                        </div>
+
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+
+</section>

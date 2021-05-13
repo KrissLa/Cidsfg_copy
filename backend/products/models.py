@@ -83,10 +83,10 @@ class House(SeoAbstract):
 
 
 def generate_picture_path(instance, filename):
-    path = 'house_pictures/%s/%s/%s/%s' % (instance.house.category.name,
-                                           instance.house.series.name,
-                                           instance.house.name,
-                                           filename)
+    path = 'pictures/products/house_pictures/%s/%s/%s/%s' % (instance.house.category.name,
+                                                             instance.house.series.name,
+                                                             instance.house.name,
+                                                             filename)
     return path
 
 
@@ -324,8 +324,7 @@ class Category(SeoAbstract):
         return f'{self.id}  - {self.name}'
 
     def get_series(self):
-        return self.series.filter(active=True,
-                                  category__active=True)
+        return self.series.filter(active=True).order_by('sort_number')
 
     def get_absolute_url(self):
         # return reverse('catalog_by_category', args=[self.slug])
@@ -334,7 +333,7 @@ class Category(SeoAbstract):
 
 def generate_picture_to_series_path(instance, filename):
     path = 'pictures/products/series/%s/%s' % (instance.name,
-                                                     filename)
+                                               filename)
     return path
 
 
@@ -350,6 +349,7 @@ class Series(SeoAbstract):
 
     picture = models.ImageField('Изображение серии дома', help_text="В формате png, максимальная ширина - 150px",
                                 upload_to=generate_picture_to_series_path, null=True)
+
     active = models.BooleanField('Отображать', default=True,
                                  help_text='Уберите, чтобы скрыть категорию и расположенные в ней дома с сайта.')
     sort_number = models.PositiveSmallIntegerField('Номер в меню', unique=True,

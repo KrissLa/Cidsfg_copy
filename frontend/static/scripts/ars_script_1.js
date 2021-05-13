@@ -1,5 +1,10 @@
 "use strict";
 
+//lazyload
+
+const lazyLoadInstance = new LazyLoad({});
+
+
 const vh = document.querySelectorAll('.vh');
 
 const fixVhHeight = () => {

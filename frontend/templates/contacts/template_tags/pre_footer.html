@@ -1,0 +1,34 @@
+<section class="pre-footer">
+    <div class="container">
+        <div class="footer-contacts">
+            <div class="info">
+                <h6>Контакты</h6>
+                <ul class="">
+                    <li>
+                        <span class="footer-title">Адрес</span> <span>{{ contacts.address }}</span>
+                    </li>
+                    <li>
+                        <span class="footer-title">Телефоны</span>
+                        {% for phone in contacts.phones.all %}
+                            <a href="tel:{{ phone.phone_number }}">{{ phone.phone_number }}</a>
+                            {% if not forloop.last %},{% endif %}
+                        {% endfor %}
+                    </li>
+                    <li>
+                        <span class="footer-title">E-mail</span> <a
+                            href="mailto:{{ contacts.email }}">{{ contacts.email }}</a>
+                    </li>
+
+                    <li>
+                        <span class="footer-title">Время работы</span> <span>{{ contacts.working_hours }}</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="img">
+                <img class="lazy" src="{{ contacts.map_picture.thumb.url }}"
+                     data-src="{{ contacts.map_picture.w600.url }}" alt="{{ contacts.alt_picture }}"/>
+            </div>
+        </div>
+
+    </div>
+</section>

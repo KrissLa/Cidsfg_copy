@@ -106,10 +106,6 @@ document.addEventListener('resize', initTimeLine);
 // setActiveTimeline(timelineItems[0]);
 
 
-//lazyload
-
-const lazyLoadInstance = new LazyLoad({});
-
 //Swipers
 
 const getCatalogSlidesPerView = () => {

@@ -1,7 +1,3 @@
-// lazyload init
-
-const lazyLoadInstance = new LazyLoad({});
-
 // табы
 
 const navItems = document.querySelectorAll('.tabs-controls-item'),

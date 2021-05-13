@@ -6,6 +6,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ['SECRET_KEY']
 
+SITE_DOMAIN = os.environ['SITE_DOMAIN']
+ADMIN_URL = os.environ['ADMIN_URL']
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -114,6 +117,8 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 12
 }
+
+
 
 TG_BOT_TOKEN = os.environ['TG_BOT_TOKEN']
 TG_ADMIN_ID = os.environ['TG_ADMIN_ID']

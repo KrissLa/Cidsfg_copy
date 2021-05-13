@@ -1,4 +1,4 @@
-{% load active_filter %}
+{% load active_filter count_active %}
 
 <ul class="dropdown-big-item" id="categories">
     <div class="container">
@@ -6,44 +6,30 @@
             <li class="ddb-li">
                 <div class="ddb-li-header">{{ cat.name }}</div>
                 <div class="ddb-li-body">
-
-                    <div class="ddb-li-body-item">
-                        <a href="#">
-{#                            <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>#}
-                            <span>Flat</span>
-                        </a>
-                    </div>
-{#                    <div class="ddb-li-body-item">#}
-{#                        <a href="#">#}
-{#                            <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>#}
-{#                            <span>Flat</span>#}
-{#                        </a>#}
-{#                    </div>#}
-{##}
-{#                    <div class="ddb-li-body-item">#}
-{#                        <a href="#">#}
-{#                            <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>#}
-{#                            <span>Flat</span>#}
-{#                        </a>#}
-{#                    </div>#}
-{##}
-{#                    <div class="ddb-li-body-item">#}
-{#                        <a href="#">#}
-{#                            <img src="{% static 'images/menu_items/menu_min_1.png' %}"/>#}
-{#                            <span>Flat</span>#}
-{#                        </a>#}
-{#                    </div>#}
-
+                    {% if cat.coming_soon %}
+                        <div class="ddb-li-body">
+                            <div class="ddb-li-body-item">
+                                <span class="soon">Скоро на сайте!</span>
+                            </div>
+                        </div>
+                    {% else %}
+                        {% for ser in cat.get_series %}
+                            <div class="ddb-li-body-item">
+                                <a href="{{ ser.get_absolute_url }}">
+                                    <img src="{{ ser.picture.url }}" alt=""/>
+                                    <span>{{ ser.name }} ({{ ser.get_houses.count }})</span>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
                 </div>
             </li>
-            {#            <li class="ddb-li">#}
-            {#                <div class="ddb-li-header">Двухэтажные</div>#}
-            {#                <div class="ddb-li-body">#}
-            {#                    <div class="ddb-li-body-item">#}
-            {#                        <span class="soon">Скоро на сайте!</span>#}
-            {#                    </div>#}
-            {#                </div>#}
-            {#            </li>#}
+
+            {% empty %}
+            <li class="ddb-li">
+                <div class="ddb-li-header">Дома добавляются прямо сейчас! </div>
+
+            </li>
         {% endfor %}
     </div>
 

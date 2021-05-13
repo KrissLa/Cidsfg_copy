@@ -29,96 +29,90 @@
                     <h1>Контакты</h1>
                     <ul class="">
                         <li>
-                            <span class="footer-title">Адрес</span> <span>4578 Marmora Road, Glasgow, D04 89GR</span>
+                            <span class="footer-title">Адрес</span> <span>{{ contacts.address }}</span>
                         </li>
                         <li>
-                            <span class="footer-title">Телефоны</span> <a href="tel:#">(800) 123-0045</a>, <a
-                                href="tel:#">(800) 123-0045</a>
+
+                            <span class="footer-title">Телефоны</span>
+                            {% for phone in contacts.phones.all %}
+                                <a href="tel:{{ phone.phone_number }}">{{ phone.phone_number }}</a>
+                                {% if not forloop.last %},{% endif %}
+                            {% endfor %}
                         </li>
                         <li>
-                            <span class="footer-title">E-mail</span> <a href="mailto:#">info@demolink.org</a>
+                            <span class="footer-title">E-mail</span> <a
+                                href="mailto:{{ contacts.email }}">{{ contacts.email }}</a>
                         </li>
 
                         <li>
-                            <span class="footer-title">Время работы</span> <span>Пн - Пт: 10:00 - 20:00</span>
+                            <span class="footer-title">Время работы</span> <span>{{ contacts.working_hours }}</span>
                         </li>
                     </ul>
                 </div>
                 <div class="img">
-                    <img src="{% static 'images/map.jpg' %}"/>
+                    <img
+                            alt="{{ contacts.alt_picture }}"
+                            class="lazy"
+                            src="{{ contacts.map_picture.thumb.url }}"
+                            data-srcset="{{ contacts.map_picture.w400.url }} 400w,
+                                         {{ contacts.map_picture.w800.url }} 800w"
+                            data-sizes="(max-width: 767px) 400px,
+                                                1000px"
+                    />
                 </div>
             </div>
 
         </div>
-        <!-- RD Google Map-->
-        {#       <div class="map" style="background-image: url({% static 'images/map.jpg' %})">#}
-        {#        </div>#}
     </section>
     <section class="contact-form b-shadow white">
         <div class="container">
             <h3>Напишите нам</h3>
             <div class="form">
-                <form method="post">
+                <form method="post" id="form">
                     <div class="input">
-                        <input type="text" name="name" id="input-name" class="text-input">
-                        <label for="input-name" class="input-label">Ваше имя</label>
+                        <input data-required data-length type="text" name="name" id="input-name" class="text-input">
+                        <label for="input-name" class="input-label">Ваше имя*</label>
                     </div>
 
                     <div class="input">
-                        <input type="text" name="email" id="input-email" class="text-input">
-                        <label for="input-email" class="input-label">E-mail</label>
+                        <input data-required type="text" name="email" id="input-email" class="text-input">
+                        <label for="input-email" class="input-label">E-mail*</label>
                     </div>
 
                     <div class="input phone">
-                        <input type="text" name="phone" id="input-phone" class="text-input">
-                        <label for="input-phone" class="input-label">Номер телефона</label>
+                        <input data-required type="text" name="phone" id="input-phone" class="text-input">
+                        <label for="input-phone" class="input-label">Номер телефона*</label>
                     </div>
 
                     <div class="input textarea">
-                        <textarea wrap="soft" name="comment" id="input-comment" class="text-input"></textarea>
-                        <label for="input-comment" class="input-label">Сообщение</label>
+                        <textarea data-required wrap="soft" name="comment" id="input-comment"
+                                  class="text-input"></textarea>
+                        <label for="input-comment" class="input-label">Сообщение*</label>
                     </div>
 
+                    <p class="agree">Нажимая кнопку, я даю согласие на обработку моих персональных данных в соответствии
+                        со
+                        статьей 9 ФЗ от 27.07.2006 № 152-ФЗ «О персональных данных» и оглашаюсь с
+                        <a href="{% url 'privacy' %}">политикой конфиденциальности</a></p>
 
-                    <p><input type="submit" value="Войти"></p>
+                    <p id="error-server-message">Ошибка сервера! Пожалуйста, попробуйте позже.</p>
+
+
+                    <div class="buttons">
+                        <a href="#" class="btn-a diagonal black"
+                           id="send-message"><span>Отправить</span>
+                            <span class="img">
+                                <img class="spinner hide" src="{% static 'images/spinner.svg' %}" width="30px"/>
+                            </span>
+                        </a>
+                    </div>
 
                 </form>
-            </div>
-
-        </div>
-    </section>
-    <section class="section-md bg-default">
-        <div class="container">
-            <div class="row row-50">
-                <div class="col-md-7 col-lg-8">
-                    <h3>Напишите нам</h3>
-                    <!-- RD Mailform-->
-                    <form class="rd-mailform rd-mailform_style-1" data-form-output="form-output-global"
-                          data-form-type="contact" method="post" action="bat/rd-mailform.php">
-                        <div class="form-wrap">
-                            <input class="form-input" id="contact-name" type="text" name="name"
-                                   data-constraints="@Required">
-                            <label class="form-label" for="contact-name">Ваше имя</label>
-                        </div>
-                        <div class="form-wrap">
-                            <input class="form-input" id="contact-email" type="email" name="email"
-                                   data-constraints="@Email @Required">
-                            <label class="form-label" for="contact-email">E-mail</label>
-                        </div>
-                        <div class="form-wrap">
-                            <input class="form-input" id="contact-phone" type="text" name="phone"
-                                   data-constraints="@Numeric">
-                            <label class="form-label" for="contact-phone">Номер телефона</label>
-                        </div>
-                        <div class="form-wrap">
-                            <textarea class="form-input" id="contact-message" name="message"
-                                      data-constraints="@Required"></textarea>
-                            <label class="form-label" for="contact-message">Сообщение</label>
-                        </div>
-                        <button class="button button-primary" type="submit">Отправить</button>
-                    </form>
+                <div id="success-message">
+                    <p>Спасибо! Ваше сообщение получено. Мы свяжемся с Вами в ближайшее время</p>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -127,5 +121,5 @@
 
 {% block scripts %}
 
-    <script src="{% static 'scripts/forms.js' %}"></script>
+    <script src="{% static 'scripts/form_contacts.js' %}"></script>
 {% endblock scripts %}

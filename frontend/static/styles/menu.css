@@ -344,6 +344,7 @@ header.menu ul.main li a {
 
     .ddb-li-body-item {
         margin-bottom: 20px;
+        min-width: 200px;
     }
 
     .ddb-li-body-item a {
