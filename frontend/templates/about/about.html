@@ -1,8 +1,20 @@
 {% extends 'superbase.html' %}
 {% load static %}
 
-<!--{% block seo_title %}{{ home_data.seo_title }}{% endblock seo_title %}-->
-<!--{% block seo_description %}{{ home_data.seo_description }}{% endblock seo_description %}-->
+{% block seo_title %}
+    {% if about %}
+        {{ about.seo_title }}
+    {% else %}
+        Завод | CUBO
+    {% endif %}
+{% endblock seo_title %}
+{% block seo_description %}
+    {% if about %}
+        {{ about.seo_description }}
+    {% else %}
+        Подробная информация о компании CUBO | CUBO
+    {% endif %}
+{% endblock seo_description %}
 
 
 {% block content %}
@@ -35,7 +47,7 @@
                 </div>
                 <div class="about-video">
                     <div class="entry-video embed-responsive embed-responsive-16by9">
-                        <iframe width="886" height="668" src="//www.youtube.com/embed/ccuQoF0vKYU"
+                        <iframe width="886" height="668" src="//www.youtube.com/embed/{% if about %}{{ about.youtube_url }}{% else %}ccuQoF0vKYU{% endif %}"
                                 allowfullscreen=""></iframe>
                     </div>
                 </div>
@@ -43,28 +55,48 @@
 
         </div>
     </section>
-    <section id="about" class="about-section" style="background-image: url({% static 'images/about_bg.jpg' %}">
+    <section id="about" class="about-section" style="background-image: url(
+            {% if about %}
+                {{ about.about_company_picture.w3000.url }}
+            {% else %}
+                {% static 'images/about_bg.jpg' %}
+            {% endif %})">
         <div class="inner-container">
             <h2>О компании</h2>
+
             <p class="text">
-                Компания JUST CUBO является автором и разработчиком новой технологии строительства домов CUBO.
-                Технология заключается в стандартизации несущих конструкций и позволяет быстро возводить
-                сборно-разборные здания.
+                {% if about %}
+                    {{ about.about_company }}
+                {% else %}
+                    Компания JUST CUBO является автором и разработчиком новой технологии строительства домов CUBO.
+                    Технология заключается в стандартизации несущих конструкций и позволяет быстро возводить
+                    сборно-разборные здания.
+                {% endif %}
+
             </p>
         </div>
 
     </section>
 
     <section id="factory" class="about-section right"
-             style="background-image: url({% static 'images/factory.jpg' %}">
+             style="background-image: url( {% if about %}
+                 {{ about.about_factory_picture.w3000.url }}
+             {% else %}
+                 {% static 'images/factory.jpg' %}
+             {% endif %})">
         <div class="inner-container">
             <h2>О заводе</h2>
             <p class="text">
-                Деревообрабатывающее предприятие, на котором производятся дома CUBO было основано в 1994 году и ходе
-                развития вышло на производство клееных изделий с полным технологическим циклом.
-                К настоящему времени предприятие имеет свою инфраструктуру, которая начинается заготовкой леса и
-                заканчивается производством изделий деревообработки. Площадь предприятия составляет 1,8 га, из них
-                производственные площади - 3500 м². Численность работающих - 250 человек.
+                {% if about %}
+                    {{ about.about_factory }}
+                {% else %}
+                    Деревообрабатывающее предприятие, на котором производятся дома CUBO было основано в 1994 году и ходе
+                    развития вышло на производство клееных изделий с полным технологическим циклом.
+                    К настоящему времени предприятие имеет свою инфраструктуру, которая начинается заготовкой леса и
+                    заканчивается производством изделий деревообработки. Площадь предприятия составляет 1,8 га, из них
+                    производственные площади - 3500 м². Численность работающих - 250 человек.
+                {% endif %}
+
             </p>
         </div>
 

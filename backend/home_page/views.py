@@ -11,5 +11,8 @@ class HomePageView(View):
     template_name = 'home_page/home.html'
 
     def get(self, request, *args, **kwargs):
-        home_data = HomePage.objects.all().order_by('-id')[:1].values()[0]
+        try:
+            home_data = HomePage.objects.all().order_by('-id')[0]
+        except Exception:
+            home_data = None
         return render(request, self.template_name, {'home_data': home_data})

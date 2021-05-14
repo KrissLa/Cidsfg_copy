@@ -1,4 +1,4 @@
-const MessageAddUrl = 'http://127.0.0.1:8000/api/v1/houses/add_consultation_reqeust/';
+const MessageAddUrl = `${domain}/api/v1/houses/add_consultation_reqeust/`;
 
 //Swipers
 

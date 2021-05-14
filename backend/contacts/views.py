@@ -8,5 +8,8 @@ class ContactsView(View):
     """ Страница контакты """
 
     def get(self, request, *args, **kwargs):
-        contacts = Contacts.objects.all()[0]
+        try:
+            contacts = Contacts.objects.all()[0]
+        except Exception:
+            contacts = None
         return render(request, template_name='contacts/contacts.html', context={'contacts': contacts})

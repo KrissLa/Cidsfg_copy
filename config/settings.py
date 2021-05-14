@@ -25,17 +25,12 @@ INSTALLED_APPS = [
 
     'backend.seo',
     'backend.home_page',
-    'backend.advantages',
-    'backend.orders',
     'backend.privacy',
     'backend.products',
     'backend.home_decorations',
     'backend.about',
-    'backend.cubo_business',
     'backend.partnership',
     'backend.contacts',
-    'backend.favorites',
-    'backend.cart',
 
 ]
 

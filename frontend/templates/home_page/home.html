@@ -1,14 +1,28 @@
 {% extends 'superbase.html' %}
 {% load static lineup %}
 
-{% block seo_title %}{{ home_data.seo_title }}{% endblock seo_title %}
-{% block seo_description %}{{ home_data.seo_description }}{% endblock seo_description %}
-{% block styles %}
-    <link rel="stylesheet" href="{% static 'styles/swiper-bundle.min.css' %}">
-    <link rel="stylesheet" href="{% static 'styles/lines.css' %}">
-    <link rel="stylesheet" href="{% static 'styles/collage.css' %}">
-    <link rel="stylesheet" href="{% static 'styles/design.css' %}">
-{% endblock styles %}
+
+{% block seo_title %}
+    {% if home_data %}
+        {{ home_data.seo_title }}
+    {% else %}
+        CUBO
+    {% endif %}
+{% endblock seo_title %}
+{% block seo_description %}
+    {% if home_data %}
+        {{ home_data.seo_description }}
+    {% else %}
+        CUBO Главная страница
+    {% endif %}
+{% endblock seo_description %}
+
+{#{% block styles %}#}
+{#    <link rel="stylesheet" href="{% static 'styles/swiper-bundle.min.css' %}">#}
+{#    <link rel="stylesheet" href="{% static 'styles/lines.css' %}">#}
+{#    <link rel="stylesheet" href="{% static 'styles/collage.css' %}">#}
+{#    <link rel="stylesheet" href="{% static 'styles/design.css' %}">#}
+{#{% endblock styles %}#}
 
 {% block header_class %}home{% endblock header_class %}
 {% block content %}

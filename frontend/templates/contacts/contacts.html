@@ -1,13 +1,27 @@
 {% extends 'superbase.html' %}
-{% load static %}
+{% load static domain %}
 
-{% block seo_title %}Контакты{% endblock seo_title %}
-<!--{% block seo_description %}{{ home_data.seo_description }}{% endblock seo_description %}-->
 
-{% block styles %}
-    <link rel="stylesheet" href="{% static 'styles/contacts.css' %}">
-    <link rel="stylesheet" href="{% static 'styles/forms.css' %}">
-{% endblock styles %}
+{% block seo_title %}
+    {% if contacts %}
+        {{ contacts.seo_title }}
+    {% else %}
+        Контакты | CUBO
+    {% endif %}
+{% endblock seo_title %}
+{% block seo_description %}
+    {% if contacts %}
+        {{ contacts.seo_description }}
+    {% else %}
+        Контакты CUBO
+    {% endif %}
+{% endblock seo_description %}
+
+
+{#{% block styles %}#}
+{#    <link rel="stylesheet" href="{% static 'styles/contacts.css' %}">#}
+{#    <link rel="stylesheet" href="{% static 'styles/forms.css' %}">#}
+{#{% endblock styles %}#}
 
 
 {% block content %}
@@ -120,6 +134,6 @@
 
 
 {% block scripts %}
-
+    {% domain %}
     <script src="{% static 'scripts/form_contacts.js' %}"></script>
 {% endblock scripts %}

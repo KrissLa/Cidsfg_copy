@@ -2,4 +2,5 @@ from django.apps import AppConfig
 
 
 class AboutConfig(AppConfig):
-    name = 'about'
+    name = 'backend.about'
+    verbose_name = 'Страница Завод'

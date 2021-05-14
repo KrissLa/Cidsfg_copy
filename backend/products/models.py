@@ -301,7 +301,7 @@ class IncludedInPriceDeliveryItem(TabBodyAbstract, ActiveAbstract):
         return f'{self.included_in_price.delivery.house} - Вкладка "Включено в стоимоть"'
 
 
-class Category(SeoAbstract):
+class Category(models.Model):
     """ Модель категорий по этажам """
     name = models.CharField('Название категории', max_length=255, help_text='Например: "Одноэтажные"')
     slug = models.SlugField('SLUG',

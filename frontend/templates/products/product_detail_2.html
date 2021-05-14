@@ -1,14 +1,22 @@
 {% extends 'superbase.html' %}
-{% load static price_to_str_filter lineup %}
+{% load static price_to_str_filter lineup domain %}
 
-<!--{% block seo_title %}{{ house.seo_title }}{% endblock seo_title %}-->
-<!--{% block seo_description %}{{ house.seo_description }}{% endblock seo_description %}-->
+{% block seo_title %}
+    {% if house.seo_title %}
+    {{ house.seo_title }}
+    {% else %}
+    {{ house.name }}
+    {% endif %}
+{% endblock seo_title %}
+{% block seo_description %}
+    {{ house.seo_description }}
+{% endblock seo_description %}
 
-{% block styles %}
-    <link rel="stylesheet" href="{% static 'styles/swiper-bundle.min.css' %}">
-    <link rel="stylesheet" href="{% static 'styles/forms.css' %}">
-    <link rel="stylesheet" href="{% static 'styles/modal.css' %}">
-{% endblock styles %}
+{#{% block styles %}#}
+{#    <link rel="stylesheet" href="{% static 'styles/swiper-bundle.min.css' %}">#}
+{#    <link rel="stylesheet" href="{% static 'styles/forms.css' %}">#}
+{#    <link rel="stylesheet" href="{% static 'styles/modal.css' %}">#}
+{#{% endblock styles %}#}
 
 {% block content %}
     <section class="breadcrumbs-custom">
@@ -412,7 +420,7 @@
 {% endblock content %}
 
 {% block scripts %}
+    {% domain %}
     <script src="{% static 'scripts/swiper-bundle.min.js' %}"></script>
     <script src="{% static 'scripts/product_detail_1.js' %}"></script>
-{#    <script src="{% static 'scripts/form_contacts.js' %}"></script>#}
 {% endblock scripts %}

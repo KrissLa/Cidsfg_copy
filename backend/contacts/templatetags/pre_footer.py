@@ -8,5 +8,8 @@ register = template.Library()
 @register.inclusion_tag('contacts/template_tags/pre_footer.html')
 def pre_footer():
     """ Модельный ряд """
-    contacts = Contacts.objects.all()[0]
+    try:
+        contacts = Contacts.objects.all()[0]
+    except Exception:
+        contacts = None
     return {'contacts': contacts}

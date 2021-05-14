@@ -1,4 +1,4 @@
-const MessageAddUrl = 'http://127.0.0.1:8000/api/v1/contacts/add/';
+const MessageAddUrl = `${domain}/api/v1/contacts/add/`;
 
 const form = document.querySelector('#form'),
     requiredFields = form.querySelectorAll('[data-required]'),

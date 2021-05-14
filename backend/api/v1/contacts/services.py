@@ -3,10 +3,8 @@ from loguru import logger
 
 from config.settings import TG_BOT_TOKEN, TG_ADMIN_ID, SITE_DOMAIN, ADMIN_URL
 
-chat_id = -1001480176374
 
-
-def send_message_to_admin(message, admin_id=chat_id):
+def send_message_to_admin(message, admin_id=TG_ADMIN_ID):
     """ Отправляем сообщение в телеграм"""
 
     response = requests.get(
