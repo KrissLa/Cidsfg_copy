@@ -163,6 +163,7 @@ p.agree {
         max-width:350px;
     }
     #send-message {
+        min-width: 250px;
         padding: 14px 30px;
         max-width:350px;
     }
@@ -176,6 +177,8 @@ p.agree {
         max-width:100%;
     }
     #send-message {
-        max-width:100%;
+        min-width: unset;
+        max-width:unset;
+        width: 100%;
     }
 }

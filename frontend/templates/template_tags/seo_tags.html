@@ -1,0 +1,8 @@
+{% for counter in counters %}
+    {{ counter.code|safe }}
+{% empty %}
+{% endfor %}
+{% for ss in ss %}
+    <meta name='{{ ss.name }}' content='{{ ss.content }}' />
+{% empty %}
+{% endfor %}

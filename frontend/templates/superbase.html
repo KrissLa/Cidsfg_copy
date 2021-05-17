@@ -1,4 +1,4 @@
-{% load static products_menu pre_footer %}
+{% load static products_menu pre_footer seo_tags %}
 <!DOCTYPE html>
 <html class="wide wow-animation" lang="en">
 <head>
@@ -11,16 +11,16 @@
     <meta charset="utf-8">
     <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'styles/fin_style_draft.min.css' %}">
-{#    <link rel="stylesheet" href="{% static 'styles/bootstrap.css' %}">#}
-{#    <link rel="stylesheet" href="{% static 'styles/style_def.css' %}">#}
-{#    <link rel="stylesheet" href="{% static 'styles/bootstrap.css' %}">#}
-{#    <link rel="stylesheet" href="{% static 'styles/fonts.css' %}">#}
-{#    <link rel="stylesheet" href="{% static 'styles/style_def.css' %}">#}
-{#    <link rel="stylesheet" href="{% static 'styles/container.css' %}">#}
-    <link rel="stylesheet" href="{% static 'styles/ars_style.css' %}">
-{##}
+    {#    <link rel="stylesheet" href="{% static 'styles/bootstrap.css' %}">#}
+    {#    <link rel="stylesheet" href="{% static 'styles/style_def.css' %}">#}
+    {#    <link rel="stylesheet" href="{% static 'styles/bootstrap.css' %}">#}
+    {#    <link rel="stylesheet" href="{% static 'styles/fonts.css' %}">#}
+    {#    <link rel="stylesheet" href="{% static 'styles/style_def.css' %}">#}
+    {#    <link rel="stylesheet" href="{% static 'styles/container.css' %}">#}
+{#    <link rel="stylesheet" href="{% static 'styles/ars_style.css' %}">#}
+    {##}
     {% block styles %}{% endblock styles %}
-{#    <link rel="stylesheet" href="{% static 'styles/menu.css' %}">#}
+    {#    <link rel="stylesheet" href="{% static 'styles/menu.css' %}">#}
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
@@ -33,9 +33,8 @@
     </div>
     <script src="{% static 'scripts/html5shiv.min.js' %}"></script>
     <![endif]-->
-    {% block search_systems %}
-
-    {% endblock search_systems %}
+    {% all_counters %}
+    {% all_ss %}
 </head>
 <body>
 <!-- Page-->
@@ -76,12 +75,12 @@
                 <p class="rights"><a
                         href="{% url 'privacy' %}">Политика конфиденциальности</a></p>
                 <ul class="list-inline-xxs">
-{#                    <li><a class="icon icon-xxs icon-gray-4 fa fa-facebook" href="#"></a></li>#}
-{#                    <li><a class="icon icon-xxs icon-gray-4 fa fa-twitter" href="#"></a></li>#}
-{#                    <li><a class="icon icon-xxs icon-gray-4 fa fa-google-plus" href="#"></a></li>#}
-{#                    <li><a class="icon icon-xxs icon-gray-4 fa fa-vimeo" href="#"></a></li>#}
-{#                    <li><a class="icon icon-xxs icon-gray-4 fa fa-youtube" href="#"></a></li>#}
-{#                    <li><a class="icon icon-xxs icon-gray-4 fa fa-pinter"></a></li>#}
+                    {#                    <li><a class="icon icon-xxs icon-gray-4 fa fa-facebook" href="#"></a></li>#}
+                    {#                    <li><a class="icon icon-xxs icon-gray-4 fa fa-twitter" href="#"></a></li>#}
+                    {#                    <li><a class="icon icon-xxs icon-gray-4 fa fa-google-plus" href="#"></a></li>#}
+                    {#                    <li><a class="icon icon-xxs icon-gray-4 fa fa-vimeo" href="#"></a></li>#}
+                    {#                    <li><a class="icon icon-xxs icon-gray-4 fa fa-youtube" href="#"></a></li>#}
+                    {#                    <li><a class="icon icon-xxs icon-gray-4 fa fa-pinter"></a></li>#}
                 </ul>
             </div>
         </div>
