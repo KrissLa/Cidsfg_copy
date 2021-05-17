@@ -556,6 +556,7 @@ form.sub-menu-form .form-wrap.checkbox label {
 }
 
 .btn-a {
+    box-sizing: border-box;
     position: relative;
     display: block;
     color: #000;
@@ -712,6 +713,7 @@ form .btn-a {
 }
 
 .diagonal.black::before {
+    box-sizing: unset;
     background: #1B1C17;
     content: "";
     width: 120%;
@@ -719,6 +721,10 @@ form .btn-a {
     position: absolute;
     top: 50%;
     left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     z-index: -2;
     transition: 0.3s all ease;
@@ -1588,7 +1594,7 @@ span.price {
     }
 }
 
-#capacity{
+#capacity {
     padding-bottom: 75px;
 }
 
