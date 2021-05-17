@@ -23,7 +23,6 @@ const scrollToActiveTab = (e) => {
         }
 
     });
-    console.log(getWidth);
     document.querySelector('.tabs-controls-wrapper .container').scrollLeft = getWidth - 25;
 }
 
@@ -33,7 +32,6 @@ navItems.forEach(e => {
         if (!e.classList.contains('active')) {
             const tabId = e.getAttribute('data-for'),
                 tabBodyItem = document.querySelector(`#${tabId}`);
-            console.log(tabBodyItem);
             setActive(e, navItems);
             setActive(tabBodyItem, bodyItems);
         }

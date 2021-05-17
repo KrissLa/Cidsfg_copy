@@ -61,7 +61,6 @@ const linesAnimationsInTurn = () => {
 }
 
 const getOffsetLines = () => {
-    console.log(sectionLines.offsetTop);
     return sectionLines.offsetTop;
 }
 

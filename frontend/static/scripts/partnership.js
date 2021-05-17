@@ -86,12 +86,10 @@ const inputCompanyName = '<div class="input">\n' +
     '                            <label for="company-name" class="input-label">Название компании*</label>\n' +
     '                        </div>';
 
-console.log(inputCompanyName);
 
 
 selectType.addEventListener('click', () => {
     const placeholder = selectType.querySelector('span[data-placeholder]');
-    console.log(placeholder.textContent)
     if (placeholder.textContent === 'компания') {
         if (!document.querySelector('#company-name')) {
             selectType.insertAdjacentHTML('afterend', inputCompanyName);
@@ -99,7 +97,6 @@ selectType.addEventListener('click', () => {
             requiredFields = form.querySelectorAll('[data-required]');
             lengthFields = form.querySelectorAll('[data-length]');
             inputsAddAnimation()
-            console.log(inputs)
         }
 
     } else {
@@ -258,7 +255,6 @@ const validationSelect = () => {
     inputSelects.forEach(e => {
         result.push(selectIsValid(e));
     })
-    console.log(result);
     return !result.includes(false);
 }
 
@@ -267,7 +263,6 @@ inputSelects.forEach(e => {
     e.addEventListener
 });
 form.querySelector('#input-phone').addEventListener('input', (e) => {
-    console.log(e.target.value);
     if (e.target.value.match(/[^0-9]/g)) {
         e.target.value = e.target.value.replace(/[^0-9]/g, "");
     }
@@ -291,9 +286,7 @@ sendMessageButton.addEventListener('click', (e) => {
         document.querySelector('#error-server-message').classList.remove('show')
     }
     showSpinner()
-    console.log(formIsValid())
     if (formIsValid()) {
-        console.log('Form is Valid');
         const data = () => {
             if ((!document.querySelector('#company-name'))) {
                 return {
@@ -317,7 +310,6 @@ sendMessageButton.addEventListener('click', (e) => {
             }
 
         };
-        console.log(data());
         fetch(MessageAddUrl, {
             method: 'POST',
             headers: {
@@ -333,9 +325,6 @@ sendMessageButton.addEventListener('click', (e) => {
             } else {
                 document.querySelector('#error-server-message').classList.add('show');
                 hideSpinner()
-                console.log('Response NOT OK!! NOT OK!!');
-                console.log(response);
-                console.log(response.status);
 
             }
         }).catch(() => {
@@ -343,8 +332,6 @@ sendMessageButton.addEventListener('click', (e) => {
             hideSpinner()
         }).finally(() => {
         });
-    } else {
-        console.log('NOT VALID NOT VALID');
     }
 });
 

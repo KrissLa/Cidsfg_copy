@@ -144,10 +144,6 @@ const tabs = document.querySelectorAll('.tabs-controls-wrapper');
 
 const addScrollbar = () => {
     tabs.forEach(e => {
-        console.log(e);
-        console.log(e.querySelector('.tabs-slider').offsetWidth);
-        console.log(e.querySelector('.container').offsetWidth);
-        console.log(window.clientWidth);
         if (e.querySelector('.tabs-slider').offsetWidth > e.querySelector('.container').offsetWidth) {
             e.classList.add('scroll');
         }
@@ -335,7 +331,6 @@ const validationEmail = (input) => {
 }
 
 form.querySelector('#input-phone').addEventListener('input', (e) => {
-    console.log(e.target.value);
     if (e.target.value.match(/[^0-9]/g)) {
         e.target.value = e.target.value.replace(/[^0-9]/g, "");
     }
@@ -357,9 +352,7 @@ sendMessageButton.addEventListener('click', (e) => {
         document.querySelector('#error-server-message').classList.remove('show')
     }
     showSpinner()
-    console.log(formIsValid())
     if (formIsValid()) {
-        console.log('Form is Valid');
         const data = {
             'username': form.querySelector('#input-name').value,
             'email': form.querySelector('#input-email').value,
@@ -382,9 +375,6 @@ sendMessageButton.addEventListener('click', (e) => {
             } else {
                 document.querySelector('#error-server-message').classList.add('show');
                 hideSpinner()
-                console.log('Response NOT OK!! NOT OK!!');
-                console.log(response);
-                console.log(response.status);
 
             }
         }).catch(() => {
@@ -392,8 +382,6 @@ sendMessageButton.addEventListener('click', (e) => {
             hideSpinner()
         }).finally(() => {
         });
-    } else {
-        console.log('NOT VALID NOT VALID');
     }
 });
 

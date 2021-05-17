@@ -2,6 +2,19 @@ from django.db import models
 
 
 # Create your models here.
+from backend.seo.models import SeoAbstract
+
+
+class Partnership(SeoAbstract):
+    """ Модель страницы Сотрудничество"""
+
+    class Meta:
+        verbose_name = 'Сотрудничество'
+        verbose_name_plural = 'Сотрудничество'
+
+    def __str__(self):
+        return f"Сотрудничество"
+
 
 class CooperationApplication(models.Model):
     """ Заявка на сотрудниччество """

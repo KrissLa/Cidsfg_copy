@@ -3,7 +3,9 @@
 timeline = document.querySelector('#timeline-1');
 
 const setTimeLineBackground = () => {
-    if (document.documentElement.clientWidth > 768) {
+    if (document.documentElement.clientWidth > 2000) {
+        bgImage = timeline.getAttribute('data-bg-3000-src');
+    } else if (document.documentElement.clientWidth > 768) {
         bgImage = timeline.getAttribute('data-bg-src');
     } else {
         bgImage = timeline.getAttribute('data-bg-src-mobile');
@@ -136,10 +138,6 @@ const tabs = document.querySelectorAll('.tabs-controls-wrapper');
 
 const addScrollbar = () => {
     tabs.forEach(e => {
-        console.log(e);
-        console.log(e.querySelector('.tabs-slider').offsetWidth);
-        console.log(e.querySelector('.container').offsetWidth);
-        console.log(window.clientWidth);
         if (e.querySelector('.tabs-slider').offsetWidth > e.querySelector('.container').offsetWidth) {
             e.classList.add('scroll');
         }

@@ -9,7 +9,6 @@ const timeline = document.querySelector('#timeline-1'),
 const setActiveTimeline = (timelineItem) => {
     if (!timelineItem.classList.contains(timelineActiveClass)) {
         let bgImage;
-        console.log(document.documentElement.clientWidth);
         if (document.documentElement.clientWidth > 768) {
             bgImage = timelineItem.querySelector(`.${timelineItemIMGClass}`).getAttribute('data-bg-src');
         } else {
@@ -50,7 +49,6 @@ const getDiapasonsTimelineItems = (factor=2/3, first=500) => {
         diapasons.push({'min': minPos, 'max': maxPos, 'el': e});
         maxPosPrev = maxPos;
     })
-    console.log(diapasons)
     return diapasons
 }
 
@@ -227,10 +225,6 @@ const tabs = document.querySelectorAll('.tabs-controls-wrapper');
 
 const addScrollbar = () => {
     tabs.forEach(e => {
-        console.log(e);
-        console.log(e.querySelector('.tabs-slider').offsetWidth);
-        console.log(e.querySelector('.container').offsetWidth);
-        console.log(window.clientWidth);
         if (e.querySelector('.tabs-slider').offsetWidth > e.querySelector('.container').offsetWidth) {
             e.classList.add('scroll');
         }

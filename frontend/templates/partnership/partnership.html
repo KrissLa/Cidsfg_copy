@@ -3,17 +3,17 @@
 
 
 {% block seo_title %}
-    {% if contacts %}
-        {{ contacts.seo_title }}
+    {% if partnership %}
+        {{ partnership.seo_title }}
     {% else %}
-        Контакты | CUBO
+        Сотрудничество | CUBO
     {% endif %}
 {% endblock seo_title %}
 {% block seo_description %}
-    {% if contacts %}
-        {{ contacts.seo_description }}
+    {% if partnership %}
+        {{ partnership.seo_description }}
     {% else %}
-        Контакты CUBO
+        Сотрудничество CUBO
     {% endif %}
 {% endblock seo_description %}
 
@@ -42,10 +42,14 @@
                     alt="Сотрудничество"
                     class="lazy"
                     src="{% static 'images/partnership/partnership_th.jpg' %}"
-                    {#                    data-srcset="{{ contacts.map_picture.w400.url }} 400w,#}
-                    {#                                         {{ contacts.map_picture.w800.url }} 800w"#}
-                    {#                    data-sizes="(max-width: 767px) 400px,#}
-                    {#                                                1000px"#}
+                    data-srcset="{% static 'images/partnership/partnership_480.jpg' %} 480w,
+                                  {% static 'images/partnership/partnership_768.jpg' %} 768w,
+                                 {% static 'images/partnership/partnership_1920.jpg' %} 1920w,
+                                {% static 'images/partnership/partnership_3000.jpg' %} 3000w,"
+                    data-sizes="(max-width: 480px) 480px,
+                                (max-width: 768px) 768px,
+                                (max-width: 1920px) 1920px,
+                                3000px"
             />
         </section>
         <div class="container">
@@ -61,7 +65,7 @@
                 <div class="form">
                     <form method="post" id="form">
                         <div class="input select">
-{#                            <span class="error-messaage">Это обязательное поле!</span>#}
+                            {#                            <span class="error-messaage">Это обязательное поле!</span>#}
                             <select name="select-activity" id="select-activity">
                                 <option value="" disabled>Область деятельности*</option>
                                 <option value="строительство и ремонт">строительство и ремонт</option>
@@ -130,5 +134,5 @@
 {% block scripts %}
     {% domain %}
     <script src="{% static 'scripts/partnership.js' %}"></script>
-{#    <script src="{% static 'scripts/form_contacts.js' %}"></script>#}
+    {#    <script src="{% static 'scripts/form_contacts.js' %}"></script>#}
 {% endblock scripts %}
