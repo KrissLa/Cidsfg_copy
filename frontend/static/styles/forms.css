@@ -86,6 +86,7 @@
     font-weight: 300;
     transform: translateY(-35px);
     transition: all 0.2s ease;
+    cursor: pointer;
 }
 
 .input.focus label {
@@ -94,6 +95,7 @@
     font-size: 14px;
     font-weight: 400;
     outline: 0;
+    cursor: unset;
 }
 
 .input.focus.focus-line input,

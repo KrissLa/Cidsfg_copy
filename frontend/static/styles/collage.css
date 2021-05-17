@@ -4,48 +4,16 @@
 
 .collage_wrapper {
     display: grid;
-    grid-template-columns: repeat(4, 250px);
-    justify-content: space-between;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
 }
 
-@media all and (max-width:1200px) {
-     .collage_wrapper {
-    grid-template-columns: repeat(4, 200px);
-}
-}
 
-@media all and (max-width:995px) {
-     .collage_wrapper {
-    grid-template-columns: repeat(4, 150px);
-}
-}
-
-@media all and (max-width:768px) {
-     .collage_wrapper {
-    grid-template-columns: repeat(2, 200px);
-}
-}
-
-@media all and (max-width:500px) {
-     .collage_wrapper {
-    grid-template-columns: repeat(2, 160px);
-}
-}
-
-@media all and (max-width:380px) {
-     .collage_wrapper {
-    grid-template-columns: repeat(2, 150px);
-}
-}
-
-@media all and (max-width:360px) {
-     .collage_wrapper {
-    grid-template-columns: repeat(2, 130px);
-}
-}
-
-@media all and (max-width:320px) {
-     .collage_wrapper {
-    grid-template-columns: repeat(2, 115px);
-}
+@media all and (max-width: 768px) {
+    .collage_wrapper {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .collage_wrapper .item{
+        margin-bottom: unset;
+    }
 }
