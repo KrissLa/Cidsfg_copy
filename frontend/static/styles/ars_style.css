@@ -979,6 +979,12 @@ span.x {
     margin-left: 10px;
 }
 
+@media all and (max-width:768px) {
+    .swiper-pagination-bullet {
+        width: 20px;
+    }
+}
+
 @media all and (max-width: 393px) {
     .catalog-header a {
         font-size: 10px;
@@ -991,10 +997,6 @@ span.x {
 
     .catalog-header h4 {
         font-size: 16px;
-    }
-
-    .swiper-pagination-bullet {
-        width: 20px;
     }
 }
 
