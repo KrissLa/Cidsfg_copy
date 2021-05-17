@@ -18,6 +18,7 @@ urlpatterns = [
     path('contacts/', include('backend.contacts.urls')),
 
     path('api/v1/contacts/', include('backend.api.v1.contacts.urls')),
+    path('api/v1/partnership/', include('backend.api.v1.partnership.urls')),
     # path('api/v1/home_decorations/', include('backend.api.v1.home_decorations.urls')),
     path('api/v1/houses/', include('backend.api.v1.products.urls')),
 ]

@@ -16,6 +16,10 @@
     grid-row-end: 3;
 }
 
+.design_wrapper .item img{
+    width: 100%;
+}
+
 @media all and (max-width: 768px) {
     .design_wrapper {
         display: grid;

@@ -48,7 +48,7 @@ var userAgent = navigator.userAgent.toLowerCase(),
     dateCountdown: $('.DateCountdown'),
     preloader: $(".preloader"),
     flickrfeed: $(".flickr"),
-    selectFilter: $("select"),
+    // selectFilter: $("select"),
     rdAudioPlayer: $(".rd-audio"),
     rdVideoBG: $(".rd-video"),
     jPlayerInit: $(".jp-player-init"),
@@ -1771,16 +1771,16 @@ $document.ready(function () {
    * Select2
    * @description Enables select2 plugin
    */
-  if (plugins.selectFilter.length) {
-    var i;
-    for (i = 0; i < plugins.selectFilter.length; i++) {
-      var select = $(plugins.selectFilter[i]);
-
-      select.select2({
-        theme: "bootstrap"
-      }).next().addClass(select.attr("class").match(/(input-sm)|(input-lg)|($)/i).toString().replace(new RegExp(",", 'g'), " "));
-    }
-  }
+  // if (plugins.selectFilter.length) {
+  //   var i;
+  //   for (i = 0; i < plugins.selectFilter.length; i++) {
+  //     var select = $(plugins.selectFilter[i]);
+  //
+  //     select.select2({
+  //       theme: "bootstrap"
+  //     }).next().addClass(select.attr("class").match(/(input-sm)|(input-lg)|($)/i).toString().replace(new RegExp(",", 'g'), " "));
+  //   }
+  // }
 
   /**
    * RD Flickr Feed

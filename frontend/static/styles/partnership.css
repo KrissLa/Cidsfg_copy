@@ -1,0 +1,157 @@
+
+
+.partnership {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.partnership .picture {
+    width: 100%;
+}
+
+.partnership .picture img {
+    width: 100%;
+    padding: 75px 0;
+}
+
+.partnership .container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 75px;
+    padding-top: 50px;
+    padding-bottom: 125px;
+}
+
+.partnership-form .form{
+    padding: unset;
+}
+
+.partnership-content{
+    padding-top: 50px;
+}
+
+.input.select{
+    position: relative;
+    cursor: pointer;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+    z-index: 3;
+    overflow: unset;
+}
+
+.input.select.error{
+    border-bottom: 2px solid red;
+}
+
+.input.select.z-index_1{
+    z-index:1;
+}
+
+.input.select:after{
+    display: none;
+}
+
+.input.select:before{
+    position: absolute;
+    content: "\f078";
+    font-family: 'FontAwesome';
+    right: 20px;
+    top: calc(50% - 6px);
+    transition: all 0.3s;
+     color: #9d959d;
+}
+
+.input.select.active::before{
+    transform: rotate(-180deg);
+    transition: all 0.3s;
+}
+
+.sel__placeholder{
+    display: block;
+    padding: 0.2rem 0.5rem;
+    text-align: left;
+    pointer-events: none;
+    user-select: none;
+    visibility: visible;
+    /*color: #9d959d;*/
+}
+
+.input.select.active .sel__placeholder{
+    visibility: hidden;
+}
+
+.sel__placeholder:before{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 0.2rem 0.5rem;
+    content: attr(data-placeholder);
+    visibility: hidden;
+}
+
+.input.select.active .sel__placeholder:before{
+    visibility: visible;
+    color: #000;
+}
+
+.sel__box{
+    position: absolute;
+    top: calc(100% + 4px);
+    left: -4px;
+    display: none;
+    list-style-type: none;
+    text-align: left;
+    width: calc(100% + 8px);
+    background-color: #f6f6f6;
+    /*color: #ddd;*/
+
+}
+
+.input.select.active .sel__box{
+    display: block;
+    animation: fadeInUpA 500ms;
+}
+
+.sel__box__options {
+  display: list-item;
+  padding: 0.5em 1em;
+  user-select: none;
+}
+
+.sel__box__options::after {
+  content: '\f00c';
+  font-family: 'FontAwesome';
+  margin-left: 5px;
+  display: none;
+}
+
+.sel__box__options.selected::after {
+  display: inline;
+}
+
+.sel__box__options:hover {
+  background-color: #ddd;
+}
+
+@keyframes fadeInUpA {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fadeOutA {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+

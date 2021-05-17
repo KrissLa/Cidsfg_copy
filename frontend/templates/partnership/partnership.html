@@ -1,12 +1,134 @@
 {% extends 'superbase.html' %}
-{% load static%}
+{% load static domain %}
 
-{% block seo_title %}СОТРУДНИЧЕСТВО{% endblock seo_title %}
-<!--{% block seo_description %}{{ home_data.seo_description }}{% endblock seo_description %}-->
+
+{% block seo_title %}
+    {% if contacts %}
+        {{ contacts.seo_title }}
+    {% else %}
+        Контакты | CUBO
+    {% endif %}
+{% endblock seo_title %}
+{% block seo_description %}
+    {% if contacts %}
+        {{ contacts.seo_description }}
+    {% else %}
+        Контакты CUBO
+    {% endif %}
+{% endblock seo_description %}
+
+
+{% block styles %}
+    {#    <link rel="stylesheet" href="{% static 'styles/contacts.css' %}">#}
+    <link rel="stylesheet" href="{% static 'styles/partnership.css' %}">
+{% endblock styles %}
 
 
 {% block content %}
 
-Страничка СОТРУДНИЧЕСТВО
+    <section class="breadcrumbs-custom">
+        <div class="container">
+            <div class="breadcrumbs-custom__inner">
+                <ul class="breadcrumbs-custom__path">
+                    <li><a href="{% url 'home' %}">Главная</a></li>
+                    <li class="active">Сотрудничество</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <div class="partnership">
+        <section class="picture">
+            <img
+                    alt="Сотрудничество"
+                    class="lazy"
+                    src="{% static 'images/partnership/partnership_th.jpg' %}"
+                    {#                    data-srcset="{{ contacts.map_picture.w400.url }} 400w,#}
+                    {#                                         {{ contacts.map_picture.w800.url }} 800w"#}
+                    {#                    data-sizes="(max-width: 767px) 400px,#}
+                    {#                                                1000px"#}
+            />
+        </section>
+        <div class="container">
+            <section class="partnership-content">
+                <p>Мы разработали специальные условия для компаний и частных специалистов из сферы строительства и
+                    дизайна, а также застройщиков коттеджных поселков. Использование CUBO домов в качестве базового
+                    строения открывает безграничные возможности для индивидуальных планировочных решений и дизайна. Вы
+                    можете создавать дома практически любой площадью и размерами.
+                    Приглашаем к сотрудничеству. Свяжитесь с нами заполнив указанную форму.
+                </p>
+            </section>
+            <section class="partnership-form">
+                <div class="form">
+                    <form method="post" id="form">
+                        <div class="input select">
+{#                            <span class="error-messaage">Это обязательное поле!</span>#}
+                            <select name="select-activity" id="select-activity">
+                                <option value="" disabled>Область деятельности*</option>
+                                <option value="строительство и ремонт">строительство и ремонт</option>
+                                <option value="архитектура и дизайн">архитектура и дизайн</option>
+                                <option value="земля и недвижимость">земля и недвижимость</option>
+                            </select>
+                        </div>
+                        <div class="input select z-index_1" id="select-type-wrapper">
+                            <select name="select-type" id="select-type">
+                                <option value="" disabled>Частное лицо/ Компания*</option>
+                                <option value="компания">компания</option>
+                                <option value="частное лицо">частное лицо</option>
+                            </select>
+                        </div>
+                        <div class="input">
+                            <input data-required data-length type="text" name="first-name" id="first-name"
+                                   class="text-input">
+                            <label for="first-name" class="input-label">Имя*</label>
+                        </div>
+                        <div class="input">
+                            <input data-required data-length type="text" name="last-name" id="last-name"
+                                   class="text-input">
+                            <label for="last-name" class="input-label">Фамилия*</label>
+                        </div>
+
+                        <div class="input">
+                            <input data-required type="text" name="email" id="input-email" class="text-input">
+                            <label for="input-email" class="input-label">E-mail*</label>
+                        </div>
+
+                        <div class="input phone">
+                            <input type="text" name="phone" id="input-phone" class="text-input">
+                            <label for="input-phone" class="input-label">Телефон для связи</label>
+                        </div>
+
+                        <p class="agree">Нажимая кнопку, я даю согласие на обработку моих персональных данных в
+                            соответствии
+                            со
+                            статьей 9 ФЗ от 27.07.2006 № 152-ФЗ «О персональных данных» и оглашаюсь с
+                            <a href="{% url 'privacy' %}">политикой конфиденциальности</a></p>
+
+                        <p id="error-server-message">Ошибка сервера! Пожалуйста, попробуйте позже.</p>
+
+
+                        <div class="buttons">
+                            <a href="#" class="btn-a diagonal black"
+                               id="send-message"><span>Отправить</span>
+                                <span class="img">
+                                <img class="spinner hide" src="{% static 'images/spinner.svg' %}" width="30px"/>
+                            </span>
+                            </a>
+                        </div>
+
+                    </form>
+                    <div id="success-message">
+                        <p>Спасибо! Ваше сообщение получено. Мы свяжемся с Вами в ближайшее время</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
 
 {% endblock content %}
+
+
+{% block scripts %}
+    {% domain %}
+    <script src="{% static 'scripts/partnership.js' %}"></script>
+{#    <script src="{% static 'scripts/form_contacts.js' %}"></script>#}
+{% endblock scripts %}

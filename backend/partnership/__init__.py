@@ -1,0 +1,1 @@
+default_app_config = 'backend.partnership.apps.PartnershipConfig'
