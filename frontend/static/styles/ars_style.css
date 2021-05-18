@@ -667,7 +667,6 @@ form .btn-a {
     }
 
 
-
     .btn-a {
         margin: 20px 0 10px 0;
     }
@@ -777,6 +776,11 @@ form .btn-a {
     overflow: hidden;
 }
 
+.secondary .tabs-controls{
+    height: 40px;
+    margin-bottom: 30px;
+}
+
 .tabs-controls:before {
     margin-top: 10px;
     content: "";
@@ -786,6 +790,10 @@ form .btn-a {
     width: 100%;
     height: 4px;
     background-color: #d7d7d7;
+}
+
+.secondary .tabs-controls:before {
+    height: 2px;
 }
 
 .tabs-controls-wrapper {
@@ -805,12 +813,22 @@ form .btn-a {
 }
 
 @media all and (max-width: 768px) {
-    .home-info div.container.tab {
+    .home-info div.container.tab.secondary,
+    .home-info div.container.tab,
+    .tabs-content{
         width: 100%;
         margin: 0;
         padding: 0;
         max-width: 100%;
+        min-width: unset;
     }
+
+    /*.home-info div.container.tab.secondary {*/
+    /*    width: 100%;*/
+    /*    margin: 0;*/
+    /*    padding: 0;*/
+    /*    max-width: 100%;*/
+    /*}*/
 
     .tabs-controls-wrapper .container {
         max-width: 100%;
@@ -841,25 +859,25 @@ form .btn-a {
 }
 
 @media all and (min-width: 768px) {
-    .tabs-controls-wrapper.scroll .container::-webkit-scrollbar {
-        opacity: 0;
-        height: 0;
-    }
+    /*.tabs-controls-wrapper.scroll .container::-webkit-scrollbar {*/
+    /*    opacity: 0;*/
+    /*    height: 0;*/
+    /*}*/
 
-    .tabs-controls-wrapper.scroll .container:hover::-webkit-scrollbar {
-        height: 5px;
-        opacity: 0;
-        cursor: grab;
-    }
+    /*.tabs-controls-wrapper.scroll .container:hover::-webkit-scrollbar {*/
+    /*    height: 5px;*/
+    /*    opacity: 0;*/
+    /*    cursor: grab;*/
+    /*}*/
 
 
-    .tabs-controls-wrapper.scroll .container:hover::-webkit-scrollbar-thumb {
-        width: 15px;
-        height: 5px;
-        background: rgba(0, 0, 0, 0.3);
-        opacity: 1;
-        cursor: grab;
-    }
+    /*.tabs-controls-wrapper.scroll .container:hover::-webkit-scrollbar-thumb {*/
+    /*    width: 15px;*/
+    /*    height: 5px;*/
+    /*    background: rgba(0, 0, 0, 0.3);*/
+    /*    opacity: 1;*/
+    /*    cursor: grab;*/
+    /*}*/
 }
 
 
@@ -886,19 +904,35 @@ form .btn-a {
     border-bottom: 4px solid #000;
 }
 
+.secondary .tabs-controls-item.active div {
+    border-bottom: 2px solid #000;
+}
+
 .tabs-content {
-    margin-top: 40px;
     overflow: hidden;
     padding-top: 15px;
+}
+
+#tab-options,
+#tab-sizes {
+    margin-top: 40px;
 }
 
 .tabs-controls-item div span {
     font-size: 15px;
 }
 
+.secondary .tabs-controls-item div span {
+    font-size: 13px;
+}
+
 @media all and (max-width: 768px) {
     .tabs-controls-item div span {
         font-size: 11px;
+    }
+
+    .secondary .tabs-controls-item div span {
+        font-size: 9px;
     }
 
     .tabs-controls {
@@ -956,6 +990,10 @@ span.x {
     transition: 0.3s all ease;
 }
 
+.tabs-content .container .container {
+    padding: 0;
+}
+
 
 .catalog-section,
 .home-info {
@@ -979,7 +1017,7 @@ span.x {
     margin-left: 10px;
 }
 
-@media all and (max-width:768px) {
+@media all and (max-width: 768px) {
     .swiper-pagination-bullet {
         width: 20px;
     }

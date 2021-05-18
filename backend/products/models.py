@@ -134,36 +134,36 @@ class Turnkey(ActiveAbstract):
 
     class Meta:
         verbose_name = 'Комплектация "Под ключ"'
-        verbose_name_plural = 'комплектация "Под ключ"'
+        verbose_name_plural = 'Комплектация "Под ключ"'
 
     def __str__(self):
-        return f'{self.house} - Комплктация "Под ключ"'
+        return f'{self.house} - Комплектация "Под ключ"'
 
 
 class NotIncludedInPriceTurnkey(TabBodyAbstract, ActiveAbstract):
-    """ Вкладка  Не Включено в стоимость  """
-    turnkey = models.OneToOneField(Turnkey, verbose_name='Комплектаци "Под ключ"', on_delete=models.CASCADE,
+    """ Вкладка  Не Включено в стоимость  ПОД КЛЮЧ"""
+    turnkey = models.OneToOneField(Turnkey, verbose_name='Комплектация "Под ключ"', on_delete=models.CASCADE,
                                    related_name='not_included')
 
     class Meta:
-        verbose_name = 'Вкладка "Не включено в стоимоть"'
-        verbose_name_plural = 'Вкладка "Не включено в стоимоть"'
+        verbose_name = 'Вкладка "Не включено в стоимость" "Под ключ"'
+        verbose_name_plural = 'Вкладка "Не включено в стоимость" "Под ключ"'
 
     def __str__(self):
-        return f'{self.turnkey.house} - Вкладка "Включено в стоимоть"'
+        return f'{self.turnkey.house} - Вкладка "Не включено в стоимость" "Под ключ"'
 
 
 class IncludedInPriceTurnkey(ActiveAbstract):
     """ Вкладка Включено в стоимость  """
-    turnkey = models.OneToOneField(Turnkey, verbose_name='Комплектаци "Под ключ"', on_delete=models.CASCADE,
+    turnkey = models.OneToOneField(Turnkey, verbose_name='Комплектация "Под ключ"', on_delete=models.CASCADE,
                                    related_name='included')
 
     class Meta:
-        verbose_name = 'Вкладка "Включено в стоимоть"'
-        verbose_name_plural = 'Вкладка "Включено в стоимоть"'
+        verbose_name = 'Вкладка "Включено в стоимость" "Под ключ"'
+        verbose_name_plural = 'Вкладки "Включено в стоимость" "Под ключ"'
 
     def __str__(self):
-        return f'{self.turnkey.house} - Вкладка "Включено в стоимоть"'
+        return f'{self.turnkey.house} - Вкладка "Включено в стоимость" "Под ключ"'
 
     def get_items(self):
         return self.items.filter(active=True)
@@ -176,11 +176,11 @@ class IncludedInPriceTurnkeyItem(TabBodyAbstract, ActiveAbstract):
     name = models.CharField('Название пункта', max_length=50)
 
     class Meta:
-        verbose_name = 'Пункт вкладки включено в стоимость'
-        verbose_name_plural = 'Пункты вкладки включено в стоимость'
+        verbose_name = 'Пункт вкладки "Включено в стоимость" "Под ключ"'
+        verbose_name_plural = 'Пункты вкладки "Включено в стоимость" "Под ключ"'
 
     def __str__(self):
-        return f'{self.included_in_price.turnkey.house} - Вкладка "Включено в стоимоть"'
+        return f'{self.included_in_price.turnkey.house} - Пункт вкладки "Включено в стоимость" "Под ключ"'
 
 
 # "Под отделку"
@@ -193,53 +193,54 @@ class ForFinishing(ActiveAbstract):
 
     class Meta:
         verbose_name = 'Комплектация "Под отделку"'
-        verbose_name_plural = 'комплектация "Под отделку"'
+        verbose_name_plural = 'Комплектация "Под отделку"'
 
     def __str__(self):
-        return f'{self.house} - Комплктация "Под отделку"'
+        return f'{self.house} - Комплектация "Под отделку"'
 
 
 class NotIncludedInPriceForFinishing(TabBodyAbstract, ActiveAbstract):
-    """ Вкладка  Не Включено в стоимость  ПОД ОТДЕЛКУ"""
-    for_finishing = models.OneToOneField(ForFinishing, verbose_name='Комплектаци "Под отделку"',
+    """ Вкладка  Не Включено в стоимость  ПОД ОТДЕЛКУ """
+    for_finishing = models.OneToOneField(ForFinishing, verbose_name='Комплектация "Под отделку"',
                                          on_delete=models.CASCADE, related_name='not_included')
 
     class Meta:
-        verbose_name = 'Вкладка "Не включено в стоимоть"'
-        verbose_name_plural = 'Вкладка "Не включено в стоимоть"'
+        verbose_name = 'Вкладка "Не включено в стоимость" "Под отделку"'
+        verbose_name_plural = 'Вкладка "Не включено в стоимость" "Под отделку"'
 
     def __str__(self):
-        return f'{self.for_finishing.house} - Вкладка "Включено в стоимоть"'
+        return f'{self.for_finishing.house} - Вкладка "Не включено в стоимость" "Под отделку"'
 
 
 class IncludedInPriceForFinishing(ActiveAbstract):
-    """ Вкладка Включено в стоимость  """
-    for_finishing = models.OneToOneField(ForFinishing, verbose_name='Комплектаци "Под отделку"',
+    """ Вкладка Включено в стоимость  ПОД ОТДЕЛКУ """
+    for_finishing = models.OneToOneField(ForFinishing, verbose_name='Комплектация "Под отделку"',
                                          on_delete=models.CASCADE, related_name='included')
 
     class Meta:
-        verbose_name = 'Вкладка "Включено в стоимоть"'
-        verbose_name_plural = 'Вкладка "Включено в стоимоть"'
+        verbose_name = 'Вкладка "Включено в стоимость" "Под отделку"'
+        verbose_name_plural = 'Вкладка "Включено в стоимость" "Под отделку"'
 
     def __str__(self):
-        return f'{self.for_finishing.house} - Вкладка "Включено в стоимоть"'
+        return f'{self.for_finishing.house} - Вкладка "Включено в стоимость" "Под отделку"'
 
     def get_items(self):
         return self.items.filter(active=True)
 
 
 class IncludedInPriceForFinishingItem(TabBodyAbstract, ActiveAbstract):
-    """ Пункт вкладки включено в стоимость """
-    included_in_price = models.ForeignKey(IncludedInPriceForFinishing, verbose_name='Вкладка "Включено в стоимость"',
+    """ Пункт вкладки включено в стоимость ПОД ОТДЕЛКУ """
+    included_in_price = models.ForeignKey(IncludedInPriceForFinishing,
+                                          verbose_name='Вкладка "Включено в стоимость" "Под отделку"',
                                           on_delete=models.CASCADE, related_name='items')
     name = models.CharField('Название пункта', max_length=50)
 
     class Meta:
-        verbose_name = 'Пункт вкладки включено в стоимость'
-        verbose_name_plural = 'Пункты вкладки включено в стоимость'
+        verbose_name = 'Пункт вкладки "Включено в стоимость" "Под отделку"'
+        verbose_name_plural = 'Пункты вкладки "Включено в стоимость" "Под отделку"'
 
     def __str__(self):
-        return f'{self.included_in_price.for_finishing.house} - Вкладка "Включено в стоимоть"'
+        return f'{self.included_in_price.for_finishing.house} - Пункт вкладки "Включено в стоимость" "Под отделку"'
 
 
 # "Поставка с завода"
@@ -252,53 +253,54 @@ class Delivery(ActiveAbstract):
 
     class Meta:
         verbose_name = 'Комплектация "Поставка с завода"'
-        verbose_name_plural = 'комплектация "Поставка с завода"'
+        verbose_name_plural = 'Комплектация "Поставка с завода"'
 
     def __str__(self):
-        return f'{self.house} - Комплктация "Поставка с завода"'
+        return f'{self.house} - Комплектация "Поставка с завода"'
 
 
 class NotIncludedInPriceDelivery(TabBodyAbstract, ActiveAbstract):
     """ Вкладка  Не Включено в стоимость  ПОСТАВКА С ЗАВОДА"""
-    delivery = models.OneToOneField(Delivery, verbose_name='Комплектаци "Поставка с завода"',
+    delivery = models.OneToOneField(Delivery, verbose_name='Комплектация "Поставка с завода"',
                                     on_delete=models.CASCADE, related_name='not_included')
 
     class Meta:
-        verbose_name = 'Вкладка "Не включено в стоимоть"'
-        verbose_name_plural = 'Вкладка "Не включено в стоимоть"'
+        verbose_name = 'Вкладка "Не включено в стоимость ПОСТАВКА С ЗАВОДА"'
+        verbose_name_plural = 'Вкладка "Не включено в стоимость ПОСТАВКА С ЗАВОДА"'
 
     def __str__(self):
-        return f'{self.delivery.house} - Вкладка "Включено в стоимоть"'
+        return f'{self.delivery.house} - Вкладка "Не включено в стоимость ПОСТАВКА С ЗАВОДА"'
 
 
 class IncludedInPriceDelivery(ActiveAbstract):
-    """ Вкладка Включено в стоимость  """
-    delivery = models.OneToOneField(Delivery, verbose_name='Комплектаци "Поставка с завода"',
+    """ Вкладка Включено в стоимость "Поставка с завода" """
+    delivery = models.OneToOneField(Delivery, verbose_name='Комплектация "Поставка с завода"',
                                     on_delete=models.CASCADE, related_name='included')
 
     class Meta:
-        verbose_name = 'Вкладка "Включено в стоимоть"'
-        verbose_name_plural = 'Вкладка "Включено в стоимоть"'
+        verbose_name = 'Вкладка "Включено в стоимость "Поставка с завода""'
+        verbose_name_plural = 'Вкладка "Включено в стоимость "Поставка с завода""'
 
     def __str__(self):
-        return f'{self.delivery.house} - Вкладка "Включено в стоимоть"'
+        return f'{self.delivery.house} - Вкладка "Включено в стоимость "Поставка с завода""'
 
     def get_items(self):
         return self.items.filter(active=True)
 
 
 class IncludedInPriceDeliveryItem(TabBodyAbstract, ActiveAbstract):
-    """ Пункт вкладки включено в стоимость """
-    included_in_price = models.ForeignKey(IncludedInPriceDelivery, verbose_name='Вкладка "Включено в стоимость"',
+    """ Пункт вкладки включено в стоимость "Поставка с завода" """
+    included_in_price = models.ForeignKey(IncludedInPriceDelivery,
+                                          verbose_name='Вкладка "Включено в стоимость" "Поставка с завода"',
                                           on_delete=models.CASCADE, related_name='items')
     name = models.CharField('Название пункта', max_length=50)
 
     class Meta:
-        verbose_name = 'Пункт вкладки включено в стоимость'
-        verbose_name_plural = 'Пункты вкладки включено в стоимость'
+        verbose_name = 'Пункт вкладки включено в стоимость "Поставка с завода"'
+        verbose_name_plural = 'Пункты вкладки включено в стоимость "Поставка с завода"'
 
     def __str__(self):
-        return f'{self.included_in_price.delivery.house} - Вкладка "Включено в стоимоть"'
+        return f'{self.included_in_price.delivery.house} - Пункт вкладки "Включено в стоимость" "Поставка с завода"'
 
 
 class Category(models.Model):

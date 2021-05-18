@@ -3,20 +3,21 @@
 
 {% block seo_title %}
     {% if house.seo_title %}
-    {{ house.seo_title }}
+        {{ house.seo_title }}
     {% else %}
-    {{ house.name }}
+        {{ house.name }}
     {% endif %}
 {% endblock seo_title %}
 {% block seo_description %}
     {{ house.seo_description }}
 {% endblock seo_description %}
 
-{#{% block styles %}#}
+{% block styles %}
 {#    <link rel="stylesheet" href="{% static 'styles/swiper-bundle.css' %}">#}
 {#    <link rel="stylesheet" href="{% static 'styles/forms.css' %}">#}
 {#    <link rel="stylesheet" href="{% static 'styles/modal.css' %}">#}
-{#{% endblock styles %}#}
+{#    <link rel="stylesheet" href="{% static 'styles/ars_style.css' %}">#}
+{% endblock styles %}
 
 {% block content %}
     <section class="breadcrumbs-custom">
@@ -116,60 +117,16 @@
                                     <span>Размеры дома</span>
                                 </div>
                             </div>
-                            {% if house.turnkey.active %}
-                                {% if house.turnkey.included.active %}
-                                    {% if house.turnkey.included.get_items %}
-                                        <div class="tabs-controls-item info" data-for="tab-include-turnkey">
-                                            <div>
-                                                <span>Включено в стоимость "Под ключ"</span>
-                                            </div>
-                                        </div>
-                                    {% endif %}
-                                {% endif %}
-                                {% if house.turnkey.not_included.active and house.turnkey.not_included.body %}
-                                    <div class="tabs-controls-item info" data-for="tab-not-include-turnkey">
-                                        <div>
-                                            <span>Не включено в стоимость "Под ключ"</span>
-                                        </div>
-                                    </div>
-                                {% endif %}
-                            {% endif %}
-                            {% if house.for_finishing.active %}
-                                {% if house.for_finishing.included.active %}
-                                    {% if house.for_finishing.included.get_items %}
-                                        <div class="tabs-controls-item info" data-for="tab-include-for_finishing">
-                                            <div>
-                                                <span>Включено в стоимость "Под отделку"</span>
-                                            </div>
-                                        </div>
-                                    {% endif %}
-                                {% endif %}
-                                {% if house.for_finishing.not_included.active and house.for_finishing.not_included.body %}
-                                    <div class="tabs-controls-item info" data-for="tab-not-include-for_finishing">
-                                        <div>
-                                            <span>Не включено в стоимость "Под отделку"</span>
-                                        </div>
-                                    </div>
-                                {% endif %}
-                            {% endif %}
-                            {% if house.delivery.active %}
-                                {% if house.delivery.included.active %}
-                                    {% if house.delivery.included.get_items %}
-                                        <div class="tabs-controls-item info" data-for="tab-include-delivery">
-                                            <div>
-                                                <span>Включено в стоимость "Поставка с завода"</span>
-                                            </div>
-                                        </div>
-                                    {% endif %}
-                                {% endif %}
-                                {% if house.delivery.not_included.active and house.delivery.not_included.body %}
-                                    <div class="tabs-controls-item info" data-for="tab-not-include-delivery">
-                                        <div>
-                                            <span>Не включено в стоимость "Поставка с завода"</span>
-                                        </div>
-                                    </div>
-                                {% endif %}
-                            {% endif %}
+                            <div class="tabs-controls-item info" data-for="tab-included">
+                                <div>
+                                    <span>Включено в стоимость</span>
+                                </div>
+                            </div>
+                            <div class="tabs-controls-item info" data-for="tab-not-included">
+                                <div>
+                                    <span>Не включено в стоимость</span>
+                                </div>
+                            </div>
                             {% if house.options.body and house.options.active %}
                                 <div class="tabs-controls-item info" data-for="tab-options">
                                     <div>
@@ -207,129 +164,224 @@
                         </div>
                     </div>
                 </div>
-                {% if house.turnkey.included.active and house.turnkey.included.get_items %}
-                    <div id="tab-include-turnkey" class="body-item info">
-                        <div id="accordion" role="tablist">
-                            {% for item in house.turnkey.included.get_items %}
-                                <div class="panel panel-custom panel-classic">
-                                    <div class="panel-custom-heading" id="{{ item.pk }}-turnkey-Head" role="tab">
-                                        <h6 class="panel-custom-title">
-                                            <a class="collapsed" role="button"
-                                               data-toggle="collapse"
-                                               data-parent="#{{ item.pk }}" href="#{{ item.pk }}-turnkey-Collapse"
-                                               aria-controls="{{ item.pk }}-turnkey-Collapse">
-                                                {{ item.name }}
-                                            </a>
-                                        </h6>
-                                    </div>
-                                    <div class="panel-custom-collapse collapse" id="{{ item.pk }}-turnkey-Collapse"
-                                         role="tabpanel"
-                                         aria-labelledby="{{ item.pk }}-turnkey-Head">
-                                        <div class="panel-custom-body">
-                                            <div class="ol">
-                                                {{ item.body|safe }}
+                <div id="tab-included" class="body-item info">
+                    <div class="container tab secondary">
+                        <div class="tabs-controls">
+                            <div class="tabs-controls-wrapper cost-included">
+                                <div class="container">
+                                    <div class="tabs-slider">
+                                        <div class="mask"></div>
+                                        {% if house.turnkey.active and house.turnkey.included.active and house.turnkey.included.get_items %}
+                                            <div class="tabs-controls-item cost-included active"
+                                                 data-for="tab-include-turnkey">
+                                                <div>
+                                                    <span>Под ключ</span>
+                                                </div>
                                             </div>
-
-
-                                        </div>
+                                        {% endif %}
+                                        {% if house.for_finishing.active and house.for_finishing.included.active and house.for_finishing.included.get_items %}
+                                            <div class="tabs-controls-item cost-included"
+                                                 data-for="tab-include-for_finishing">
+                                                <div>
+                                                    <span>Под отделку</span>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                        {% if house.delivery.active and house.delivery.included.active and house.delivery.included.get_items %}
+                                            <div class="tabs-controls-item cost-included"
+                                                 data-for="tab-include-delivery">
+                                                <div>
+                                                    <span>Поставка с завода</span>
+                                                </div>
+                                            </div>
+                                        {% endif %}
                                     </div>
                                 </div>
-                            {% endfor %}
+
+                            </div>
+
                         </div>
                     </div>
-                {% endif %}
-                {% if house.turnkey.not_included.active and house.turnkey.not_included.body %}
-                    <div id="tab-not-include-turnkey" class="body-item info">
-                        <div class="in-cost">
-                            {{ house.turnkey.not_included.body|safe }}
-                        </div>
-                    </div>
-                {% endif %}
-                {% if house.for_finishing.included.active and house.for_finishing.included.get_items %}
-                    <div id="tab-include-for_finishing" class="body-item info">
-                        <div id="accordion" role="tablist">
-                            {% for item in house.for_finishing.included.get_items %}
-                                <div class="panel panel-custom panel-classic">
-                                    <div class="panel-custom-heading" id="{{ item.pk }}-for_finishing-Head" role="tab">
-                                        <h6 class="panel-custom-title">
-                                            <a class="collapsed" role="button"
-                                               data-toggle="collapse"
-                                               data-parent="#{{ item.pk }}" href="#{{ item.pk }}-for_finishing-Collapse"
-                                               aria-controls="{{ item.pk }}-for_finishing-Collapse">
-                                                {{ item.name }}
-                                            </a>
-                                        </h6>
-                                    </div>
-                                    <div class="panel-custom-collapse collapse"
-                                         id="{{ item.pk }}-for_finishing-Collapse"
-                                         role="tabpanel"
-                                         aria-labelledby="{{ item.pk }}-for_finishing-Head">
-                                        <div class="panel-custom-body">
-                                            <div class="ol">
-                                                {{ item.body|safe }}
+                    <div class="tabs-content">
+                        <div class="container">
+                            {% if house.turnkey.active and house.turnkey.included.active and house.turnkey.included.get_items %}
+                                <div id="tab-include-turnkey" class="body-item cost-included active">
+                                    <div id="accordion" role="tablist">
+                                        {% for item in house.turnkey.included.get_items %}
+                                            <div class="panel panel-custom panel-classic">
+                                                <div class="panel-custom-heading" id="{{ item.pk }}-turnkey-Head"
+                                                     role="tab">
+                                                    <h6 class="panel-custom-title">
+                                                        <a class="collapsed" role="button"
+                                                           data-toggle="collapse"
+                                                           data-parent="#{{ item.pk }}"
+                                                           href="#{{ item.pk }}-turnkey-Collapse"
+                                                           aria-controls="{{ item.pk }}-turnkey-Collapse">
+                                                            {{ item.name }}
+                                                        </a>
+                                                    </h6>
+                                                </div>
+                                                <div class="panel-custom-collapse collapse"
+                                                     id="{{ item.pk }}-turnkey-Collapse"
+                                                     role="tabpanel"
+                                                     aria-labelledby="{{ item.pk }}-turnkey-Head">
+                                                    <div class="panel-custom-body">
+                                                        <div class="ol">
+                                                            {{ item.body|safe }}
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
                                             </div>
-
-
-                                        </div>
+                                        {% endfor %}
                                     </div>
                                 </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                {% endif %}
-                {% if house.for_finishing.not_included.active and house.for_finishing.not_included.body %}
-                    <div id="tab-not-include-for_finishing" class="body-item info">
-                        <div class="in-cost">
-                            {{ house.for_finishing.not_included.body|safe }}
-                        </div>
-                    </div>
-                {% endif %}
-                {% if house.delivery.included.active and house.delivery.included.get_items %}
-                    <div id="tab-include-delivery" class="body-item info">
-                        <div id="accordion" role="tablist">
-                            {% for item in house.delivery.included.get_items %}
-                                <div class="panel panel-custom panel-classic">
-                                    <div class="panel-custom-heading" id="{{ item.pk }}-delivery-Head" role="tab">
-                                        <h6 class="panel-custom-title">
-                                            <a class="collapsed" role="button"
-                                               data-toggle="collapse"
-                                               data-parent="#{{ item.pk }}" href="#{{ item.pk }}-delivery-Collapse"
-                                               aria-controls="{{ item.pk }}-delivery-Collapse">
-                                                {{ item.name }}
-                                            </a>
-                                        </h6>
-                                    </div>
-                                    <div class="panel-custom-collapse collapse" id="{{ item.pk }}-delivery-Collapse"
-                                         role="tabpanel"
-                                         aria-labelledby="{{ item.pk }}-delivery-Head">
-                                        <div class="panel-custom-body">
-                                            <div class="ol">
-                                                {{ item.body|safe }}
+                            {% endif %}
+                            {% if house.for_finishing.active and house.for_finishing.included.active and house.for_finishing.included.get_items %}
+                                <div id="tab-include-for_finishing" class="body-item cost-included">
+                                    <div id="accordion" role="tablist">
+                                        {% for item in house.for_finishing.included.get_items %}
+                                            <div class="panel panel-custom panel-classic">
+                                                <div class="panel-custom-heading" id="{{ item.pk }}-for_finishing-Head"
+                                                     role="tab">
+                                                    <h6 class="panel-custom-title">
+                                                        <a class="collapsed" role="button"
+                                                           data-toggle="collapse"
+                                                           data-parent="#{{ item.pk }}"
+                                                           href="#{{ item.pk }}-for_finishing-Collapse"
+                                                           aria-controls="{{ item.pk }}-for_finishing-Collapse">
+                                                            {{ item.name }}
+                                                        </a>
+                                                    </h6>
+                                                </div>
+                                                <div class="panel-custom-collapse collapse"
+                                                     id="{{ item.pk }}-for_finishing-Collapse"
+                                                     role="tabpanel"
+                                                     aria-labelledby="{{ item.pk }}-for_finishing-Head">
+                                                    <div class="panel-custom-body">
+                                                        <div class="ol">
+                                                            {{ item.body|safe }}
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
                                             </div>
-
-
-                                        </div>
+                                        {% endfor %}
                                     </div>
                                 </div>
-                            {% endfor %}
+                            {% endif %}
+                            {% if house.delivery.active and house.delivery.included.active and house.delivery.included.get_items %}
+                                <div id="tab-include-delivery" class="body-item cost-included">
+                                    <div id="accordion" role="tablist">
+                                        {% for item in house.delivery.included.get_items %}
+                                            <div class="panel panel-custom panel-classic">
+                                                <div class="panel-custom-heading" id="{{ item.pk }}-delivery-Head"
+                                                     role="tab">
+                                                    <h6 class="panel-custom-title">
+                                                        <a class="collapsed" role="button"
+                                                           data-toggle="collapse"
+                                                           data-parent="#{{ item.pk }}"
+                                                           href="#{{ item.pk }}-delivery-Collapse"
+                                                           aria-controls="{{ item.pk }}-delivery-Collapse">
+                                                            {{ item.name }}
+                                                        </a>
+                                                    </h6>
+                                                </div>
+                                                <div class="panel-custom-collapse collapse"
+                                                     id="{{ item.pk }}-delivery-Collapse"
+                                                     role="tabpanel"
+                                                     aria-labelledby="{{ item.pk }}-delivery-Head">
+                                                    <div class="panel-custom-body">
+                                                        <div class="ol">
+                                                            {{ item.body|safe }}
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            {% endif %}
+
                         </div>
                     </div>
-                {% endif %}
-                {% if house.delivery.not_included.active and house.delivery.not_included.body %}
-                    <div id="tab-not-include-delivery" class="body-item info">
-                        <div class="in-cost">
-                            {{ house.delivery.not_included.body|safe }}
+                </div>
+                <div id="tab-not-included" class="body-item info">
+                    <div class="container tab secondary">
+                        <div class="tabs-controls">
+                            <div class="tabs-controls-wrapper cost-not-included">
+                                <div class="container">
+                                    <div class="tabs-slider">
+                                        <div class="mask"></div>
+                                        {% if house.turnkey.active and house.turnkey.not_included.active and house.turnkey.not_included.body %}
+                                            <div class="tabs-controls-item cost-not-included active"
+                                                 data-for="tab-not-include-turnkey">
+                                                <div>
+                                                    <span>Под ключ</span>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                        {% if house.for_finishing.active and house.for_finishing.not_included.active and house.for_finishing.not_included.body %}
+                                            <div class="tabs-controls-item cost-not-included"
+                                                 data-for="tab-not-include-for_finishing">
+                                                <div>
+                                                    <span>Под отделку</span>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                        {% if house.delivery.active and house.delivery.not_included.active and house.delivery.not_included.body %}
+                                            <div class="tabs-controls-item cost-not-included"
+                                                 data-for="tab-not-include-delivery">
+                                                <div>
+                                                    <span>Поставка с завода</span>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+
+                            </div>
+
                         </div>
                     </div>
-                {% endif %}
+                    <div class="tabs-content">
+                        <div class="container">
+                            {% if house.turnkey.active and house.turnkey.not_included.active and house.turnkey.not_included.body %}
+                                <div id="tab-not-include-turnkey" class="body-item cost-not-included active">
+                                    <div class="in-cost">
+                                        {{ house.turnkey.not_included.body|safe }}
+                                    </div>
+                                </div>
+                            {% endif %}
+                            {% if house.for_finishing.active and house.for_finishing.not_included.active and house.for_finishing.not_included.body %}
+                                <div id="tab-not-include-for_finishing" class="body-item cost-not-included">
+                                    <div class="in-cost">
+                                        {{ house.for_finishing.not_included.body|safe }}
+                                    </div>
+                                </div>
+                            {% endif %}
+                            {% if house.delivery.active and house.delivery.not_included.active and house.delivery.not_included.body %}
+                                <div id="tab-not-include-delivery" class="body-item cost-not-included">
+                                    <div class="in-cost">
+                                        {{ house.delivery.not_included.body|safe }}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
                 {% if house.options.body and house.options.active %}
                     <div id="tab-options" class="body-item info">
                         <div class="in-cost">
                             {{ house.options.body|safe }}
-                            <div class="buttons">
-                                <a href="#" class="btn-a diagonal"
-                                   width="250px"><span>Перейти в раздел "Опции"</span></a>
-                            </div>
+{#                            <div class="buttons">#}
+{#                                <a href="#" class="btn-a diagonal"#}
+{#                                   width="250px"><span>Перейти в раздел "Опции"</span></a>#}
+{#                            </div>#}
                         </div>
                     </div>
                 {% endif %}
@@ -338,6 +390,240 @@
 
 
     </section>
+    {#    <section class="home-info white b-shadow">#}
+    {#        <div class="container tab">#}
+    {#            <div class="tabs-controls">#}
+    {#                <div class="tabs-controls-wrapper info">#}
+    {#                    <div class="container">#}
+    {#                        <div class="tabs-slider">#}
+    {#                            <div class="mask"></div>#}
+    {#                            <div class="tabs-controls-item info active" data-for="tab-sizes">#}
+    {#                                <div>#}
+    {#                                    <span>Размеры дома</span>#}
+    {#                                </div>#}
+    {#                            </div>#}
+    {#                            {% if house.turnkey.active %}#}
+    {#                                {% if house.turnkey.included.active %}#}
+    {#                                    {% if house.turnkey.included.get_items %}#}
+    {#                                        <div class="tabs-controls-item info" data-for="tab-include-turnkey">#}
+    {#                                            <div>#}
+    {#                                                <span>Включено в стоимость "Под ключ"</span>#}
+    {#                                            </div>#}
+    {#                                        </div>#}
+    {#                                    {% endif %}#}
+    {#                                {% endif %}#}
+    {#                                {% if house.turnkey.not_included.active and house.turnkey.not_included.body %}#}
+    {#                                    <div class="tabs-controls-item info" data-for="tab-not-include-turnkey">#}
+    {#                                        <div>#}
+    {#                                            <span>Не включено в стоимость "Под ключ"</span>#}
+    {#                                        </div>#}
+    {#                                    </div>#}
+    {#                                {% endif %}#}
+    {#                            {% endif %}#}
+    {#                            {% if house.for_finishing.active %}#}
+    {#                                {% if house.for_finishing.included.active %}#}
+    {#                                    {% if house.for_finishing.included.get_items %}#}
+    {#                                        <div class="tabs-controls-item info" data-for="tab-include-for_finishing">#}
+    {#                                            <div>#}
+    {#                                                <span>Включено в стоимость "Под отделку"</span>#}
+    {#                                            </div>#}
+    {#                                        </div>#}
+    {#                                    {% endif %}#}
+    {#                                {% endif %}#}
+    {#                                {% if house.for_finishing.not_included.active and house.for_finishing.not_included.body %}#}
+    {#                                    <div class="tabs-controls-item info" data-for="tab-not-include-for_finishing">#}
+    {#                                        <div>#}
+    {#                                            <span>Не включено в стоимость "Под отделку"</span>#}
+    {#                                        </div>#}
+    {#                                    </div>#}
+    {#                                {% endif %}#}
+    {#                            {% endif %}#}
+    {#                            {% if house.delivery.active %}#}
+    {#                                {% if house.delivery.included.active %}#}
+    {#                                    {% if house.delivery.included.get_items %}#}
+    {#                                        <div class="tabs-controls-item info" data-for="tab-include-delivery">#}
+    {#                                            <div>#}
+    {#                                                <span>Включено в стоимость "Поставка с завода"</span>#}
+    {#                                            </div>#}
+    {#                                        </div>#}
+    {#                                    {% endif %}#}
+    {#                                {% endif %}#}
+    {#                                {% if house.delivery.not_included.active and house.delivery.not_included.body %}#}
+    {#                                    <div class="tabs-controls-item info" data-for="tab-not-include-delivery">#}
+    {#                                        <div>#}
+    {#                                            <span>Не включено в стоимость "Поставка с завода"</span>#}
+    {#                                        </div>#}
+    {#                                    </div>#}
+    {#                                {% endif %}#}
+    {#                            {% endif %}#}
+    {#                            {% if house.options.body and house.options.active %}#}
+    {#                                <div class="tabs-controls-item info" data-for="tab-options">#}
+    {#                                    <div>#}
+    {#                                        <span>Опции и дополнения</span>#}
+    {#                                    </div>#}
+    {#                                </div>#}
+    {#                            {% endif %}#}
+    {##}
+    {#                        </div>#}
+    {#                    </div>#}
+    {##}
+    {#                </div>#}
+    {##}
+    {#            </div>#}
+    {#        </div>#}
+    {##}
+    {##}
+    {#        <div class="tabs-content">#}
+    {#            <div class="container">#}
+    {#                <div id="tab-sizes" class="body-item info active">#}
+    {#                    <div class="in-cost">#}
+    {#                        <div class="min-info-item">Полезная площадь: <span>{{ house.area }}</span> м&sup2;</div>#}
+    {#                        <div class="min-info-item">Площадь застройки: <span>{{ house.area_of_buildings }}</span> м&sup2;#}
+    {#                        </div>#}
+    {#                        <div class="min-info-item">Внешние габаритные размеры (ВхШхД):#}
+    {#                            <span>{{ house.height }}</span>#}
+    {#                            <span class="xx"><span class="x">x</span></span>#}
+    {##}
+    {#                            <span>{{ house.width }}</span>#}
+    {#                            <span class="xx"><span class="x">x</span></span>#}
+    {#                            <span>{{ house.length }}</span>#}
+    {#                            м#}
+    {#                        </div>#}
+    {#                        <div class="min-info-item">Высота потолков: общая <span>{{ house.ceiling_height }}</span> м#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#                {% if house.turnkey.included.active and house.turnkey.included.get_items %}#}
+    {#                    <div id="tab-include-turnkey" class="body-item info">#}
+    {#                        <div id="accordion" role="tablist">#}
+    {#                            {% for item in house.turnkey.included.get_items %}#}
+    {#                                <div class="panel panel-custom panel-classic">#}
+    {#                                    <div class="panel-custom-heading" id="{{ item.pk }}-turnkey-Head" role="tab">#}
+    {#                                        <h6 class="panel-custom-title">#}
+    {#                                            <a class="collapsed" role="button"#}
+    {#                                               data-toggle="collapse"#}
+    {#                                               data-parent="#{{ item.pk }}" href="#{{ item.pk }}-turnkey-Collapse"#}
+    {#                                               aria-controls="{{ item.pk }}-turnkey-Collapse">#}
+    {#                                                {{ item.name }}#}
+    {#                                            </a>#}
+    {#                                        </h6>#}
+    {#                                    </div>#}
+    {#                                    <div class="panel-custom-collapse collapse" id="{{ item.pk }}-turnkey-Collapse"#}
+    {#                                         role="tabpanel"#}
+    {#                                         aria-labelledby="{{ item.pk }}-turnkey-Head">#}
+    {#                                        <div class="panel-custom-body">#}
+    {#                                            <div class="ol">#}
+    {#                                                {{ item.body|safe }}#}
+    {#                                            </div>#}
+    {##}
+    {##}
+    {#                                        </div>#}
+    {#                                    </div>#}
+    {#                                </div>#}
+    {#                            {% endfor %}#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                {% endif %}#}
+    {#                {% if house.turnkey.not_included.active and house.turnkey.not_included.body %}#}
+    {#                    <div id="tab-not-include-turnkey" class="body-item info">#}
+    {#                        <div class="in-cost">#}
+    {#                            {{ house.turnkey.not_included.body|safe }}#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                {% endif %}#}
+    {#                {% if house.for_finishing.included.active and house.for_finishing.included.get_items %}#}
+    {#                    <div id="tab-include-for_finishing" class="body-item info">#}
+    {#                        <div id="accordion" role="tablist">#}
+    {#                            {% for item in house.for_finishing.included.get_items %}#}
+    {#                                <div class="panel panel-custom panel-classic">#}
+    {#                                    <div class="panel-custom-heading" id="{{ item.pk }}-for_finishing-Head" role="tab">#}
+    {#                                        <h6 class="panel-custom-title">#}
+    {#                                            <a class="collapsed" role="button"#}
+    {#                                               data-toggle="collapse"#}
+    {#                                               data-parent="#{{ item.pk }}" href="#{{ item.pk }}-for_finishing-Collapse"#}
+    {#                                               aria-controls="{{ item.pk }}-for_finishing-Collapse">#}
+    {#                                                {{ item.name }}#}
+    {#                                            </a>#}
+    {#                                        </h6>#}
+    {#                                    </div>#}
+    {#                                    <div class="panel-custom-collapse collapse"#}
+    {#                                         id="{{ item.pk }}-for_finishing-Collapse"#}
+    {#                                         role="tabpanel"#}
+    {#                                         aria-labelledby="{{ item.pk }}-for_finishing-Head">#}
+    {#                                        <div class="panel-custom-body">#}
+    {#                                            <div class="ol">#}
+    {#                                                {{ item.body|safe }}#}
+    {#                                            </div>#}
+    {##}
+    {##}
+    {#                                        </div>#}
+    {#                                    </div>#}
+    {#                                </div>#}
+    {#                            {% endfor %}#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                {% endif %}#}
+    {#                {% if house.for_finishing.not_included.active and house.for_finishing.not_included.body %}#}
+    {#                    <div id="tab-not-include-for_finishing" class="body-item info">#}
+    {#                        <div class="in-cost">#}
+    {#                            {{ house.for_finishing.not_included.body|safe }}#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                {% endif %}#}
+    {#                {% if house.delivery.included.active and house.delivery.included.get_items %}#}
+    {#                    <div id="tab-include-delivery" class="body-item info">#}
+    {#                        <div id="accordion" role="tablist">#}
+    {#                            {% for item in house.delivery.included.get_items %}#}
+    {#                                <div class="panel panel-custom panel-classic">#}
+    {#                                    <div class="panel-custom-heading" id="{{ item.pk }}-delivery-Head" role="tab">#}
+    {#                                        <h6 class="panel-custom-title">#}
+    {#                                            <a class="collapsed" role="button"#}
+    {#                                               data-toggle="collapse"#}
+    {#                                               data-parent="#{{ item.pk }}" href="#{{ item.pk }}-delivery-Collapse"#}
+    {#                                               aria-controls="{{ item.pk }}-delivery-Collapse">#}
+    {#                                                {{ item.name }}#}
+    {#                                            </a>#}
+    {#                                        </h6>#}
+    {#                                    </div>#}
+    {#                                    <div class="panel-custom-collapse collapse" id="{{ item.pk }}-delivery-Collapse"#}
+    {#                                         role="tabpanel"#}
+    {#                                         aria-labelledby="{{ item.pk }}-delivery-Head">#}
+    {#                                        <div class="panel-custom-body">#}
+    {#                                            <div class="ol">#}
+    {#                                                {{ item.body|safe }}#}
+    {#                                            </div>#}
+    {##}
+    {##}
+    {#                                        </div>#}
+    {#                                    </div>#}
+    {#                                </div>#}
+    {#                            {% endfor %}#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                {% endif %}#}
+    {#                {% if house.delivery.not_included.active and house.delivery.not_included.body %}#}
+    {#                    <div id="tab-not-include-delivery" class="body-item info">#}
+    {#                        <div class="in-cost">#}
+    {#                            {{ house.delivery.not_included.body|safe }}#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                {% endif %}#}
+    {#                {% if house.options.body and house.options.active %}#}
+    {#                    <div id="tab-options" class="body-item info">#}
+    {#                        <div class="in-cost">#}
+    {#                            {{ house.options.body|safe }}#}
+    {#                            <div class="buttons">#}
+    {#                                <a href="#" class="btn-a diagonal"#}
+    {#                                   width="250px"><span>Перейти в раздел "Опции"</span></a>#}
+    {#                            </div>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                {% endif %}#}
+    {#            </div>#}
+    {#        </div>#}
+    {##}
+    {##}
+    {#    </section>#}
 
     {% lineup %}
 

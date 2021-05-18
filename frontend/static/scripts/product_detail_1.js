@@ -62,12 +62,20 @@ window.addEventListener('resize', function () {
 
 const navItems = document.querySelectorAll('.tabs-controls-item.info'),
     navItemsCatalog = document.querySelectorAll('.tabs-controls-item.catalog'),
+    navItemsCostIncluded = document.querySelectorAll('.tabs-controls-item.cost-included'),
+    navItemsCostNotIncluded = document.querySelectorAll('.tabs-controls-item.cost-not-included'),
     bodyItems = document.querySelectorAll('.body-item.info'),
     bodyItemsCatalog = document.querySelectorAll('.body-item.catalog'),
+    bodyItemsCostIncluded = document.querySelectorAll('.body-item.cost-included'),
+    bodyItemsCostNotIncluded = document.querySelectorAll('.body-item.cost-not-included'),
     navArray = Array.prototype.slice.call(navItems),
     navArrayCatalog = Array.prototype.slice.call(navItemsCatalog),
+    navArrayCostIncluded = Array.prototype.slice.call(navItemsCostIncluded),
+    navArrayCostNotIncluded = Array.prototype.slice.call(navItemsCostNotIncluded),
     infoContainer = document.querySelector('.tabs-controls-wrapper.info .container'),
-    catalogContainer = document.querySelector('.tabs-controls-wrapper.catalog .container');
+    catalogContainer = document.querySelector('.tabs-controls-wrapper.catalog .container'),
+    costIncludedContainer = document.querySelector('.tabs-controls-wrapper.cost-included .container'),
+    costNotIncludedContainer = document.querySelector('.tabs-controls-wrapper.cost-not-included .container');
 
 const setActive = (e, itemList) => {
     itemList.forEach(el => {
@@ -105,6 +113,33 @@ navItems.forEach(e => {
     })
 })
 
+navItemsCostIncluded.forEach(e => {
+    e.addEventListener('click', () => {
+        if (!e.classList.contains('active')) {
+            const tabId = e.getAttribute('data-for'),
+                tabBodyItem = document.querySelector(`#${tabId}`);
+            setActive(e, navItemsCostIncluded);
+            setActive(tabBodyItem, bodyItemsCostIncluded);
+        }
+        scrollToActiveTab(e, navArrayCostIncluded, costIncludedContainer);
+
+    })
+})
+
+
+navItemsCostNotIncluded.forEach(e => {
+    e.addEventListener('click', () => {
+        if (!e.classList.contains('active')) {
+            const tabId = e.getAttribute('data-for'),
+                tabBodyItem = document.querySelector(`#${tabId}`);
+            setActive(e, navItemsCostNotIncluded);
+            setActive(tabBodyItem, bodyItemsCostNotIncluded);
+        }
+        scrollToActiveTab(e, navArrayCostNotIncluded, costNotIncludedContainer);
+
+    })
+})
+
 navItemsCatalog.forEach(e => {
     e.addEventListener('click', () => {
         if (!e.classList.contains('active')) {
@@ -138,6 +173,8 @@ navItemsCatalog.forEach(e => {
 
 scrollToActiveTab(document.querySelector('.tabs-controls-item.info.active'), navArray, infoContainer);
 scrollToActiveTab(document.querySelector('.tabs-controls-item.container.active'), navArrayCatalog, catalogContainer);
+scrollToActiveTab(document.querySelector('.tabs-controls-item.cost-included.active'), navArrayCostIncluded, costIncludedContainer);
+scrollToActiveTab(document.querySelector('.tabs-controls-item.cost-not-included.active'), navArrayCostNotIncluded, costNotIncludedContainer);
 
 //
 const tabs = document.querySelectorAll('.tabs-controls-wrapper');
@@ -160,8 +197,6 @@ const buttonShowRequestModal = document.querySelector('#show-request-info-modal'
     html = document.querySelector('html'),
     buttonCloseInfo = document.querySelector('#close-info'),
     requestModal = document.querySelector('#modal-request-info');
-
-
 
 
 const showModal = (modelSelector) => {
@@ -195,7 +230,6 @@ requestModal.addEventListener('click', (e) => {
         hideModal(requestModal);
     }
 })
-
 
 
 const form = document.querySelector('#form'),
@@ -348,7 +382,7 @@ const formIsValid = () => {
 
 sendMessageButton.addEventListener('click', (e) => {
     e.preventDefault();
-    if(document.querySelector('#error-server-message').classList.contains('show')){
+    if (document.querySelector('#error-server-message').classList.contains('show')) {
         document.querySelector('#error-server-message').classList.remove('show')
     }
     showSpinner()
@@ -384,10 +418,6 @@ sendMessageButton.addEventListener('click', (e) => {
         });
     }
 });
-
-
-
-
 
 
 // const buttonForRequestInfo = document.querySelector('#show-request-info-modal'),
