@@ -563,7 +563,7 @@ form.sub-menu-form .form-wrap.checkbox label {
     font-weight: 700;
     text-decoration: none;
     margin-bottom: 15px;
-    border: 1px solid #000;
+    border: 3px solid #000;
     padding: 14px 30px;
     text-transform: uppercase;
     text-align: center;
@@ -1044,6 +1044,7 @@ span.x {
 
 .body-item.catalog {
     position: relative;
+    padding: 15px 5px;
 }
 
 .swiper-container-catalog {
@@ -1370,6 +1371,7 @@ button.button.black:hover {
 
 .products-wrapper {
     display: grid;
+    padding: 50px 0;
     grid-template-columns: repeat(3, 400px);
     grid-auto-rows: 600px;
     gap: 50px;

@@ -49,7 +49,7 @@ const linesAnimation = (line, secondLine, text, picture) => {
 }
 
 const linesAnimationsInTurn = () => {
-    const timeouts = [2000, 750, 5000, 8500, 12000]
+    const timeouts = [2000, 750, 3500, 5500, 9500]
     for (let i = 0; i < 5; i++) {
         if (i === 0) {
             linesAnimation(lines[i], secondLines[i], texts[i], pictures[i]);
