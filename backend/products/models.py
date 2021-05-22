@@ -74,11 +74,12 @@ class House(SeoAbstract):
 
     def get_main_picture(self):
         try:
-            pic = self.house_pictures.filter(active=True, main=True)[0]
+            try:
+                pic = self.house_pictures.filter(active=True, main=True)[0]
+            except Exception:
+                pic = self.house_pictures.filter(active=True)[0]
         except Exception:
-            pic = self.house_pictures.filter(active=True)[0]
-        logger.info(pic)
-        logger.info(self.house_pictures.all())
+            pic = None
         return pic
 
 
