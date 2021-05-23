@@ -39,13 +39,11 @@ class HousesListView(ListView):
             series = get_object_or_404(Series, slug=series_slug, active=True)
             houses = House.objects.filter(category__active=True,
                                           series=series,
-                                          active=True).order_by('sort_number', '-id')
+                                          active=True).order_by('sort_number')
         else:
             houses = House.objects.filter(category__active=True,
                                           series__active=True,
-                                          active=True).order_by('sort_number', '-id')
-        logger.info(houses)
-        logger.info(houses.count())
+                                          active=True).order_by('sort_number')
         return houses
 
     def get_context_data(self, **kwargs):
@@ -60,4 +58,4 @@ class HousesListView(ListView):
                 'series': series,
                 'all_houses': House.objects.filter(category__active=True,
                                                    series__active=True,
-                                                   active=True).order_by('sort_number', '-id')}
+                                                   active=True).order_by('sort_number')}

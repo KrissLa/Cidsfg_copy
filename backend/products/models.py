@@ -60,6 +60,7 @@ class House(SeoAbstract):
     class Meta:
         verbose_name = 'Дом'
         verbose_name_plural = 'Дома'
+        ordering = ['sort_number', '-id']
 
     def __str__(self):
         return f'{self.id} - {self.name}'
