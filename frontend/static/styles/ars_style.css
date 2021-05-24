@@ -2259,14 +2259,18 @@ span.price {
 /*    display: none;*/
 /*}*/
 
+.mobile-display{
+    display: none;
+}
+
+.about-video img,
+.mobile-display img{
+    width: 100%;
+}
+
 @media all and (max-width: 768px) {
     .timeline-header__title {
         font-size: 40px;
-    }
-
-    .picture.mobile-display {
-        display: block;
-        font-size: 35px;
     }
 
     .pc {
@@ -2275,8 +2279,9 @@ span.price {
 }
 
 @media all and (max-width: 600px){
-    .picture.mobile{
-        display: unset;
+    .picture.mobile-display {
+        display: block;
+        font-size: 35px;
     }
 }
 
