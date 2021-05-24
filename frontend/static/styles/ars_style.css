@@ -2254,19 +2254,17 @@ span.price {
     display: inline-block;
     /*font-family: Cardo;*/
 }
-.picture.mobile,
-.mobile {
-    display: none;
-}
-
-.picture.mobile
+/*.picture.mobile-display,*/
+/*.mobile {*/
+/*    display: none;*/
+/*}*/
 
 @media all and (max-width: 768px) {
     .timeline-header__title {
         font-size: 40px;
     }
 
-    .mobile {
+    .picture.mobile-display {
         display: block;
         font-size: 35px;
     }
