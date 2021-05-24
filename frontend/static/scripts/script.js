@@ -8,9 +8,9 @@ var userAgent = navigator.userAgent.toLowerCase(),
 
   $document = $(document),
   $window = $(window),
-  $html = $("html"),
+  // $html = $("html"),
 
-  isDesktop = $html.hasClass("desktop"),
+  // isDesktop = $html.hasClass("desktop"),
   isRtl = $html.attr("dir") === "rtl",
   isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1,
   isIE = userAgent.indexOf("msie") != -1 ? parseInt(userAgent.split("msie")[1]) : userAgent.indexOf("trident") != -1 ? 11 : userAgent.indexOf("edge") != -1 ? 12 : false,
@@ -204,19 +204,19 @@ $document.ready(function () {
    * makeWaypointScroll
    * @description  init smooth anchor animations
    */
-  function makeWaypointScroll(obj) {
-    var $this = $(obj);
-    if (!isNoviBuilder) {
-      $this.on('click', function (e) {
-        e.preventDefault();
-        $("body, html").stop().animate({
-          scrollTop: $("#" + $(this).attr('data-custom-scroll-to')).offset().top
-        }, 1000, function () {
-          $window.trigger("resize");
-        });
-      });
-    }
-  }
+  // function makeWaypointScroll(obj) {
+  //   var $this = $(obj);
+  //   if (!isNoviBuilder) {
+  //     $this.on('click', function (e) {
+  //       e.preventDefault();
+  //       $("body, html").stop().animate({
+  //         scrollTop: $("#" + $(this).attr('data-custom-scroll-to')).offset().top
+  //       }, 1000, function () {
+  //         $window.trigger("resize");
+  //       });
+  //     });
+  //   }
+  // }
 
 
   /**
@@ -644,41 +644,41 @@ $document.ready(function () {
    * Is Mac os
    * @description  add additional class on html if mac os.
    */
-  if (navigator.platform.match(/(Mac)/i)) $html.addClass("mac-os");
+  // if (navigator.platform.match(/(Mac)/i)) $html.addClass("mac-os");
 
   /**
    * Is Firefox
    * @description  add additional class on html if mac os.
    */
-  if (isFirefox) $html.addClass("firefox");
+  // if (isFirefox) $html.addClass("firefox");
 
   /**
    * IE Polyfills
    * @description  Adds some loosing functionality to IE browsers
    */
-  if (isIE) {
-    if (isIE < 10) {
-      $html.addClass("lt-ie-10");
-    }
-
-    if (isIE < 11) {
-      if (plugins.pointerEvents) {
-        $.getScript(plugins.pointerEvents)
-          .done(function () {
-            $html.addClass("ie-10");
-            PointerEventsPolyfill.initialize({});
-          });
-      }
-    }
-
-    if (isIE === 11) {
-      $("html").addClass("ie-11");
-    }
-
-    if (isIE === 12) {
-      $("html").addClass("ie-edge");
-    }
-  }
+  // if (isIE) {
+  //   if (isIE < 10) {
+  //     $html.addClass("lt-ie-10");
+  //   }
+  //
+  //   if (isIE < 11) {
+  //     if (plugins.pointerEvents) {
+  //       $.getScript(plugins.pointerEvents)
+  //         .done(function () {
+  //           $html.addClass("ie-10");
+  //           PointerEventsPolyfill.initialize({});
+  //         });
+  //     }
+  //   }
+  //
+  //   if (isIE === 11) {
+  //     $("html").addClass("ie-11");
+  //   }
+  //
+  //   if (isIE === 12) {
+  //     $("html").addClass("ie-edge");
+  //   }
+  // }
 
   /**
    * Bootstrap Tooltips
@@ -1289,9 +1289,9 @@ $document.ready(function () {
    * WOW
    * @description Enables Wow animation plugin
    */
-  if (isDesktop && $html.hasClass("wow-animation") && $(".wow").length) {
-    new WOW().init();
-  }
+  // if (isDesktop && $html.hasClass("wow-animation") && $(".wow").length) {
+  //   new WOW().init();
+  // }
 
 	/**
 	 * Bootstrap tabs
