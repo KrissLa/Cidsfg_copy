@@ -25,6 +25,7 @@ class ContactsAdmin(admin.ModelAdmin):
                 ('email',),
                 ('working_hours',),
                 ('map_picture',),
+                ('map_link',),
                 ('alt_picture',),
             )
         }),

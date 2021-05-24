@@ -47,7 +47,8 @@
                 </div>
                 <div class="about-video">
                     <div class="entry-video embed-responsive embed-responsive-16by9">
-                        <iframe width="886" height="668" src="//www.youtube.com/embed/{% if about %}{{ about.youtube_url }}{% else %}ccuQoF0vKYU{% endif %}"
+                        <iframe width="886" height="668" src="//www.youtube.com/embed/
+                                {% if about %}{{ about.youtube_url }}{% else %}ccuQoF0vKYU{% endif %}"
                                 allowfullscreen=""></iframe>
                     </div>
                 </div>
@@ -62,6 +63,7 @@
                 {% static 'images/about_bg.jpg' %}
             {% endif %})">
         <div class="inner-container">
+         <div class="container">
             <h2>О компании</h2>
 
             <p class="text">
@@ -74,6 +76,7 @@
                 {% endif %}
 
             </p>
+         </div>
         </div>
 
     </section>
@@ -84,20 +87,34 @@
              {% else %}
                  {% static 'images/factory.jpg' %}
              {% endif %})">
-        <div class="inner-container">
-            <h2>О заводе</h2>
-            <p class="text">
-                {% if about %}
-                    {{ about.about_factory }}
-                {% else %}
-                    Деревообрабатывающее предприятие, на котором производятся дома CUBO было основано в 1994 году и ходе
-                    развития вышло на производство клееных изделий с полным технологическим циклом.
-                    К настоящему времени предприятие имеет свою инфраструктуру, которая начинается заготовкой леса и
-                    заканчивается производством изделий деревообработки. Площадь предприятия составляет 1,8 га, из них
-                    производственные площади - 3500 м². Численность работающих - 250 человек.
-                {% endif %}
 
-            </p>
+        <div class="inner-container">
+            <div class="container">
+                <h2>О заводе</h2>
+                <section class="picture mobile">
+                    <img
+                            alt="Сотрудничество"
+                            class="lazy"
+                            src="{% static 'images/factory_th.jpg' %}"
+                            data-src="{% static 'images/factory_480.jpg' %}"
+                    />
+                </section>
+
+                <p class="text">
+                    {% if about %}
+                        {{ about.about_factory }}
+                    {% else %}
+                        Деревообрабатывающее предприятие, на котором производятся дома CUBO было основано в 1994 году и
+                        ходе
+                        развития вышло на производство клееных изделий с полным технологическим циклом.
+                        К настоящему времени предприятие имеет свою инфраструктуру, которая начинается заготовкой леса и
+                        заканчивается производством изделий деревообработки. Площадь предприятия составляет 1,8 га, из
+                        них
+                        производственные площади - 3500 м². Численность работающих - 250 человек.
+                    {% endif %}
+
+                </p>
+            </div>
         </div>
 
     </section>

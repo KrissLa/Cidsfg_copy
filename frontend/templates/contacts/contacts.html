@@ -41,38 +41,52 @@
             <div class="footer-contacts">
                 <div class="info">
                     <ul class="">
-                        <li>
-                            <span class="footer-title">Адрес</span> <span>{{ contacts.address }}</span>
-                        </li>
-                        <li>
-
-                            <span class="footer-title">Телефоны</span>
-                            {% for phone in contacts.phones.all %}
-                                <a href="tel:{{ phone.phone_number }}">{{ phone.phone_number }}</a>
-                                {% if not forloop.last %},{% endif %}
-                            {% endfor %}
-                        </li>
-                        <li>
-                            <span class="footer-title">E-mail</span> <a
-                                href="mailto:{{ contacts.email }}">{{ contacts.email }}</a>
-                        </li>
-
-                        <li>
-                            <span class="footer-title">Время работы</span> <span>{{ contacts.working_hours }}</span>
-                        </li>
+                        {% if contacts.address %}
+                            <li>
+                                <span class="footer-title">Адрес</span> <span>{{ contacts.address }}</span>
+                            </li>
+                        {% endif %}
+                        {% if contacts.phones.all %}
+                            <li>
+                                <span class="footer-title">Телефоны</span>
+                                {% for phone in contacts.phones.all %}
+                                    <a href="tel:{{ phone.phone_number }}">{{ phone.phone_number }}</a>
+                                    {% if not forloop.last %},{% endif %}
+                                {% endfor %}
+                            </li>
+                        {% endif %}
+                        {% if contacts.email %}
+                            <li>
+                                <span class="footer-title">E-mail</span> <a
+                                    href="mailto:{{ contacts.email }}">{{ contacts.email }}</a>
+                            </li>
+                        {% endif %}
+                        {% if contacts.working_hours %}
+                            <li>
+                                <span class="footer-title">Время работы</span> <span>{{ contacts.working_hours }}</span>
+                            </li>
+                        {% endif %}
                     </ul>
                 </div>
+
                 <div class="img">
-                    <img
-                            alt="{{ contacts.alt_picture }}"
-                            class="lazy"
-                            src="{{ contacts.map_picture.thumb.url }}"
-                            data-srcset="{{ contacts.map_picture.w400.url }} 400w,
+                    {% if contacts.map_picture %}
+                        <a target="_blank" href="
+                                {% if contacts.map_link %}{{ contacts.map_link }}{% else %}https://goo.gl/maps/ffNe8e4hsDqQMYJo8{% endif %}">
+                            <img
+                                    alt="{% if contacts.alt_picture %}{{ contacts.alt_picture }}{% endif %}"
+                                    class="lazy"
+                                    src="{{ contacts.map_picture.thumb.url }}"
+                                    data-srcset="{{ contacts.map_picture.w400.url }} 400w,
                                          {{ contacts.map_picture.w800.url }} 800w"
-                            data-sizes="(max-width: 767px) 400px,
+                                    data-sizes="(max-width: 767px) 400px,
                                                 1000px"
-                    />
+                            />
+                        </a>
+
+                    {% endif %}
                 </div>
+
             </div>
 
         </div>
@@ -105,7 +119,7 @@
 
                     <p class="agree">Нажимая кнопку, я даю согласие на обработку моих персональных данных в соответствии
                         со
-                        статьей 9 ФЗ от 27.07.2006 № 152-ФЗ «О персональных данных» и оглашаюсь с
+                        статьей 9 ФЗ от 27.07.2006 № 152-ФЗ «О персональных данных» и соглашаюсь с
                         <a href="{% url 'privacy' %}">политикой конфиденциальности</a></p>
 
                     <p id="error-server-message">Ошибка сервера! Пожалуйста, попробуйте позже.</p>

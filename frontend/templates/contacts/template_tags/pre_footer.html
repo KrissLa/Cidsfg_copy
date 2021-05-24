@@ -4,29 +4,44 @@
             <div class="info">
                 <h6>Контакты</h6>
                 <ul class="">
-                    <li>
-                        <span class="footer-title">Адрес</span> <span>{{ contacts.address }}</span>
-                    </li>
-                    <li>
-                        <span class="footer-title">Телефоны</span>
-                        {% for phone in contacts.phones.all %}
-                            <a href="tel:{{ phone.phone_number }}">{{ phone.phone_number }}</a>
-                            {% if not forloop.last %},{% endif %}
-                        {% endfor %}
-                    </li>
-                    <li>
-                        <span class="footer-title">E-mail</span> <a
-                            href="mailto:{{ contacts.email }}">{{ contacts.email }}</a>
-                    </li>
+                    {% if contacts.address %}
+                        <li>
+                            <span class="footer-title">Адрес</span> <span>{{ contacts.address }}</span>
+                        </li>
+                    {% endif %}
+                    {% if contacts.phones.all %}
+                        <li>
+                            <span class="footer-title">Телефон</span>
+                            {% for phone in contacts.phones.all %}
+                                <a href="tel:{{ phone.phone_number }}">{{ phone.phone_number }}</a>
+                                {% if not forloop.last %},{% endif %}
+                            {% endfor %}
+                        </li>
+                    {% endif %}
 
-                    <li>
-                        <span class="footer-title">Время работы</span> <span>{{ contacts.working_hours }}</span>
-                    </li>
+                    {% if contacts.email %}
+                        <li>
+                            <span class="footer-title">E-mail</span> <a
+                                href="mailto:{{ contacts.email }}">{{ contacts.email }}</a>
+                        </li>
+                    {% endif %}
+                    {% if contacts.working_hours %}
+                        <li>
+                            <span class="footer-title">Время работы</span> <span>{{ contacts.working_hours }}</span>
+                        </li>
+                    {% endif %}
                 </ul>
             </div>
+
             <div class="img">
-                <img class="lazy" src="{{ contacts.map_picture.thumb.url }}"
-                     data-src="{{ contacts.map_picture.w600.url }}" alt="{{ contacts.alt_picture }}"/>
+                {% if contacts.map_picture %}
+                    <a target="_blank" href="
+                                {% if contacts.map_link %}{{ contacts.map_link }}{% else %}https://goo.gl/maps/ffNe8e4hsDqQMYJo8{% endif %}">
+                    <img class="lazy" src="{{ contacts.map_picture.thumb.url }}"
+                         data-src="{{ contacts.map_picture.w600.url }}"
+                         alt="{% if contacts.alt_picture %}{{ contacts.alt_picture }}{% endif %}"/>
+                    </a>
+                {% endif %}
             </div>
         </div>
 

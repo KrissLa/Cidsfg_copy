@@ -1535,6 +1535,9 @@ span.price {
     align-items: center;
     justify-content: center;
 }
+.about-menu{
+    justify-content: flex-start;
+}
 
 .about-section {
     background: no-repeat left;
@@ -1628,7 +1631,7 @@ span.price {
 
     .inner-container,
     .right .inner-container {
-        padding: 60px;
+        padding: 60px 0;
         background-color: #fff;
     }
 
@@ -1651,7 +1654,7 @@ span.price {
 
 .capacity .container h4,
 .capacity .container p {
-    text-align: center;
+    text-align: left;
 }
 
 .capacity .container h4 {
@@ -2251,10 +2254,12 @@ span.price {
     display: inline-block;
     /*font-family: Cardo;*/
 }
-
+.picture.mobile,
 .mobile {
     display: none;
 }
+
+.picture.mobile
 
 @media all and (max-width: 768px) {
     .timeline-header__title {
@@ -2271,7 +2276,14 @@ span.price {
     }
 }
 
+@media all and (max-width: 600px){
+    .picture.mobile{
+        display: unset;
+    }
+}
+
 @media all and (max-width: 430px) {
+
     .timeline__img {
         max-width: 300px;
     }

@@ -11,9 +11,10 @@ def generate_picture_path(instance, filename):
 
 class Contacts(SeoAbstract):
     """ Модель страницы с контактами """
-    address = models.CharField('Адрес', max_length=255)
-    email = models.CharField('Email', max_length=255)
-    working_hours = models.CharField('Время работы', max_length=255)
+    address = models.CharField('Адрес', max_length=255, blank=True, help_text="Чтобы не отображать, оставьте пустым")
+    email = models.CharField('Email', max_length=255, blank=True, help_text="Чтобы не отображать, оставьте пустым")
+    working_hours = models.CharField('Время работы', max_length=255, blank=True,
+                                     help_text="Чтобы не отображать, оставьте пустым")
     map_picture = StdImageField('Изображение', upload_to=generate_picture_path,
                                 variations={
                                     'w800': (800, 400),
@@ -21,8 +22,10 @@ class Contacts(SeoAbstract):
                                     'w400': (400, 200),
                                     'admin': (90, 45),
                                     'thumb': (20, 10),
-                                }, )
-    alt_picture = models.CharField('Подпись к фотографии', default='Изображение расположения на карте', max_length=255)
+                                }, blank=True, help_text="Чтобы не отображать, оставьте пустым")
+    map_link = models.URLField('Ссылка на расположение на карте', blank=True)
+    alt_picture = models.CharField('Подпись к фотографии', default='Изображение расположения на карте', max_length=255,
+                                   blank=True, help_text="Чтобы не отображать, оставьте пустым")
 
     class Meta:
         verbose_name = 'Контакты'
