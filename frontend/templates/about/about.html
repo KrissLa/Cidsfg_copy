@@ -47,9 +47,9 @@
                 </div>
                 <div class="about-video">
                     <div class="entry-video embed-responsive embed-responsive-16by9">
-                        <iframe width="886" height="668" src="//www.youtube.com/embed/
-                                {% if about %}{{ about.youtube_url }}{% else %}ccuQoF0vKYU{% endif %}"
-                                allowfullscreen=""></iframe>
+                        <video controls>
+                            <source src="{% static 'video/Rolik_zavod.mp4' %}" type="video/mp4">
+                        </video>
                     </div>
                 </div>
             </div>
@@ -63,20 +63,20 @@
                 {% static 'images/about_bg.jpg' %}
             {% endif %})">
         <div class="inner-container">
-         <div class="container">
-            <h2>О компании</h2>
+            <div class="container">
+                <h2>О компании</h2>
 
-            <p class="text">
-                {% if about %}
-                    {{ about.about_company }}
-                {% else %}
-                    Компания JUST CUBO является автором и разработчиком новой технологии строительства домов CUBO.
-                    Технология заключается в стандартизации несущих конструкций и позволяет быстро возводить
-                    сборно-разборные здания.
-                {% endif %}
+                <p class="text">
+                    {% if about %}
+                        {{ about.about_company }}
+                    {% else %}
+                        Компания JUST CUBO является автором и разработчиком новой технологии строительства домов CUBO.
+                        Технология заключается в стандартизации несущих конструкций и позволяет быстро возводить
+                        сборно-разборные здания.
+                    {% endif %}
 
-            </p>
-         </div>
+                </p>
+            </div>
         </div>
 
     </section>
