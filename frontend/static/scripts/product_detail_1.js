@@ -430,9 +430,24 @@ const zoomImages = document.querySelectorAll('.image-zoom'),
      <img width="100%" class="lazy" src="${src}" data-src="${dataSrc}"/>
 </div>`
 
+let zoomWindow = false;
+
+document.onkeydown = function (evt) {
+    evt = evt || window.event;
+    if (zoomWindow) {
+        if (evt.keyCode === 27) {
+            bodyEl.classList.remove('show-modal');
+            document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1');
+            document.querySelector('.zoom-wrapper').remove();
+        }
+    }
+
+};
+
 
 zoomImages.forEach(e => {
     e.addEventListener('click', () => {
+        zoomWindow = true;
         bodyEl.classList.add('show-modal');
         let zoomElement;
         if (document.documentElement.clientWidth < 768) {
