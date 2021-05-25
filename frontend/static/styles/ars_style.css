@@ -1452,6 +1452,7 @@ button.button.black:hover {
 }
 
 .item-title h4{
+    font-weight: 500;
     display: inline-block;
     font-size: 16px;
 }

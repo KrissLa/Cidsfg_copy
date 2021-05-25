@@ -1,4 +1,4 @@
-{% load price_to_str_filter%}
+{% load price_to_str_filter %}
 
 <section class="catalog-section">
     <div class="container">
@@ -42,7 +42,8 @@
                                                     <span>{{ house.category.name }}</span>
                                                 </div>
                                                 <div class="item-title">
-                                                    <span class="item-category">модель - </span><h4>{{ house.name }}</h4>
+                                                    <span class="item-category">модель - </span>
+                                                    <h4>{{ house.name }}</h4>
 
                                                 </div>
                                                 <div class="item-picture">
@@ -54,11 +55,12 @@
                                                     />
 
                                                 </div>
-                                                <div class="item-min-price">жилая площадь -
+                                                <div class="item-min-price">площадь дома -
                                                     <span class="price">{{ house.area }} </span>м&sup2;.
                                                 </div>
-                                                <div class="item-min-price">
-                                                    <span class="price">{{ house.price_min|price_to_str_filter }}</span> руб.
+                                                <div class="item-min-price">цена -
+                                                    <span class="price">{{ house.price_min|price_to_str_filter }}</span>
+                                                    руб.
                                                 </div>
                                                 <div class="item-link">
                                                     <a href="{{ house.get_absolute_url }}" class="btn-a diagonal black">
@@ -73,9 +75,11 @@
 
                             </div>
                             <!-- Add Arrows -->
-                            <div class="swiper-button-next" {% if ser.get_houses.count < 4 %}style="opacity: 0"{% endif %}
+                            <div class="swiper-button-next"
+                                 {% if ser.get_houses.count < 4 %}style="opacity: 0"{% endif %}
                                  id="next{{ forloop.counter0 }}"></div>
-                            <div class="swiper-button-prev" {% if ser.get_houses.count < 4 %}style="opacity: 0"{% endif %}
+                            <div class="swiper-button-prev"
+                                 {% if ser.get_houses.count < 4 %}style="opacity: 0"{% endif %}
                                  id="prev{{ forloop.counter0 }}"></div>
                         </div>
 
