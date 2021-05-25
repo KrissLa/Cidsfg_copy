@@ -420,6 +420,38 @@ sendMessageButton.addEventListener('click', (e) => {
 });
 
 
+// image zoom
+
+const zoomImages = document.querySelectorAll('.image-zoom'),
+    bigImage = (src, dataSrc) => `<div class="zoom-wrapper">
+     <button class="close" id="close-zoom" type="button" data-dismiss="modal">
+            <span class="icon icon-md linear-icon-cross"></span>
+     </button>
+     <img width="100%" class="lazy" src="${src}" data-src="${dataSrc}"/>
+</div>`
+
+
+zoomImages.forEach(e => {
+    e.addEventListener('click', () => {
+        bodyEl.classList.add('show-modal');
+        html.classList.add('modal-show');
+        const zoomElement = bigImage(e.getAttribute('src'), e.getAttribute('data-big-src'))
+        bodyEl.insertAdjacentHTML('afterbegin', zoomElement);
+        const newLazyLoadInstance = new LazyLoad({});
+        document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=device-width, initial-scale=1, minimum-scale=1');
+
+        document.querySelector('#close-zoom').addEventListener('click', () => {
+            bodyEl.classList.remove('show-modal');
+            html.classList.remove('modal-show');
+            document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1');
+            // bodyEl.insertAdjacentHTML('afterbegin', zoomElement);
+            document.querySelector('.zoom-wrapper').remove();
+        })
+    })
+
+})
+
+
 // const buttonForRequestInfo = document.querySelector('#show-request-info-modal'),
 //     bodyEl = document.querySelector('body'),
 //     requestInfoModal = document.querySelector('#modal-request-info'),

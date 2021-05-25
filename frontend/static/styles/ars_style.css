@@ -469,6 +469,38 @@ form.sub-menu-form .form-wrap.checkbox label {
 
 
 /*Product DEtail*/
+
+
+/*ZOOM IMAGES*/
+
+div.zoom-wrapper{
+    z-index: 9999;
+    width: 100%;
+    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+}
+div.zoom-wrapper .close {
+    z-index: 99999;
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    color: rgba(0,0,0,0);
+}
+
+div.zoom-wrapper .close:before{
+    color: #fff;
+}
+
+
+
 .container.content {
     padding-top: 25px;
     padding-bottom: 25px;

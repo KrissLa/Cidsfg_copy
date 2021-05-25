@@ -13,10 +13,10 @@
 {% endblock seo_description %}
 
 {% block styles %}
-{#    <link rel="stylesheet" href="{% static 'styles/swiper-bundle.css' %}">#}
-{#    <link rel="stylesheet" href="{% static 'styles/forms.css' %}">#}
-{#    <link rel="stylesheet" href="{% static 'styles/modal.css' %}">#}
-{#    <link rel="stylesheet" href="{% static 'styles/ars_style.css' %}">#}
+    {#    <link rel="stylesheet" href="{% static 'styles/swiper-bundle.css' %}">#}
+    {#    <link rel="stylesheet" href="{% static 'styles/forms.css' %}">#}
+    {#    <link rel="stylesheet" href="{% static 'styles/modal.css' %}">#}
+    {#    <link rel="stylesheet" href="{% static 'styles/ars_style.css' %}">#}
 {% endblock styles %}
 
 {% block content %}
@@ -40,7 +40,8 @@
                             <div class="swiper-slide">
                                 <img
                                         alt="{{ pic.alt }}"
-                                        class="lazy"
+                                        class="lazy image-zoom"
+                                        data-big-src="{{ pic.picture.w1000.url }}"
                                         src="{{ pic.picture.thumb.url }}"
                                         {#                                    data-src="{% static 'images/CUBO_FLAT_71/4_3000x2000.jpg' %}"#}
                                         data-srcset="{{ pic.picture.w450.url }} 450w,
@@ -378,10 +379,10 @@
                     <div id="tab-options" class="body-item info">
                         <div class="in-cost">
                             {{ house.options.body|safe }}
-{#                            <div class="buttons">#}
-{#                                <a href="#" class="btn-a diagonal"#}
-{#                                   width="250px"><span>Перейти в раздел "Опции"</span></a>#}
-{#                            </div>#}
+                            {#                            <div class="buttons">#}
+                            {#                                <a href="#" class="btn-a diagonal"#}
+                            {#                                   width="250px"><span>Перейти в раздел "Опции"</span></a>#}
+                            {#                            </div>#}
                         </div>
                     </div>
                 {% endif %}
@@ -399,9 +400,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button class="close" id="close-info" type="button" data-dismiss="modal">
-                  <span class="icon icon-md linear-icon-cross">
-
-                  </span>
+                  <span class="icon icon-md linear-icon-cross"></span>
                     </button>
                     <h6 class="modal-title">Заявка на консультацию по дому </h6>
                 </div>
