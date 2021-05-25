@@ -434,7 +434,6 @@ const zoomImages = document.querySelectorAll('.image-zoom'),
 zoomImages.forEach(e => {
     e.addEventListener('click', () => {
         bodyEl.classList.add('show-modal');
-        html.classList.add('modal-show');
         const zoomElement = bigImage(e.getAttribute('src'), e.getAttribute('data-big-src'))
         bodyEl.insertAdjacentHTML('afterbegin', zoomElement);
         const newLazyLoadInstance = new LazyLoad({});
@@ -442,7 +441,6 @@ zoomImages.forEach(e => {
 
         document.querySelector('#close-zoom').addEventListener('click', () => {
             bodyEl.classList.remove('show-modal');
-            html.classList.remove('modal-show');
             document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1');
             // bodyEl.insertAdjacentHTML('afterbegin', zoomElement);
             document.querySelector('.zoom-wrapper').remove();
