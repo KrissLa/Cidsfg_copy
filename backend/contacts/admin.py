@@ -1,12 +1,6 @@
 from django.contrib import admin
 
-from .models import Contacts, PhoneNumber, Message
-
-
-class ContactsAdminInline(admin.TabularInline):
-    """ Управление страницей Контакты из панели администратора """
-    model = PhoneNumber
-    extra = 0
+from .models import Contacts, Message
 
 
 @admin.register(Contacts)
@@ -19,18 +13,34 @@ class ContactsAdmin(admin.ModelAdmin):
                 ('seo_description',),
             )
         }),
-        ('Общая информация', {
+        ('Карта', {
+           'fields': (
+               ('map_link',),
+               ('map_picture',),
+               ('alt_picture',),
+               ('map_picture_footer',),
+               ('alt_picture_footer',),
+           )
+        }),
+        ('Производство', {
             'fields': (
                 ('address',),
                 ('email',),
+                ('phone_number',),
                 ('working_hours',),
-                ('map_picture',),
-                ('map_link',),
-                ('alt_picture',),
+
+            )
+        }),
+        ('Офис', {
+            'fields': (
+                ('address_office',),
+                ('email_office',),
+                ('phone_number_office',),
+                ('working_hours_office',),
+
             )
         }),
     )
-    inlines = [ContactsAdminInline]
 
     def has_add_permission(self, request, obj=None):
         if Contacts.objects.all().count() >= 1:

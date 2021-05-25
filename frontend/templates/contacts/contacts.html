@@ -41,6 +41,7 @@
             <div class="footer-contacts">
                 <div class="info">
                     <ul class="">
+                        <h4>ПРОИЗВОДСТВО</h4>
                         {% if contacts.address %}
                             <li>
                                 <span class="footer-title">Адрес</span> <span>{{ contacts.address }}</span>
@@ -67,11 +68,39 @@
                             </li>
                         {% endif %}
                     </ul>
+                     <ul>
+                        <h4>ОФИС</h4>
+                        {% if contacts.address_office %}
+                            <li>
+                                <span class="footer-title">Адрес</span> <span>{{ contacts.address_office }}</span>
+                            </li>
+                        {% endif %}
+                        {% if contacts.phone_number_office %}
+                            <li>
+                                <span class="footer-title">Телефон</span>
+                                <a href="tel:+{{ contacts.phone_number_office }}">+{{ contacts.phone_number_office }}</a>
+                            </li>
+                        {% endif %}
+
+                        {% if contacts.email_office %}
+                            <li>
+                                <span class="footer-title">E-mail</span> <a
+                                    href="mailto:{{ contacts.email_office }}">{{ contacts.email_office }}</a>
+                            </li>
+                        {% endif %}
+                        {% if contacts.working_hours_office %}
+                            <li>
+                                <span class="footer-title">Время работы</span>
+                                <span>{{ contacts.working_hours_office }}</span>
+                            </li>
+                        {% endif %}
+                    </ul>
                 </div>
 
                 <div class="img">
                     {% if contacts.map_picture %}
                         <a target="_blank" href="
+
                                 {% if contacts.map_link %}{{ contacts.map_link }}{% else %}https://goo.gl/maps/ffNe8e4hsDqQMYJo8{% endif %}">
                             <img
                                     alt="{% if contacts.alt_picture %}{{ contacts.alt_picture }}{% endif %}"
@@ -79,8 +108,8 @@
                                     src="{{ contacts.map_picture.thumb.url }}"
                                     data-srcset="{{ contacts.map_picture.w400.url }} 400w,
                                          {{ contacts.map_picture.w800.url }} 800w"
-                                    data-sizes="(max-width: 767px) 400px,
-                                                1000px"
+                                    data-sizes="(max-width: 400px) 400px,
+                                                800px"
                             />
                         </a>
 
@@ -93,7 +122,7 @@
     </section>
     <section class="contact-form b-shadow white">
         <div class="container">
-            <h3>Напишите нам</h3>
+            <h4>Напишите нам</h4>
             <div class="form">
                 <form method="post" id="form">
                     <div class="input">

@@ -11,11 +11,23 @@ def generate_picture_path(instance, filename):
 
 class Contacts(SeoAbstract):
     """ Модель страницы с контактами """
-    address = models.CharField('Адрес', max_length=255, blank=True, help_text="Чтобы не отображать, оставьте пустым")
-    email = models.CharField('Email', max_length=255, blank=True, help_text="Чтобы не отображать, оставьте пустым")
-    working_hours = models.CharField('Время работы', max_length=255, blank=True,
+    address = models.CharField('Адрес производства', max_length=255, blank=True,
+                               help_text="Чтобы не отображать, оставьте пустым")
+    address_office = models.CharField('Адрес офиса', max_length=255, blank=True,
+                                      help_text="Чтобы не отображать, оставьте пустым")
+    phone_number = models.CharField('Номер телефона производства', max_length=15,
+                                    help_text='Без знака +. Чтобы не отображать, оставьте пустым', blank=True, )
+    phone_number_office = models.CharField('Номер телефона офиса', max_length=15,
+                                           help_text='Без знака +. Чтобы не отображать, оставьте пустым', blank=True)
+    email = models.CharField('Email производства', max_length=255, blank=True,
+                             help_text="Чтобы не отображать, оставьте пустым")
+    email_office = models.CharField('Email офиса', max_length=255, blank=True,
+                                    help_text="Чтобы не отображать, оставьте пустым")
+    working_hours = models.CharField('Время работы производства', max_length=255, blank=True,
                                      help_text="Чтобы не отображать, оставьте пустым")
-    map_picture = StdImageField('Изображение', upload_to=generate_picture_path,
+    working_hours_office = models.CharField('Время работы офиса', max_length=255, blank=True,
+                                            help_text="Чтобы не отображать, оставьте пустым")
+    map_picture = StdImageField('Изображение для страницы контакты', upload_to=generate_picture_path,
                                 variations={
                                     'w800': (800, 400),
                                     'w600': (600, 300),
@@ -23,9 +35,21 @@ class Contacts(SeoAbstract):
                                     'admin': (90, 45),
                                     'thumb': (20, 10),
                                 }, blank=True, help_text="Чтобы не отображать, оставьте пустым")
+    map_picture_footer = StdImageField('Изображение для футера (1х1)', upload_to=generate_picture_path,
+                                       variations={
+                                           'w800': (800, 800),
+                                           'w600': (600, 600),
+                                           'w400': (400, 400),
+                                           'admin': (90, 90),
+                                           'thumb': (20, 20),
+                                       }, blank=True, help_text="Чтобы не отображать, оставьте пустым")
     map_link = models.URLField('Ссылка на расположение на карте', blank=True)
-    alt_picture = models.CharField('Подпись к фотографии', default='Изображение расположения на карте', max_length=255,
+    alt_picture = models.CharField('Подпись к фотографии на странице контакты',
+                                   default='Изображение расположения на карте', max_length=255,
                                    blank=True, help_text="Чтобы не отображать, оставьте пустым")
+    alt_picture_footer = models.CharField('Подпись к фотографии в футере',
+                                          default='Изображение расположения на карте', max_length=255,
+                                          blank=True, help_text="Чтобы не отображать, оставьте пустым")
 
     class Meta:
         verbose_name = 'Контакты'
@@ -35,18 +59,18 @@ class Contacts(SeoAbstract):
         return f"Контакты"
 
 
-class PhoneNumber(models.Model):
-    """ Модель номера телефона """
-    contacts = models.ForeignKey(Contacts, verbose_name='Номер телефона', related_name='phones',
-                                 on_delete=models.CASCADE)
-    phone_number = models.CharField('Номер телефона', max_length=15, help_text='Без знака +')
-
-    class Meta:
-        verbose_name = 'Номер телефона'
-        verbose_name_plural = 'Номера телефона'
-
-    def __str__(self):
-        return f'Номер телефона № {self.id} - {self.phone_number}'
+# class PhoneNumber(models.Model):
+#     """ Модель номера телефона """
+#     contacts = models.ForeignKey(Contacts, verbose_name='Номер телефона', related_name='phones',
+#                                  on_delete=models.CASCADE)
+#     phone_number = models.CharField('Номер телефона', max_length=15, help_text='Без знака +')
+#
+#     class Meta:
+#         verbose_name = 'Номер телефона'
+#         verbose_name_plural = 'Номера телефона'
+#
+#     def __str__(self):
+#         return f'Номер телефона № {self.id} - {self.phone_number}'
 
 
 class Message(models.Model):
