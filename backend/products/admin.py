@@ -116,13 +116,13 @@ class HousePictureAdminInline(NestedTabularInline):
 
 
 class NotIncludedInPriceTurnkeyAdminInline(NestedTabularInline):
-    """ Управление вкладкой Не включено в стоимость комплектации ПОД КЛЮЧ """
+    """ Управление вкладкой Не включено в стоимость комплектации ПОД мебель """
     model = NotIncludedInPriceTurnkey
     form = NotIncludedInPriceTurnkeyAdminForm
 
 
 class IncludedInPriceItemTurnkeyAdminInline(NestedTabularInline):
-    """ Управление пунктами вкладки Включено в стоимость комплектации ПОД КЛЮЧ """
+    """ Управление пунктами вкладки Включено в стоимость комплектации ПОД мебель """
     model = IncludedInPriceTurnkeyItem
     form = IncludedInPriceItemTurnkeyAdminForm
     fields = ('name', 'body', 'active')
@@ -130,13 +130,13 @@ class IncludedInPriceItemTurnkeyAdminInline(NestedTabularInline):
 
 
 class IncludedInPriceTurnkeyAdminInline(NestedStackedInline):
-    """ Управление вкладкой Включено в стоимость комплектации ПОД КЛЮЧ """
+    """ Управление вкладкой Включено в стоимость комплектации ПОД мебель """
     model = IncludedInPriceTurnkey
     inlines = [IncludedInPriceItemTurnkeyAdminInline, ]
 
 
 class TurnkeyAdminInline(NestedStackedInline):
-    """ Управление комплектацией под ключ """
+    """ Управление комплектацией под мебель """
     model = Turnkey
     inlines = [IncludedInPriceTurnkeyAdminInline, NotIncludedInPriceTurnkeyAdminInline]
 
@@ -145,13 +145,13 @@ class TurnkeyAdminInline(NestedStackedInline):
 
 
 class NotIncludedInPriceForFinishingAdminInline(NestedTabularInline):
-    """ Управление вкладкой Не включено в стоимость комплектации ПОД ОТДЕЛКУ """
+    """ Управление вкладкой Не включено в стоимость комплектации ПОД ключ """
     model = NotIncludedInPriceForFinishing
     form = NotIncludedInPriceForFinishingAdminForm
 
 
 class IncludedInPriceItemForFinishingAdminInline(NestedTabularInline):
-    """ Управление пунктами вкладки Включено в стоимость комплектации ПОД ОТДЕЛКУ """
+    """ Управление пунктами вкладки Включено в стоимость комплектации ПОД ключ """
     model = IncludedInPriceForFinishingItem
     form = IncludedInPriceItemForFinishingAdminForm
     fields = ('name', 'body', 'active')
@@ -159,13 +159,13 @@ class IncludedInPriceItemForFinishingAdminInline(NestedTabularInline):
 
 
 class IncludedInPriceForFinishingAdminInline(NestedStackedInline):
-    """ Управление вкладкой Включено в стоимость комплектации ПОД ОТДЕЛКУ """
+    """ Управление вкладкой Включено в стоимость комплектации ПОД ключ """
     model = IncludedInPriceForFinishing
     inlines = [IncludedInPriceItemForFinishingAdminInline, ]
 
 
 class ForFinishingAdminInline(NestedStackedInline):
-    """ Управление комплектацией ПОД ОТДЕЛКУ """
+    """ Управление комплектацией ПОД ключ """
     model = ForFinishing
     inlines = [IncludedInPriceForFinishingAdminInline, NotIncludedInPriceForFinishingAdminInline]
 
