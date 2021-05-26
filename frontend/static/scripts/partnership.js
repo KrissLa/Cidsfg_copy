@@ -1,4 +1,4 @@
-const MessageAddUrl = `${domain}/api/v1/partnership/add/`;
+const MessageAddUrl = `${window.location.origin}/api/v1/partnership/add/`;
 
 const inputSelects = document.querySelectorAll('.input.select');
 
@@ -56,7 +56,7 @@ const form = document.querySelector('#form'),
     selectArea = document.querySelector('#select-activity').parentNode,
     selectType = document.querySelector('#select-type-wrapper');
 
-let requiredFields = form.querySelectorAll('[data-required]'),
+let requiredFields = form.querySelectorAll('[data-required="data-required"]'),
     lengthFields = form.querySelectorAll('[data-length]'),
     inputs = form.querySelectorAll('.input:not(.select)');
 
@@ -81,11 +81,10 @@ const inputsAddAnimation = () => {
 }
 
 const inputCompanyName = '<div class="input">\n' +
-    '                            <input data-required data-length type="text" name="company-name" id="company-name"\n' +
+    '                            <input data-required="data-required" data-length type="text" name="company-name" id="company-name"\n' +
     '                                   class="text-input">\n' +
     '                            <label for="company-name" class="input-label">Название компании*</label>\n' +
     '                        </div>';
-
 
 
 selectType.addEventListener('click', () => {
@@ -94,7 +93,7 @@ selectType.addEventListener('click', () => {
         if (!document.querySelector('#company-name')) {
             selectType.insertAdjacentHTML('afterend', inputCompanyName);
             inputs = form.querySelectorAll('.input:not(.select)');
-            requiredFields = form.querySelectorAll('[data-required]');
+            requiredFields = form.querySelectorAll('[data-required="data-required"]');
             lengthFields = form.querySelectorAll('[data-length]');
             inputsAddAnimation()
         }
@@ -103,7 +102,7 @@ selectType.addEventListener('click', () => {
         if (document.querySelector('#company-name')) {
             form.removeChild(form.querySelector('#company-name').parentNode);
             inputs = form.querySelectorAll('.input:not(.select)');
-            requiredFields = form.querySelectorAll('[data-required]');
+            requiredFields = form.querySelectorAll('[data-required="data-required"]');
             lengthFields = form.querySelectorAll('[data-length]');
             inputsAddAnimation()
         }
@@ -131,6 +130,27 @@ const hideSpinner = () => {
     spinner.classList.add('hide');
     spinner.classList.remove('show');
 }
+
+//Contact choice
+
+const choicesButtons = document.querySelectorAll('.choices div');
+
+
+choicesButtons.forEach(e => {
+    e.addEventListener('click', () => {
+        if (!e.classList.contains('active')) {
+            const activeChoice = document.querySelector('.choices .active'),
+                inputChoiceValue = activeChoice.getAttribute('data-key'),
+                inputChoiceValueNew = e.getAttribute('data-key');
+            document.querySelector(`[data-value="${inputChoiceValue}"]`).classList.remove('active');
+            document.querySelector(`[data-value="${inputChoiceValue}"] input`).removeAttribute('data-required');
+            activeChoice.classList.remove('active', 'b-shadow');
+            e.classList.add('active', 'b-shadow');
+            document.querySelector(`[data-value="${inputChoiceValueNew}"]`).classList.add('active');
+            document.querySelector(`[data-value="${inputChoiceValueNew}"] input`).setAttribute('data-required', 'data-required');
+        }
+    })
+})
 
 
 // Validation
@@ -206,7 +226,7 @@ const addEventInputSelect = (element) => {
 const validationRequired = () => {
     const errorMessage = 'Это обязательное поле!';
     let result = []
-    requiredFields.forEach(e => {
+    form.querySelectorAll('[data-required="data-required"]').forEach(e => {
         if (!e.value) {
             showValidationError(e, errorMessage);
             addEventInput(e);
@@ -259,25 +279,39 @@ const validationSelect = () => {
 }
 
 
-inputSelects.forEach(e => {
-    e.addEventListener
-});
-form.querySelector('#input-phone').addEventListener('input', (e) => {
-    if (e.target.value.match(/[^0-9]/g)) {
-        e.target.value = e.target.value.replace(/[^0-9]/g, "");
-    }
-});
-
 inputsAddAnimation()
+
+const validationChoices = () => {
+    const choiceType = document.querySelector('.choices div.active').getAttribute('data-key');
+    if (choiceType === 'whatsapp') {
+        return validationPhone(form.querySelector('#input-whatsapp'));
+    } else if (choiceType === 'phone') {
+        return validationPhone(form.querySelector('#input-phone'));
+    } else if (choiceType === 'email') {
+        return validationEmail(form.querySelector('#input-email'));
+    } else {
+        return true;
+    }
+}
+
+const prohibitLetteEntry = (input) => {
+    input.addEventListener('input', (e) => {
+        if (e.target.value.match(/[^0-9]/g)) {
+            e.target.value = e.target.value.replace(/[^0-9]/g, "");
+        }
+    });
+}
+
+prohibitLetteEntry(form.querySelector('#input-whatsapp'));
+prohibitLetteEntry(form.querySelector('#input-phone'));
 
 
 const formIsValid = () => {
     const requiredIsValid = validationRequired(),
         lengthIsValid = validationLength(),
-        phoneIsValid = validationPhone(form.querySelector('#input-phone')),
-        emailIsValid = validationEmail(form.querySelector('#input-email')),
+        choiceIsValid = validationChoices(),
         inputSelectsIsValid = validationSelect();
-    return requiredIsValid && lengthIsValid && phoneIsValid && emailIsValid && inputSelectsIsValid
+    return requiredIsValid && lengthIsValid && choiceIsValid && inputSelectsIsValid
 }
 
 sendMessageButton.addEventListener('click', (e) => {
@@ -287,6 +321,22 @@ sendMessageButton.addEventListener('click', (e) => {
     }
     showSpinner()
     if (formIsValid()) {
+        console.log('valid');
+        let type_of_contact, contact;
+        const choiceType = document.querySelector('.choices div.active').getAttribute('data-key');
+        if (choiceType === 'whatsapp') {
+            type_of_contact = 'Whatsapp';
+            contact = form.querySelector('#input-whatsapp').value;
+        } else if (choiceType === 'telegram') {
+            type_of_contact = 'Telegram';
+            contact = form.querySelector('#input-telegram').value;
+        } else if (choiceType === 'phone') {
+            type_of_contact = 'Мобильный';
+            contact = form.querySelector('#input-phone').value;
+        } else if (choiceType === 'email') {
+            type_of_contact = 'E-mail';
+            contact = form.querySelector('#input-email').value;
+        }
         const data = () => {
             if ((!document.querySelector('#company-name'))) {
                 return {
@@ -294,18 +344,18 @@ sendMessageButton.addEventListener('click', (e) => {
                     'company_type': selectType.querySelector('span[data-placeholder]').textContent,
                     'firs_name': form.querySelector('#first-name').value,
                     'last_name': form.querySelector('#last-name').value,
-                    'email': form.querySelector('#input-email').value,
-                    'phone_number': form.querySelector('#input-phone').value
+                    'type_of_contact': type_of_contact,
+                    'contact': contact
                 }
             } else {
-                 return {
+                return {
                     'area_of_activity': selectArea.querySelector('span[data-placeholder]').textContent,
                     'company_type': selectType.querySelector('span[data-placeholder]').textContent,
                     'company_name': form.querySelector('#company-name').value,
                     'firs_name': form.querySelector('#first-name').value,
                     'last_name': form.querySelector('#last-name').value,
-                    'email': form.querySelector('#input-email').value,
-                    'phone_number': form.querySelector('#input-phone').value
+                    'type_of_contact': type_of_contact,
+                    'contact': contact
                 }
             }
 

@@ -23,8 +23,8 @@ class CooperationApplication(models.Model):
     company_name = models.CharField('Название компании', max_length=255, blank=True, null=True)
     firs_name = models.CharField('Имя', max_length=255)
     last_name = models.CharField('Фамилия', max_length=255)
-    email = models.CharField('E-mail', max_length=255)
-    phone_number = models.CharField('Номер телефона', max_length=255, null=True, blank=True)
+    type_of_contact = models.CharField('Куда ответить', max_length=100, default='Мобильный')
+    contact = models.CharField('Контакт', max_length=255, default='')
     processed = models.BooleanField('Отметить заявку как обработанную', default=False)
     created = models.DateTimeField('Время отправки сообщения', auto_now_add=True)
 

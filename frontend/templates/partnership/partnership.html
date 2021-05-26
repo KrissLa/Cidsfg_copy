@@ -65,6 +65,32 @@
                 <h5>Свяжитесь с нами заполнив указанную форму</h5>
                 <div class="form">
                     <form method="post" id="form">
+                        <div>
+                            <p>Куда Вам ответить?</p>
+                        </div>
+
+                        <div class="choices">
+                            <div class="whatsapp  b-shadow active" data-key="whatsapp">
+                                <p>Whatsapp</p>
+                                <img src="{% static 'images/icons/whatsapp.png' %}"/>
+                                <p>Очень быстро</p>
+                            </div>
+                            <div class="telegram" data-key="telegram">
+                                <p>Telegram</p>
+                                <img src="{% static 'images/icons/telegram.png' %}"/>
+                                <p>Очень быстро</p>
+                            </div>
+                            <div class="phone" data-key="phone">
+                                <p>Мобильный</p>
+                                <img src="{% static 'images/icons/phone.png' %}"/>
+                                <p>Быстро</p>
+                            </div>
+                            <div class="email" data-key="email">
+                                <p>E-mail</p>
+                                <img src="{% static 'images/icons/mail.png' %}"/>
+                                <p>Умеренно</p>
+                            </div>
+                        </div>
                         <div class="input select">
                             <select name="select-activity" id="select-activity">
                                 <option value="" disabled>Область деятельности*</option>
@@ -81,24 +107,36 @@
                             </select>
                         </div>
                         <div class="input">
-                            <input data-required data-length type="text" name="first-name" id="first-name"
+                            <input data-required="data-required" data-length type="text" name="first-name" id="first-name"
                                    class="text-input">
                             <label for="first-name" class="input-label">Имя*</label>
                         </div>
                         <div class="input">
-                            <input data-required data-length type="text" name="last-name" id="last-name"
+                            <input data-required="data-required" data-length type="text" name="last-name" id="last-name"
                                    class="text-input">
                             <label for="last-name" class="input-label">Фамилия*</label>
                         </div>
 
-                        <div class="input">
-                            <input data-required type="text" name="email" id="input-email" class="text-input">
-                            <label for="input-email" class="input-label">E-mail*</label>
+                        <div class="input phone choice active" data-value="whatsapp">
+                            <input data-required="data-required" type="text" name="whatsapp" id="input-whatsapp"
+                                   class="text-input">
+                            <label for="input-whatsapp" class="input-label">Номер телефона whatsapp*</label>
                         </div>
 
-                        <div class="input phone">
+                        <div class="input choice" data-value="telegram">
+                            <input data-length type="text" name="telegram" id="input-telegram"
+                                   class="text-input">
+                            <label for="input-telegram" class="input-label">Номер телефона или @username
+                                telegram</label>
+                        </div>
+
+                        <div class="input phone choice" data-value="phone">
                             <input type="text" name="phone" id="input-phone" class="text-input">
-                            <label for="input-phone" class="input-label">Телефон для связи</label>
+                            <label for="input-phone" class="input-label">Номер телефона*</label>
+                        </div>
+                        <div class="input choice" data-value="email">
+                            <input type="text" name="email" id="input-email" class="text-input">
+                            <label for="input-email" class="input-label">E-mail*</label>
                         </div>
 
                         <p class="agree">Нажимая кнопку, я даю согласие на обработку моих персональных данных в
@@ -130,7 +168,6 @@
 
 
 {% block scripts %}
-    {% domain %}
     <script src="{% static 'scripts/partnership.js' %}"></script>
     {#    <script src="{% static 'scripts/form_contacts.js' %}"></script>#}
 {% endblock scripts %}

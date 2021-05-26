@@ -25,6 +25,7 @@
     justify-content: center;
     padding: 10px 0;
     cursor: pointer;
+    width: 100%;
 }
 
 .choices div p {
@@ -54,12 +55,17 @@
     .modal-dialog {
         max-width: 400px
     }
-    .choices{
+
+    .choices {
         grid-template-columns: repeat(2, 1fr);
     }
 
     .choices div p {
-       font-size:12px;
+        font-size: 12px;
+    }
+    .contact-form .choices div,
+    .partnership-form .choices div {
+        width: 80%;
     }
 
 }

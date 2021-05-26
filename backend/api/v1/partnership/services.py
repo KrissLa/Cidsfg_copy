@@ -17,14 +17,14 @@ def send_message_to_admin(message, admin_id=TG_ADMIN_ID):
 def send_notification(data, admin_id=TG_ADMIN_ID):
     """Отправляем уведомление о новом сообщении со страницы Контакты"""
     message = f"""
-Новая заявка на сотрудничество № {data['id']}!
-Область деятельности: {data['area_of_activity']}
-Частное лицо/Компания: {data['company_type']}
-Название компании: {data['company_name']}
-Имя пользователя: {data['firs_name']}
-Фамилия пользователя: {data['last_name']}
-E-mail пользователя: {data['email']}
-Номер телефона пользователя: {data['phone_number']}
+Новая заявка на сотрудничество № <b>{data['id']}</b>!
+Область деятельности: <b>{data['area_of_activity']}</b>
+Частное лицо/Компания: <b>{data['company_type']}</b>
+Название компании: <b>{data['company_name']}</b>
+Имя пользователя: <b>{data['firs_name']}</b>
+Фамилия пользователя: <b>{data['last_name']}</b>
+Куда ответить: <b>{data['type_of_contact']}</b>
+Контакт пользователя: <b>{data['contact']}</b>
 <a href="{SITE_DOMAIN}/{ADMIN_URL}/partnership/cooperationapplication/{data['id']}/change/">Посмотреть в панели администратора</a>
 """
     send_message_to_admin(message, admin_id)

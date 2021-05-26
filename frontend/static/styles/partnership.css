@@ -21,7 +21,13 @@
     padding-bottom: 125px;
 }
 
-@media all and (max-width: 768px) {
+@media all and (max-width: 1300px) {
+    .partnership .container {
+        grid-template-columns: 2fr 3fr;
+    }
+}
+
+@media all and (max-width: 992px) {
     .partnership .container {
         grid-template-columns: 1fr;
         padding-top: 25px;
@@ -34,11 +40,15 @@
     }
 }
 
+@media all and (max-width: 769px) {
+
+}
+
 .partnership-form .form {
     padding: unset;
 }
 
-.partnership-form h5{
+.partnership-form h5 {
     font-size: 20px;
 }
 

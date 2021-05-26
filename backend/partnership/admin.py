@@ -30,9 +30,9 @@ class CooperationApplicationAdmin(admin.ModelAdmin):
     list_display_links = ('id', 'company_type',)
     list_editable = ('processed',)
     readonly_fields = (
-        'id', 'area_of_activity', 'company_type', 'company_name', 'firs_name', 'last_name', 'email', 'phone_number',
-        'created')
-    list_filter = ('processed', 'created', 'area_of_activity', 'company_type')
+        'id', 'area_of_activity', 'company_type', 'company_name', 'firs_name', 'last_name', 'type_of_contact',
+        'contact', 'created')
+    list_filter = ('processed', 'created', 'area_of_activity', 'company_type', 'type_of_contact')
     search_fields = ('id', 'company_name', 'firs_name', 'last_name', 'email')
 
     def has_add_permission(self, request, obj=None):
