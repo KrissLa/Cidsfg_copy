@@ -442,7 +442,6 @@ sendMessageButton.addEventListener('click', (e) => {
             type_of_contact = 'E-mail';
             contact = form.querySelector('#input-email').value;
         }
-        console.log('VALID')
         const data = {
             'username': form.querySelector('#input-name').value,
             'type_of_contact': type_of_contact,
@@ -472,8 +471,6 @@ sendMessageButton.addEventListener('click', (e) => {
             hideSpinner()
         }).finally(() => {
         });
-    } else{
-        console.log('Not valid');
     }
 });
 

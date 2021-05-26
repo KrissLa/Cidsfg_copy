@@ -55,9 +55,9 @@ class MessageAdmin(admin.ModelAdmin):
     list_display = ('id', 'username', 'processed', 'created')
     list_display_links = ('id', 'username',)
     list_editable = ('processed',)
-    readonly_fields = ('id', 'username', 'email', 'phone_number', 'message', 'created')
-    list_filter = ('processed', 'created')
-    search_fields = ('id', 'username', 'email', 'phone_number', 'message')
+    readonly_fields = ('id', 'username', 'type_of_contact', 'contact', 'message', 'created')
+    list_filter = ('processed', 'created', 'type_of_contact')
+    search_fields = ('id', 'username', 'message')
 
     def has_add_permission(self, request, obj=None):
         return False

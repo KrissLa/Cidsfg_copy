@@ -76,8 +76,8 @@ class Contacts(SeoAbstract):
 class Message(models.Model):
     """ Модель сообщения, отправляемого через форму на странице контакты """
     username = models.CharField('Имя пользователя', max_length=255)
-    email = models.CharField('E-mail пользователя', max_length=255)
-    phone_number = models.CharField('Номер телефона пользователя', max_length=15)
+    type_of_contact = models.CharField('Куда ответить', max_length=100, default='Мобильный')
+    contact = models.CharField('Контакт', max_length=255, default='')
     message = models.TextField('Сообщение пользователя')
     processed = models.BooleanField('Отметить заявку как обработанную', default=False)
     created = models.DateTimeField('Время отправки сообщения', auto_now_add=True)

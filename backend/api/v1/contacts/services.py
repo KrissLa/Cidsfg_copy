@@ -17,11 +17,11 @@ def send_message_to_admin(message, admin_id=TG_ADMIN_ID):
 def send_notification(data, admin_id=TG_ADMIN_ID):
     """Отправляем уведомление о новом сообщении со страницы Контакты"""
     message = f"""
-Новое сообщение № {data['id']}!
-Имя пользователя: {data['username']}
-E-mail пользователя: {data['email']}
-Номер телефона пользователя: {data['phone_number']}
-Сообщение: {data['message']}
+Новое сообщение № <b>{data['id']}</b>!
+Имя пользователя: <b>{data['username']}</b>
+Куда ответить: <b>{data['type_of_contact']}</b>
+Контакт пользователя: <b>{data['contact']}</b>
+Сообщение: <b>{data['message']}</b>
 <a href="{SITE_DOMAIN}/{ADMIN_URL}/contacts/message/{data['id']}/change/">Посмотреть в панели администратора</a>
 """
     send_message_to_admin(message, admin_id)
