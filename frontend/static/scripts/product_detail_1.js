@@ -1,4 +1,5 @@
-const MessageAddUrl = `${domain}/api/v1/houses/add_consultation_reqeust/`;
+
+const MessageAddUrl = `${window.location.origin}/api/v1/houses/add_consultation_reqeust/`;
 
 //Swipers
 
@@ -233,7 +234,6 @@ requestModal.addEventListener('click', (e) => {
 
 
 const form = document.querySelector('#form'),
-    requiredFields = form.querySelectorAll('[data-required]'),
     lengthFields = form.querySelectorAll('[data-length]'),
     inputs = form.querySelectorAll('.input'),
     sendMessageButton = document.querySelector('#send-message'),
@@ -283,6 +283,28 @@ const hideSpinner = () => {
 }
 
 
+//Contact choice
+
+const choicesButtons = document.querySelectorAll('.choices div');
+
+
+choicesButtons.forEach(e => {
+    e.addEventListener('click', () => {
+        if (!e.classList.contains('active')) {
+            const activeChoice = document.querySelector('.choices .active'),
+                inputChoiceValue = activeChoice.getAttribute('data-key'),
+                inputChoiceValueNew = e.getAttribute('data-key');
+            document.querySelector(`[data-value="${inputChoiceValue}"]`).classList.remove('active');
+            document.querySelector(`[data-value="${inputChoiceValue}"] input`).removeAttribute('data-required');
+            activeChoice.classList.remove('active', 'b-shadow');
+            e.classList.add('active', 'b-shadow');
+            document.querySelector(`[data-value="${inputChoiceValueNew}"]`).classList.add('active');
+            document.querySelector(`[data-value="${inputChoiceValueNew}"] input`).setAttribute('data-required', 'data-required');
+        }
+    })
+})
+
+
 // Validation
 
 const hasErrorMessage = (element) => {
@@ -320,7 +342,7 @@ const addEventInput = (element) => {
 const validationRequired = () => {
     const errorMessage = 'Это обязательное поле!';
     let result = []
-    requiredFields.forEach(e => {
+    form.querySelectorAll('[data-required="data-required"]').forEach(e => {
         if (!e.value) {
             showValidationError(e, errorMessage);
             addEventInput(e);
@@ -341,6 +363,7 @@ const validationLength = () => {
         }
         return true;
     })
+
     return !result.includes(false);
 }
 
@@ -364,19 +387,36 @@ const validationEmail = (input) => {
     return true;
 }
 
-form.querySelector('#input-phone').addEventListener('input', (e) => {
-    if (e.target.value.match(/[^0-9]/g)) {
-        e.target.value = e.target.value.replace(/[^0-9]/g, "");
+const validationChoices = () => {
+    const choiceType = document.querySelector('.choices div.active').getAttribute('data-key');
+    if (choiceType === 'whatsapp') {
+        return validationPhone(form.querySelector('#input-whatsapp'));
+    } else if (choiceType === 'phone') {
+        return validationPhone(form.querySelector('#input-phone'));
+    } else if (choiceType === 'email') {
+        return validationEmail(form.querySelector('#input-email'));
+    } else {
+        return true;
     }
-});
+}
+
+const prohibitLetteEntry = (input) => {
+    input.addEventListener('input', (e) => {
+        if (e.target.value.match(/[^0-9]/g)) {
+            e.target.value = e.target.value.replace(/[^0-9]/g, "");
+        }
+    });
+}
+
+prohibitLetteEntry(form.querySelector('#input-whatsapp'));
+prohibitLetteEntry(form.querySelector('#input-phone'));
 
 
 const formIsValid = () => {
     const requiredIsValid = validationRequired(),
         lengthIsValid = validationLength(),
-        phoneIsValid = validationPhone(form.querySelector('#input-phone')),
-        emailIsValid = validationEmail(form.querySelector('#input-email'));
-    return requiredIsValid && lengthIsValid && phoneIsValid && emailIsValid
+        choiceIsValid = validationChoices();
+    return requiredIsValid && choiceIsValid && lengthIsValid
 }
 
 
@@ -387,10 +427,26 @@ sendMessageButton.addEventListener('click', (e) => {
     }
     showSpinner()
     if (formIsValid()) {
+        let type_of_contact, contact;
+        const choiceType = document.querySelector('.choices div.active').getAttribute('data-key');
+        if (choiceType === 'whatsapp') {
+            type_of_contact = 'Whatsapp';
+            contact = form.querySelector('#input-whatsapp').value;
+        } else if (choiceType === 'telegram') {
+            type_of_contact = 'Telegram';
+            contact = form.querySelector('#input-telegram').value;
+        } else if (choiceType === 'phone') {
+            type_of_contact = 'Мобильный';
+            contact = form.querySelector('#input-phone').value;
+        } else if (choiceType === 'email') {
+            type_of_contact = 'E-mail';
+            contact = form.querySelector('#input-email').value;
+        }
+        console.log('VALID')
         const data = {
             'username': form.querySelector('#input-name').value,
-            'email': form.querySelector('#input-email').value,
-            'phone_number': form.querySelector('#input-phone').value,
+            'type_of_contact': type_of_contact,
+            'contact': contact,
             'message': form.querySelector('#input-comment').value,
             'house_name': document.querySelector('.breadcrumbs-custom__path .active').innerHTML
         };
@@ -416,6 +472,8 @@ sendMessageButton.addEventListener('click', (e) => {
             hideSpinner()
         }).finally(() => {
         });
+    } else{
+        console.log('Not valid');
     }
 });
 

@@ -17,12 +17,12 @@ def send_message_to_admin(message, admin_id=TG_ADMIN_ID):
 def send_notification(data, admin_id=TG_ADMIN_ID):
     """Отправляем уведомление о новой заявке на консультацию """
     message = f"""
-Новое заявка на консультацию № {data['id']}!
-Имя пользователя: {data['username']}
-E-mail пользователя: {data['email']}
-Номер телефона пользователя: {data['phone_number']}
-Сообщение: {data['message']}
-Название дома: {data['house_name']}
+Новое заявка на консультацию № <b>{data['id']}</b>!
+Имя пользователя: <b>{data['username']}</b>
+Куда ответить: <b>{data['type_of_contact']}</b>
+Контакт пользователя: <b>{data['contact']}</b>
+Сообщение: <b>{data['message']}</b>
+Название дома: <b>{data['house_name']}</b>
 <a href="{SITE_DOMAIN}/{ADMIN_URL}/products/consultationrequest/{data['id']}/change/">Посмотреть в панели администратора</a>
 """
     send_message_to_admin(message, admin_id)

@@ -382,8 +382,8 @@ class Series(SeoAbstract):
 class ConsultationRequest(models.Model):
     """ Модель заявки на консультацию со страницы с подробным описанием дома """
     username = models.CharField('Имя пользователя', max_length=255)
-    email = models.CharField('E-mail пользователя', max_length=255, blank=True, null=True)
-    phone_number = models.CharField('Номер телефона пользователя', max_length=15)
+    type_of_contact = models.CharField('Куда ответить', max_length=100, default='Мобильный')
+    contact = models.CharField('Контакт', max_length=255, default='')
     message = models.TextField('Сообщение пользователя', blank=True, null=True)
     processed = models.BooleanField('Отметить заявку как обработанную', default=False)
     house_name = models.CharField('Название модели дома, со страницы которого отправлена заявка', max_length=100)

@@ -18,12 +18,14 @@ class ConsultationRequestAdmin(admin.ModelAdmin):
     list_display = ('id', 'username', 'processed', 'created')
     list_display_links = ('id', 'username',)
     list_editable = ('processed',)
-    readonly_fields = ('id', 'username', 'email', 'phone_number', 'message', 'house_name', 'created', )
-    list_filter = ('processed', 'created', 'house_name',)
-    search_fields = ('id', 'username', 'email', 'phone_number', 'house_name', 'message')
+    readonly_fields = (
+        'id', 'username', 'type_of_contact', 'contact', 'message', 'house_name', 'created',)
+    list_filter = ('processed', 'created', 'house_name', 'type_of_contact')
+    search_fields = ('id', 'username', 'contact', 'house_name', 'message')
 
     def has_add_permission(self, request, obj=None):
         return False
+
 
 # Формы
 
@@ -197,8 +199,6 @@ class DeliveryAdminInline(NestedStackedInline):
     """ Управление комплектацией ПОСТАВКА С ЗАВОДА """
     model = Delivery
     inlines = [IncludedInPriceDeliveryAdminInline, NotIncludedInPriceDeliveryAdminInline]
-
-
 
 
 # Вывод

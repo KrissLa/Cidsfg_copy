@@ -401,7 +401,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button class="close" id="close-info" type="button" data-dismiss="modal">
-                  <span class="icon icon-md linear-icon-cross"></span>
+                        <span class="icon icon-md linear-icon-cross"></span>
                     </button>
                     <h6 class="modal-title">Заявка на консультацию по дому </h6>
                 </div>
@@ -415,21 +415,57 @@
                         <!-- Login form-->
                         <div class="form products">
                             <form method="post" id="form">
+                                <div>
+                                    <p>Куда Вам ответить?</p>
+                                </div>
+
+                                <div class="choices">
+                                    <div class="whatsapp  b-shadow active" data-key="whatsapp">
+                                        <p>Whatsapp</p>
+                                        <img src="{% static 'images/icons/whatsapp.png' %}"/>
+                                        <p>Очень быстро</p>
+                                    </div>
+                                    <div class="telegram" data-key="telegram">
+                                        <p>Telegram</p>
+                                        <img src="{% static 'images/icons/telegram.png' %}"/>
+                                        <p>Очень быстро</p>
+                                    </div>
+                                    <div class="phone" data-key="phone">
+                                        <p>Мобильный</p>
+                                        <img src="{% static 'images/icons/phone.png' %}"/>
+                                        <p>Быстро</p>
+                                    </div>
+                                    <div class="email" data-key="email">
+                                        <p>E-mail</p>
+                                        <img src="{% static 'images/icons/mail.png' %}"/>
+                                        <p>Умеренно</p>
+                                    </div>
+                                </div>
                                 <div class="input">
-                                    <input data-required data-length type="text" name="name" id="input-name"
+                                    <input data-required="data-required" data-length type="text" name="name" id="input-name"
                                            class="text-input">
                                     <label for="input-name" class="input-label">Ваше имя*</label>
                                 </div>
 
-                                <div class="input phone">
-                                    <input data-required type="text" name="phone" id="input-phone" class="text-input">
-                                    <label for="input-phone" class="input-label">Номер телефона*</label>
+
+                                <div class="input phone choice active" data-value="whatsapp">
+                                    <input data-required="data-required" type="text" name="whatsapp" id="input-whatsapp" class="text-input">
+                                    <label for="input-whatsapp" class="input-label">Номер телефона whatsapp*</label>
                                 </div>
 
+                                <div class="input choice" data-value="telegram">
+                                    <input data-length type="text" name="telegram" id="input-telegram"
+                                           class="text-input">
+                                    <label for="input-telegram" class="input-label">Номер телефона или @username telegram</label>
+                                </div>
 
-                                <div class="input">
+                                <div class="input phone choice" data-value="phone">
+                                    <input type="text" name="phone" id="input-phone" class="text-input">
+                                    <label for="input-phone" class="input-label">Номер телефона*</label>
+                                </div>
+                                <div class="input choice" data-value="email">
                                     <input type="text" name="email" id="input-email" class="text-input">
-                                    <label for="input-email" class="input-label">E-mail</label>
+                                    <label for="input-email" class="input-label">E-mail*</label>
                                 </div>
 
 
@@ -472,7 +508,6 @@
 {% endblock content %}
 
 {% block scripts %}
-    {% domain %}
     <script src="{% static 'scripts/swiper-bundle.min.js' %}"></script>
     <script src="{% static 'scripts/product_detail_1.js' %}"></script>
 {% endblock scripts %}
