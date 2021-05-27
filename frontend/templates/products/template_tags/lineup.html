@@ -36,47 +36,48 @@
                             <div class="swiper-wrapper">
                                 {% for house in ser.get_houses %}
 
-                                        <div class="swiper-slide">
+                                    <div class="swiper-slide">
+
+
+                                        <div class="product-item white b-shadow">
                                             <a class="a-wrapper" href="{{ house.get_absolute_url }}"></a>
-
-                                            <div class="product-item white b-shadow">
-                                                <div class="item-wrapper">
-                                                    <div class="item-category">
-                                                        <span>{{ house.category.name }}</span>
-                                                    </div>
-                                                    <div class="item-title">
-                                                        <span class="item-category">модель - </span>
-                                                        <h4>{{ house.name }}</h4>
-
-                                                    </div>
-                                                    <div class="item-picture">
-                                                        <img
-                                                                alt="{{ house.get_main_picture.alt }}"
-                                                                class="lazy"
-                                                                src="{{ house.get_main_picture.picture.thumb.url }}"
-                                                                data-src="{{ house.get_main_picture.picture.w450.url }}"
-                                                        />
-
-                                                    </div>
-                                                    <div class="item-min-price">площадь дома -
-                                                        <span class="price">{{ house.area }} </span>м&sup2;.
-                                                    </div>
-                                                    <div class="item-min-price">цена -
-                                                        <span class="price">{{ house.price_min|price_to_str_filter }}</span>
-                                                        руб.
-                                                    </div>
-                                                    <div class="item-link">
-                                                        <a href="{{ house.get_absolute_url }}"
-                                                           class="btn-a diagonal black">
-                                                            <span>Подробнее</span>
-                                                        </a>
-                                                    </div>
+                                            <div class="item-wrapper">
+                                                <div class="item-category">
+                                                    <span>{{ house.category.name }}</span>
                                                 </div>
+                                                <div class="item-title">
+                                                    <span class="item-category">модель - </span>
+                                                    <h4>{{ house.name }}</h4>
 
+                                                </div>
+                                                <div class="item-picture">
+                                                    <img
+                                                            alt="{{ house.get_main_picture.alt }}"
+                                                            class="lazy"
+                                                            src="{{ house.get_main_picture.picture.thumb.url }}"
+                                                            data-src="{{ house.get_main_picture.picture.w450.url }}"
+                                                    />
+
+                                                </div>
+                                                <div class="item-min-price">площадь дома -
+                                                    <span class="price">{{ house.area }} </span>м&sup2;.
+                                                </div>
+                                                <div class="item-min-price">цена -
+                                                    <span class="price">{{ house.price_min|price_to_str_filter }}</span>
+                                                    руб.
+                                                </div>
+                                                <div class="item-link">
+                                                    <a href="{{ house.get_absolute_url }}"
+                                                       class="btn-a diagonal black">
+                                                        <span>Подробнее</span>
+                                                    </a>
+                                                </div>
                                             </div>
 
-
                                         </div>
+
+
+                                    </div>
                                 {% endfor %}
 
                             </div>

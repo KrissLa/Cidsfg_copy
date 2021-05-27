@@ -1104,14 +1104,14 @@ span.x {
 
 }
 
-.swiper-container-catalog .swiper-slide a.a-wrapper {
+a.a-wrapper {
     position: absolute;
     display: block;
     height: 100%;
     width: 100%;
 }
 
-.swiper-container-catalog .swiper-slide a.a-wrapper:hover > .product-item {
+a.a-wrapper:hover > .product-item {
     transform: translateY(-10px);
     transition: 0.3s all ease;
 }
@@ -1475,6 +1475,7 @@ button.button.black:hover {
 }
 
 .product-item {
+    position:relative;
     min-width: 280px;
     max-width: 450px;
     min-height: 400px;
