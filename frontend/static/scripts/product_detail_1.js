@@ -1,4 +1,3 @@
-
 const MessageAddUrl = `${window.location.origin}/api/v1/houses/add_consultation_reqeust/`;
 
 //Swipers
@@ -478,11 +477,11 @@ sendMessageButton.addEventListener('click', (e) => {
 // image zoom
 
 const zoomImages = document.querySelectorAll('.image-zoom'),
-    bigImage = (src, dataSrc) => `<div class="zoom-wrapper">
+    bigImage = (src, dataSrc) => `<div class="zoom-wrapper b-shadow">
      <button class="close" id="close-zoom" type="button" data-dismiss="modal">
             <span class="icon icon-md linear-icon-cross"></span>
      </button>
-     <img width="100%" class="lazy" src="${src}" data-src="${dataSrc}"/>
+     <img class="lazy" src="${src}" data-src="${dataSrc}"/>
 </div>`
 
 let zoomWindow = false;
@@ -506,7 +505,7 @@ zoomImages.forEach(e => {
         bodyEl.classList.add('show-modal');
         let zoomElement;
         if (document.documentElement.clientWidth < 768) {
-            zoomElement = bigImage(e.getAttribute('src'), e.getAttribute('data-1000-src'));
+            zoomElement = bigImage(e.getAttribute('src'), e.getAttribute('data-720-src'));
         } else {
             zoomElement = bigImage(e.getAttribute('src'), e.getAttribute('data-big-src'));
         }

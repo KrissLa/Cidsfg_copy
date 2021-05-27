@@ -154,22 +154,30 @@
 
 .swiper-button-next, .swiper-button-prev {
     position: absolute;
-    top: 50%;
-    width: calc(var(--swiper-navigation-size) / 44 * 27);
-    height: var(--swiper-navigation-size);
-    margin-top: calc(0px - (var(--swiper-navigation-size) / 2));
+    top: 0;
+    width: 10%;
+    height: 100%;
     z-index: 10;
     cursor: pointer;
     display: flex;
     align-items: center;
-    justify-content: center;
+
     color: var(--swiper-navigation-color, var(--swiper-theme-color))
+}
+
+.swiper-button-next {
+    justify-content: flex-end;
+}
+
+.swiper-button-prev {
+    justify-content: flex-start;
 }
 
 .swiper-button-next.swiper-button-disabled, .swiper-button-prev.swiper-button-disabled {
     opacity: .35;
     cursor: auto;
-    pointer-events: none
+    pointer-events: unset;
+    z-index: 10;
 }
 
 .swiper-button-next:after, .swiper-button-prev:after {

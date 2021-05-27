@@ -12,10 +12,24 @@
     justify-items: center;
 }
 
+.contact-form .choices{
+    gap: 9%;
+}
+
+.partnership-form .choices{
+    gap: 1%;
+}
+
+
 .choices img {
-    width: 50%;
+    width: 40%;
     margin: 0;
     padding: 10px;
+}
+
+.contact-form .choices img,
+.partnership-form .choices img {
+    width: 39%;
 }
 
 .choices div {
@@ -26,6 +40,11 @@
     padding: 10px 0;
     cursor: pointer;
     width: 100%;
+}
+
+.contact-form .choices div,
+.partnership-form .choices div {
+    padding: 10px 10px;
 }
 
 .choices div p {
@@ -63,6 +82,7 @@
     .choices div p {
         font-size: 12px;
     }
+
     .contact-form .choices div,
     .partnership-form .choices div {
         width: 80%;

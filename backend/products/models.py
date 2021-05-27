@@ -112,6 +112,14 @@ class HousePicture(models.Model):
                                      'Гугл может ругаться, если его не будет. Должно содержать краткое описание '
                                      'изображения. Например: "Дом BENT F48 Вид сбоку"')
 
+    class Meta:
+        verbose_name = 'Изображение'
+        verbose_name_plural = 'Изображения'
+        ordering = ['id',]
+
+    def __str__(self):
+        return f'Изображение дома {self.house.name}'
+
 
 class Options(TabBodyAbstract, ActiveAbstract):
     """ Опции и дополнения дома """

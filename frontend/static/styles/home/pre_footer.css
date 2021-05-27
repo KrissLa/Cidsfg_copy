@@ -13,13 +13,13 @@
 
 @media (min-width: 992px) {
     .pre-footer {
-        padding: 80px 0;
+        padding: 50px 0;
     }
 }
 
 @media (min-width: 1200px) and (min-height: 800px) {
     .pre-footer {
-        padding: 120px 0;
+        padding: 50px 0;
     }
 }
 
