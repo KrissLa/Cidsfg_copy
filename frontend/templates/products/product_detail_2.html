@@ -16,7 +16,7 @@
     {#    <link rel="stylesheet" href="{% static 'styles/swiper-bundle.css' %}">#}
     {#    <link rel="stylesheet" href="{% static 'styles/forms.css' %}">#}
     {#    <link rel="stylesheet" href="{% static 'styles/modal.css' %}">#}
-    {#    <link rel="stylesheet" href="{% static 'styles/ars_style.css' %}">#}
+    <link rel="stylesheet" href="{% static 'styles/accordion.css' %}">
 {% endblock styles %}
 
 {% block content %}
@@ -208,65 +208,30 @@
                         <div class="container">
                             {% if house.turnkey.active and house.turnkey.included.active and house.turnkey.included.get_items %}
                                 <div id="tab-include-turnkey" class="body-item cost-included active">
-                                    <div id="accordion" role="tablist">
+                                    <div class="accordion">
                                         {% for item in house.turnkey.included.get_items %}
-                                            <div class="panel panel-custom panel-classic">
-                                                <div class="panel-custom-heading" id="{{ item.pk }}-turnkey-Head"
-                                                     role="tab">
-                                                    <h6 class="panel-custom-title">
-                                                        <a class="collapsed" role="button"
-                                                           data-toggle="collapse"
-                                                           data-parent="#{{ item.pk }}"
-                                                           href="#{{ item.pk }}-turnkey-Collapse"
-                                                           aria-controls="{{ item.pk }}-turnkey-Collapse">
-                                                            {{ item.name }}
-                                                        </a>
-                                                    </h6>
-                                                </div>
-                                                <div class="panel-custom-collapse collapse"
-                                                     id="{{ item.pk }}-turnkey-Collapse"
-                                                     role="tabpanel"
-                                                     aria-labelledby="{{ item.pk }}-turnkey-Head">
-                                                    <div class="panel-custom-body">
-                                                        <div class="ol">
-                                                            {{ item.body|safe }}
-                                                        </div>
-
-
+                                            <div class="contentBx">
+                                                <div class="label">{{ item.name }}</div>
+                                                <div class="content" style="display: none">
+                                                    <div class="ol">
+                                                        {{ item.body|safe }}
                                                     </div>
                                                 </div>
                                             </div>
                                         {% endfor %}
+
                                     </div>
                                 </div>
                             {% endif %}
                             {% if house.for_finishing.active and house.for_finishing.included.active and house.for_finishing.included.get_items %}
                                 <div id="tab-include-for_finishing" class="body-item cost-included">
-                                    <div id="accordion" role="tablist">
+                                    <div class="accordion">
                                         {% for item in house.for_finishing.included.get_items %}
-                                            <div class="panel panel-custom panel-classic">
-                                                <div class="panel-custom-heading" id="{{ item.pk }}-for_finishing-Head"
-                                                     role="tab">
-                                                    <h6 class="panel-custom-title">
-                                                        <a class="collapsed" role="button"
-                                                           data-toggle="collapse"
-                                                           data-parent="#{{ item.pk }}"
-                                                           href="#{{ item.pk }}-for_finishing-Collapse"
-                                                           aria-controls="{{ item.pk }}-for_finishing-Collapse">
-                                                            {{ item.name }}
-                                                        </a>
-                                                    </h6>
-                                                </div>
-                                                <div class="panel-custom-collapse collapse"
-                                                     id="{{ item.pk }}-for_finishing-Collapse"
-                                                     role="tabpanel"
-                                                     aria-labelledby="{{ item.pk }}-for_finishing-Head">
-                                                    <div class="panel-custom-body">
-                                                        <div class="ol">
-                                                            {{ item.body|safe }}
-                                                        </div>
-
-
+                                            <div class="contentBx">
+                                                <div class="label">{{ item.name }}</div>
+                                                <div class="content" style="display: none">
+                                                    <div class="ol">
+                                                        {{ item.body|safe }}
                                                     </div>
                                                 </div>
                                             </div>
@@ -276,31 +241,13 @@
                             {% endif %}
                             {% if house.delivery.active and house.delivery.included.active and house.delivery.included.get_items %}
                                 <div id="tab-include-delivery" class="body-item cost-included">
-                                    <div id="accordion" role="tablist">
+                                    <div class="accordion">
                                         {% for item in house.delivery.included.get_items %}
-                                            <div class="panel panel-custom panel-classic">
-                                                <div class="panel-custom-heading" id="{{ item.pk }}-delivery-Head"
-                                                     role="tab">
-                                                    <h6 class="panel-custom-title">
-                                                        <a class="collapsed" role="button"
-                                                           data-toggle="collapse"
-                                                           data-parent="#{{ item.pk }}"
-                                                           href="#{{ item.pk }}-delivery-Collapse"
-                                                           aria-controls="{{ item.pk }}-delivery-Collapse">
-                                                            {{ item.name }}
-                                                        </a>
-                                                    </h6>
-                                                </div>
-                                                <div class="panel-custom-collapse collapse"
-                                                     id="{{ item.pk }}-delivery-Collapse"
-                                                     role="tabpanel"
-                                                     aria-labelledby="{{ item.pk }}-delivery-Head">
-                                                    <div class="panel-custom-body">
-                                                        <div class="ol">
-                                                            {{ item.body|safe }}
-                                                        </div>
-
-
+                                            <div class="contentBx">
+                                                <div class="label">{{ item.name }}</div>
+                                                <div class="content" style="display: none">
+                                                    <div class="ol">
+                                                        {{ item.body|safe }}
                                                     </div>
                                                 </div>
                                             </div>

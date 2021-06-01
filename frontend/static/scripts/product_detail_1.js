@@ -1,5 +1,41 @@
 const MessageAddUrl = `${window.location.origin}/api/v1/houses/add_consultation_reqeust/`;
 
+
+//getHeight
+const accordionItems = document.querySelectorAll('.contentBx');
+
+const getHeight = function (el) {
+    el.removeAttribute('style')
+    el.style.display = 'none';
+    let el_style = window.getComputedStyle(el),
+        el_display = el_style.display,
+        el_position = el_style.position,
+        el_visibility = el_style.visibility,
+        el_max_height = el_style.maxHeight.replace('px', '').replace('%', ''),
+
+        wanted_height = 0;
+
+    // if its not hidden we just return normal height
+    if (el_display !== 'none' && el_max_height !== '0') {
+        return el.offsetHeight;
+    }
+
+    // the element is hidden so:
+    // making the el block so we can meassure its height but still be hidden
+    el.style.position = 'absolute';
+    el.style.visibility = 'hidden';
+    el.style.display = 'block';
+
+    wanted_height = el.offsetHeight + 50;
+
+
+    el.removeAttribute('style')
+    el.style.height = '0';
+
+    return wanted_height;
+}
+
+
 //Swipers
 
 const getCatalogSlidesPerView = () => {
@@ -102,6 +138,7 @@ const scrollToActiveTab = (e, arr, container) => {
 
 navItems.forEach(e => {
     e.addEventListener('click', () => {
+
         if (!e.classList.contains('active')) {
             const tabId = e.getAttribute('data-for'),
                 tabBodyItem = document.querySelector(`#${tabId}`);
@@ -109,6 +146,9 @@ navItems.forEach(e => {
             setActive(tabBodyItem, bodyItems);
         }
         scrollToActiveTab(e, navArray, infoContainer);
+        accordionItems.forEach((e) => {
+            e.setAttribute('data-height', `${getHeight(e.querySelector('.contentBx .content'))}px`);
+        })
 
     })
 })
@@ -122,6 +162,9 @@ navItemsCostIncluded.forEach(e => {
             setActive(tabBodyItem, bodyItemsCostIncluded);
         }
         scrollToActiveTab(e, navArrayCostIncluded, costIncludedContainer);
+        accordionItems.forEach((e) => {
+            e.setAttribute('data-height', `${getHeight(e.querySelector('.contentBx .content'))}px`);
+        })
 
     })
 })
@@ -525,155 +568,19 @@ zoomImages.forEach(e => {
 
 })
 
+// аккордион
 
-// const buttonForRequestInfo = document.querySelector('#show-request-info-modal'),
-//     bodyEl = document.querySelector('body'),
-//     requestInfoModal = document.querySelector('#modal-request-info'),
-//     buttonCloseInfo = document.querySelector('#close-info'),
-//
-//     //Первое модальное окно со стоимостью
-//     buttonForPriceInfo = document.querySelector('#show-price-info-modal'),
-//     priceInfoModal = document.querySelector('#modal-price-info'),
-//     buttonClosePriceInfo = document.querySelector('#close-price-info'),
-//
-//     //Второе модальное окно со стоимостью
-//     buttonPriceNext = document.querySelector('#price-next'),
-//     buttonPriceBack = document.querySelector('#price-back-2'),
-//     priceModal2 = document.querySelector('#modal-price-info-2'),
-//     buttonClosePriceModal2 = document.querySelector('#close-price-info-2'),
-//     html = document.querySelector('html'),
-//     navBar = document.querySelector('nav.rd-navbar'),
-//     tabsNavItems = document.querySelectorAll('.nav-item'),
-//
-//     // Выбор планировки
-//     selectLayout = document.querySelector('#layout'),
-//
-//     // Кнопки выбора отделки
-//     addDecorationButtons = document.querySelectorAll('.add-decorations'),
-//     selectDecorationsButtons = document.querySelectorAll('.decorations-choices.wall li'),
-//     selectDecorationsInfoContainers = document.querySelectorAll('.decoration-info div'),
-//     confirmDecorationsButtons = document.querySelectorAll('.decoration-info-header button'),
-//
-//     // модальное окно с инфой пользователя
-//     openModalUserButton = document.querySelector('#price-next-2'),
-//     userDataModal = document.querySelector('#modal-price-data'),
-//     backToDecoration = document.querySelector('#price-back'),
-//     closeUserDataModalButton = document.querySelector('#close-price-data');
-//
-//
-// // Модальное окно с расчетом стоимости дома 1
-// buttonPriceBack.addEventListener('click', (e) => {
-//     hideModal(priceModal2);
-//     showModal(priceInfoModal);
-// })
-// buttonForPriceInfo.addEventListener('click', (e) => {
-//     showModal(priceInfoModal);
-//
-// })
-//
-// buttonClosePriceInfo.addEventListener('click', (e) => {
-//     hideModal(priceInfoModal);
-// })
-//
-// priceInfoModal.addEventListener('click', (e) => {
-//     if (e.target === priceInfoModal) {
-//         hideModal(priceInfoModal);
-//     }
-// })
-//
-// // Модальное окно с расчетом стоимости 2
-//
-// buttonPriceNext.addEventListener('click', (e) => {
-//     hideModal(priceInfoModal);
-//     showModal(priceModal2);
-//
-// })
-//
-// buttonClosePriceModal2.addEventListener('click', (e) => {
-//     hideModal(priceModal2);
-// })
-//
-// priceModal2.addEventListener('click', (e) => {
-//     if (e.target === priceModal2) {
-//         hideModal(priceModal2);
-//     }
-// })
-//
-// // Выбор планировки
-// const onChangeSelectLayout = (e) => {
-//     console.log(selectLayout.value);
-//     if (selectLayout.value === 'standard-layout') {
-//         document.querySelector('#standard-layout').classList.remove('hide');
-//         document.querySelector('#personal-layout').classList.add('hide');
-//     } else {
-//         document.querySelector('#standard-layout').classList.add('hide');
-//         document.querySelector('#personal-layout').classList.remove('hide');
-//     }
-// }
-//
-// $('#layout').on('change', onChangeSelectLayout);
-//
-//
-// // Вызываем модальные окна с выбором отделок
-//
-// addDecorationButtons.forEach(e => {
-//
-//     e.addEventListener('click', (e) => {
-//         const dataDecorations = e.target.getAttribute('data-decoration');
-//         console.log(dataDecorations);
-//         const modal = document.querySelector(`[data-for-decorations="${dataDecorations}"]`);
-//         console.log(modal);
-//         modal.classList.add('active');
-//     })
-// })
-//
-// // slider с выбором конкретной отделки
-//
-// console.log(selectDecorationsButtons);
-//
-// selectDecorationsButtons.forEach(e => {
-//     e.addEventListener('click', e => {
-//         if (!e.target.classList.contains('active')) {
-//             selectDecorationsButtons.forEach(e => e.classList.remove('active'));
-//             e.target.classList.add('active');
-//             selectDecorationsInfoContainers.forEach(e => e.classList.remove('active'));
-//             let attributeValue = e.target.getAttribute('data-for-item');
-//             document.querySelector(`[data-item="${attributeValue}"]`).classList.add('active');
-//         }
-//     })
-// })
-//
-// const parentsModal = document.querySelectorAll('.modal');
-// for (let i = 0, parent; parent = parentsModal[i]; i++)
-//     parent.addEventListener('click', e => {
-//         if (e.target.hasAttribute('data-select-decoration')) {
-//             const attributeValue = e.target.getAttribute('data-select-decoration');
-//             const item = document.querySelector(`[data-item="${attributeValue}"]`);
-//             const decorationTitle = item.querySelector('.decoration-info-title').textContent;
-//             const decorationPrice = item.querySelector('.price span').textContent;
-//             parent.classList.remove('active');
-//             document.querySelector('[data-decoration="exterior-wall"]').innerHTML = 'Изменить';
-//             document.querySelector('.modal-add p').innerHTML = `${decorationTitle} (${decorationPrice}р)`;
-//         } else if (e.target.classList.contains('close') || e.target.classList.contains('modal')) {
-//             parent.classList.remove('active');
-//         }
-//     });
-//
-// openModalUserButton.addEventListener('click', (e) => {
-//     hideModal(priceModal2);
-//     showModal(userDataModal);
-// })
-//
-// backToDecoration.addEventListener('click', e => {
-//     hideModal(userDataModal);
-//     showModal(priceModal2);
-// })
-//
-// closeUserDataModalButton.addEventListener('click', (e) => {
-//     hideModal(userDataModal);
-// })
+accordionItems.forEach((e) => {
+    e.querySelector('.label').addEventListener('click', () => {
+        if (e.classList.contains('active')) {
+            e.classList.remove('active');
+            e.querySelector('.contentBx .content').style.height = '0';
+        } else {
+            e.classList.add('active');
+            e.querySelector('.contentBx .content').style.height = e.getAttribute('data-height');
+        }
 
-
-
+    })
+})
 
 
