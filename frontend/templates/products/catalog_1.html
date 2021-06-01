@@ -116,6 +116,7 @@
                             <div class="products-wrapper">
                                 {% for house in s.get_houses %}
                                     <div class="product-item white b-shadow">
+                                        <a class="a-wrapper" href="{{ house.get_absolute_url }}"></a>
                                         <div class="item-wrapper">
                                             <div class="item-category">
                                                 <span>{{ house.category.name }}</span>

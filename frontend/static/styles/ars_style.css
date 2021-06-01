@@ -204,18 +204,20 @@ img.confirm-spinner {
 
 @media all and (min-width: 768px) {
     section.breadcrumbs-custom {
-        margin-top: 170px;
+        margin-top: 135px;
+        padding: 10px 0;
     }
 }
 
-@media all and (min-width: 1200px) {
-    section.breadcrumbs-custom {
-        margin-top: 200px;
-    }
-}
 
 div.ol {
     padding-left: 40px;
+}
+div.ol+div.ol {
+    margin-top: 16px;
+}
+div.ol p{
+    margin-top: 10px;
 }
 
 /*.product-caption {*/

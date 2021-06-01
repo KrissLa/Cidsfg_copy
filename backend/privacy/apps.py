@@ -2,4 +2,5 @@ from django.apps import AppConfig
 
 
 class PrivacyConfig(AppConfig):
-    name = 'privacy'
+    name = 'backend.privacy'
+    verbose_name = 'Политика конфиденциальности'
