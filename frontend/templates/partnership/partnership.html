@@ -1,5 +1,5 @@
 {% extends 'superbase.html' %}
-{% load static domain %}
+{% load static %}
 
 
 {% block seo_title %}
@@ -168,6 +168,5 @@
 
 
 {% block scripts %}
-    <script src="{% static 'scripts/partnership.js' %}"></script>
-    {#    <script src="{% static 'scripts/form_contacts.js' %}"></script>#}
+    <script src="{% static 'partnership/scripts/partnership.min.js' %}"></script>
 {% endblock scripts %}

@@ -1,19 +1,3 @@
-// Общая функция - потом удалить!!!!
-
-// const removeClass = (element, className) => {
-//     if (element.classList.contains(className)) {
-//         element.classList.remove(className);
-//     }
-// }
-//
-// const addClass = (element, className) => {
-//     if (!element.classList.contains(className)) {
-//         element.classList.add(className);
-//     }
-// }
-
-
-///
 
 const lines = document.querySelectorAll('.lines .line'),
     secondLines = document.querySelectorAll('.lines .text'),
