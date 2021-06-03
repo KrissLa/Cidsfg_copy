@@ -1,13 +1,11 @@
 from django.db import models
-
-
-# Create your models here.
 from backend.seo.models import SeoAbstract
 
 
 class Partnership(SeoAbstract):
     """ Модель страницы Сотрудничество"""
     updated = models.DateTimeField(auto_now=True)
+
     class Meta:
         verbose_name = 'Сотрудничество'
         verbose_name_plural = 'Сотрудничество'
@@ -27,7 +25,6 @@ class CooperationApplication(models.Model):
     contact = models.CharField('Контакт', max_length=255, default='')
     processed = models.BooleanField('Отметить заявку как обработанную', default=False)
     created = models.DateTimeField('Время отправки сообщения', auto_now_add=True)
-
 
     class Meta:
         verbose_name = 'Заявка на сотрудничество'

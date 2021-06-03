@@ -25,7 +25,7 @@ sitemaps = {'home': HomePageSitemap,
             'houses': HouseSitemap}
 
 urlpatterns = [
-    path(ADMIN_URL + '/', admin.site.urls),
+    path('nobots/' + ADMIN_URL + '/', admin.site.urls),
     path('', include('backend.home_page.urls')),
     path('privacy/', include('backend.privacy.urls')),
     path('catalog/', include('backend.products.urls')),
