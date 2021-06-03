@@ -50,6 +50,7 @@ class Contacts(SeoAbstract):
     alt_picture_footer = models.CharField('Подпись к фотографии в футере',
                                           default='Изображение расположения на карте', max_length=255,
                                           blank=True, help_text="Чтобы не отображать, оставьте пустым")
+    updated = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = 'Контакты'

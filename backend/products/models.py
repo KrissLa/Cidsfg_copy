@@ -56,6 +56,7 @@ class House(SeoAbstract):
                                                    help_text='Этот номер будет использован для построения домов в'
                                                              ' каталоге. (Дом с меньшим номером будет выше)',
                                                    blank=True, null=True)
+    updated = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = 'Дом'
@@ -368,6 +369,7 @@ class Series(SeoAbstract):
                                                    help_text='Этот номер будет использован для построения серий в'
                                                              ' меню. (Серия с меньшим номером будет выше)',
                                                    blank=True, null=True)
+    updated = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = 'Серия домов'

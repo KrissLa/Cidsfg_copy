@@ -5,7 +5,7 @@ from backend.seo.models import SeoAbstract
 
 class HomePage(SeoAbstract):
     """ Главная страница """
-
+    updated = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = 'Главная страница'

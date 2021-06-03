@@ -16,6 +16,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
 
     'corsheaders',
     'rest_framework',
@@ -113,13 +115,13 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 12
 }
 
-
-
 TG_BOT_TOKEN = os.environ['TG_BOT_TOKEN']
 TG_ADMIN_ID = os.environ['TG_ADMIN_ID']
 
 MEDIA_URL = 'frontend/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'frontend/media')
+
+SITE_ID = 1
 
 if os.environ['PROJECT_STATUS'] == 'DEVELOPMENT':
     try:

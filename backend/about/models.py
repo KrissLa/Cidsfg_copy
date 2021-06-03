@@ -28,6 +28,7 @@ class About(SeoAbstract):
                                               'admin': (90, 60),
                                               'thumb': (15, 10),
                                           }, )
+    updated = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = 'Страница Завод'

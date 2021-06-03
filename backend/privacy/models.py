@@ -7,6 +7,7 @@ class Privacy(SeoAbstract):
     """ Страница с политикой обработки персональных данных пользователей """
     organization_name = models.CharField('Название организации', max_length=255, default='CUBO ДОМ')
     email = models.EmailField('Email оператора персональных данных для связи', default='ask@cubodom.ru')
+    updated = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = 'Политика конфиденциальности'
