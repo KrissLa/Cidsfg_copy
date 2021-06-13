@@ -7,7 +7,7 @@ from nested_admin.nested import NestedTabularInline, NestedStackedInline, Nested
 from .models import House, Category, Series, HousePicture, Options, Turnkey, IncludedInPriceTurnkey, \
     IncludedInPriceTurnkeyItem, NotIncludedInPriceTurnkey, NotIncludedInPriceForFinishing, \
     IncludedInPriceForFinishingItem, NotIncludedInPriceDelivery, IncludedInPriceDeliveryItem, \
-    IncludedInPriceForFinishing, IncludedInPriceDelivery, Delivery, ForFinishing, ConsultationRequest
+    IncludedInPriceForFinishing, IncludedInPriceDelivery, Delivery, ForFinishing, ConsultationRequest, Catalog
 
 
 # Заявки на консультацию
@@ -38,6 +38,18 @@ class OptionsAdminForm(AdminCKEditorForm):
     class Meta:
         model = Options
         fields = '__all__'
+
+
+class CatalogAdminCKEditorForm(forms.ModelForm):
+    card_text = forms.CharField(required=False,
+                                widget=CKEditorWidget(), label='Текст для карточки для заказа индивидуального проекта')
+    modal_text = forms.CharField(required=False,
+                                 label='Текст для модального окна для заказа индивидуального проекта',
+                                 widget=CKEditorWidget())
+
+    class Meta:
+        model = Catalog
+        fields = ('card_text', 'modal_text')
 
 
 ## Turnkey
@@ -255,3 +267,25 @@ class HouseAdmin(admin.ModelAdmin):
 class HouseAdmin(admin.ModelAdmin):
     """ Домами из панели администратора """
     prepopulated_fields = {"slug": ("name",)}
+
+
+@admin.register(Catalog)
+class CatalogAdmin(admin.ModelAdmin):
+    """ Управление каталогом из панели администратора """
+    form = CatalogAdminCKEditorForm
+    fieldsets = (
+        (
+            'SEO', {
+                'fields': ('seo_title', 'seo_description')
+            },
+        ), (
+            'Уникальный проект', {
+                'fields': ('card_text', 'modal_text')
+            },
+        ),
+    )
+    def has_add_permission(self, request, obj=None):
+        if Catalog.objects.all().count() >= 1:
+            return False
+        else:
+            return True

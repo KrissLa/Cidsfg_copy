@@ -1,3 +1,4 @@
+from ckeditor.fields import RichTextField
 from django.db import models
 from stdimage import StdImageField
 from loguru import logger
@@ -21,6 +22,22 @@ class ActiveAbstract(models.Model):
 
     class Meta:
         abstract = True
+
+
+class Catalog(SeoAbstract):
+    """ Модель для настройки каталога """
+    card_text = RichTextField(verbose_name='Текст для карточки для заказа индивидуального проекта', null=True,
+                              blank=True)
+    modal_text = RichTextField(verbose_name='Текст для модального окна для заказа индивидуального проекта',
+                               null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'Настройки каталога'
+        verbose_name_plural = 'Настройки каталога'
+
+
+    def __str__(self):
+        return 'Настройки каталога'
 
 
 class House(SeoAbstract):
@@ -116,7 +133,7 @@ class HousePicture(models.Model):
     class Meta:
         verbose_name = 'Изображение'
         verbose_name_plural = 'Изображения'
-        ordering = ['id',]
+        ordering = ['id', ]
 
     def __str__(self):
         return f'Изображение дома {self.house.name}'

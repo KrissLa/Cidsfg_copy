@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404
 from django.views.generic import ListView, DetailView
 from loguru import logger
 
-from .models import House, Series
+from .models import House, Series, Catalog
 
 
 class HouseDetailView(DetailView):
@@ -53,7 +53,15 @@ class HousesListView(ListView):
             series = get_object_or_404(Series, slug=series_slug, active=True)
         except Exception:
             series = None
-        return {'series_slug': series_slug,
+        try:
+            catalog_settings = get_object_or_404(Catalog)
+        except Exception:
+            catalog_settings = None
+        logger.info(catalog_settings)
+        # if not series:
+        #     pass
+        return {'catalog_settings': catalog_settings,
+                'series_slug': series_slug,
                 'series_list': series_list,
                 'series': series,
                 'all_houses': House.objects.filter(category__active=True,

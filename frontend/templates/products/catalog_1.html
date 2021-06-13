@@ -3,14 +3,22 @@
 
 {% block seo_title %}
     {% if not series %}
-        Модельный ряд CUBO
+        {% if not catalog_settings.seo_title %}
+            Модельный ряд CUBO
+        {% else %}
+            {{ catalog_settings.seo_title }}
+        {% endif %}
     {% else %}
         {{ series.seo_title }}
     {% endif %}
 {% endblock seo_title %}
 {% block seo_description %}
     {% if not series %}
-        На этой странице представлен модельный ряд домов CUBO
+        {% if not catalog_settings.seo_description %}
+            На этой странице представлен модельный ряд домов CUBO
+        {% else %}
+            {{ catalog_settings.seo_description }}
+        {% endif %}
     {% else %}
         {{ series.seo_description }}
     {% endif %}
@@ -112,8 +120,13 @@
                             <div class="product-item white b-shadow" data-id="individual_project">
                                 <div class="item-wrapper new_project">
                                     <div class="item-category">
+                                        {% if not catalog_settings.card_text %}
                                             <span>Не нашли подходящий дом? Напишите нам и мы разработаем индивидуальный
                                                 проект совершенно бесплатно.</span>
+                                        {% else %}
+                                            {{ catalog_settings.card_text|safe }}
+                                        {% endif %}
+
                                     </div>
 
                                     <div class="item-link">
@@ -167,10 +180,18 @@
                                 {% endfor %}
                                 <div class="product-item white b-shadow" data-id="individual_project">
                                     <div class="item-wrapper new_project">
-                                        <div class="item-category">
-                                            <span>Не нашли подходящий дом? Напишите нам и мы разработаем индивидуальный
+
+                                            {% if not catalog_settings.card_text %}
+                                                <div class="item-category">
+                                                <span>Не нашли подходящий дом? Напишите нам и мы разработаем индивидуальный
                                                 проект совершенно бесплатно.</span>
-                                        </div>
+                                                </div>
+                                            {% else %}
+                                                <div>
+                                                {{ catalog_settings.card_text|safe }}
+                                                </div>
+                                            {% endif %}
+
 
                                         <div class="item-link">
                                             <a href="#" class="btn-a diagonal black">
@@ -196,8 +217,13 @@
             <button class="close" id="close-info" type="button" data-dismiss="modal">
                 <span class="icon icon-md linear-icon-cross"></span>
             </button>
-            <h5>Не нашли подходящий дом? Напишите нам и мы разработаем индивидуальный
-                проект совершенно бесплатно.</h5>
+            {% if not catalog_settings.modal_text %}
+                <h5>Не нашли подходящий дом? Напишите нам и мы разработаем индивидуальный
+                    проект совершенно бесплатно.</h5>
+            {% else %}
+                {{ catalog_settings.modal_text|safe }}
+            {% endif %}
+
             <div class="form">
                 <form method="post" id="form">
                     <div class="wrapper first-col">
