@@ -91,7 +91,7 @@ window.addEventListener('resize', function () {
 });
 
 
-const MessageAddUrl = `${window.location.origin}/api/v1/houses/add_consultation_reqeust/`;
+const MessageAddUrl = `${window.location.origin}/nobots/api/v1/houses/add_consultation_reqeust/`;
 
 
 // tabs and accordion

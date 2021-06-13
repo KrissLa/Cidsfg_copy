@@ -1,0 +1,1 @@
+default_app_config = 'backend.apps.contact_forms.apps.ContactFormsConfig'

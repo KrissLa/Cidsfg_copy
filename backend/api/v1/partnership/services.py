@@ -25,6 +25,6 @@ def send_notification(data, admin_id=TG_ADMIN_ID):
 Фамилия пользователя: <b>{data['last_name']}</b>
 Куда ответить: <b>{data['type_of_contact']}</b>
 Контакт пользователя: <b>{data['contact']}</b>
-<a href="{SITE_DOMAIN}/{ADMIN_URL}/partnership/cooperationapplication/{data['id']}/change/">Посмотреть в панели администратора</a>
+<a href="{SITE_DOMAIN}/nobots/{ADMIN_URL}/partnership/cooperationapplication/{data['id']}/change/">Посмотреть в панели администратора</a>
 """
     send_message_to_admin(message, admin_id)

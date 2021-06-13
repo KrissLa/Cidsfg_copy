@@ -20,7 +20,7 @@ window.addEventListener("scroll",()=>{document.querySelector("header").classList
  *  partnership
  *
  */
-const MessageAddUrl = `${window.location.origin}/api/v1/partnership/add/`,
+const MessageAddUrl = `${window.location.origin}/nobots/api/v1/partnership/add/`,
     inputSelects = document.querySelectorAll('.input.select'),
     form = document.querySelector('#form'),
     sendMessageButton = document.querySelector('#send-message'),

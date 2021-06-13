@@ -22,6 +22,6 @@ def send_notification(data, admin_id=TG_ADMIN_ID):
 Куда ответить: <b>{data['type_of_contact']}</b>
 Контакт пользователя: <b>{data['contact']}</b>
 Сообщение: <b>{data['message']}</b>
-<a href="{SITE_DOMAIN}/{ADMIN_URL}/contacts/message/{data['id']}/change/">Посмотреть в панели администратора</a>
+<a href="{SITE_DOMAIN}/nobots/{ADMIN_URL}/contacts/message/{data['id']}/change/">Посмотреть в панели администратора</a>
 """
     send_message_to_admin(message, admin_id)

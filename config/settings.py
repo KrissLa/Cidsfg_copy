@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'backend.about',
     'backend.partnership',
     'backend.contacts',
+    'backend.apps.contact_forms',
 
 ]
 
