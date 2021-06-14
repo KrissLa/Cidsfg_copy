@@ -4127,6 +4127,7 @@ const consultationRequestModal = new HystModal({
         let dataSrc;
         if (document.documentElement.clientWidth < 768) {
             dataSrc = modal.starter.getAttribute('data-720-src');
+            document.querySelector('#imageModal .hystmodal__window').style.minWidth = '90%';
         } else {
             dataSrc = modal.starter.getAttribute('data-big-src');
         }
