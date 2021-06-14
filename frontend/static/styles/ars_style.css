@@ -2,6 +2,10 @@
     scroll-behavior: smooth;
 }
 
+html.modal_opened {
+    scroll-behavior: unset;
+}
+
 a:hover {
     color: #888;
     text-decoration: none;

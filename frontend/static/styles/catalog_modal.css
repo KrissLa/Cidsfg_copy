@@ -1,13 +1,10 @@
 .ars-modal {
     z-index: 9999;
-    position: fixed;
+    position: absolute;
     background-color: rgba(0, 0, 0, 0.3);
     display: none;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    overflow-y: scroll;
+    width: 100%;
+    overflow: scroll;
 
 }
 
@@ -110,6 +107,10 @@
 
     .ars_modal_body .heading-5, h5 {
         font-size: 16px;
+    }
+
+    form .choices img {
+        width: 25%;
     }
 
 }

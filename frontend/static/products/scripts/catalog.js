@@ -382,30 +382,48 @@ navItems.forEach(e => {
 scrollToActiveTab(document.querySelector('.tabs-controls-item.active'));
 
 // modal
-const showModalCards = document.querySelectorAll('[data-id="individual_project"]'),
-    showModalButtons = document.querySelectorAll('[data-id="individual_project"] a')
-modal = document.querySelector('.new_project_modal.ars-modal');
 
-showModalButtons.forEach(e => {
-    e.addEventListener('click', (evt) => evt.preventDefault())
-})
+const individualProjectModal = new HystModal({
+    linkAttributeName: "data-hystmodal",
+    catchFocus: true,
+    waitTransitions: true,
+    closeOnEsc: true,
+    beforeOpen: function(modal){
+        document.querySelector('html').classList.add('modal_opened');
+    },
+    afterClose: function(modal){
+        setTimeout(() => document.querySelector('html').classList.remove('modal_opened'), 50);
+    },
+});
 
-showModalCards.forEach((e) => {
-    e.addEventListener('click', () => {
-            modal.classList.add('active');
-            document.querySelector('body').style.overflow = 'hidden';
-        }
-    )
-})
 
-modal.addEventListener('click', evt => {
-    console.log(evt)
-    console.log(evt.target)
-    if (evt.target === modal || evt.target === document.querySelector('#close-info span')) {
-        modal.classList.remove('active');
-        document.querySelector('body').style.overflow = 'unset';
-    }
-})
+// const showModalCards = document.querySelectorAll('[data-id="individual_project"]'),
+//     showModalButtons = document.querySelectorAll('[data-id="individual_project"] a')
+// modal = document.querySelector('.new_project_modal.ars-modal');
+//
+// showModalButtons.forEach(e => {
+//     e.addEventListener('click', (evt) => evt.preventDefault())
+// })
+//
+// showModalCards.forEach((e) => {
+//     e.addEventListener('click', () => {
+//             modal.classList.add('active');
+//             document.querySelector('body').style.overflow = 'hidden';
+//             // modal.style.overflow = 'scroll';
+//             modal.style.top = pageYOffset + 'px';
+//             // modal.style.height = modal.offsetHeight + 'px';
+//             modal.querySelector('.ars_modal_body').style.height = modal.querySelector('.ars_modal_body').offsetHeight + 'px';
+//             console.log(pageYOffset)
+//         }
+//     )
+// })
+//
+// modal.addEventListener('click', evt => {
+//     if (evt.target === modal || evt.target === document.querySelector('#close-info span')) {
+//         modal.classList.remove('active');
+//         document.querySelector('body').style.overflow = 'unset';
+//     }
+// })
 
 
 // form and inputs
@@ -480,7 +498,6 @@ const form = document.querySelector('#form'),
         let result = []
         lengthFields.forEach(e => {
             const maxLength = parseInt(e.getAttribute('data-maxLength'));
-            console.log(maxLength)
             const errorMessage = `Максимальная количество символов ${maxLength}! `;
             if (e.value.length > maxLength) {
                 showValidationError(e, errorMessage);
@@ -610,7 +627,6 @@ sendMessageButton.addEventListener('click', (e) => {
             'type_of_contact': type_of_contact,
             'contact': contact,
         };
-        console.log(data)
         fetch(MessageAddUrl, {
             method: 'POST',
             headers: {
