@@ -1,1 +1,0 @@
-.collage{padding:25px 0}.collage_wrapper{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}@media all and (max-width:768px){.collage_wrapper{grid-template-columns:repeat(2,1fr)}.collage_wrapper .item{margin-bottom:unset}}
