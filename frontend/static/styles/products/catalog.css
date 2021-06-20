@@ -1,7 +1,7 @@
 section.catalog{
-    padding: 70px 0;
+    padding-bottom: 70px;
 }
-.home-info {
+section.catalog .home-info {
     padding: unset;
 }
 
