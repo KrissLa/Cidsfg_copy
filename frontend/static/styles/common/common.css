@@ -1,0 +1,123 @@
+:root {
+    --swiper-theme-color: #000;
+    --swiper-navigation-size: 44px;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -ms-overflow-style: scrollbar;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html.modal_opened {
+    scroll-behavior: unset;
+}
+
+body {
+    overflow-x: hidden;
+    color: #1B1C17;
+    -webkit-text-size-adjust: none;
+    -webkit-font-smoothing: subpixel-antialiased;
+    background: #F7F7F7;
+}
+
+.black-shadow {
+    box-shadow: 0 2px 11px 0 #5656564d;
+}
+
+.b-shadow {
+    box-shadow: 0 2px 11px 0 #e4e4e4;
+}
+
+.white {
+    background: #fff;
+}
+
+*:focus {
+    outline: none;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    outline: none;
+    scroll-behavior: smooth;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+:before, :after {
+    box-sizing: border-box;
+}
+
+button::-moz-focus-inner {
+    border: 0;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+ul li,
+ol li {
+    display: block;
+    line-height: 1.9;
+}
+
+a, a:hover {
+    text-decoration: none;
+    -webkit-text-size-adjust: none;
+    -webkit-font-smoothing: subpixel-antialiased;
+}
+
+a:hover {
+    color: #ddd;
+}
+
+form {
+    margin-bottom: 0;
+}
+
+.vh {
+    min-height: 100vh;
+}
+
+section.padding {
+    padding: 120px 0;
+}
+
+@media all and (max-width: 768px) {
+    section.padding {
+        padding: 70px 0;
+    }
+}
+
+@media all and (max-width: 450px) {
+    section.padding {
+        padding: 50px 0;
+    }
+}
+
+
+img {
+    /*min-width: 100%;*/
+    max-width: 100%;
+}
+
+video {
+    min-width: 100%;
+    max-width: 100%;
+}
+
+p + * {
+    margin-top: 22px;
+}
+
+.swiper-button-next.swiper-button-disabled, .swiper-button-prev.swiper-button-disabled {
+    width: 0;
+}
+
+

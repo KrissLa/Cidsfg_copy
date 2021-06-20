@@ -1,0 +1,143 @@
+/* pre-footer */
+
+.pre-footer * {
+    font-size: 14px;
+    line-height: 1.71429;
+    color: #ddd;
+}
+
+.pre-footer {
+    padding: 50px 0;
+    background: #151515;
+}
+
+@media (min-width: 992px) {
+    .pre-footer {
+        padding: 50px 0;
+    }
+}
+
+@media (min-width: 1200px) and (min-height: 800px) {
+    .pre-footer {
+        padding: 50px 0;
+    }
+}
+
+.footer-contacts {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+
+.footer-contacts .info {
+    width: 70%;
+}
+
+.footer-contacts .info div {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+}
+
+.footer-contacts .info h6 {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.55556;
+    margin-bottom: 25px;
+}
+
+
+.footer-contacts .info ul h6 {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.55556;
+    margin-bottom: 25px;
+}
+
+.footer-contacts .info li {
+    display: grid;
+    grid-template-columns: minmax(50px, 65px) 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.footer-title {
+    font-weight: 400;
+}
+
+.footer-contacts .img {
+    max-width: 25%;
+    align-self: center;
+}
+
+@media all and (max-width: 1200px) {
+    .footer-contacts .info div {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+}
+
+
+@media all and (max-width: 768px) {
+    .footer-contacts {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footer-contacts .info {
+        width: 100%;
+        margin-bottom: 35px;
+    }
+
+    .footer-contacts .img,
+    section.contacts .img {
+        max-width: 100%;
+    }
+}
+
+
+.footer-corporate {
+    background-color: #000;
+}
+
+.footer-corporate * {
+    color: #ddd;
+}
+
+
+/*** footer */
+
+.footer-corporate {
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-corporate .footer-corporate__inner > * + * {
+    margin-top: 5px;
+}
+
+@media (min-width: 768px) {
+    .footer-corporate {
+        text-align: left;
+    }
+
+    .footer-corporate .footer-corporate__inner > * + * {
+        margin-top: 0;
+    }
+
+    .footer-corporate__inner {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+
+    .footer-corporate__inner > * {
+        padding: 0 15px;
+    }
+}

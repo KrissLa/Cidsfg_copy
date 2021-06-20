@@ -1,0 +1,329 @@
+.form {
+    max-width: 750px;
+    padding: 80px 0;
+}
+
+.form.products {
+    max-width: 750px;
+    padding: unset;
+}
+
+
+.input {
+    position: relative;
+    margin: 25px 0;
+    overflow: hidden;
+    padding-top: 25px;
+}
+
+
+.input input,
+.input textarea {
+    display: block;
+    width: 100%;
+    padding: 0 25px;
+    line-height: 40px;
+    font-family: 'Roboto', sans-serif;
+    background: none;
+    border-width: 0;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+}
+
+.input input.error,
+.input textarea.error {
+    border-bottom: 2px solid red;
+}
+
+.input textarea {
+    resize: none;
+}
+
+
+.input:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #000;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-102%);
+    transition: all 0.4s ease;
+}
+
+.input.phone.focus:before {
+    content: "+";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    top: 35px;
+    left: 10px;
+    /*transform: translate(0 0);*/
+}
+
+.input.focus-line:after {
+    transform: translateX(0);
+    transition: all 0.4s ease;
+}
+
+.input.blur-line:after {
+    transform: translateX(100%);
+    transition: all 0.4s ease;
+}
+
+.input.jump:after {
+    display: none;
+    transition: transform 0.05s ease;
+}
+
+.input label {
+    position: absolute;
+    left: 13px;
+    top: 65px;
+    color: #9d959d;
+    font-size: 1.2rem;
+    font-weight: 300;
+    transform: translateY(-35px);
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.input.focus label {
+    transform: translateY(-70px);
+    margin-left: -10px;
+    font-size: 14px;
+    font-weight: 400;
+    outline: 0;
+    cursor: unset;
+}
+
+.input.focus.focus-line input,
+.input.focus.focus-line textarea {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.input.focus input,
+.input.focus textarea {
+    background-color: rgba(0, 0, 0, 0.01);
+}
+
+p.agree {
+    font-size: 14px;
+}
+
+#send-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: 14px 30px;
+    max-width: 350px;
+}
+
+#send-message .img {
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: translateY(-50%);
+    height: 100%;
+    max-width: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.spinner.hide {
+    display: none;
+}
+
+.spinner.show {
+    display: inline-block;
+    width: unset;
+}
+
+.error-messaage {
+    position: absolute;
+    font-size: 10px;
+    color: red;
+    bottom: 0;
+    right: 0;
+}
+
+#success-message,
+#error-server-message {
+    display: none;
+}
+
+#success-message.show,
+#error-server-message.show {
+    display: block;
+    margin: 25px 0;
+}
+
+#success-message {
+    border-left: 1px solid #000;
+    padding-left: 20px;
+}
+
+#error-server-message {
+    font-size: 16px;
+    color: red;
+}
+
+
+@media all and (max-width: 768px) {
+    .buttons {
+        max-width: 350px;
+    }
+
+    #send-message {
+        min-width: 250px;
+    }
+}
+
+@media all and (max-width: 450px) {
+    .buttons {
+        max-width: 100%;
+    }
+
+    #send-message {
+        min-width: unset;
+        max-width: unset;
+        width: 100%;
+    }
+}
+
+.choices {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5%;
+    padding: 25px 0;
+    align-items: center;
+    justify-items: center;
+}
+
+.contact-form .choices {
+    gap: 9%;
+}
+
+.partnership-form .choices {
+    gap: 1%;
+}
+
+
+.choices img {
+    width: 40%;
+    margin: 0;
+    padding: 10px;
+}
+
+.contact-form .choices img,
+.partnership-form .choices img {
+    width: 39%;
+}
+
+.choices div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+    cursor: pointer;
+    width: 100%;
+}
+
+.contact-form .choices div,
+.partnership-form .choices div {
+    padding: 10px 10px;
+}
+
+.choices div p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.choices div.active {
+    border-bottom: 1px solid #000;
+    border-top: 1px solid #000;
+}
+
+.choice {
+    display: none;
+}
+
+.choice.active {
+    display: block;
+}
+
+
+@media all and (max-width: 768px) {
+    .choices {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .choices div p {
+        font-size: 12px;
+    }
+
+    .contact-form .choices div,
+    .partnership-form .choices div {
+        width: 80%;
+    }
+
+}
+
+/* checkbox */
+input[type="checkbox"] {
+    display: none;
+}
+
+.ars-checkbox {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    color: #9d959d;
+}
+
+
+
+.ars-checkbox::before {
+    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19,5V19H5V5H19m0-2H5A2.006,2.006,0,0,0,3,5V19a2.006,2.006,0,0,0,2,2H19a2.006,2.006,0,0,0,2-2V5A2.006,2.006,0,0,0,19,3Z" fill="rgb(99, 99, 99)"/><path d="M0,0H24V24H0Z" fill="none"/></svg>');
+    line-height: 0;
+    padding: .75rem;
+}
+
+.ars-checkbox:active::before {
+    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0,0H24V24H0Z" fill="none"/><path d="M19,3H5A2,2,0,0,0,3,5V19a2,2,0,0,0,2,2H19a2,2,0,0,0,2-2V5A2,2,0,0,0,19,3ZM10,17,5,12l1.41-1.41L10,14.17l7.59-7.59L19,8Z" fill="rgb(99, 99, 98)"/></svg>');
+}
+
+input[type="checkbox"]:checked + .ars-checkbox::before {
+    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0,0H24V24H0Z" fill="none"/><path d="M19,3H5A2,2,0,0,0,3,5V19a2,2,0,0,0,2,2H19a2,2,0,0,0,2-2V5A2,2,0,0,0,19,3ZM10,17,5,12l1.41-1.41L10,14.17l7.59-7.59L19,8Z" fill="rgb(0, 0, 0)"/></svg>');
+}
+
+input[type="checkbox"]:checked + .ars-checkbox:active::before {
+    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0,0H24V24H0Z" fill="none"/><path d="M19,3H5A2,2,0,0,0,3,5V19a2,2,0,0,0,2,2H19a2,2,0,0,0,2-2V5A2,2,0,0,0,19,3ZM10,17,5,12l1.41-1.41L10,14.17l7.59-7.59L19,8Z" fill="rgb(99, 99, 98)"/></svg>');
+}
+
+/* hover indicator */
+
+.ars-checkbox:after {
+    content: "";
+    position: absolute;
+    left: 2px;
+    height: 2.85rem;
+    width: 2.85rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 5rem;
+    will-change: transform;
+    transition: .3s ease-in-out;
+    transform: scale(0);
+}
+
+.ars-checkbox:hover::after {
+    background: rgba(0, 0, 0, 0.1);
+    transform: scale(1);
+}
+

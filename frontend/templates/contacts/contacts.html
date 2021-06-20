@@ -1,0 +1,217 @@
+{% extends 'superbase.html' %}
+{% load static %}
+
+
+{% block seo_title %}
+    {% if contacts %}
+        {{ contacts.seo_title }}
+    {% else %}
+        Контакты | CUBO
+    {% endif %}
+{% endblock seo_title %}
+{% block seo_description %}
+    {% if contacts %}
+        {{ contacts.seo_description }}
+    {% else %}
+        Контакты CUBO
+    {% endif %}
+{% endblock seo_description %}
+
+
+{% block content %}
+
+    <section class="breadcrumbs-custom">
+        <div class="container">
+            <div class="breadcrumbs-custom__inner">
+                <ul class="breadcrumbs-custom__path">
+                    <li><a href="{% url 'home' %}">Главная</a></li>
+                    <li class="active">Контакты</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="contacts">
+        <div class="container">
+            <div class="footer-contacts">
+                <div class="info">
+                    <ul>
+                        <h4>ОФИС</h4>
+                        {% if contacts.address_office %}
+                            <li>
+                                <span class="footer-title">Адрес</span> <span>{{ contacts.address_office }}</span>
+                            </li>
+                        {% endif %}
+                        {% if contacts.phone_number_office %}
+                            <li>
+                                <span class="footer-title">Телефон</span>
+                                <a href="tel:+{{ contacts.phone_number_office }}">+{{ contacts.phone_number_office }}</a>
+                            </li>
+                        {% endif %}
+
+                        {% if contacts.email_office %}
+                            <li>
+                                <span class="footer-title">E-mail</span> <a
+                                    href="mailto:{{ contacts.email_office }}">{{ contacts.email_office }}</a>
+                            </li>
+                        {% endif %}
+                        {% if contacts.working_hours_office %}
+                            <li>
+                                <span class="footer-title">Время работы</span>
+                                <span>{{ contacts.working_hours_office }}</span>
+                            </li>
+                        {% endif %}
+                    </ul>
+                    <ul class="">
+                        <h4>ПРОИЗВОДСТВО</h4>
+                        {% if contacts.address %}
+                            <li>
+                                <span class="footer-title">Адрес</span> <span>{{ contacts.address }}</span>
+                            </li>
+                        {% endif %}
+                        {% if contacts.phones.all %}
+                            <li>
+                                <span class="footer-title">Телефоны</span>
+                                {% for phone in contacts.phones.all %}
+                                    <a href="tel:{{ phone.phone_number }}">{{ phone.phone_number }}</a>
+                                    {% if not forloop.last %},{% endif %}
+                                {% endfor %}
+                            </li>
+                        {% endif %}
+                        {% if contacts.email %}
+                            <li>
+                                <span class="footer-title">E-mail</span> <a
+                                    href="mailto:{{ contacts.email }}">{{ contacts.email }}</a>
+                            </li>
+                        {% endif %}
+                        {% if contacts.working_hours %}
+                            <li>
+                                <span class="footer-title">Время работы</span> <span>{{ contacts.working_hours }}</span>
+                            </li>
+                        {% endif %}
+                    </ul>
+
+                </div>
+
+                <div class="img">
+                    {% if contacts.map_picture %}
+                        <a target="_blank" href="
+                                {% if contacts.map_link %}{{ contacts.map_link }}{% else %}https://goo.gl/maps/ffNe8e4hsDqQMYJo8{% endif %}">
+                            <img
+                                    alt="
+                                            {% if contacts.alt_picture %}{{ contacts.alt_picture }}{% else %}Расположение на карте{% endif %}"
+                                    class="lazy"
+                                    src="{{ contacts.map_picture.thumb.url }}"
+                                    data-srcset="{{ contacts.map_picture.w400.url }} 400w,
+                                         {{ contacts.map_picture.w800.url }} 800w"
+                                    data-sizes="(max-width: 400px) 400px,
+                                                800px"
+                            />
+                        </a>
+
+                    {% endif %}
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <section class="contact-form b-shadow white">
+        <div class="container">
+            <h4>Напишите нам</h4>
+            <div class="form">
+                <form method="post" id="form">
+                    <div>
+                        <p>Куда Вам ответить?</p>
+                    </div>
+
+                    <div class="choices">
+                        <div class="whatsapp  b-shadow active" data-key="whatsapp">
+                            <p>Whatsapp</p>
+                            <img src="{% static 'icons/forms/whatsapp.png' %}" alt="логотип whatsapp"/>
+                            <p>Очень быстро</p>
+                        </div>
+                        <div class="telegram" data-key="telegram">
+                            <p>Telegram</p>
+                            <img src="{% static 'icons/forms//telegram.png' %}" alt="логотип telegram"/>
+                            <p>Очень быстро</p>
+                        </div>
+                        <div class="phone" data-key="phone">
+                            <p>Мобильный</p>
+                            <img src="{% static 'icons/forms//phone.png' %}" alt="иконка телефона"/>
+                            <p>Быстро</p>
+                        </div>
+                        <div class="email" data-key="email">
+                            <p>E-mail</p>
+                            <img src="{% static 'icons/forms//mail.png' %}" alt="логотип email"/>
+                            <p>Умеренно</p>
+                        </div>
+                    </div>
+                    <div class="input">
+                        <input data-required="data-required" data-length type="text" name="name"
+                               id="input-name"
+                               class="text-input">
+                        <label for="input-name" class="input-label">Ваше имя*</label>
+                    </div>
+
+
+                    <div class="input phone choice active" data-value="whatsapp">
+                        <input data-required="data-required" type="text" name="whatsapp" id="input-whatsapp"
+                               class="text-input">
+                        <label for="input-whatsapp" class="input-label">Номер телефона whatsapp*</label>
+                    </div>
+
+                    <div class="input choice" data-value="telegram">
+                        <input data-length type="text" name="telegram" id="input-telegram"
+                               class="text-input">
+                        <label for="input-telegram" class="input-label"> @username telegram</label>
+                    </div>
+
+                    <div class="input phone choice" data-value="phone">
+                        <input type="text" name="phone" id="input-phone" class="text-input">
+                        <label for="input-phone" class="input-label">Номер телефона*</label>
+                    </div>
+                    <div class="input choice" data-value="email">
+                        <input type="text" name="email" id="input-email" class="text-input">
+                        <label for="input-email" class="input-label">E-mail*</label>
+                    </div>
+
+
+                    <div class="input textarea">
+                        <textarea data-required wrap="soft" name="comment" id="input-comment"
+                                  class="text-input"></textarea>
+                        <label for="input-comment" class="input-label">Сообщение*</label>
+                    </div>
+
+                    <p class="agree">Нажимая кнопку, я даю согласие на обработку моих персональных данных в соответствии
+                        со
+                        статьей 9 ФЗ от 27.07.2006 № 152-ФЗ «О персональных данных» и соглашаюсь с
+                        <a href="{% url 'privacy' %}">политикой конфиденциальности</a></p>
+
+                    <p id="error-server-message">Ошибка сервера! Пожалуйста, попробуйте позже.</p>
+
+
+                    <div class="buttons">
+                        <a href="#" class="button right"
+                           id="send-message">Отправить
+                            <span class="img">
+                                <img class="spinner hide" src="{% static 'icons/forms/spinner.svg' %}"
+                                     height="25" alt="иконка загрузки"/>
+                            </span>
+                        </a>
+                    </div>
+
+                </form>
+                <div id="success-message">
+                    <p>Спасибо! Ваше сообщение получено. Мы свяжемся с Вами в ближайшее время</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+{% endblock content %}
+
+
+{% block scripts %}
+    <script src="{% static 'scripts/contacts/contacts.min.js' %}"></script>
+{% endblock scripts %}

@@ -65,11 +65,11 @@
             <div class="img">
                 {% if contacts.map_picture %}
                     <a target="_blank" href="
-
                             {% if contacts.map_link %}{{ contacts.map_link }}{% else %}https://goo.gl/maps/ffNe8e4hsDqQMYJo8{% endif %}">
                         <img class="lazy" src="{{ contacts.map_picture_footer.thumb.url }}"
                              data-src="{{ contacts.map_picture_footer.w600.url }}"
-                             alt="{% if contacts.alt_picture_footer %}{{ contacts.alt_picture_footer }}{% endif %}"/>
+                             alt="
+                                     {% if contacts.alt_picture_footer %}{{ contacts.alt_picture_footer }}{% else %}расположение на карте{% endif %}"/>
                     </a>
                 {% endif %}
             </div>

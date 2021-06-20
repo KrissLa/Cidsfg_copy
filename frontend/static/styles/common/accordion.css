@@ -1,0 +1,67 @@
+.accordion {
+    width: 100%;
+}
+
+.accordion .contentBx {
+    position: relative;
+    padding: 25px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+
+.accordion .contentBx .label {
+    position: relative;
+    cursor: pointer;
+    padding: 0 0 0 40px;
+    font-size: 1.3rem;
+}
+
+.accordion .contentBx .label::before {
+    content: url('data:image/svg+xml; utf8, <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-chevron-down fa-w-14 fa-2x"><path fill="currentColor" d="M443.5 162.6l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L224 351 28.5 155.5c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.7 4.8-12.3.1-17z" class=""></path></svg>');
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 0;
+    width: 15px;
+    transform: translateY(-50%) rotate(0);
+    transition: all 0.3s;
+}
+
+.accordion .contentBx.active .label::before {
+    transform: translateY(-50%) rotate(-180deg);
+    transition: all 0.3s;
+}
+
+.accordion .contentBx .content {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.accordion .contentBx.active .content {
+    padding: 25px 0;
+    transition: all 0.3s ease;
+}
+
+div.ol {
+    padding-left: 40px;
+    font-size: 1.2rem;
+}
+
+p + * {
+    margin-top: 22px;
+}
+
+div.ol + div.ol {
+    margin-top: 16px;
+}
+
+@media all and (max-width: 768px){
+    div.ol{
+        font-size:1rem;
+    }
+    .accordion .contentBx .label{
+        font-size: 1.1rem;
+    }
+}

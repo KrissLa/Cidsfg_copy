@@ -1,10 +1,13 @@
-{% load price_to_str_filter %}
+{% load price_to_str_filter static %}
 
-<section class="catalog-section">
+<section class="catalog-section padding">
     <div class="container">
-        <div class="catalog-header">
+        <div class="catalog-header flex">
             <h4>Модельный ряд</h4>
-            <a href="{% url 'houses_list' %}">Перейти в каталог <span class="fas fa-chevron-right"></span></a>
+            <a href="{% url 'houses_list' %}">
+                в каталог
+                <img src="{% static 'icons/right_black.svg' %}" height="20px" alt="стрелка вправо"/>
+            </a>
         </div>
         <div class="catalog-nav">
             <div class="tabs-controls">
@@ -67,9 +70,12 @@
                                                     руб.
                                                 </div>
                                                 <div class="item-link">
-                                                    <a href="{{ house.get_absolute_url }}"
-                                                       class="btn-a diagonal black">
-                                                        <span>Подробнее</span>
+{#                                                    <a href="{{ house.get_absolute_url }}"#}
+{#                                                       class="btn-a diagonal black">#}
+{#                                                        <span>Подробнее</span>#}
+{#                                                    </a>#}
+                                                    <a class="button right" href="{{ house.get_absolute_url }}">
+                                                        Подробнее
                                                     </a>
                                                 </div>
                                             </div>

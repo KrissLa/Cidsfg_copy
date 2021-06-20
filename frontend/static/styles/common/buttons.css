@@ -1,0 +1,47 @@
+.button {
+    height: fit-content;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 10px;
+    border: 1px solid #1B1C17;
+    text-align: center;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+    transition: .2s;
+    z-index:3;
+    width: 100%;
+    color: #ddd;
+    letter-spacing:0.1rem;
+    background: #1B1C17;
+}
+
+.button:hover {
+    cursor: pointer;
+    color: #000;
+}
+
+.button:after {
+    position: absolute;
+    transition: 0.2s;
+    content: "";
+    width: 0;
+    left: 50%;
+    bottom: 0;
+    height: 3px;
+    background: #1B1C17;
+}
+.button.right:hover:after {
+    left: -10%;
+    width: 120%;
+    background: #f7f7f7;
+}
+
+
+.button.right:after {
+    height: 120%;
+    left: -10%;
+    transform: skewX(15deg);
+    z-index: -1;
+}
+

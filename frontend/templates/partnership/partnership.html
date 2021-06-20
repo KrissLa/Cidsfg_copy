@@ -1,0 +1,177 @@
+{% extends 'superbase.html' %}
+{% load static %}
+
+
+{% block seo_title %}
+    {% if partnership %}
+        {{ partnership.seo_title }}
+    {% else %}
+        Сотрудничество | CUBO
+    {% endif %}
+{% endblock seo_title %}
+{% block seo_description %}
+    {% if partnership %}
+        {{ partnership.seo_description }}
+    {% else %}
+        Сотрудничество CUBO
+    {% endif %}
+{% endblock seo_description %}
+
+
+{% block content %}
+
+    <section class="breadcrumbs-custom">
+        <div class="container">
+            <div class="breadcrumbs-custom__inner">
+                <ul class="breadcrumbs-custom__path">
+                    <li><a href="{% url 'home' %}">Главная</a></li>
+                    <li class="active">Сотрудничество</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <div class="partnership">
+        <section class="picture">
+            <img
+                    alt="Сотрудничество"
+                    class="lazy"
+                    src="{% static 'images/partnership/partnership_th.jpg' %}"
+                    data-srcset="{% static 'images/partnership/partnership_480.jpg' %} 480w,
+                                  {% static 'images/partnership/partnership_768.jpg' %} 768w,
+                                 {% static 'images/partnership/partnership_1920.jpg' %} 1920w,
+                                {% static 'images/partnership/partnership_3000.jpg' %} 3000w,"
+                    data-sizes="(max-width: 480px) 480px,
+                                (max-width: 768px) 768px,
+                                (max-width: 1920px) 1920px,
+                                3000px"
+            />
+        </section>
+        <div class="container">
+            <section class="partnership-content">
+                <p>Мы разработали специальные условия для компаний и частных специалистов из сферы строительства и
+                    дизайна, а также застройщиков коттеджных поселков. Использование CUBO домов в качестве базового
+                    строения открывает безграничные возможности для индивидуальных планировочных решений и дизайна. Вы
+                    можете создавать дома практически любой площадью и размерами.
+                    Приглашаем к сотрудничеству.
+                </p>
+            </section>
+            <section class="partnership-form">
+                <h1 class="subtitle">Свяжитесь с нами заполнив указанную форму</h1>
+                <div class="form">
+                    <form method="post" id="form">
+                        <div>
+                            <p>Куда Вам ответить?</p>
+                        </div>
+
+                        <div class="choices">
+                            <div class="whatsapp  b-shadow active" data-key="whatsapp">
+                                <p>Whatsapp</p>
+                                <img src="{% static 'icons/forms/whatsapp.png' %}" alt="логотип whatsapp"/>
+                                <p>Очень быстро</p>
+                            </div>
+                            <div class="telegram" data-key="telegram">
+                                <p>Telegram</p>
+                                <img src="{% static 'icons/forms/telegram.png' %}" alt="логотип telegram"/>
+                                <p>Очень быстро</p>
+                            </div>
+                            <div class="phone" data-key="phone">
+                                <p>Мобильный</p>
+                                <img src="{% static 'icons/forms/phone.png' %}" alt="иконка телефона"/>
+                                <p>Быстро</p>
+                            </div>
+                            <div class="email" data-key="email">
+                                <p>E-mail</p>
+                                <img src="{% static 'icons/forms/mail.png' %}" alt="логотип mail"/>
+                                <p>Умеренно</p>
+                            </div>
+                        </div>
+                        <div class="input select">
+                            <div class="img">
+                                <img class="icon-arrow" src="{% static 'icons/right_black.svg' %}"
+                                     alt="стрелка вправо">
+                            </div>
+
+                            <select name="select-activity" id="select-activity">
+                                <option value="" disabled>Область деятельности*</option>
+                                <option value="строительство и ремонт">строительство и ремонт</option>
+                                <option value="архитектура и дизайн">архитектура и дизайн</option>
+                                <option value="земля и недвижимость">земля и недвижимость</option>
+                            </select>
+                        </div>
+                        <div class="input select z-index_1" id="select-type-wrapper">
+                            <div class="img">
+                                <img class="icon-arrow" src="{% static 'icons/right_black.svg' %}"
+                                     alt="стрелка вправо">
+                            </div>
+                            <select name="select-type" id="select-type">
+                                <option value="" disabled>Частное лицо/ Компания*</option>
+                                <option value="компания">компания</option>
+                                <option value="частное лицо">частное лицо</option>
+                            </select>
+                        </div>
+                        <div class="input">
+                            <input data-required="data-required" data-length type="text" name="first-name"
+                                   id="first-name"
+                                   class="text-input">
+                            <label for="first-name" class="input-label">Имя*</label>
+                        </div>
+                        <div class="input">
+                            <input data-required="data-required" data-length type="text" name="last-name" id="last-name"
+                                   class="text-input">
+                            <label for="last-name" class="input-label">Фамилия*</label>
+                        </div>
+
+                        <div class="input phone choice active" data-value="whatsapp">
+                            <input data-required="data-required" type="text" name="whatsapp" id="input-whatsapp"
+                                   class="text-input">
+                            <label for="input-whatsapp" class="input-label">Номер телефона whatsapp*</label>
+                        </div>
+
+                        <div class="input choice" data-value="telegram">
+                            <input data-length type="text" name="telegram" id="input-telegram"
+                                   class="text-input">
+                            <label for="input-telegram" class="input-label">Номер телефона или @username
+                                telegram</label>
+                        </div>
+
+                        <div class="input phone choice" data-value="phone">
+                            <input type="text" name="phone" id="input-phone" class="text-input">
+                            <label for="input-phone" class="input-label">Номер телефона*</label>
+                        </div>
+                        <div class="input choice" data-value="email">
+                            <input type="text" name="email" id="input-email" class="text-input">
+                            <label for="input-email" class="input-label">E-mail*</label>
+                        </div>
+
+                        <p class="agree">Нажимая кнопку, я даю согласие на обработку моих персональных данных в
+                            соответствии со статьей 9 ФЗ от 27.07.2006 № 152-ФЗ «О персональных данных» и соглашаюсь с
+                            <a href="{% url 'privacy' %}">политикой конфиденциальности</a></p>
+
+                        <p id="error-server-message">Ошибка сервера! Пожалуйста, попробуйте позже.</p>
+
+
+                        <div class="buttons">
+                            <a href="#" class="button right"
+                               id="send-message">Отправить
+                                <span class="img">
+                                <img class="spinner hide" src="{% static 'icons/forms//spinner.svg' %}"
+                                     width="30px" alt="иконка загрузки"/>
+                            </span>
+                            </a>
+                        </div>
+
+                    </form>
+                    <div id="success-message">
+                        <p>Спасибо! Ваше сообщение получено. Мы свяжемся с Вами в ближайшее время</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+{% endblock content %}
+
+
+{% block scripts %}
+    <script src="{% static 'scripts/partnership/partnership.min.js' %}"></script>
+{% endblock scripts %}

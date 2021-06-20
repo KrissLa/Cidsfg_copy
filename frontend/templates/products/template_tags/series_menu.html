@@ -16,7 +16,7 @@
                         {% for ser in cat.get_series %}
                             <div class="ddb-li-body-item">
                                 <a href="{{ ser.get_absolute_url }}">
-                                    <img src="{{ ser.picture.url }}" alt=""/>
+                                    <img src="{{ ser.picture.url }}" alt="изображение дома серии {{ ser.name }}"/>
                                     <span>{{ ser.name }} ({{ ser.get_houses.count }})</span>
                                 </a>
                             </div>

@@ -1,6 +1,5 @@
 from django.shortcuts import get_object_or_404
 from django.views.generic import ListView, DetailView
-from loguru import logger
 
 from .models import House, Series, Catalog
 
@@ -8,7 +7,7 @@ from .models import House, Series, Catalog
 class HouseDetailView(DetailView):
     """ Станица с детальной информацией о доме """
     model = House
-    template_name = 'products/product_detail_2.html'
+    template_name = 'products/product_detail.html'
     context_object_name = 'house'
 
     def get_object(self, **kwargs):
@@ -22,19 +21,17 @@ class HouseDetailView(DetailView):
                                   series__active=True,
                                   slug=slug,
                                   active=True)
-        logger.info(house)
         return house
 
 
 class HousesListView(ListView):
     """ Страницы каталога с домами """
     model = House
-    template_name = 'products/catalog_1.html'
+    template_name = 'products/catalog.html'
     context_object_name = 'houses'
 
     def get_queryset(self, **kwargs):
         series_slug = self.kwargs.get('series_slug', '')
-        logger.info(series_slug)
         if series_slug:
             series = get_object_or_404(Series, slug=series_slug, active=True)
             houses = House.objects.filter(category__active=True,
@@ -57,9 +54,6 @@ class HousesListView(ListView):
             catalog_settings = get_object_or_404(Catalog)
         except Exception:
             catalog_settings = None
-        logger.info(catalog_settings)
-        # if not series:
-        #     pass
         return {'catalog_settings': catalog_settings,
                 'series_slug': series_slug,
                 'series_list': series_list,

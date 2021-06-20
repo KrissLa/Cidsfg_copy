@@ -1,0 +1,157 @@
+{% extends 'superbase.html' %}
+{% load static %}
+
+{% block seo_title %}
+    {% if about %}
+        {{ about.seo_title }}
+    {% else %}
+        Завод | CUBO
+    {% endif %}
+{% endblock seo_title %}
+{% block seo_description %}
+    {% if about %}
+        {{ about.seo_description }}
+    {% else %}
+        Подробная информация о компании CUBO | CUBO
+    {% endif %}
+{% endblock seo_description %}
+
+
+{% block content %}
+    <section class="breadcrumbs-custom">
+        <div class="container">
+            <div class="breadcrumbs-custom__inner">
+                <ul class="breadcrumbs-custom__path">
+                    <li><a href="{% url 'home' %}">Главная</a></li>
+                    <li class="active">Завод</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-nav">
+        <div class="container">
+            <div class="about-wrapper">
+                <div class="about-menu">
+                    <ul>
+                        <li>
+                            <a href="#about">О компании</a>
+                        </li>
+                        <li>
+                            <a href="#factory">О заводе</a>
+                        </li>
+                        <li>
+                            <a href="#capacity">Производственные мощности</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="about-video">
+                    <img
+                            data-video="{% static 'video/about/Rolik_zavod.mp4' %}"
+                            alt="Превью к видео о заводе CUBO"
+                            class="lazy"
+                            id="video-preview"
+                            src="{% static 'video/about/preview_th.jpg' %}"
+                            data-srcset="{% static 'video/about/preview_480.jpg' %} 480w,
+                                         {% static 'video/about/preview_800.jpg' %} 800w"
+                            data-sizes="(max-width: 767px) 480px,
+                                                800px"
+                            width=""
+                            height=""
+                    />
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section id="about" class="about-section" data-background="{% if about %}
+                {{ about.about_company_picture.w3000.url }}
+            {% else %}
+                {% static 'images/about/about_company.jpg' %}
+            {% endif %})">
+        <div class="inner-container">
+            <div class="container">
+                <h2>О компании</h2>
+
+                <p class="text">
+                    {% if about %}
+                        {{ about.about_company }}
+                    {% else %}
+                        Компания CUBO ДОМ является автором и разработчиком новой технологии строительства домов CUBO.
+                        Технология заключается в стандартизации несущих конструкций и позволяет быстро возводить
+                        сборно-разборные здания.
+                    {% endif %}
+
+                </p>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="factory" class="about-section right" data-background="{% if about %}
+                 {{ about.about_factory_picture.w3000.url }}
+             {% else %}
+                 {% static 'images/about/factory.jpg' %}
+             {% endif %}">
+
+        <div class="inner-container">
+            <div class="container">
+                <h2>О заводе</h2>
+                <div class="picture mobile-display">
+                    <img
+                            alt="Сотрудничество"
+                            class="lazy"
+                            src="{% static 'images/about/factory_th.jpg' %}"
+                            data-src="{% static 'images/about/factory_480.jpg' %}"
+                            width=""
+                            height=""
+                    />
+                </div>
+
+                <p class="text">
+                    {% if about %}
+                        {{ about.about_factory }}
+                    {% else %}
+                        Деревообрабатывающее предприятие, на котором производятся дома CUBO было основано в 1994 году и
+                        ходе
+                        развития вышло на производство клееных изделий с полным технологическим циклом.
+                        К настоящему времени предприятие имеет свою инфраструктуру, которая начинается заготовкой леса и
+                        заканчивается производством изделий деревообработки. Площадь предприятия составляет 1,8 га, из
+                        них
+                        производственные площади - 3500 м². Численность работающих - 250 человек.
+                    {% endif %}
+
+                </p>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="capacity" class="capacity">
+        <div class="container">
+            <header><h4>Производственные мощности</h4></header>
+            <div class="body">
+                <p>Общая площадь производственных цехов составляет более 3 500 м² в том числе:</p>
+                <ul>
+                    <li>Участок распиловки</li>
+                    <li>Сушильный комплекс</li>
+                    <li>Столярный комплекс</li>
+                    <li>Дверной цех</li>
+                    <li>Погонажный цех</li>
+                    <li>Прессовый цех</li>
+                    <li>Механический участок</li>
+                    <li>Транспортный участок</li>
+                    <li>Складской комплекс</li>
+                </ul>
+
+            </div>
+        </div>
+    </section>
+
+
+{% endblock content %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{% static 'scripts/about/about.min.js' %}"></script>
+{% endblock scripts %}

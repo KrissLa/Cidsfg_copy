@@ -1,0 +1,80 @@
+{% load static products_menu pre_footer seo_tags %}
+<!DOCTYPE html>
+<html class="wide wow-animation" lang="en">
+<head>
+    <!-- Site Title-->
+    <title>{% block seo_title %} {% endblock seo_title %}</title>
+    <meta name="description" content="{% block seo_description %} {% endblock seo_description %}">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1 user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'styles/index_autoprefixer.min.css' %}">
+    {% block styles %}{% endblock styles %}
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+          rel="stylesheet">
+    {% all_counters %}
+    {% all_ss %}
+</head>
+<body>
+<!-- Page-->
+<header class="black-shadow menu {% block header_class %}{% endblock header_class %}">
+    {% products_menu %}
+    <div class="container">
+        <a href="{% url 'home' %}" class="logo">
+            <img src="{% static 'images/cubo_logo@8x.png' %}" alt="Логотип компании Кубо ДОМ"/>
+        </a>
+        <ul class="main">
+            <li class="dropdown-big" data-for="categories">
+                <a href="{% url 'houses_list' %}">Модельный ряд</a>
+
+            </li>
+            <li><a href="{% url 'about' %}">Завод</a></li>
+            <li><a href="{% url 'partnership' %}">Сотрудничество</a></li>
+            <li><a href="{% url 'contacts' %}">Контакты</a></li>
+        </ul>
+        <div class="hamburger">
+            <span id="firstSpan"></span>
+            <span id="secondSpan"></span>
+            <span id="thirdSpan"></span>
+        </div>
+
+
+    </div>
+</header>
+
+<main>
+    {% block content %}
+
+    {% endblock content %}
+</main>
+
+
+{% pre_footer %}
+
+<footer class="footer-corporate">
+    <div class="container">
+        <div class="footer-corporate__inner">
+            <p class="rights"><a
+                    href="{% url 'privacy' %}">Политика конфиденциальности</a></p>
+            <ul class="list-inline-xxs">
+                {#                    <li><a class="icon icon-xxs icon-gray-4 fa fa-facebook" href="#"></a></li>#}
+                {#                    <li><a class="icon icon-xxs icon-gray-4 fa fa-twitter" href="#"></a></li>#}
+                {#                    <li><a class="icon icon-xxs icon-gray-4 fa fa-google-plus" href="#"></a></li>#}
+                {#                    <li><a class="icon icon-xxs icon-gray-4 fa fa-vimeo" href="#"></a></li>#}
+                {#                    <li><a class="icon icon-xxs icon-gray-4 fa fa-youtube" href="#"></a></li>#}
+                {#                    <li><a class="icon icon-xxs icon-gray-4 fa fa-pinter"></a></li>#}
+            </ul>
+        </div>
+    </div>
+</footer>
+
+{% block scripts %}
+{% endblock scripts %}
+
+</body>
+</html>

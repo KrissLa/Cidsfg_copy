@@ -1,0 +1,189 @@
+
+.partnership {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.partnership .picture {
+    width: 100%;
+    padding: 75px 0;
+}
+
+.partnership section {
+    padding: unset;
+}
+
+.partnership .picture img {
+    width: 100%;
+}
+
+.partnership .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 75px;
+    padding-top: 50px;
+    padding-bottom: 125px;
+}
+
+@media all and (max-width: 1300px) {
+    .partnership .container {
+        grid-template-columns: 2fr 3fr;
+    }
+}
+
+@media all and (max-width: 992px) {
+    .partnership .container {
+        grid-template-columns: 1fr;
+        padding-top: 25px;
+        padding-bottom: 75px;
+        gap: 50px;
+    }
+
+    .partnership .picture img {
+        padding-bottom: 0;
+    }
+}
+
+@media all and (max-width: 769px) {
+
+}
+
+.partnership-form .form {
+    padding: unset;
+}
+
+.partnership-form h1.subtitle {
+    font-size: 1.6rem;
+    letter-spacing: 0.1rem;
+    padding-bottom: 25px;
+}
+
+.input.select {
+    position: relative;
+    cursor: pointer;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+    z-index: 3;
+    overflow: unset;
+}
+
+.input.select.error {
+    border-bottom: 2px solid red;
+}
+
+.input.select.z-index_1 {
+    z-index: 1;
+}
+
+.input.select:after {
+    display: none;
+}
+.input.select .img {
+    position: absolute;
+    right: 20px;
+    width: 12px;
+    height: 12px;
+    top: 55%;
+    transform: translateY(-50%);
+}
+.input.select .img img{
+    z-index:-1;
+    transform:rotate(90deg);
+    transition: all 0.2s;
+}
+
+.input.select.active .img img{
+    transform:rotate(-90deg);
+    transition: all 0.2s;
+}
+
+.sel__placeholder {
+    font-size:1.2rem;
+    display: block;
+    padding: 0.2rem 0.5rem;
+    text-align: left;
+    pointer-events: none;
+    user-select: none;
+    visibility: visible;
+    color: #9d959d;
+}
+
+.input.select.active .sel__placeholder {
+    visibility: hidden;
+}
+
+.sel__placeholder:before {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 0.2rem 0.5rem;
+    content: attr(data-placeholder);
+    visibility: hidden;
+}
+
+.input.select.active .sel__placeholder:before {
+    visibility: visible;
+    color: #000;
+}
+
+.sel__box {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: -4px;
+    display: none;
+    list-style-type: none;
+    text-align: left;
+    width: calc(100% + 8px);
+    background-color: #f6f6f6;
+    /*color: #ddd;*/
+
+}
+
+.input.select.active .sel__box {
+    display: block;
+    animation: fadeInUpA 500ms;
+}
+
+.sel__box__options {
+    display: list-item;
+    padding: 0.5em 1em;
+    user-select: none;
+}
+
+.sel__box__options::after {
+    content: url('data:image/svg+xml; utf8, <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="check" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-check fa-w-14 fa-2x"><path fill="currentColor" d="M413.505 91.951L133.49 371.966l-98.995-98.995c-4.686-4.686-12.284-4.686-16.971 0L6.211 284.284c-4.686 4.686-4.686 12.284 0 16.971l118.794 118.794c4.686 4.686 12.284 4.686 16.971 0l299.813-299.813c4.686-4.686 4.686-12.284 0-16.971l-11.314-11.314c-4.686-4.686-12.284-4.686-16.97 0z" class=""></path></svg>');
+    width: 10px;
+    display: none;
+    margin-left: 5px;
+}
+
+.sel__box__options.selected::after {
+    display: inline-block;
+}
+
+.sel__box__options:hover {
+    background-color: #ddd;
+}
+
+@keyframes fadeInUpA {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 20px, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes fadeOutA {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+

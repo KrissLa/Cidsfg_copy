@@ -16,6 +16,7 @@ CORS_ORIGIN_WHITELIST = [
 
 STATIC_URL = 'frontend/static/'
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'frontend/static')]
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'frontend/static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'frontend/static'), os.path.join(BASE_DIR, 'frontend/static_new')]
 
 # STATIC_ROOT = os.path.join(BASE_DIR, 'frontend/static')
