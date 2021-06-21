@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from backend.partnership.models import CooperationApplication
+from backend.apps.partnership.models import CooperationApplication
 
 
 class CooperationApplicationSerializer(serializers.ModelSerializer):

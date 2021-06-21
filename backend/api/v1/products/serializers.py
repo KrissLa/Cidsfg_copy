@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from backend.products.models import House, Category, Series, ConsultationRequest
+from backend.apps.products.models import House, Category, Series, ConsultationRequest
 
 
 class ConsultationRequestSerializer(serializers.ModelSerializer):

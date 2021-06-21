@@ -1,7 +1,7 @@
 from rest_framework import status
 from rest_framework.response import Response
 
-from backend.products.models import House, ConsultationRequest
+from backend.apps.products.models import House, ConsultationRequest
 from rest_framework.filters import OrderingFilter
 from rest_framework.generics import ListAPIView, CreateAPIView
 

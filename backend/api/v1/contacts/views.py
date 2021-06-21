@@ -2,7 +2,7 @@ from rest_framework import status
 from rest_framework.generics import CreateAPIView
 from rest_framework.response import Response
 
-from backend.contacts.models import Message
+from backend.apps.contacts.models import Message
 from .serializers import MessageSerializer
 from .services import send_notification
 

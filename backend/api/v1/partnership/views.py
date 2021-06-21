@@ -2,7 +2,7 @@ from rest_framework import status
 from rest_framework.generics import CreateAPIView
 from rest_framework.response import Response
 
-from backend.partnership.models import CooperationApplication
+from backend.apps.partnership.models import CooperationApplication
 from .serializers import CooperationApplicationSerializer
 from .services import send_notification
 

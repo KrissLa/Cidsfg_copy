@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from backend.home_decorations.models import HomeDecoration, HomeDecorationType, HomeDecorationSubCategory, \
+from backend.apps.home_decorations.models import HomeDecoration, HomeDecorationType, HomeDecorationSubCategory, \
     HomeDecorationCategory
 
 

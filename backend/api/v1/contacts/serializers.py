@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from backend.contacts.models import Message
+from backend.apps.contacts.models import Message
 
 
 class MessageSerializer(serializers.ModelSerializer):

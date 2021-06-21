@@ -2,6 +2,7 @@ import os
 from loguru import logger
 from pathlib import Path
 
+from backend.apps.config.settings import INSTALLED_APPS as MY_APPS
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ['SECRET_KEY']
@@ -24,18 +25,8 @@ INSTALLED_APPS = [
     'django_filters',
     'nested_admin',
     'ckeditor',
+] + MY_APPS
 
-    'backend.seo',
-    'backend.home_page',
-    'backend.privacy',
-    'backend.products',
-    'backend.home_decorations',
-    'backend.about',
-    'backend.partnership',
-    'backend.contacts',
-    'backend.apps.contact_forms',
-
-]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

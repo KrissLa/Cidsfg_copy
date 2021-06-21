@@ -5,12 +5,12 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.sitemaps.views import sitemap
-from backend.about.sitemaps import AboutSitemap
-from backend.contacts.sitemaps import ContactsSitemap
-from backend.home_page.sitemaps import HomePageSitemap
-from backend.partnership.sitemaps import PartnershipSitemap
-from backend.privacy.sitemaps import PrivacySitemap
-from backend.products.sitemaps import CatalogSitemap, SeriesSitemap, HouseSitemap
+from backend.apps.about.sitemaps import AboutSitemap
+from backend.apps.contacts.sitemaps import ContactsSitemap
+from backend.apps.home_page.sitemaps import HomePageSitemap
+from backend.apps.partnership.sitemaps import PartnershipSitemap
+from backend.apps.privacy.sitemaps import PrivacySitemap
+from backend.apps.products.sitemaps import CatalogSitemap, SeriesSitemap, HouseSitemap
 
 ADMIN_URL = os.environ['ADMIN_URL']
 
@@ -26,21 +26,12 @@ sitemaps = {'home': HomePageSitemap,
 
 urlpatterns = [
     path('nobots/' + ADMIN_URL + '/', admin.site.urls),
-    path('', include('backend.home_page.urls')),
-    path('privacy/', include('backend.privacy.urls')),
-    path('catalog/', include('backend.products.urls')),
-    # path('home_decorations/', include('backend.home_decorations.urls')),
-    path('about/', include('backend.about.urls')),
-    path('partnership/', include('backend.partnership.urls')),
-    path('contacts/', include('backend.contacts.urls')),
 
     path('nobots/api/v1/contacts/', include('backend.api.v1.contacts.urls')),
     path('nobots/api/v1/partnership/', include('backend.api.v1.partnership.urls')),
-    # path('api/v1/home_decorations/', include('backend.api.v1.home_decorations.urls')),
     path('nobots/api/v1/houses/', include('backend.api.v1.products.urls')),
     path('nobots/api/v1/', include('backend.api.v1.config.urls')),
-    # path('nobots/api/v1/contact_forms/individual_project/', include('backend.api.v1.contact_forms.urls')),
-
+    path('', include('backend.apps.config.urls')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
          name='django.contrib.sitemaps.views.sitemap')
 ]
