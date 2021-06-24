@@ -1,4 +1,5 @@
 from django.db import models
+from loguru import logger
 
 
 class IndividualProjectRequest(models.Model):
@@ -17,9 +18,17 @@ class IndividualProjectRequest(models.Model):
     processed = models.BooleanField('Отметить заявку как обработанную', default=False)
     created = models.DateTimeField('Время отправки заявки', auto_now_add=True)
 
-    class Meta:
-        verbose_name = 'Заявка на уникальный проект'
-        verbose_name_plural = 'Заявки на уникальный проект'
+    @classmethod
+    def get_new_count(cls):
+        logger.info(cls.objects.filter(processed=False).count())
+        return cls.objects.filter(processed=False).count()
+
+    # def need_count(self):
+    #     return True
 
     def __str__(self):
         return f'Заявка на индивидуальный проект № {self.id}'
+
+    class Meta:
+        verbose_name = 'Заявка на уникальный проект'
+        verbose_name_plural = f'Заявки на уникальный проект'
