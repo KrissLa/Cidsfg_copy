@@ -7,24 +7,7 @@ from nested_admin.nested import NestedTabularInline, NestedStackedInline, Nested
 from .models import House, Category, Series, HousePicture, Options, Turnkey, IncludedInPriceTurnkey, \
     IncludedInPriceTurnkeyItem, NotIncludedInPriceTurnkey, NotIncludedInPriceForFinishing, \
     IncludedInPriceForFinishingItem, NotIncludedInPriceDelivery, IncludedInPriceDeliveryItem, \
-    IncludedInPriceForFinishing, IncludedInPriceDelivery, Delivery, ForFinishing, ConsultationRequest, Catalog
-
-
-# Заявки на консультацию
-
-@admin.register(ConsultationRequest)
-class ConsultationRequestAdmin(admin.ModelAdmin):
-    """ Управление заявками на консультацию """
-    list_display = ('id', 'username', 'processed', 'created')
-    list_display_links = ('id', 'username',)
-    list_editable = ('processed',)
-    readonly_fields = (
-        'id', 'username', 'type_of_contact', 'contact', 'message', 'house_name', 'created',)
-    list_filter = ('processed', 'created', 'house_name', 'type_of_contact')
-    search_fields = ('id', 'username', 'contact', 'house_name', 'message')
-
-    def has_add_permission(self, request, obj=None):
-        return False
+    IncludedInPriceForFinishing, IncludedInPriceDelivery, Delivery, ForFinishing, Catalog
 
 
 # Формы
@@ -284,6 +267,7 @@ class CatalogAdmin(admin.ModelAdmin):
             },
         ),
     )
+
     def has_add_permission(self, request, obj=None):
         if Catalog.objects.all().count() >= 1:
             return False

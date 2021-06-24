@@ -28,7 +28,6 @@ urlpatterns = [
     path('nobots/' + ADMIN_URL + '/', admin.site.urls),
 
     path('nobots/api/v1/partnership/', include('backend.api.v1.partnership.urls')),
-    path('nobots/api/v1/houses/', include('backend.api.v1.products.urls')),
     path('nobots/api/v1/', include('backend.api.v1.config.urls')),
     path('', include('backend.apps.config.urls')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps},

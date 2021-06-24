@@ -52,3 +52,17 @@ def send_notification_message(data, admin_id=TG_ADMIN_ID):
 <a href="{SITE_DOMAIN}/nobots/{ADMIN_URL}/contact_forms/message/{data['id']}/change/">Посмотреть в панели администратора</a>
 """
     send_message_to_admin(message, admin_id)
+
+
+def send_notification_consultation(data, admin_id=TG_ADMIN_ID):
+    """Отправляем уведомление о новой заявке на консультацию """
+    message = f"""
+Новое заявка на консультацию № <b>{data['id']}</b>!
+Имя пользователя: <b>{data['username']}</b>
+Куда ответить: <b>{data['type_of_contact']}</b>
+Контакт пользователя: <b>{data['contact']}</b>
+Сообщение: <b>{data['message']}</b>
+Название дома: <b>{data['house_name']}</b>
+<a href="{SITE_DOMAIN}/nobots/{ADMIN_URL}/contact_forms/consultationrequest/{data['id']}/change/">Посмотреть в панели администратора</a>
+"""
+    send_message_to_admin(message, admin_id)

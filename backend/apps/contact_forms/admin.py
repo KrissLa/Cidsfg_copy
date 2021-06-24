@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import IndividualProjectRequest, Message
+from .models import IndividualProjectRequest, Message, ConsultationRequest
 
 
 @admin.register(IndividualProjectRequest)
@@ -26,6 +26,23 @@ class MessageAdmin(admin.ModelAdmin):
     readonly_fields = ('id', 'username', 'type_of_contact', 'contact', 'message', 'created')
     list_filter = ('processed', 'created', 'type_of_contact')
     search_fields = ('id', 'username', 'message')
+
+    def has_add_permission(self, request, obj=None):
+        return False
+
+
+# Заявки на консультацию
+
+@admin.register(ConsultationRequest)
+class ConsultationRequestAdmin(admin.ModelAdmin):
+    """ Управление заявками на консультацию """
+    list_display = ('id', 'username', 'processed', 'created')
+    list_display_links = ('id', 'username',)
+    list_editable = ('processed',)
+    readonly_fields = (
+        'id', 'username', 'type_of_contact', 'contact', 'message', 'house_name', 'created',)
+    list_filter = ('processed', 'created', 'house_name', 'type_of_contact')
+    search_fields = ('id', 'username', 'contact', 'house_name', 'message')
 
     def has_add_permission(self, request, obj=None):
         return False

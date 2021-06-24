@@ -400,28 +400,3 @@ class Series(SeoAbstract):
     def get_houses(self):
         return self.houses.filter(active=True,
                                   category__active=True)
-
-
-####
-
-
-class ConsultationRequest(models.Model):
-    """ Модель заявки на консультацию со страницы с подробным описанием дома """
-    username = models.CharField('Имя пользователя', max_length=255)
-    type_of_contact = models.CharField('Куда ответить', max_length=100, default='Мобильный')
-    contact = models.CharField('Контакт', max_length=255, default='')
-    message = models.TextField('Сообщение пользователя', blank=True, null=True)
-    processed = models.BooleanField('Отметить заявку как обработанную', default=False)
-    house_name = models.CharField('Название модели дома, со страницы которого отправлена заявка', max_length=100)
-    created = models.DateTimeField('Время отправки сообщения', auto_now_add=True)
-
-    class Meta:
-        verbose_name = 'Заявка на консультацию'
-        verbose_name_plural = 'Заявки на консультацию'
-
-    def __str__(self):
-        if self.processed:
-            processed = ''
-        else:
-            processed = '(Новая!)'
-        return f'Заявка на консультацию № {self.id} от пользователя {self.username}. {processed}'

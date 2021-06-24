@@ -1,13 +1,6 @@
 from rest_framework import serializers
 
-from backend.apps.products.models import House, Category, Series, ConsultationRequest
-
-
-class ConsultationRequestSerializer(serializers.ModelSerializer):
-    """ Сериализация заявки на консультацию """
-    class Meta:
-        model = ConsultationRequest
-        fields = "__all__"
+from backend.apps.products.models import House, Category, Series
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -26,7 +19,6 @@ class SeriesSerializer(serializers.ModelSerializer):
         fields = ('name', 'get_absolute_url')
 
 
-
 class HouseSerializer(serializers.ModelSerializer):
     """ Сериализация модели дома """
     category = CategorySerializer()
@@ -34,4 +26,4 @@ class HouseSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = House
-        fields = ('id', 'name', 'category', 'series', 'slug', )
+        fields = ('id', 'name', 'category', 'series', 'slug',)
