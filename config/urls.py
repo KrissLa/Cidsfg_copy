@@ -27,7 +27,6 @@ sitemaps = {'home': HomePageSitemap,
 urlpatterns = [
     path('nobots/' + ADMIN_URL + '/', admin.site.urls),
 
-    path('nobots/api/v1/contacts/', include('backend.api.v1.contacts.urls')),
     path('nobots/api/v1/partnership/', include('backend.api.v1.partnership.urls')),
     path('nobots/api/v1/houses/', include('backend.api.v1.products.urls')),
     path('nobots/api/v1/', include('backend.api.v1.config.urls')),

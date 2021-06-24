@@ -39,3 +39,16 @@ def send_notification(data, admin_id=TG_ADMIN_ID):
     data['created'] = datetime.now().strftime('%Y-%m-%d %H:%M')
 
     send_message_to_admin(message.format(domain=SITE_DOMAIN, admin_url=ADMIN_URL, **data), admin_id)
+
+
+def send_notification_message(data, admin_id=TG_ADMIN_ID):
+    """Отправляем уведомление о новом сообщении со страницы Контакты"""
+    message = f"""
+Новое сообщение № <b>{data['id']}</b>!
+Имя пользователя: <b>{data['username']}</b>
+Куда ответить: <b>{data['type_of_contact']}</b>
+Контакт пользователя: <b>{data['contact']}</b>
+Сообщение: <b>{data['message']}</b>
+<a href="{SITE_DOMAIN}/nobots/{ADMIN_URL}/contact_forms/message/{data['id']}/change/">Посмотреть в панели администратора</a>
+"""
+    send_message_to_admin(message, admin_id)

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Contacts, Message
+from .models import Contacts
 
 
 @admin.register(Contacts)
@@ -47,17 +47,3 @@ class ContactsAdmin(admin.ModelAdmin):
             return False
         else:
             return True
-
-
-@admin.register(Message)
-class MessageAdmin(admin.ModelAdmin):
-    """ Управление сообщениями со страницы Контакты из админ панели """
-    list_display = ('id', 'username', 'processed', 'created')
-    list_display_links = ('id', 'username',)
-    list_editable = ('processed',)
-    readonly_fields = ('id', 'username', 'type_of_contact', 'contact', 'message', 'created')
-    list_filter = ('processed', 'created', 'type_of_contact')
-    search_fields = ('id', 'username', 'message')
-
-    def has_add_permission(self, request, obj=None):
-        return False

@@ -350,7 +350,7 @@ const form = document.querySelector('#form'),
     sendMessageButton = document.querySelector('#send-message'),
     spinner = sendMessageButton.querySelector('.spinner'),
     hideAfterSendElements = form.querySelectorAll('.hide-after-send'),
-    MessageAddUrl = `${window.location.origin}/nobots/api/v1/contacts/add/`,
+    MessageAddUrl = `${window.location.origin}/nobots/api/v1/contact_forms/message/add/`,
     choicesButtons = document.querySelectorAll('.choices div'),
     blurLine = (inputElement, transition) => {
         inputElement.classList.add('blur-line');

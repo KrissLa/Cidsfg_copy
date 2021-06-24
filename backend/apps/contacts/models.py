@@ -60,22 +60,4 @@ class Contacts(SeoAbstract):
         return f"Контакты"
 
 
-class Message(models.Model):
-    """ Модель сообщения, отправляемого через форму на странице контакты """
-    username = models.CharField('Имя пользователя', max_length=255)
-    type_of_contact = models.CharField('Куда ответить', max_length=100, default='Мобильный')
-    contact = models.CharField('Контакт', max_length=255, default='')
-    message = models.TextField('Сообщение пользователя')
-    processed = models.BooleanField('Отметить заявку как обработанную', default=False)
-    created = models.DateTimeField('Время отправки сообщения', auto_now_add=True)
 
-    class Meta:
-        verbose_name = 'Сообщение, отправленное через форму со страницы Контакты'
-        verbose_name_plural = 'Сообщения отправленные через форму со страницы Контакты'
-
-    def __str__(self):
-        if self.processed:
-            processed = ''
-        else:
-            processed = '(Новое сообщение!)'
-        return f'Сообщение № {self.id} от пользователя {self.username}. {processed}'
