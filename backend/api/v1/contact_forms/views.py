@@ -2,9 +2,12 @@ from rest_framework import status
 from rest_framework.generics import CreateAPIView
 from rest_framework.response import Response
 
-from backend.apps.contact_forms.models import IndividualProjectRequest, Message, ConsultationRequest
-from .serializers import IndividualProjectRequestSerializer, MessageSerializer, ConsultationRequestSerializer
-from .services import send_notification, send_notification_message, send_notification_consultation
+from backend.apps.contact_forms.models import IndividualProjectRequest, Message, ConsultationRequest, \
+    CooperationApplication
+from .serializers import IndividualProjectRequestSerializer, MessageSerializer, ConsultationRequestSerializer, \
+    CooperationApplicationSerializer
+from .services import send_notification, send_notification_message, send_notification_consultation, \
+    send_notification_partnership
 
 
 class IndividualProjectRequestCreateAPIView(CreateAPIView):
@@ -46,4 +49,18 @@ class ConsultationRequestCreateAPIView(CreateAPIView):
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
         send_notification_consultation(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+
+
+class CooperationApplicationCreateAPIView(CreateAPIView):
+    """ Добавление заявки на сотрудничество """
+    queryset = CooperationApplication.objects.none()
+    serializer_class = CooperationApplicationSerializer
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        send_notification_partnership(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
