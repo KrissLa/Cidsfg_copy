@@ -12,8 +12,7 @@ def generate_picture_path(instance, filename):
 
 
 class About(SeoAbstract):
-    """ Запись с информацией о нам """
-    youtube_url = models.CharField('Часть ссылки на видео на YouTube', max_length=100, default='ccuQoF0vKYU')
+    """ Запись с информацией о производстве """
     about_company = models.TextField('О компании')
     about_company_picture = StdImageField('Изображение О компании', upload_to=generate_picture_path,
                                           variations={
@@ -21,8 +20,8 @@ class About(SeoAbstract):
                                               'admin': (90, 60),
                                               'thumb': (15, 10),
                                           }, )
-    about_factory = models.TextField('О заводе')
-    about_factory_picture = StdImageField('Изображение О заводе', upload_to=generate_picture_path,
+    about_factory = models.TextField('О производстве')
+    about_factory_picture = StdImageField('Изображение О производстве', upload_to=generate_picture_path,
                                           variations={
                                               'w3000': (3000, 2000),
                                               'admin': (90, 60),
@@ -31,8 +30,8 @@ class About(SeoAbstract):
     updated = models.DateTimeField(auto_now=True)
 
     class Meta:
-        verbose_name = 'Страница Завод'
-        verbose_name_plural = 'Страница Завод'
+        verbose_name = 'Страница Производство'
+        verbose_name_plural = 'Страница Производство'
 
     def __str__(self):
-        return f'Страница Завод'
+        return f'Страница Производство'

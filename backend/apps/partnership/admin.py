@@ -11,6 +11,8 @@ class PartnershipAdmin(admin.ModelAdmin):
             'fields': (
                 ('seo_title',),
                 ('seo_description',),
+                ('seo_og_title',),
+                ('seo_og_image',),
             )
         }),
     )

@@ -1,11 +1,11 @@
 {% extends 'superbase.html' %}
-{% load static %}
+{% load static image_type %}
 
 {% block seo_title %}
     {% if about %}
         {{ about.seo_title }}
     {% else %}
-        Завод | CUBO
+        Производство | CUBO
     {% endif %}
 {% endblock seo_title %}
 {% block seo_description %}
@@ -16,6 +16,16 @@
     {% endif %}
 {% endblock seo_description %}
 
+{% block seo_og_title %}{% firstof about.seo_og_title about.seo_title  "Подробная информация о компании CUBO" %}{% endblock seo_og_title %}
+
+{% block seo_og_url %}{% url 'about' %}{% endblock seo_og_url %}
+
+{% block seo_og_image %}{% firstof about.seo_og_image.w1000.url about.about_company_picture.w3000.url about.about_factory_picture.w3000.url  "" %}{% endblock seo_og_image %}
+
+{% block seo_og_image_secure_url %}{% firstof about.seo_og_image.w1000.url about.about_company_picture.w3000.url about.about_factory_picture.w3000.url "" %}{% endblock seo_og_image_secure_url %}
+
+{% block seo_og_image_type %}{% firstof about.seo_og_image.w1000.url|image_type about.about_company_picture.w3000.url|image_type about.about_factory_picture.w3000.url|image_type "JPEG" %}{% endblock seo_og_image_type %}
+
 
 {% block content %}
     <section class="breadcrumbs-custom">
@@ -23,7 +33,7 @@
             <div class="breadcrumbs-custom__inner">
                 <ul class="breadcrumbs-custom__path">
                     <li><a href="{% url 'home' %}">Главная</a></li>
-                    <li class="active">Завод</li>
+                    <li class="active">Производство</li>
                 </ul>
             </div>
         </div>
@@ -38,7 +48,7 @@
                             <a href="#about">О компании</a>
                         </li>
                         <li>
-                            <a href="#factory">О заводе</a>
+                            <a href="#factory">О Производстве</a>
                         </li>
                         <li>
                             <a href="#capacity">Производственные мощности</a>
@@ -48,7 +58,7 @@
                 <div class="about-video">
                     <img
                             data-video="{% static 'video/about/Rolik_zavod.mp4' %}"
-                            alt="Превью к видео о заводе CUBO"
+                            alt="Превью к видео о производстве CUBO"
                             class="lazy"
                             id="video-preview"
                             src="{% static 'video/about/preview_th.jpg' %}"
@@ -97,10 +107,10 @@
 
         <div class="inner-container">
             <div class="container">
-                <h2>О заводе</h2>
+                <h2>О производстве</h2>
                 <div class="picture mobile-display">
                     <img
-                            alt="Сотрудничество"
+                            alt="Производство"
                             class="lazy"
                             src="{% static 'images/about/factory_th.jpg' %}"
                             data-src="{% static 'images/about/factory_480.jpg' %}"

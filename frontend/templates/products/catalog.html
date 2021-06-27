@@ -1,5 +1,5 @@
 {% extends 'superbase.html' %}
-{% load static price_to_str_filter %}
+{% load static price_to_str_filter image_type %}
 
 {% block seo_title %}
     {% if not series %}
@@ -23,6 +23,26 @@
         {{ series.seo_description }}
     {% endif %}
 {% endblock seo_description %}
+
+
+
+{% block seo_og_title %}
+    {% if not series %}
+        {% firstof catalog_settings.seo_og_title catalog_settings.seo_title  "Модельный ряд CUBO" %}
+    {% else %}
+        {% firstof series.seo_og_title series.seo_title  "Модельный ряд CUBO" %}
+    {% endif %}
+
+{% endblock seo_og_title %}
+
+{% block seo_og_url %}{% if not series %}{% url 'houses_list' %}{% else %}{% url 'houses_list_by_series' series.slug %}{% endif %}{% endblock seo_og_url %}
+
+{% block seo_og_image %}{% if not series %}{% firstof catalog_settings.seo_og_image.w1000.url '' %}{% else %}{% firstof series.seo_og_image.w1000.url '' %}{% endif %}{% endblock seo_og_image %}
+
+{% block seo_og_image_secure_url %}{% if not series %}{% firstof catalog_settings.seo_og_image.w1000.url '' %}{% else %}{% firstof series.seo_og_image.w1000.url '' %}{% endif %}{% endblock seo_og_image_secure_url %}
+
+{% block seo_og_image_type %}{% if not series %}{% firstof catalog_settings.seo_og_image.w1000.url|image_type 'JPEG' %}{% else %}{% firstof series.seo_og_image.w1000.url|image_type 'JPEG' %}{% endif %}{% endblock seo_og_image_type %}
+
 
 
 

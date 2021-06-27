@@ -208,11 +208,15 @@ class HouseAdmin(NestedModelAdmin):
     save_on_top = True
     prepopulated_fields = {"slug": ("name",)}
     fieldsets = (
+        ('SEO', {
+            'fields': (
+                ('seo_title',),
+                ('seo_description',),
+                ('seo_og_title',),
+                ('seo_og_image',),
+            )
+        }),
         (
-            'SEO', {
-                'fields': ('seo_title', 'seo_description')
-            },
-        ), (
             'Общая информация', {
                 'fields': ('name', 'slug', 'category', 'series')
             },
@@ -257,11 +261,15 @@ class CatalogAdmin(admin.ModelAdmin):
     """ Управление каталогом из панели администратора """
     form = CatalogAdminCKEditorForm
     fieldsets = (
+        ('SEO', {
+            'fields': (
+                ('seo_title',),
+                ('seo_description',),
+                ('seo_og_title',),
+                ('seo_og_image',),
+            )
+        }),
         (
-            'SEO', {
-                'fields': ('seo_title', 'seo_description')
-            },
-        ), (
             'Уникальный проект', {
                 'fields': ('card_text', 'modal_text')
             },

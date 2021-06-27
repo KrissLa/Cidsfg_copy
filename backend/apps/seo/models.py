@@ -1,7 +1,7 @@
 from django.db import models
 
-
 # Create your models here.
+from stdimage import StdImageField
 
 
 class SeoAbstract(models.Model):
@@ -10,6 +10,17 @@ class SeoAbstract(models.Model):
                                  default='CUBO')
     seo_description = models.CharField('SEO description', help_text='Не больше 150 символов', max_length=150,
                                        blank=True)
+    seo_og_title = models.CharField('SEO og:title',
+                                    help_text='Не больше 70 символов. Этот текст будет отображаться как подпись к ссылке',
+                                    max_length=70, blank=True,
+                                    null=True)
+    seo_og_image = StdImageField('SEO og:image (JPEG)', upload_to='SEO/og_images',
+                                 help_text='Это изображение будет отображаться как превью к ссылке',
+                                 variations={
+                                     'w1000': (1000, 667),
+                                     'admin': (90, 60),
+                                     'thumb': (15, 10),
+                                 }, blank=True, null=True)
 
     class Meta:
         abstract = True

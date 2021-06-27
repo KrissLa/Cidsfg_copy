@@ -1,5 +1,5 @@
 {% extends 'superbase.html' %}
-{% load static lineup %}
+{% load static lineup image_type %}
 
 
 {% block seo_title %}
@@ -16,6 +16,18 @@
         CUBO Главная страница
     {% endif %}
 {% endblock seo_description %}
+
+
+{% block seo_og_title %}{% firstof home_data.seo_og_title home_data.seo_title  "CUBO Главная страница" %}{% endblock seo_og_title %}
+
+{% block seo_og_url %}{% url 'home' %}{% endblock seo_og_url %}
+
+{% block seo_og_image %}{% firstof home_data.seo_og_image.w1000.url  "" %}{% endblock seo_og_image %}
+
+{% block seo_og_image_secure_url %}{% firstof home_data.seo_og_image.w1000.url   "" %}{% endblock seo_og_image_secure_url %}
+
+{% block seo_og_image_type %}{% firstof home_data.seo_og_image.w1000.url|image_type  "JPEG" %}{% endblock seo_og_image_type %}
+
 
 
 {% block header_class %}home{% endblock header_class %}
@@ -158,27 +170,7 @@
 
 
     </section>
-    <section class="collage">
-        <div class="container">
-            <div class="collage_wrapper">
-                <div class="item">
-                    <img src="{% static 'images/home_page/collage/collage_1.jpg' %}" alt="Профилированный клееный брус вид 1">
-                </div>
-                <div class="item">
-                    <img src="{% static 'images/home_page/collage/collage_2.jpg' %}" alt="Профилированный клееный брус вид 2">
-                </div>
-                <div class="item">
-                    <img src="{% static 'images/home_page/collage/collage_3.jpg' %}" alt="Профилированный клееный брус вид 3">
-                </div>
-                <div class="item">
-                    <img src="{% static 'images/home_page/collage/collage_4.jpg' %}" alt="Профилированный клееный брус вид 4">
-                </div>
 
-
-            </div>
-
-        </div>
-    </section>
 
     <section class="design padding">
         <div class="container">

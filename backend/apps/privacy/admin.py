@@ -32,11 +32,15 @@ class PrivacyAdmin(NestedModelAdmin):
     list_display_links = ('id', 'organization_name',)
     save_on_top = True
     fieldsets = (
+        ('SEO', {
+            'fields': (
+                ('seo_title',),
+                ('seo_description',),
+                ('seo_og_title',),
+                ('seo_og_image',),
+            )
+        }),
         (
-            'SEO', {
-                'fields': ('seo_title', 'seo_description')
-            },
-        ), (
             'Общая информация', {
                 'fields': ('organization_name', 'email')
             },

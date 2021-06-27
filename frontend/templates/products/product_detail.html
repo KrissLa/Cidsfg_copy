@@ -1,5 +1,5 @@
 {% extends 'superbase.html' %}
-{% load static price_to_str_filter lineup domain %}
+{% load static price_to_str_filter lineup domain image_type %}
 
 {% block seo_title %}
     {% if house.seo_title %}
@@ -11,6 +11,19 @@
 {% block seo_description %}
     {{ house.seo_description }}
 {% endblock seo_description %}
+
+
+
+{% block seo_og_title %}{% firstof house.seo_og_title house.seo_title  house.name %}{% endblock seo_og_title %}
+
+{% block seo_og_url %}{{ house.get_absolute_url }}{% endblock seo_og_url %}
+
+{% block seo_og_image %}{% firstof house.seo_og_image.w1000.url "" %}{% endblock seo_og_image %}
+
+{% block seo_og_image_secure_url %}{% firstof house.seo_og_image.w1000.url "" %}{% endblock seo_og_image_secure_url %}
+
+{% block seo_og_image_type %}{% firstof house.seo_og_image.w1000.url|image_type "JPEG" %}{% endblock seo_og_image_type %}
+
 
 
 {% block content %}

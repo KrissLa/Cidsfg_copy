@@ -1,5 +1,5 @@
 {% extends 'superbase.html' %}
-{% load static %}
+{% load static image_type %}
 
 
 {% block seo_title %}
@@ -16,6 +16,17 @@
         Сотрудничество CUBO
     {% endif %}
 {% endblock seo_description %}
+
+{% block seo_og_title %}{% firstof partnership.seo_og_title partnership.seo_title  "Сотрудничество CUBO" %}{% endblock seo_og_title %}
+
+{% block seo_og_url %}{% url 'partnership' %}{% endblock seo_og_url %}
+
+{% block seo_og_image %}{% firstof partnership.seo_og_image.w1000.url  "" %}{% endblock seo_og_image %}
+
+{% block seo_og_image_secure_url %}{% firstof partnership.seo_og_image.w1000.url   "" %}{% endblock seo_og_image_secure_url %}
+
+{% block seo_og_image_type %}{% firstof partnership.seo_og_image.w1000.url|image_type  "JPEG" %}{% endblock seo_og_image_type %}
+
 
 
 {% block content %}

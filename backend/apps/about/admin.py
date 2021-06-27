@@ -12,11 +12,8 @@ class AboutAdmin(admin.ModelAdmin):
             'fields': (
                 ('seo_title',),
                 ('seo_description',),
-            )
-        }),
-        ('Видео', {
-            'fields': (
-                ('youtube_url',),
+                ('seo_og_title',),
+                ('seo_og_image',),
             )
         }),
         ('О компании', {
@@ -25,7 +22,7 @@ class AboutAdmin(admin.ModelAdmin):
                 ('about_company_picture',),
             )
         }),
-        ('О заводе', {
+        ('О производстве', {
             'fields': (
                 ('about_factory',),
                 ('about_factory_picture',),
