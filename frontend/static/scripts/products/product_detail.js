@@ -4058,6 +4058,8 @@ choicesButtons.forEach(e => {
     })
 })
 
+document.querySelector('#input-credit').checked = false;
+
 document.querySelector('#credit-checkbox').addEventListener('click', (e) => {
     if (e.target.checked) {
         document.querySelector('#input-credit').parentNode.classList.add('active');

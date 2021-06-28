@@ -595,6 +595,8 @@ choicesButtons.forEach(e => {
     })
 })
 
+document.querySelector('#input-credit').checked = false;
+
 document.querySelector('#credit-checkbox').addEventListener('click', (e) => {
     if (e.target.checked) {
         document.querySelector('#input-credit').parentNode.classList.add('active');
@@ -609,6 +611,8 @@ document.querySelector('#credit-checkbox').addEventListener('click', (e) => {
 onlyNumbersFields.forEach(e => {
     prohibitLetteEntry(e);
 })
+
+
 
 const MessageAddUrl = `${window.location.origin}/nobots/api/v1/contact_forms/individual_project/add/`;
 
