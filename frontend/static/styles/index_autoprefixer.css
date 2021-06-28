@@ -2047,6 +2047,7 @@ p.agree {
 
 .choices img {
     width: 40%;
+    height: 40%;
     margin: 0;
     padding: 10px;
 }
@@ -2054,6 +2055,7 @@ p.agree {
 .contact-form .choices img,
 .partnership-form .choices img {
     width: 39%;
+    height: 39%;
 }
 
 .choices div {
@@ -2280,6 +2282,7 @@ a.a-wrapper:hover > .product-item {
     width: 100%;
     height: 100%;
     max-width: 100%;
+    max-height: 100%;
     display: inline-block;
     vertical-align: middle;
     border-style: none;
@@ -2423,6 +2426,7 @@ span.price {
     .footer-contacts .img,
     section.contacts .img {
         max-width: 100%;
+        max-height: 100%;
     }
 }
 
@@ -6611,7 +6615,9 @@ section.contacts .info li {
 
 section.contacts .img {
     max-width: 60%;
+    max-height: 60%;
     width: 100%;
+    height: 100%;
 }
 
 @media all and (max-width: 1200px){
@@ -6624,12 +6630,14 @@ section.contacts .img {
     section.contacts .footer-contacts .info,
     section.contacts .footer-contacts .img{
         max-width:100%;
+        max-height:100%;
     }
     section.contacts .footer-contacts .img{
         padding-top: 25px;
     }
     section.contacts .footer-contacts .img img{
         width: 100%;
+        height: 100%;
     }
     section.contacts .info li{
         -ms-grid-columns: minmax(65px, 107px) 1fr;
@@ -6658,6 +6666,7 @@ section.contacts .img {
 
 .partnership .picture img {
     width: 100%;
+    height: 100%;
 }
 
 .partnership .container {
