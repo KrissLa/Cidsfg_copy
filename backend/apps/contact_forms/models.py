@@ -11,6 +11,8 @@ class IndividualProjectRequest(models.Model):
     number_of_rooms = models.PositiveSmallIntegerField('Количество комнат')
     number_of_bathrooms = models.PositiveSmallIntegerField('Количество санузлов')
     garage_is_needed = models.BooleanField('Нужен гараж')
+    credit_is_needed = models.BooleanField('Нужен ли кредит', default=False)
+    credit_amount = models.PositiveBigIntegerField('Сумма кредита (руб)', default=0)
     comment = models.TextField('Другие пожелания', blank=True, null=True)
     username = models.CharField('Имя пользователя', max_length=255)
     type_of_contact = models.CharField('Куда ответить', max_length=100, default='Мобильный')
@@ -62,14 +64,16 @@ class ConsultationRequest(models.Model):
     username = models.CharField('Имя пользователя', max_length=255)
     type_of_contact = models.CharField('Куда ответить', max_length=100, default='Мобильный')
     contact = models.CharField('Контакт', max_length=255, default='')
+    credit_is_needed = models.BooleanField('Нужен ли кредит', default=False)
+    credit_amount = models.PositiveBigIntegerField('Сумма кредита (руб)', default=0)
     message = models.TextField('Сообщение пользователя', blank=True, null=True)
     processed = models.BooleanField('Отметить заявку как обработанную', default=False)
     house_name = models.CharField('Название модели дома, со страницы которого отправлена заявка', max_length=100)
     created = models.DateTimeField('Время отправки сообщения', auto_now_add=True)
 
     class Meta:
-        verbose_name = 'Заявка на консультацию'
-        verbose_name_plural = 'Заявки на консультацию'
+        verbose_name = 'Заявка на предложение'
+        verbose_name_plural = 'Заявки на предложение'
 
     @classmethod
     def get_new_count(cls):

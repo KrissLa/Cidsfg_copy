@@ -22,7 +22,8 @@
 
 {% block seo_og_image_secure_url %}{% firstof house.seo_og_image.w1000.url "" %}{% endblock seo_og_image_secure_url %}
 
-{% block seo_og_image_type %}{% firstof house.seo_og_image.w1000.url|image_type "JPEG" %}{% endblock seo_og_image_type %}
+{% block seo_og_image_type %}
+    {% firstof house.seo_og_image.w1000.url|image_type "JPEG" %}{% endblock seo_og_image_type %}
 
 
 
@@ -111,7 +112,7 @@
                 </div>
                 <div class="buttons">
                     <a href="#" class="button right" data-hystmodal="#consultationModal"
-                       id="show-request-info-modal">Получить консультацию</a>
+                       id="show-request-info-modal">Получить предложение</a>
 
                 </div>
             </section>
@@ -423,6 +424,20 @@
                                 <div class="input choice" data-value="email">
                                     <input type="text" name="email" id="input-email" class="text-input">
                                     <label for="input-email" class="input-label">E-mail*</label>
+                                </div>
+
+                                <div class="ars-checkbox-wrapper">
+                                    <input id="credit-checkbox" type="checkbox">
+                                    <label class="ars-checkbox" for="credit-checkbox">Нужен кредит на покупку дома</label>
+                                </div>
+
+                                <div class="input choice">
+                                    <input data-only-int
+                                           type="text" name="credit"
+                                           id="input-credit"
+                                           class="text-input">
+                                    <label for="input-credit" class="input-label">Необходимая сумма кредита
+                                        (руб)*</label>
                                 </div>
 
 

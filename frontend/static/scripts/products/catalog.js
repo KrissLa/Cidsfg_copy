@@ -595,6 +595,17 @@ choicesButtons.forEach(e => {
     })
 })
 
+document.querySelector('#credit-checkbox').addEventListener('click', (e) => {
+    if (e.target.checked) {
+        document.querySelector('#input-credit').parentNode.classList.add('active');
+        document.querySelector('#input-credit').setAttribute('data-required', "data-required");
+    } else {
+        document.querySelector('#input-credit').parentNode.classList.remove('active');
+        document.querySelector('#input-credit').removeAttribute('data-required');
+    }
+
+})
+
 onlyNumbersFields.forEach(e => {
     prohibitLetteEntry(e);
 })
@@ -629,6 +640,8 @@ sendMessageButton.addEventListener('click', (e) => {
             'number_of_rooms': form.querySelector('#input-rooms').value,
             'number_of_bathrooms': form.querySelector('#input-bathrooms').value,
             'garage_is_needed': form.querySelector('#garage').checked,
+            'credit_is_needed': form.querySelector('#credit-checkbox').checked,
+            'credit_amount': form.querySelector('#input-credit').value || 0,
             'comment': form.querySelector('#input-comment').value,
             'username': form.querySelector('#input-name').value,
             'type_of_contact': type_of_contact,

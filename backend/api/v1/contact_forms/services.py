@@ -28,6 +28,8 @@ def send_notification(data, admin_id=TG_ADMIN_ID):
 Количество комнат: <b>{number_of_rooms}</b>
 Количество санузлов: <b>{number_of_bathrooms}</b>
 Нужен гараж: <b>{garage_is_needed}</b>
+Нужен ли кредит: <b>{credit_is_needed}</b>
+Сумма кредите: <b>{credit_amount}</b> руб.
 Другие пожелания: <b>{comment}</b>
 Время создания заявки: <b>{created}</b>
 <a href="{domain}/nobots/{admin_url}/contact_forms/individualprojectrequest/{id}/change/">Посмотреть в панели администратора</a>
@@ -36,6 +38,10 @@ def send_notification(data, admin_id=TG_ADMIN_ID):
         data['garage_is_needed'] = 'ДА'
     else:
         data['garage_is_needed'] = 'НЕТ'
+    if data['credit_is_needed']:
+        data['credit_is_needed'] = 'ДА'
+    else:
+        data['credit_is_needed'] = 'НЕТ'
     data['created'] = datetime.now().strftime('%Y-%m-%d %H:%M')
 
     send_message_to_admin(message.format(domain=SITE_DOMAIN, admin_url=ADMIN_URL, **data), admin_id)
@@ -56,12 +62,18 @@ def send_notification_message(data, admin_id=TG_ADMIN_ID):
 
 def send_notification_consultation(data, admin_id=TG_ADMIN_ID):
     """Отправляем уведомление о новой заявке на консультацию """
+    if data['credit_is_needed']:
+        data['credit_is_needed'] = 'ДА'
+    else:
+        data['credit_is_needed'] = 'НЕТ'
     message = f"""
-Новое заявка на консультацию № <b>{data['id']}</b>!
+Новое заявка на предложение № <b>{data['id']}</b>!
 Имя пользователя: <b>{data['username']}</b>
 Куда ответить: <b>{data['type_of_contact']}</b>
 Контакт пользователя: <b>{data['contact']}</b>
-Сообщение: <b>{data['message']}</b>
+Нужен ли кредит: <b>{data['credit_is_needed']}</b>
+Сумма кредите: <b>{data['credit_amount']}</b> руб.
+Сообщение: <b>{data['message']}</b> 
 Название дома: <b>{data['house_name']}</b>
 <a href="{SITE_DOMAIN}/nobots/{ADMIN_URL}/contact_forms/consultationrequest/{data['id']}/change/">Посмотреть в панели администратора</a>
 """

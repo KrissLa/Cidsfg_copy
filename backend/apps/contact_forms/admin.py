@@ -9,8 +9,9 @@ class IndividualProjectRequestAdmin(admin.ModelAdmin):
     list_display_links = ('id', 'username',)
     list_editable = ('processed',)
     readonly_fields = ('id', 'number_of_floors', 'area', 'number_of_rooms', 'number_of_bathrooms', 'garage_is_needed',
+                       'credit_is_needed', 'credit_amount',
                        'comment', 'username', 'type_of_contact', 'contact', 'created')
-    list_filter = ('processed', 'created', 'type_of_contact')
+    list_filter = ('processed', 'created', 'type_of_contact', 'credit_is_needed')
     search_fields = ('id', 'username', 'message')
 
     def has_add_permission(self, request, obj=None):
@@ -40,8 +41,9 @@ class ConsultationRequestAdmin(admin.ModelAdmin):
     list_display_links = ('id', 'username',)
     list_editable = ('processed',)
     readonly_fields = (
-        'id', 'username', 'type_of_contact', 'contact', 'message', 'house_name', 'created',)
-    list_filter = ('processed', 'created', 'house_name', 'type_of_contact')
+        'id', 'username', 'type_of_contact', 'contact', 'credit_is_needed', 'credit_amount', 'message', 'house_name',
+        'created')
+    list_filter = ('processed', 'created', 'house_name', 'type_of_contact', 'credit_is_needed')
     search_fields = ('id', 'username', 'contact', 'house_name', 'message')
 
     def has_add_permission(self, request, obj=None):

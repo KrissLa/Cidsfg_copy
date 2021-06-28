@@ -35,13 +35,17 @@
 
 {% endblock seo_og_title %}
 
-{% block seo_og_url %}{% if not series %}{% url 'houses_list' %}{% else %}{% url 'houses_list_by_series' series.slug %}{% endif %}{% endblock seo_og_url %}
+{% block seo_og_url %}{% if not series %}{% url 'houses_list' %}{% else %}{% url 'houses_list_by_series' series.slug %}
+{% endif %}{% endblock seo_og_url %}
 
-{% block seo_og_image %}{% if not series %}{% firstof catalog_settings.seo_og_image.w1000.url '' %}{% else %}{% firstof series.seo_og_image.w1000.url '' %}{% endif %}{% endblock seo_og_image %}
+{% block seo_og_image %}{% if not series %}{% firstof catalog_settings.seo_og_image.w1000.url '' %}{% else %}
+    {% firstof series.seo_og_image.w1000.url '' %}{% endif %}{% endblock seo_og_image %}
 
-{% block seo_og_image_secure_url %}{% if not series %}{% firstof catalog_settings.seo_og_image.w1000.url '' %}{% else %}{% firstof series.seo_og_image.w1000.url '' %}{% endif %}{% endblock seo_og_image_secure_url %}
+{% block seo_og_image_secure_url %}{% if not series %}{% firstof catalog_settings.seo_og_image.w1000.url '' %}{% else %}
+    {% firstof series.seo_og_image.w1000.url '' %}{% endif %}{% endblock seo_og_image_secure_url %}
 
-{% block seo_og_image_type %}{% if not series %}{% firstof catalog_settings.seo_og_image.w1000.url|image_type 'JPEG' %}{% else %}{% firstof series.seo_og_image.w1000.url|image_type 'JPEG' %}{% endif %}{% endblock seo_og_image_type %}
+{% block seo_og_image_type %}{% if not series %}{% firstof catalog_settings.seo_og_image.w1000.url|image_type 'JPEG' %}
+{% else %}{% firstof series.seo_og_image.w1000.url|image_type 'JPEG' %}{% endif %}{% endblock seo_og_image_type %}
 
 
 
@@ -277,6 +281,19 @@
                             <div class="ars-checkbox-wrapper">
                                 <input id="garage" type="checkbox" checked>
                                 <label class="ars-checkbox" for="garage">Нужен гараж</label>
+                            </div>
+                            <div class="ars-checkbox-wrapper">
+                                <input id="credit-checkbox" type="checkbox">
+                                <label class="ars-checkbox" for="credit-checkbox">Нужен кредит на покупку дома</label>
+                            </div>
+
+                            <div class="input choice">
+                                <input data-only-int
+                                       type="text" name="credit"
+                                       id="input-credit"
+                                       class="text-input">
+                                <label for="input-credit" class="input-label">Необходимая сумма кредита
+                                    (руб)*</label>
                             </div>
                             <div class="input textarea">
                         <textarea data-required wrap="soft" name="comment" id="input-comment"
