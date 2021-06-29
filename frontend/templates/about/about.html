@@ -16,15 +16,19 @@
     {% endif %}
 {% endblock seo_description %}
 
-{% block seo_og_title %}{% firstof about.seo_og_title about.seo_title  "Подробная информация о компании CUBO" %}{% endblock seo_og_title %}
+{% block seo_og_title %}
+    {% firstof about.seo_og_title about.seo_title  "Подробная информация о компании CUBO" %}{% endblock seo_og_title %}
 
 {% block seo_og_url %}{% url 'about' %}{% endblock seo_og_url %}
 
-{% block seo_og_image %}{% firstof about.seo_og_image.w1000.url about.about_company_picture.w3000.url about.about_factory_picture.w3000.url  "" %}{% endblock seo_og_image %}
+{% block seo_og_image %}
+    {% firstof about.seo_og_image.w1000.url about.about_company_picture.w3000.url about.about_factory_picture.w3000.url  "" %}{% endblock seo_og_image %}
 
-{% block seo_og_image_secure_url %}{% firstof about.seo_og_image.w1000.url about.about_company_picture.w3000.url about.about_factory_picture.w3000.url "" %}{% endblock seo_og_image_secure_url %}
+{% block seo_og_image_secure_url %}
+    {% firstof about.seo_og_image.w1000.url about.about_company_picture.w3000.url about.about_factory_picture.w3000.url "" %}{% endblock seo_og_image_secure_url %}
 
-{% block seo_og_image_type %}{% firstof about.seo_og_image.w1000.url|image_type about.about_company_picture.w3000.url|image_type about.about_factory_picture.w3000.url|image_type "JPEG" %}{% endblock seo_og_image_type %}
+{% block seo_og_image_type %}
+    {% firstof about.seo_og_image.w1000.url|image_type about.about_company_picture.w3000.url|image_type about.about_factory_picture.w3000.url|image_type "JPEG" %}{% endblock seo_og_image_type %}
 
 
 {% block content %}
@@ -45,13 +49,31 @@
                 <div class="about-menu">
                     <ul>
                         <li>
-                            <a href="#about">О компании</a>
+                            <a href="#about">
+                                {% if about.about_company_title %}
+                                    {{ about.about_company_title }}
+                                {% else %}
+                                    О компании
+                                {% endif %}
+                            </a>
                         </li>
                         <li>
-                            <a href="#factory">О Производстве</a>
+                            <a href="#factory">
+                                {% if about.about_factory_title %}
+                                    {{ about.about_factory_title }}
+                                {% else %}
+                                    О Производстве
+                                {% endif %}
+                            </a>
                         </li>
                         <li>
-                            <a href="#capacity">Производственные мощности</a>
+                            <a href="#capacity">
+                                {% if about.capacity_title %}
+                                    {{ about.capacity_title }}
+                                {% else %}
+                                    Производственные мощности
+                                {% endif %}
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -82,7 +104,14 @@
             {% endif %})">
         <div class="inner-container">
             <div class="container">
-                <h2>О компании</h2>
+                <h2>
+                    {% if about.about_company_title %}
+                        {{ about.about_company_title }}
+                    {% else %}
+                        О компании
+                    {% endif %}
+                </h2>
+
 
                 <p class="text">
                     {% if about %}
@@ -107,13 +136,24 @@
 
         <div class="inner-container">
             <div class="container">
-                <h2>О производстве</h2>
+                <h2>
+                    {% if about.about_factory_title %}
+                        {{ about.about_factory_title }}
+                    {% else %}
+                        О производстве
+                    {% endif %}
+                </h2>
                 <div class="picture mobile-display">
                     <img
                             alt="Производство"
                             class="lazy"
+                            {% if about.about_factory_picture %}
+                            src="{{ about.about_factory_picture.thumb.url }}"
+                            data-src="{{ about.about_factory_picture.w480.url }}"
+                            {% else %}
                             src="{% static 'images/about/factory_th.jpg' %}"
                             data-src="{% static 'images/about/factory_480.jpg' %}"
+                            {% endif %}
                             width=""
                             height=""
                     />
@@ -140,21 +180,38 @@
 
     <section id="capacity" class="capacity">
         <div class="container">
-            <header><h4>Производственные мощности</h4></header>
+            <header>
+                <h4>
+                    {% if about.capacity_title %}
+                        {{ about.capacity_title }}
+                    {% else %}
+                        Производственные мощности
+                    {% endif %}
+                </h4>
+            </header>
             <div class="body">
-                <p>Общая площадь производственных цехов составляет более 3 500 м² в том числе:</p>
-                <ul>
-                    <li>Участок распиловки</li>
-                    <li>Сушильный комплекс</li>
-                    <li>Столярный комплекс</li>
-                    <li>Дверной цех</li>
-                    <li>Погонажный цех</li>
-                    <li>Прессовый цех</li>
-                    <li>Механический участок</li>
-                    <li>Транспортный участок</li>
-                    <li>Складской комплекс</li>
-                </ul>
-
+                <p>
+                    {% if about.capacity_sub_title %}
+                        {{ about.capacity_sub_title }}
+                    {% else %}
+                        Общая площадь производственных цехов составляет более 3 500 м² в том числе:
+                    {% endif %}
+                </p>
+                {% if about.capacity_body %}
+                    {{ about.capacity_body|safe }}
+                {% else %}
+                    <ul>
+                        <li>Участок распиловки</li>
+                        <li>Сушильный комплекс</li>
+                        <li>Столярный комплекс</li>
+                        <li>Дверной цех</li>
+                        <li>Погонажный цех</li>
+                        <li>Прессовый цех</li>
+                        <li>Механический участок</li>
+                        <li>Транспортный участок</li>
+                        <li>Складской комплекс</li>
+                    </ul>
+                {% endif %}
             </div>
         </div>
     </section>
