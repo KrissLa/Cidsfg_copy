@@ -3827,4 +3827,27 @@ document.addEventListener('scroll', () => {
         }
     }
 
-})
+});
+
+
+(function () {
+        window['yandexChatWidgetCallback'] = function () {
+            try {
+                window.yandexChatWidget = new Ya.ChatWidget({
+                    guid: '767e1a08-c6d1-9667-52a3-6a2de57fcc91',
+                    buttonText: '',
+                    title: 'Чат',
+                    theme: 'light',
+                    collapsedDesktop: 'never',
+                    collapsedTouch: 'never'
+                });
+            } catch (e) {
+            }
+        };
+        var n = document.getElementsByTagName('script')[0],
+            s = document.createElement('script');
+        s.async = true;
+        s.charset = 'UTF-8';
+        s.src = 'https://yastatic.net/s3/chat/widget.js';
+        n.parentNode.insertBefore(s, n);
+    })();

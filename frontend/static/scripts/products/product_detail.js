@@ -4180,57 +4180,6 @@ const consultationRequestModal = new HystModal({
     },
 });
 
-// image zoom
-
-// const zoomImages = document.querySelectorAll('.image-zoom'),
-//     bigImage = (src, dataSrc) => `<div class="zoom-wrapper b-shadow">
-//      <button class="close" id="close-zoom" type="button" data-dismiss="modal">
-//             <span class="icon icon-md linear-icon-cross"></span>
-//      </button>
-//      <img class="lazy" src="${src}" data-src="${dataSrc}"/>
-// </div>`
-//
-// let zoomWindow = false;
-//
-// document.onkeydown = function (evt) {
-//     evt = evt || window.event;
-//     if (zoomWindow) {
-//         if (evt.keyCode === 27) {
-//             bodyEl.classList.remove('show-modal');
-//             document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1');
-//             document.querySelector('.zoom-wrapper').remove();
-//         }
-//     }
-//
-// };
-//
-//
-// zoomImages.forEach(e => {
-//     e.addEventListener('click', () => {
-//         zoomWindow = true;
-//         bodyEl.classList.add('show-modal');
-//         let zoomElement;
-//         if (document.documentElement.clientWidth < 768) {
-//             zoomElement = bigImage(e.getAttribute('src'), e.getAttribute('data-720-src'));
-//         } else {
-//             zoomElement = bigImage(e.getAttribute('src'), e.getAttribute('data-big-src'));
-//         }
-//
-//
-//         bodyEl.insertAdjacentHTML('afterbegin', zoomElement);
-//         const newLazyLoadInstance = new LazyLoad({});
-//         document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=device-width, initial-scale=1, minimum-scale=1');
-//
-//         document.querySelector('#close-zoom').addEventListener('click', () => {
-//             bodyEl.classList.remove('show-modal');
-//             document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1');
-//             // bodyEl.insertAdjacentHTML('afterbegin', zoomElement);
-//             document.querySelector('.zoom-wrapper').remove();
-//         })
-//     })
-//
-// })
-
 // аккордион
 
 accordionItems.forEach((e) => {
@@ -4244,6 +4193,30 @@ accordionItems.forEach((e) => {
         }
 
     })
-})
+});
+
+
+
+(function () {
+        window['yandexChatWidgetCallback'] = function () {
+            try {
+                window.yandexChatWidget = new Ya.ChatWidget({
+                    guid: '767e1a08-c6d1-9667-52a3-6a2de57fcc91',
+                    buttonText: '',
+                    title: 'Чат',
+                    theme: 'light',
+                    collapsedDesktop: 'never',
+                    collapsedTouch: 'never'
+                });
+            } catch (e) {
+            }
+        };
+        var n = document.getElementsByTagName('script')[0],
+            s = document.createElement('script');
+        s.async = true;
+        s.charset = 'UTF-8';
+        s.src = 'https://yastatic.net/s3/chat/widget.js';
+        n.parentNode.insertBefore(s, n);
+    })();
 
 
