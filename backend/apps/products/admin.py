@@ -218,7 +218,7 @@ class HouseAdmin(NestedModelAdmin):
         }),
         (
             'Общая информация', {
-                'fields': ('name', 'slug', 'category', 'series')
+                'fields': ('name', 'slug', 'series')
             },
         ), (
             'Стоимость', {

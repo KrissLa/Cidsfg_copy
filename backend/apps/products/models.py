@@ -1,5 +1,6 @@
 from ckeditor.fields import RichTextField
 from django.db import models
+from loguru import logger
 from stdimage import StdImageField
 from backend.apps.seo.models import SeoAbstract
 
@@ -68,7 +69,7 @@ class House(SeoAbstract):
 
     active = models.BooleanField('Отображать', default=True,
                                  help_text='Уберите, чтобы скрыть дом с сайта.')
-    sort_number = models.PositiveSmallIntegerField('Номер в каталоге', unique=True,
+    sort_number = models.PositiveSmallIntegerField('Номер в каталоге',
                                                    help_text='Этот номер будет использован для построения домов в'
                                                              ' каталоге. (Дом с меньшим номером будет выше)',
                                                    blank=True, null=True)
@@ -81,6 +82,10 @@ class House(SeoAbstract):
 
     def __str__(self):
         return f'{self.id} - {self.name}'
+
+    def save(self, *args, **kwargs):
+        self.category = self.series.category
+        super().save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse('house_detail', kwargs={'category_slug': self.category.slug,
@@ -340,7 +345,7 @@ class Category(models.Model):
                                  help_text='Уберите, чтобы скрыть категорию и расположенные в ней дома с сайта.')
     coming_soon = models.BooleanField('Скоро', default=False,
                                       help_text='Установите, чтобы отобразить категорию в меню с пометкой "Скоро"')
-    sort_number = models.PositiveSmallIntegerField('Номер в меню', unique=True,
+    sort_number = models.PositiveSmallIntegerField('Номер в меню',
                                                    help_text='Этот номер будет использован для построения категорий в'
                                                              ' меню. (Категория с меньшим номером будет выше)',
                                                    blank=True, null=True)
@@ -348,6 +353,7 @@ class Category(models.Model):
     class Meta:
         verbose_name = 'Категория по этажам'
         verbose_name_plural = 'Категории по этажам'
+        ordering = ['sort_number', 'id']
 
     def __str__(self):
         return f'{self.id}  - {self.name}'
@@ -381,7 +387,7 @@ class Series(SeoAbstract):
 
     active = models.BooleanField('Отображать', default=True,
                                  help_text='Уберите, чтобы скрыть категорию и расположенные в ней дома с сайта.')
-    sort_number = models.PositiveSmallIntegerField('Номер в меню', unique=True,
+    sort_number = models.PositiveSmallIntegerField('Номер в меню',
                                                    help_text='Этот номер будет использован для построения серий в'
                                                              ' меню. (Серия с меньшим номером будет выше)',
                                                    blank=True, null=True)
@@ -390,6 +396,7 @@ class Series(SeoAbstract):
     class Meta:
         verbose_name = 'Серия домов'
         verbose_name_plural = 'Серии домов'
+        ordering = ['sort_number', 'id']
 
     def __str__(self):
         return f'{self.id} - {self.name}'
