@@ -1,5 +1,4 @@
 from django.db import models
-from loguru import logger
 
 
 class IndividualProjectRequest(models.Model):
@@ -22,7 +21,6 @@ class IndividualProjectRequest(models.Model):
 
     @classmethod
     def get_new_count(cls):
-        logger.info(cls.objects.filter(processed=False).count())
         return cls.objects.filter(processed=False).count()
 
     def __str__(self):
@@ -48,7 +46,6 @@ class Message(models.Model):
 
     @classmethod
     def get_new_count(cls):
-        logger.info(cls.objects.filter(processed=False).count())
         return cls.objects.filter(processed=False).count()
 
     def __str__(self):
@@ -77,7 +74,6 @@ class ConsultationRequest(models.Model):
 
     @classmethod
     def get_new_count(cls):
-        logger.info(cls.objects.filter(processed=False).count())
         return cls.objects.filter(processed=False).count()
 
     def __str__(self):
@@ -106,7 +102,6 @@ class CooperationApplication(models.Model):
 
     @classmethod
     def get_new_count(cls):
-        logger.info(cls.objects.filter(processed=False).count())
         return cls.objects.filter(processed=False).count()
 
     def __str__(self):
