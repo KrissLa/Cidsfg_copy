@@ -233,4 +233,6 @@ Requires core.js and SelectBox.js.
             SelectFilter.init(el.id, data.fieldName, parseInt(data.isStacked, 10));
         });
     });
+
+    console.log('hello')
 }

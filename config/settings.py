@@ -3,6 +3,7 @@ from loguru import logger
 from pathlib import Path
 
 from backend.apps.config.settings import INSTALLED_APPS as MY_APPS
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ['SECRET_KEY']
@@ -11,22 +12,21 @@ SITE_DOMAIN = os.environ['SITE_DOMAIN']
 ADMIN_URL = os.environ['ADMIN_URL']
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'django.contrib.sites',
-    'django.contrib.sitemaps',
+                     'django.contrib.admin',
+                     'django.contrib.auth',
+                     'django.contrib.contenttypes',
+                     'django.contrib.sessions',
+                     'django.contrib.messages',
+                     'django.contrib.staticfiles',
+                     'django.contrib.sites',
+                     'django.contrib.sitemaps',
 
-    'corsheaders',
-    'rest_framework',
-    'django_filters',
-    'nested_admin',
-    'ckeditor',
-] + MY_APPS
-
+                     'corsheaders',
+                     'rest_framework',
+                     'django_filters',
+                     'nested_admin',
+                     'ckeditor',
+                 ] + MY_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -101,6 +101,9 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
     ),
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',

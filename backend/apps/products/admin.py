@@ -1,16 +1,32 @@
 from ckeditor.widgets import CKEditorWidget
 from django import forms
 from django.contrib import admin
+from django.contrib.admin import StackedInline
+from django.contrib.admin.widgets import FilteredSelectMultiple
 from django.utils.safestring import mark_safe
 from nested_admin.nested import NestedTabularInline, NestedStackedInline, NestedModelAdmin
 
-from .models import House, Category, Series, HousePicture, Options, Turnkey, IncludedInPriceTurnkey, \
-    IncludedInPriceTurnkeyItem, NotIncludedInPriceTurnkey, NotIncludedInPriceForFinishing, \
-    IncludedInPriceForFinishingItem, NotIncludedInPriceDelivery, IncludedInPriceDeliveryItem, \
-    IncludedInPriceForFinishing, IncludedInPriceDelivery, Delivery, ForFinishing, Catalog
+from .models import House, Category, Series, HousePicture, Options, Catalog, Configuration, \
+    HouseAdditionCategory, HouseAddition, ConfigurationInHouses
 
 
 # Формы
+class SelectForm(forms.ModelForm):
+    addition_queryset = HouseAddition.objects.all()
+    included_in_price = forms.ModelMultipleChoiceField(required=False,
+                                                       queryset=addition_queryset,
+                                                       label='Входит в стоимость',
+                                                       widget=FilteredSelectMultiple(
+                                                           verbose_name='Дополнительные штуки', is_stacked=False))
+    not_included_in_price = forms.ModelMultipleChoiceField(required=False,
+                                                           queryset=addition_queryset,
+                                                           label='Не входит в стоимость',
+                                                           widget=FilteredSelectMultiple(
+                                                               verbose_name='Дополнительные штуки', is_stacked=False))
+
+    class Meta:
+        model = Configuration
+        fields = '__all__'
 
 
 class AdminCKEditorForm(forms.ModelForm):
@@ -35,52 +51,13 @@ class CatalogAdminCKEditorForm(forms.ModelForm):
         fields = ('card_text', 'modal_text')
 
 
-## Turnkey
+class ConfigurationInHousesAdminInline(StackedInline):
+    """ Управление комплектациями дома """
+    model = ConfigurationInHouses
+    sortable_options = ['id']
+    extra = 0
+    form = SelectForm
 
-
-class IncludedInPriceItemTurnkeyAdminForm(AdminCKEditorForm):
-    class Meta:
-        model = IncludedInPriceTurnkeyItem
-        fields = '__all__'
-
-
-class NotIncludedInPriceTurnkeyAdminForm(AdminCKEditorForm):
-    class Meta:
-        model = NotIncludedInPriceTurnkey
-        fields = '__all__'
-
-
-## ForFinishing
-
-
-class IncludedInPriceItemForFinishingAdminForm(AdminCKEditorForm):
-    class Meta:
-        model = IncludedInPriceForFinishingItem
-        fields = '__all__'
-
-
-class NotIncludedInPriceForFinishingAdminForm(AdminCKEditorForm):
-    class Meta:
-        model = NotIncludedInPriceForFinishing
-        fields = '__all__'
-
-
-## Delivery
-
-
-class IncludedInPriceItemDeliveryAdminForm(AdminCKEditorForm):
-    class Meta:
-        model = IncludedInPriceDeliveryItem
-        fields = '__all__'
-
-
-class NotIncludedInPriceDeliveryAdminForm(AdminCKEditorForm):
-    class Meta:
-        model = NotIncludedInPriceDelivery
-        fields = '__all__'
-
-
-# ИНлайн
 
 ## Опции
 class OptionsAdminInline(NestedStackedInline):
@@ -93,7 +70,7 @@ class OptionsAdminInline(NestedStackedInline):
 
 
 class HousePictureAdminInline(NestedTabularInline):
-    """добавление фотографий к дому"""
+    """Добавление фотографий к дому"""
     model = HousePicture
     extra = 3
     readonly_fields = ('get_photo',)
@@ -107,96 +84,6 @@ class HousePictureAdminInline(NestedTabularInline):
         return mark_safe(f'<img src={obj.picture.admin.url} width="90">')
 
     get_photo.short_description = ''
-
-
-## Turnkey
-
-
-class NotIncludedInPriceTurnkeyAdminInline(NestedTabularInline):
-    """ Управление вкладкой Не включено в стоимость комплектации ПОД мебель """
-    model = NotIncludedInPriceTurnkey
-    form = NotIncludedInPriceTurnkeyAdminForm
-
-
-class IncludedInPriceItemTurnkeyAdminInline(NestedTabularInline):
-    """ Управление пунктами вкладки Включено в стоимость комплектации ПОД мебель """
-    model = IncludedInPriceTurnkeyItem
-    form = IncludedInPriceItemTurnkeyAdminForm
-    fields = ('name', 'body', 'active')
-    extra = 1
-
-
-class IncludedInPriceTurnkeyAdminInline(NestedStackedInline):
-    """ Управление вкладкой Включено в стоимость комплектации ПОД мебель """
-    model = IncludedInPriceTurnkey
-    inlines = [IncludedInPriceItemTurnkeyAdminInline, ]
-
-
-class TurnkeyAdminInline(NestedStackedInline):
-    """ Управление комплектацией под мебель """
-    model = Turnkey
-    inlines = [IncludedInPriceTurnkeyAdminInline, NotIncludedInPriceTurnkeyAdminInline]
-
-
-## ForFinishing
-
-
-class NotIncludedInPriceForFinishingAdminInline(NestedTabularInline):
-    """ Управление вкладкой Не включено в стоимость комплектации ПОД ключ """
-    model = NotIncludedInPriceForFinishing
-    form = NotIncludedInPriceForFinishingAdminForm
-
-
-class IncludedInPriceItemForFinishingAdminInline(NestedTabularInline):
-    """ Управление пунктами вкладки Включено в стоимость комплектации ПОД ключ """
-    model = IncludedInPriceForFinishingItem
-    form = IncludedInPriceItemForFinishingAdminForm
-    fields = ('name', 'body', 'active')
-    extra = 1
-
-
-class IncludedInPriceForFinishingAdminInline(NestedStackedInline):
-    """ Управление вкладкой Включено в стоимость комплектации ПОД ключ """
-    model = IncludedInPriceForFinishing
-    inlines = [IncludedInPriceItemForFinishingAdminInline, ]
-
-
-class ForFinishingAdminInline(NestedStackedInline):
-    """ Управление комплектацией ПОД ключ """
-    model = ForFinishing
-    inlines = [IncludedInPriceForFinishingAdminInline, NotIncludedInPriceForFinishingAdminInline]
-
-
-## Delivery
-
-
-class NotIncludedInPriceDeliveryAdminInline(NestedTabularInline):
-    """ Управление вкладкой Не включено в стоимость комплектации ПОСТАВКА С ЗАВОДА  """
-    model = NotIncludedInPriceDelivery
-    form = NotIncludedInPriceDeliveryAdminForm
-
-
-class IncludedInPriceItemDeliveryAdminInline(NestedTabularInline):
-    """ Управление пунктами вкладки Включено в стоимость комплектации ПОСТАВКА С ЗАВОДА """
-    model = IncludedInPriceDeliveryItem
-    form = IncludedInPriceItemDeliveryAdminForm
-    fields = ('name', 'body', 'active')
-    extra = 1
-
-
-class IncludedInPriceDeliveryAdminInline(NestedStackedInline):
-    """ Управление вкладкой Включено в стоимость комплектации ПОСТАВКА С ЗАВОДА """
-    model = IncludedInPriceDelivery
-    inlines = [IncludedInPriceItemDeliveryAdminInline, ]
-
-
-class DeliveryAdminInline(NestedStackedInline):
-    """ Управление комплектацией ПОСТАВКА С ЗАВОДА """
-    model = Delivery
-    inlines = [IncludedInPriceDeliveryAdminInline, NotIncludedInPriceDeliveryAdminInline]
-
-
-# Вывод
 
 
 @admin.register(House)
@@ -239,9 +126,7 @@ class HouseAdmin(NestedModelAdmin):
     )
     inlines = [HousePictureAdminInline,
                OptionsAdminInline,
-               TurnkeyAdminInline,
-               ForFinishingAdminInline,
-               DeliveryAdminInline]
+               ConfigurationInHousesAdminInline]
 
 
 @admin.register(Category)
@@ -281,3 +166,18 @@ class CatalogAdmin(admin.ModelAdmin):
             return False
         else:
             return True
+
+
+@admin.register(HouseAdditionCategory)
+class HouseAdditionCategoryAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(HouseAddition)
+class HouseAdditionAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Configuration)
+class ConfigurationAdmin(admin.ModelAdmin):
+    form = SelectForm

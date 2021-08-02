@@ -131,7 +131,7 @@
                                             <span class="price">{{ house.area }} </span>м&sup2;.
                                         </div>
                                         <div class="item-min-price">цена -
-                                            <span class="price">{{ house.price_min|price_to_str_filter }}</span> руб.
+                                            <span class="price">{{ house.get_price|price_to_str_filter }}</span> руб.
                                         </div>
                                         <div class="item-link">
                                             <a class="button right" href="{{ house.get_absolute_url }}">
@@ -192,7 +192,7 @@
                                                 <span class="price">{{ house.area }} </span>м&sup2;.
                                             </div>
                                             <div class="item-min-price">цена -
-                                                <span class="price">{{ house.price_min|price_to_str_filter }}</span>
+                                                <span class="price">{{ house.get_price|price_to_str_filter }}</span>
                                                 руб.
                                             </div>
                                             <div class="item-link">

@@ -72,38 +72,19 @@
             </section>
             <section class="content-info white b-shadow">
                 <ul>
-                    <li>
-                        <h6>
-                            Комплектация "Поставка с завода"
-                            <span class="fas" data-title="Домокомплект из упакованных панелей с крепежом
-                                                                      для монтажа. Без доставки.">
+                    {% for con in house.configurations.all %}
+                        <li>
+                            <h6>
+
+                                Комплектация "{{ con.configuration.name }}"
+                                <span class="fas" data-title="{{ con.configuration.description }}">
                                 <img src="{% static 'icons/info_black.svg' %}" width="16" height="16"
                                      alt="иконка дополнительной информации"/>
                             </span>
-                        </h6>
-                        <span>{{ house.price_min|price_to_str_filter }} руб.</span>
-                    </li>
-                    <li>
-                        <h6>
-                            Комплектация "Под ключ"
-                            <span class="fas" data-title="Дом с окнами, входной дверью и перегородками,
-                                                                         смонтированный на участке. Без доставки.">
-                                <img src="{% static 'icons/info_black.svg' %}" width="16" height="16"
-                                     alt="иконка дополнительной информации"/>
-                            </span>
-                        </h6>
-                        <span>{{ house.price_medium|price_to_str_filter }} руб.</span>
-                    </li>
-                    <li>
-                        <h6>Комплектация "Под мебель"
-                            <span class="fas" data-title="Полностью готовый дом, включая внутреннюю и
-                                                                         наружную отделку.">
-                                <img src="{% static 'icons/info_black.svg' %}" width="16" height="16"
-                                     alt="иконка дополнительной информации"/>
-                            </span>
-                        </h6>
-                        <span>{{ house.price_full|price_to_str_filter }} руб.</span>
-                    </li>
+                            </h6>
+                            <span>{{ con.price|price_to_str_filter }} руб.</span>
+                        </li>
+                    {% endfor %}
                 </ul>
                 <div class="min-info">
                     <div class="min-info-item">Площадь: <span>{{ house.area }}</span> м&sup2;</div>
@@ -184,30 +165,15 @@
                                 <div class="container">
                                     <div class="tabs-slider">
                                         <div class="mask"></div>
-                                        {% if house.turnkey.active and house.turnkey.included.active and house.turnkey.included.get_items %}
-                                            <div class="tabs-controls-item cost-included active"
-                                                 data-for="tab-include-turnkey">
+
+                                        {% for con in house.configurations.all %}
+                                            <div class="tabs-controls-item cost-included {% if forloop.first %}active{% endif %}"
+                                                 data-for="tab-include-{{ con.id }}">
                                                 <div>
-                                                    <span>Под мебель</span>
+                                                    <span>{{ con.configuration.name }}</span>
                                                 </div>
                                             </div>
-                                        {% endif %}
-                                        {% if house.for_finishing.active and house.for_finishing.included.active and house.for_finishing.included.get_items %}
-                                            <div class="tabs-controls-item cost-included"
-                                                 data-for="tab-include-for_finishing">
-                                                <div>
-                                                    <span>Под ключ</span>
-                                                </div>
-                                            </div>
-                                        {% endif %}
-                                        {% if house.delivery.active and house.delivery.included.active and house.delivery.included.get_items %}
-                                            <div class="tabs-controls-item cost-included"
-                                                 data-for="tab-include-delivery">
-                                                <div>
-                                                    <span>Поставка с завода</span>
-                                                </div>
-                                            </div>
-                                        {% endif %}
+                                        {% endfor %}
                                     </div>
                                 </div>
 
@@ -217,55 +183,28 @@
                     </div>
                     <div class="tabs-content">
                         <div class="container">
-                            {% if house.turnkey.active and house.turnkey.included.active and house.turnkey.included.get_items %}
-                                <div id="tab-include-turnkey" class="body-item cost-included active">
+                            {% for con in house.configurations.all %}
+                                <div id="tab-include-{{ con.id }}"
+                                     class="body-item cost-included {% if forloop.first %}active{% endif %}">
                                     <div class="accordion">
-                                        {% for item in house.turnkey.included.get_items %}
+                                        {% for item in con.get_included %}
+
                                             <div class="contentBx">
-                                                <div class="label">{{ item.name }}</div>
+                                                <div class="label">{{ item.category_name }}</div>
                                                 <div class="content" style="display: none">
                                                     <div class="ol">
-                                                        {{ item.body|safe }}
+                                                        {% for b in item.body %}
+                                                            <p>- {{ b }}{% if not forloop.last %},{% endif %}</p>
+                                                        {% endfor %}
                                                     </div>
                                                 </div>
                                             </div>
+
                                         {% endfor %}
 
                                     </div>
                                 </div>
-                            {% endif %}
-                            {% if house.for_finishing.active and house.for_finishing.included.active and house.for_finishing.included.get_items %}
-                                <div id="tab-include-for_finishing" class="body-item cost-included">
-                                    <div class="accordion">
-                                        {% for item in house.for_finishing.included.get_items %}
-                                            <div class="contentBx">
-                                                <div class="label">{{ item.name }}</div>
-                                                <div class="content" style="display: none">
-                                                    <div class="ol">
-                                                        {{ item.body|safe }}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        {% endfor %}
-                                    </div>
-                                </div>
-                            {% endif %}
-                            {% if house.delivery.active and house.delivery.included.active and house.delivery.included.get_items %}
-                                <div id="tab-include-delivery" class="body-item cost-included">
-                                    <div class="accordion">
-                                        {% for item in house.delivery.included.get_items %}
-                                            <div class="contentBx">
-                                                <div class="label">{{ item.name }}</div>
-                                                <div class="content" style="display: none">
-                                                    <div class="ol">
-                                                        {{ item.body|safe }}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        {% endfor %}
-                                    </div>
-                                </div>
-                            {% endif %}
+                            {% endfor %}
 
                         </div>
                     </div>
@@ -277,30 +216,14 @@
                                 <div class="container">
                                     <div class="tabs-slider">
                                         <div class="mask"></div>
-                                        {% if house.turnkey.active and house.turnkey.not_included.active and house.turnkey.not_included.body %}
-                                            <div class="tabs-controls-item cost-not-included active"
-                                                 data-for="tab-not-include-turnkey">
+                                        {% for con in house.configurations.all %}
+                                            <div class="tabs-controls-item cost-not-included {% if forloop.first %}active{% endif %}"
+                                                 data-for="tab-not-include-{{ con.id }}">
                                                 <div>
-                                                    <span>Под мебель</span>
+                                                    <span>{{ con.configuration.name }}</span>
                                                 </div>
                                             </div>
-                                        {% endif %}
-                                        {% if house.for_finishing.active and house.for_finishing.not_included.active and house.for_finishing.not_included.body %}
-                                            <div class="tabs-controls-item cost-not-included"
-                                                 data-for="tab-not-include-for_finishing">
-                                                <div>
-                                                    <span>Под ключ</span>
-                                                </div>
-                                            </div>
-                                        {% endif %}
-                                        {% if house.delivery.active and house.delivery.not_included.active and house.delivery.not_included.body %}
-                                            <div class="tabs-controls-item cost-not-included"
-                                                 data-for="tab-not-include-delivery">
-                                                <div>
-                                                    <span>Поставка с завода</span>
-                                                </div>
-                                            </div>
-                                        {% endif %}
+                                        {% endfor %}
                                     </div>
                                 </div>
 
@@ -310,6 +233,18 @@
                     </div>
                     <div class="tabs-content">
                         <div class="container">
+                            {% for con in house.configurations.all %}
+
+                                <div id="tab-not-include-{{ con.id }}"
+                                     class="body-item cost-not-included {% if forloop.first %}active{% endif %}">
+                                    <div class="in-cost">
+                                        {% for item in con.get_not_included %}
+                                            <p>- {{ item.body }}{% if not forloop.last %},{% endif %}</p>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+
+                            {% endfor %}
                             {% if house.turnkey.active and house.turnkey.not_included.active and house.turnkey.not_included.body %}
                                 <div id="tab-not-include-turnkey" class="body-item cost-not-included active">
                                     <div class="in-cost">
@@ -424,7 +359,8 @@
 
                                 <div class="ars-checkbox-wrapper">
                                     <input id="credit-checkbox" type="checkbox">
-                                    <label class="ars-checkbox" for="credit-checkbox">Нужен кредит на покупку дома</label>
+                                    <label class="ars-checkbox" for="credit-checkbox">Нужен кредит на покупку
+                                        дома</label>
                                 </div>
 
                                 <div class="input choice">
