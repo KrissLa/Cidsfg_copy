@@ -164,19 +164,14 @@ class Command(BaseCommand):
 
     def add_configurations_to_houses(self):
         houses = House.objects.all()
-        # houses.update(configurations=Configuration.objects.all()[0])
         configurations = Configuration.objects.all()
         for house in houses:
             for conf in configurations:
-                configurations_in_house = ConfigurationInHouses.objects.create(house=house, configuration=conf)
+                try:
+                    configurations_in_house = ConfigurationInHouses.objects.create(house=house, configuration=conf)
+                except IntegrityError:
+                    logger.error('Такие связи уже созданы')
 
-
-
-            # logger.info(house)
-            # logger.info(house.configurations)
-            # # logger.info((list(Configuration.objects.all())))
-            # house.configurations.set(list(Configuration.objects.all()))
-            # house.save()
 
     def handle(self, **options):
         self.create_house_addition_category()
