@@ -1,8 +1,5 @@
 from ckeditor.fields import RichTextField
 from django.db import models
-from django.db.models import Count
-from django.forms import ModelForm
-from loguru import logger
 from stdimage import StdImageField
 from backend.apps.seo.models import SeoAbstract
 from django.urls import reverse
@@ -37,9 +34,6 @@ class House(SeoAbstract):
                             help_text='Формируется автоматически из названия. Можно изменить. '
                                       'Максимум 50 символов. Будет использован для построения адреса к дому.',
                             unique=True)
-    price_min = models.PositiveIntegerField('Стоимость комплектации "Поставка с завода"', default=0)
-    price_medium = models.PositiveIntegerField('Стоимость комплектации "Под ключ"', default=0)
-    price_full = models.PositiveIntegerField('Стоимость комплектации "Под ключ"', default=0)
     area = models.PositiveSmallIntegerField('Площадь дома', default=48)
     number_of_rooms = models.PositiveSmallIntegerField('Количество комнат', default=3)
     number_of_bathrooms = models.PositiveSmallIntegerField('Количество санузлов', default=1)
