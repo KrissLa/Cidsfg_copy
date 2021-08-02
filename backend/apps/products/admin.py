@@ -108,10 +108,6 @@ class HouseAdmin(NestedModelAdmin):
                 'fields': ('name', 'slug', 'series')
             },
         ), (
-            'Стоимость', {
-                'fields': ('price_min', 'price_medium', 'price_full')
-            },
-        ), (
             'Параметры', {
                 'fields': (
                     'area', 'area_of_buildings', 'number_of_rooms', 'number_of_bathrooms', 'height', 'width',
