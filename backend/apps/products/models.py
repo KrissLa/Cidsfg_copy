@@ -65,6 +65,7 @@ class House(SeoAbstract):
     def save(self, *args, **kwargs):
         self.category = self.series.category
         super().save(*args, **kwargs)
+        self.series.get_active_houses_count()
 
     def get_absolute_url(self):
         return reverse('house_detail', kwargs={'category_slug': self.category.slug,
@@ -280,10 +281,6 @@ class Category(models.Model):
     def get_series(self):
         return self.series.filter(active=True).order_by('sort_number')
 
-    def get_absolute_url(self):
-        # return reverse('catalog_by_category', args=[self.slug])
-        return f'url_pass'
-
 
 def generate_picture_to_series_path(instance, filename):
     return 'pictures/products/series/%s/%s' % (instance.name,
@@ -309,6 +306,7 @@ class Series(SeoAbstract):
                                                    help_text='Этот номер будет использован для построения серий в'
                                                              ' меню. (Серия с меньшим номером будет выше)',
                                                    blank=True, null=True)
+    active_houses_count = models.PositiveSmallIntegerField('Количество доступных домов в серии', default=0)
     updated = models.DateTimeField(auto_now=True)
 
     class Meta:
@@ -325,3 +323,8 @@ class Series(SeoAbstract):
     def get_houses(self):
         return self.houses.filter(active=True,
                                   category__active=True)
+
+    def get_active_houses_count(self):
+        self.active_houses_count = House.objects.filter(series=self, active=True).count()
+        self.save()
+

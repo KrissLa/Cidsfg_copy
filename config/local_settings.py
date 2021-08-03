@@ -21,3 +21,13 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'frontend/static'),
                     os.path.join(BASE_DIR, 'frontend/static_new')]
 
 # STATIC_ROOT = os.path.join(BASE_DIR, 'frontend/static')
+
+
+INSTALLED_APPS_LOCAL = [
+    'silk',
+    'django_extensions',
+]
+
+MIDDLEWARE_LOCAL = [
+    'silk.middleware.SilkyMiddleware',
+]

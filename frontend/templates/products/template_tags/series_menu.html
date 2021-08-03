@@ -1,23 +1,23 @@
-{% load active_filter count_active %}
+{#{% load active_filter count_active %}#}
 
 <ul class="dropdown-big-item" id="categories">
     <div class="container">
-        {% for cat in category %}
+        {% for category in data %}
             <li class="ddb-li">
-                <div class="ddb-li-header">{{ cat.name }}</div>
+                <div class="ddb-li-header">{{ category.category_name }}</div>
                 <div class="ddb-li-body">
-                    {% if cat.coming_soon %}
+                    {% if category.category_coming_soon %}
                         <div class="ddb-li-body">
                             <div class="ddb-li-body-item">
                                 <span class="soon">Скоро на сайте!</span>
                             </div>
                         </div>
                     {% else %}
-                        {% for ser in cat.get_series %}
+                        {% for ser in category.series %}
                             <div class="ddb-li-body-item">
-                                <a href="{{ ser.get_absolute_url }}">
-                                    <img src="{{ ser.picture.url }}" alt="изображение дома серии {{ ser.name }}"/>
-                                    <span>{{ ser.name }} ({{ ser.get_houses.count }})</span>
+                                <a href="{{ ser.series_get_absolute_url }}">
+                                    <img src="{{ ser.series_picture.url }}" alt="изображение дома серии {{ ser.series_name }}"/>
+                                    <span>{{ ser.series_name }} ({{ ser.series_houses_count }})</span>
                                 </a>
                             </div>
                         {% endfor %}
