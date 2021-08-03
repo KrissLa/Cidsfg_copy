@@ -18,7 +18,7 @@
                                 <div class="tabs-controls-item catalog {% if forloop.first %}active{% endif %}"
                                      data-for="tab-{{ forloop.counter0 }}0">
                                     <div>
-                                        <span>{{ ser.name }} ({{ ser.get_houses.count }})</span>
+                                        <span>{{ ser.name }} ({{ ser.active_houses_count }})</span>
                                     </div>
                                 </div>
                             {% endfor %}
@@ -66,7 +66,7 @@
                                                     <span class="price">{{ house.area }} </span>м&sup2;.
                                                 </div>
                                                 <div class="item-min-price">цена -
-                                                    <span class="price">{{ house.get_price|price_to_str_filter }}</span>
+                                                    <span class="price">{{ house.catalog_price|price_to_str_filter }}</span>
                                                     руб.
                                                 </div>
                                                 <div class="item-link">
