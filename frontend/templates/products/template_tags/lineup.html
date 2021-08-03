@@ -37,7 +37,7 @@
                         <div class="swiper-container-catalog"
                              id="{% if forloop.first %}swiper1{% else %}swiper1{{ forloop.counter0 }}{% endif %}">
                             <div class="swiper-wrapper">
-                                {% for house in ser.get_houses %}
+                                {% for house in ser.houses.all %}
 
                                     <div class="swiper-slide">
 
@@ -55,10 +55,10 @@
                                                 </div>
                                                 <div class="item-picture">
                                                     <img
-                                                            alt="{{ house.get_main_picture.alt }}"
+                                                            alt="{{ house.main_picture.alt }}"
                                                             class="lazy"
-                                                            src="{{ house.get_main_picture.picture.thumb.url }}"
-                                                            data-src="{{ house.get_main_picture.picture.w450.url }}"
+                                                            src="{{ house.main_picture.picture.thumb.url }}"
+                                                            data-src="{{ house.main_picture.picture.w450.url }}"
                                                     />
 
                                                 </div>
@@ -89,10 +89,10 @@
                             </div>
                             <!-- Add Arrows -->
                             <div class="swiper-button-next"
-                                 {% if ser.get_houses.count < 4 %}style="opacity: 0"{% endif %}
+                                 {% if ser.active_houses_count < 4 %}style="opacity: 0"{% endif %}
                                  id="next{{ forloop.counter0 }}"></div>
                             <div class="swiper-button-prev"
-                                 {% if ser.get_houses.count < 4 %}style="opacity: 0"{% endif %}
+                                 {% if ser.active_houses_count < 4 %}style="opacity: 0"{% endif %}
                                  id="prev{{ forloop.counter0 }}"></div>
                         </div>
 

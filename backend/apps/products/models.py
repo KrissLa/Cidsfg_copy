@@ -21,6 +21,13 @@ class Catalog(SeoAbstract):
         return 'Настройки каталога'
 
 
+def generate_picture_path(instance, filename):
+    return 'pictures/products/house_pictures/%s/%s/%s/%s' % (instance.house.category.name,
+                                                             instance.house.series.name,
+                                                             instance.house.name,
+                                                             filename)
+
+
 class House(SeoAbstract):
     """ Моделль дома """
     name = models.CharField('Название', max_length=255, help_text='Полное название дома')
@@ -53,6 +60,8 @@ class House(SeoAbstract):
                                                    blank=True, null=True)
     updated = models.DateTimeField(auto_now=True)
     catalog_price = models.PositiveIntegerField('Стоимость в каталоге', default=0)
+    main_picture = models.OneToOneField('HousePicture', on_delete=models.SET_NULL, null=True,
+                                        related_name='main_picture')
 
     class Meta:
         verbose_name = 'Дом'
@@ -76,6 +85,7 @@ class House(SeoAbstract):
         return self.house_pictures.filter(active=True)
 
     def get_main_picture(self):
+        # h = Series.objects.all().prefetch_related('houses', 'houses__house_pictures')
         try:
             try:
                 pic = self.house_pictures.filter(active=True, main=True)[0]
@@ -85,6 +95,18 @@ class House(SeoAbstract):
             pic = None
         return pic
 
+    def save_main_picture(self):
+        try:
+            try:
+                pic = self.house_pictures.filter(active=True, main=True)[0]
+            except Exception:
+                pic = self.house_pictures.filter(active=True)[0]
+        except Exception:
+            pic = None
+        self.main_picture = pic
+        self.save()
+        logger.info(f'Добавил фото {self.name}, {self.main_picture}')
+
     def get_price(self):
         try:
             price = min([p['price'] for p in self.configurations.values('price') if p['price'] != 0])
@@ -93,13 +115,6 @@ class House(SeoAbstract):
         except ValueError:
             logger.error(f'в доме {self.name} для комлектаций не указаны цены.')
         self.save()
-
-
-def generate_picture_path(instance, filename):
-    return 'pictures/products/house_pictures/%s/%s/%s/%s' % (instance.house.category.name,
-                                                             instance.house.series.name,
-                                                             instance.house.name,
-                                                             filename)
 
 
 class HousePicture(models.Model):
@@ -129,6 +144,10 @@ class HousePicture(models.Model):
 
     def __str__(self):
         return f'Изображение дома {self.house.name}'
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        self.house.save_main_picture()
 
 
 class Options(models.Model):
@@ -327,4 +346,3 @@ class Series(SeoAbstract):
     def get_active_houses_count(self):
         self.active_houses_count = House.objects.filter(series=self, active=True).count()
         self.save()
-

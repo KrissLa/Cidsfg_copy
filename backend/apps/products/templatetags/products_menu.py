@@ -46,8 +46,4 @@ def products_menu():
                                        'series_picture': s.picture,
                                        'series_get_absolute_url': s.get_absolute_url(),
                                        'series_houses_count': s.active_houses_count}]})
-
-    logger.info(result)
-
-    # category = Category.objects.filter(active=True).order_by('sort_number')
     return {'data': result}
