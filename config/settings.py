@@ -26,6 +26,8 @@ INSTALLED_APPS = [
                      'django_filters',
                      'nested_admin',
                      'ckeditor',
+
+                     'silk',
                  ] + MY_APPS
 
 MIDDLEWARE = [
@@ -36,6 +38,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'silk.middleware.SilkyMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'

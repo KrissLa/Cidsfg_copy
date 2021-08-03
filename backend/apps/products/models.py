@@ -1,5 +1,6 @@
 from ckeditor.fields import RichTextField
 from django.db import models
+from loguru import logger
 from stdimage import StdImageField
 from backend.apps.seo.models import SeoAbstract
 from django.urls import reverse
@@ -51,6 +52,7 @@ class House(SeoAbstract):
                                                              ' каталоге. (Дом с меньшим номером будет выше)',
                                                    blank=True, null=True)
     updated = models.DateTimeField(auto_now=True)
+    catalog_price = models.PositiveIntegerField('Стоимость в каталоге', default=0)
 
     class Meta:
         verbose_name = 'Дом'
@@ -84,9 +86,12 @@ class House(SeoAbstract):
 
     def get_price(self):
         try:
-            return min([p['price'] for p in self.configurations.values('price') if p['price'] != 0])
+            price = min([p['price'] for p in self.configurations.values('price') if p['price'] != 0])
+            self.catalog_price = price
+            logger.success(f'Для дома {self.name} установлена стоимость {price}')
         except ValueError:
-            return 0
+            logger.error(f'в доме {self.name} для комлектаций не указаны цены.')
+        self.save()
 
 
 def generate_picture_path(instance, filename):
@@ -216,6 +221,10 @@ class ConfigurationInHouses(models.Model):
         verbose_name_plural = 'Комплектации'
         ordering = ['id']
         unique_together = ['house', 'configuration']
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        self.house.get_price()
 
     def __str__(self):
         return f'Комплектация {self.configuration.name}'

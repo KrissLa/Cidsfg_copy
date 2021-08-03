@@ -14,7 +14,6 @@ from backend.apps.products.sitemaps import CatalogSitemap, SeriesSitemap, HouseS
 
 ADMIN_URL = os.environ['ADMIN_URL']
 
-
 sitemaps = {'home': HomePageSitemap,
             'about': AboutSitemap,
             'contacts': ContactsSitemap,
@@ -30,7 +29,8 @@ urlpatterns = [
     path('nobots/api/v1/', include('backend.api.v1.config.urls')),
     path('', include('backend.apps.config.urls')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
-         name='django.contrib.sitemaps.views.sitemap')
+         name='django.contrib.sitemaps.views.sitemap'),
+    path('silk/', include('silk.urls', namespace='silk')),
 ]
 
 if settings.DEBUG:
