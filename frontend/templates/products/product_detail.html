@@ -44,23 +44,25 @@
             <section class="content-slider b-shadow">
                 <div class="swiper-container-detail">
                     <div class="swiper-wrapper">
-                        {% for pic in house.get_pictures %}
-                            <div class="swiper-slide">
-                                <img data-hystmodal="#imageModal"
-                                     alt="{{ pic.alt }}"
-                                     class="lazy image-zoom"
-                                     data-720-src="{{ pic.picture.w720.url }}"
-                                     data-big-src="{{ pic.picture.w1000.url }}"
-                                     src="{{ pic.picture.thumb.url }}"
-                                        {#                                    data-src="{% static 'images/CUBO_FLAT_71/4_3000x2000.jpg' %}"#}
-                                     data-srcset="{{ pic.picture.w450.url }} 450w,
+                        {% for pic in house.house_pictures.all %}
+                            {% if pic.active %}
+                                <div class="swiper-slide">
+                                    <img data-hystmodal="#imageModal"
+                                         alt="{{ pic.alt }}"
+                                         class="lazy image-zoom"
+                                         data-720-src="{{ pic.picture.w720.url }}"
+                                         data-big-src="{{ pic.picture.w1000.url }}"
+                                         src="{{ pic.picture.thumb.url }}"
+                                            {#                                    data-src="{% static 'images/CUBO_FLAT_71/4_3000x2000.jpg' %}"#}
+                                         data-srcset="{{ pic.picture.w450.url }} 450w,
                                                  {{ pic.picture.w720.url }} 720w,
                                                  {{ pic.picture.w1000.url }} 1000w"
-                                     data-sizes="(max-width: 767px) 450px,
+                                         data-sizes="(max-width: 767px) 450px,
                                                 (max-width: 1199px) 720px,
                                                 1000px"
-                                />
-                            </div>
+                                    />
+                                </div>
+                            {% endif %}
                         {% endfor %}
                     </div>
                     <!-- Add Pagination -->
@@ -72,7 +74,7 @@
             </section>
             <section class="content-info white b-shadow">
                 <ul>
-                    {% for con in house.configurations.all %}
+                    {% for con in data %}
                         <li>
                             <h6>
 
@@ -166,7 +168,7 @@
                                     <div class="tabs-slider">
                                         <div class="mask"></div>
 
-                                        {% for con in house.configurations.all %}
+                                        {% for con in data %}
                                             <div class="tabs-controls-item cost-included {% if forloop.first %}active{% endif %}"
                                                  data-for="tab-include-{{ con.id }}">
                                                 <div>
@@ -183,18 +185,18 @@
                     </div>
                     <div class="tabs-content">
                         <div class="container">
-                            {% for con in house.configurations.all %}
-                                <div id="tab-include-{{ con.id }}"
+                            {% for con in configurations %}
+                                <div id="tab-include-{{ con.configuration_id }}"
                                      class="body-item cost-included {% if forloop.first %}active{% endif %}">
                                     <div class="accordion">
-                                        {% for item in con.get_included %}
+                                        {% for addition in con.included_in_price %}
 
                                             <div class="contentBx">
-                                                <div class="label">{{ item.category_name }}</div>
+                                                <div class="label">{{ addition.addition_category }}</div>
                                                 <div class="content" style="display: none">
                                                     <div class="ol">
-                                                        {% for b in item.body %}
-                                                            <p>- {{ b }}{% if not forloop.last %},{% endif %}</p>
+                                                        {% for body in addition.bodies %}
+                                                            <p>- {{ body }}{% if not forloop.last %},{% endif %}</p>
                                                         {% endfor %}
                                                     </div>
                                                 </div>
@@ -216,7 +218,7 @@
                                 <div class="container">
                                     <div class="tabs-slider">
                                         <div class="mask"></div>
-                                        {% for con in house.configurations.all %}
+                                        {% for con in data %}
                                             <div class="tabs-controls-item cost-not-included {% if forloop.first %}active{% endif %}"
                                                  data-for="tab-not-include-{{ con.id }}">
                                                 <div>
@@ -233,39 +235,26 @@
                     </div>
                     <div class="tabs-content">
                         <div class="container">
-                            {% for con in house.configurations.all %}
+                            {% for con in data %}
 
                                 <div id="tab-not-include-{{ con.id }}"
                                      class="body-item cost-not-included {% if forloop.first %}active{% endif %}">
                                     <div class="in-cost">
-                                        {% for item in con.get_not_included %}
-                                            <p>- {{ item.body }}{% if not forloop.last %},{% endif %}</p>
-                                        {% endfor %}
+                                        {% if con.not_included_in_price.all %}
+                                            {% for item in con.not_included_in_price.all %}
+                                                <p>- {{ item.body }}{% if not forloop.last %},{% endif %}</p>
+                                            {% endfor %}
+                                        {% else %}
+                                            {% for item in con.configuration.not_included_in_price.all %}
+                                                <p>- {{ item.body }}{% if not forloop.last %},{% endif %}</p>
+                                            {% endfor %}
+
+                                        {% endif %}
                                     </div>
                                 </div>
 
                             {% endfor %}
-                            {% if house.turnkey.active and house.turnkey.not_included.active and house.turnkey.not_included.body %}
-                                <div id="tab-not-include-turnkey" class="body-item cost-not-included active">
-                                    <div class="in-cost">
-                                        {{ house.turnkey.not_included.body|safe }}
-                                    </div>
-                                </div>
-                            {% endif %}
-                            {% if house.for_finishing.active and house.for_finishing.not_included.active and house.for_finishing.not_included.body %}
-                                <div id="tab-not-include-for_finishing" class="body-item cost-not-included">
-                                    <div class="in-cost">
-                                        {{ house.for_finishing.not_included.body|safe }}
-                                    </div>
-                                </div>
-                            {% endif %}
-                            {% if house.delivery.active and house.delivery.not_included.active and house.delivery.not_included.body %}
-                                <div id="tab-not-include-delivery" class="body-item cost-not-included">
-                                    <div class="in-cost">
-                                        {{ house.delivery.not_included.body|safe }}
-                                    </div>
-                                </div>
-                            {% endif %}
+
                         </div>
                     </div>
                 </div>

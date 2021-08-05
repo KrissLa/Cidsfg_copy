@@ -81,20 +81,6 @@ class House(SeoAbstract):
                                                'series_slug': self.series.slug,
                                                'slug': self.slug})
 
-    def get_pictures(self):
-        return self.house_pictures.filter(active=True)
-
-    def get_main_picture(self):
-        # h = Series.objects.all().prefetch_related('houses', 'houses__house_pictures')
-        try:
-            try:
-                pic = self.house_pictures.filter(active=True, main=True)[0]
-            except Exception:
-                pic = self.house_pictures.filter(active=True)[0]
-        except Exception:
-            pic = None
-        return pic
-
     def save_main_picture(self):
         try:
             try:
@@ -109,7 +95,7 @@ class House(SeoAbstract):
 
     def get_price(self):
         try:
-            price = min([p['price'] for p in self.configurations.values('price') if p['price'] != 0])
+            price = min([p['price'] for p in self.house_configurations.values('price') if p['price'] != 0])
             self.catalog_price = price
             logger.success(f'Для дома {self.name} установлена стоимость {price}')
         except ValueError:
@@ -224,8 +210,9 @@ class Configuration(models.Model):
 class ConfigurationInHouses(models.Model):
     """ Модель комплектации дома """
     house = models.ForeignKey(House, verbose_name='Комплектация', on_delete=models.CASCADE,
-                              related_name='configurations')
-    configuration = models.ForeignKey(Configuration, on_delete=models.CASCADE, verbose_name='Комплектации')
+                              related_name='house_configurations')
+    configuration = models.ForeignKey(Configuration, on_delete=models.CASCADE, verbose_name='Комплектации',
+                                      related_name='configurations')
     price = models.PositiveIntegerField('Стоимость комплектации', default=0)
     included_in_price = models.ManyToManyField(HouseAddition,
                                                verbose_name='Дополнительные штуки, которые входят в комплектацию',
@@ -248,30 +235,6 @@ class ConfigurationInHouses(models.Model):
 
     def __str__(self):
         return f'Комплектация {self.configuration.name}'
-
-    def get_included(self):
-        result = []
-        if self.included_in_price.count():
-            res = self.included_in_price.values('category', 'category__name', 'body').order_by('category')
-        else:
-            res = self.configuration.included_in_price.values('category', 'category__name', 'body').order_by('category')
-        for r in res:
-            cat_is_not_exist = True
-            for i in result:
-                if result:
-                    if r['category'] == i['id']:
-                        i['body'].append(r['body'])
-                        cat_is_not_exist = False
-                        break
-            if cat_is_not_exist:
-                result.append({'id': r['category'], 'category_name': r['category__name'], 'body': [r['body']]})
-        return result
-
-    def get_not_included(self):
-        if self.not_included_in_price.count():
-            return self.not_included_in_price.order_by('category')
-        else:
-            return self.configuration.not_included_in_price.values('body').order_by('category')
 
 
 class Category(models.Model):

@@ -5,10 +5,15 @@ from backend.apps.products.models import House, Series
 
 
 class Command(BaseCommand):
+    houses = House.objects.all()
+
     def update_prices(self):
-        houses = House.objects.all()
-        for h in houses:
+        for h in self.houses:
             h.get_price()
+
+    def update_main_picture(self):
+        for h in self.houses:
+            h.save_main_picture()
 
     def update_series_count(self):
         series = Series.objects.all()
@@ -18,3 +23,4 @@ class Command(BaseCommand):
     def handle(self, **options):
         self.update_prices()
         self.update_series_count()
+        self.update_main_picture()
