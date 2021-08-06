@@ -27,6 +27,79 @@ def generate_picture_path(instance, filename):
                                                              instance.house.name,
                                                              filename)
 
+class Category(models.Model):
+    """ Модель категорий по этажам """
+    name = models.CharField('Название категории', max_length=255, help_text='Например: "Одноэтажные"')
+    slug = models.SlugField('SLUG',
+                            help_text='Формируется автоматически из названия. Можно изменить. Максимум 50 символов. '
+                                      'Будет использован для построения адреса к категории и домам.', unique=True)
+    active = models.BooleanField('Отображать', default=True,
+                                 help_text='Уберите, чтобы скрыть категорию и расположенные в ней дома с сайта.')
+    coming_soon = models.BooleanField('Скоро', default=False,
+                                      help_text='Установите, чтобы отобразить категорию в меню с пометкой "Скоро"')
+    sort_number = models.PositiveSmallIntegerField('Номер в меню',
+                                                   help_text='Этот номер будет использован для построения категорий в'
+                                                             ' меню. (Категория с меньшим номером будет выше)',
+                                                   blank=True, null=True)
+
+    class Meta:
+        verbose_name = 'Категория по этажам'
+        verbose_name_plural = 'Категории по этажам'
+        ordering = ['sort_number', 'id']
+
+    def __str__(self):
+        return f'{self.id}  - {self.name}'
+
+    def get_series(self):
+        return self.series.filter(active=True).order_by('sort_number')
+
+
+def generate_picture_to_series_path(instance, filename):
+    return 'pictures/products/series/%s/%s' % (instance.name,
+                                               filename)
+
+
+class Series(SeoAbstract):
+    """ Модель категорий по сериям """
+    category = models.ForeignKey(Category, verbose_name='Категория дома', on_delete=models.SET_NULL, null=True,
+                                 related_name='series')
+    name = models.CharField('Название серии', max_length=255, help_text='Например: "FLAT"')
+    slug = models.SlugField('SLUG',
+                            help_text='Формируется автоматически из названия. Можно изменить. Максимум 50 символов. '
+                                      'Будет использован для построения адреса к категории и домам.', unique=True
+                            )
+
+    picture = models.ImageField('Изображение серии дома', help_text="В формате png, максимальная ширина - 150px",
+                                upload_to=generate_picture_to_series_path, null=True)
+
+    active = models.BooleanField('Отображать', default=True,
+                                 help_text='Уберите, чтобы скрыть категорию и расположенные в ней дома с сайта.')
+    sort_number = models.PositiveSmallIntegerField('Номер в меню',
+                                                   help_text='Этот номер будет использован для построения серий в'
+                                                             ' меню. (Серия с меньшим номером будет выше)',
+                                                   blank=True, null=True)
+    active_houses_count = models.PositiveSmallIntegerField('Количество доступных домов в серии', default=0)
+    updated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'Серия домов'
+        verbose_name_plural = 'Серии домов'
+        ordering = ['sort_number', 'id']
+
+    def __str__(self):
+        return f'{self.id} - {self.name}'
+
+    def get_absolute_url(self):
+        return reverse('houses_list_by_series', kwargs={'series_slug': self.slug})
+
+    def get_houses(self):
+        return self.houses.filter(active=True,
+                                  category__active=True)
+
+    def get_active_houses_count(self):
+        self.active_houses_count = House.objects.filter(series=self, active=True).count()
+        self.save()
+
 
 class House(SeoAbstract):
     """ Моделль дома """
@@ -75,7 +148,9 @@ class House(SeoAbstract):
     def save(self, *args, **kwargs):
         self.category = self.series.category
         super().save(*args, **kwargs)
-        self.series.get_active_houses_count()
+        all_series = Series.objects.all()
+        for series in all_series:
+            series.get_active_houses_count()
 
     def get_absolute_url(self):
         return reverse('house_detail', kwargs={'category_slug': self.category.slug,
@@ -222,77 +297,3 @@ class ConfigurationInHouses(models.Model):
 
     def __str__(self):
         return f'Комплектация {self.configuration.name}'
-
-
-class Category(models.Model):
-    """ Модель категорий по этажам """
-    name = models.CharField('Название категории', max_length=255, help_text='Например: "Одноэтажные"')
-    slug = models.SlugField('SLUG',
-                            help_text='Формируется автоматически из названия. Можно изменить. Максимум 50 символов. '
-                                      'Будет использован для построения адреса к категории и домам.', unique=True)
-    active = models.BooleanField('Отображать', default=True,
-                                 help_text='Уберите, чтобы скрыть категорию и расположенные в ней дома с сайта.')
-    coming_soon = models.BooleanField('Скоро', default=False,
-                                      help_text='Установите, чтобы отобразить категорию в меню с пометкой "Скоро"')
-    sort_number = models.PositiveSmallIntegerField('Номер в меню',
-                                                   help_text='Этот номер будет использован для построения категорий в'
-                                                             ' меню. (Категория с меньшим номером будет выше)',
-                                                   blank=True, null=True)
-
-    class Meta:
-        verbose_name = 'Категория по этажам'
-        verbose_name_plural = 'Категории по этажам'
-        ordering = ['sort_number', 'id']
-
-    def __str__(self):
-        return f'{self.id}  - {self.name}'
-
-    def get_series(self):
-        return self.series.filter(active=True).order_by('sort_number')
-
-
-def generate_picture_to_series_path(instance, filename):
-    return 'pictures/products/series/%s/%s' % (instance.name,
-                                               filename)
-
-
-class Series(SeoAbstract):
-    """ Модель категорий по сериям """
-    category = models.ForeignKey(Category, verbose_name='Категория дома', on_delete=models.SET_NULL, null=True,
-                                 related_name='series')
-    name = models.CharField('Название серии', max_length=255, help_text='Например: "FLAT"')
-    slug = models.SlugField('SLUG',
-                            help_text='Формируется автоматически из названия. Можно изменить. Максимум 50 символов. '
-                                      'Будет использован для построения адреса к категории и домам.', unique=True
-                            )
-
-    picture = models.ImageField('Изображение серии дома', help_text="В формате png, максимальная ширина - 150px",
-                                upload_to=generate_picture_to_series_path, null=True)
-
-    active = models.BooleanField('Отображать', default=True,
-                                 help_text='Уберите, чтобы скрыть категорию и расположенные в ней дома с сайта.')
-    sort_number = models.PositiveSmallIntegerField('Номер в меню',
-                                                   help_text='Этот номер будет использован для построения серий в'
-                                                             ' меню. (Серия с меньшим номером будет выше)',
-                                                   blank=True, null=True)
-    active_houses_count = models.PositiveSmallIntegerField('Количество доступных домов в серии', default=0)
-    updated = models.DateTimeField(auto_now=True)
-
-    class Meta:
-        verbose_name = 'Серия домов'
-        verbose_name_plural = 'Серии домов'
-        ordering = ['sort_number', 'id']
-
-    def __str__(self):
-        return f'{self.id} - {self.name}'
-
-    def get_absolute_url(self):
-        return reverse('houses_list_by_series', kwargs={'series_slug': self.slug})
-
-    def get_houses(self):
-        return self.houses.filter(active=True,
-                                  category__active=True)
-
-    def get_active_houses_count(self):
-        self.active_houses_count = House.objects.filter(series=self, active=True).count()
-        self.save()

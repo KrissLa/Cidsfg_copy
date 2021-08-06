@@ -1,6 +1,7 @@
 from django import template
+from loguru import logger
 
-from ..models import Series
+from ..models import Series, Category
 
 register = template.Library()
 
@@ -24,6 +25,8 @@ def products_menu():
         'category__sort_number',
         'sort_number'
     )
+    coming_soon_categories = Category.objects.filter(coming_soon=True).only('id', 'name', 'coming_soon')
+
 
     result = []
     for s in series:
@@ -45,4 +48,12 @@ def products_menu():
                                        'series_picture': s.picture,
                                        'series_get_absolute_url': s.get_absolute_url(),
                                        'series_houses_count': s.active_houses_count}]})
+    for cat in coming_soon_categories:
+        if cat.id not in [i['category_id'] for i in result]:
+            result.append({'category_id': cat.id,
+                           'category_name': cat.name,
+                           'category_coming_soon': cat.coming_soon,
+                           'series': []})
+    logger.info(result)
+
     return {'data': result}
