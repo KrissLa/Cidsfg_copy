@@ -79,7 +79,7 @@
                                 {% if not series %} active {% endif %}"
                                      data-for="tab-all">
                                     <div>
-                                        <span>Все ({{ all_houses.count }})</span>
+                                        <span>Все ({{ all_houses_count }})</span>
                                     </div>
                                 </div>
                                 {#                                </a>#}
@@ -88,7 +88,7 @@
                                          data-for="tab-{{ s.slug }}">
                                         {#                                        <a href="{{ s.get_absolute_url }}">#}
                                         <div>
-                                            <span>{{ s.name }} ({{ s.get_houses.count }})</span>
+                                            <span>{{ s.name }} ({{ s.active_houses_count }})</span>
                                         </div>
                                         {#                                        </a>#}
                                     </div>
@@ -168,7 +168,8 @@
                     {% for s in series_list %}
                         <div id="tab-{{ s.slug }}" class="body-item {% if s == series %}active{% endif %}">
                             <div class="products-wrapper">
-                                {% for house in s.get_houses %}
+                                {% for house in all_houses %}
+                                    {% if house.series == s %}
                                     <div class="product-item white b-shadow">
                                         <a class="a-wrapper" href="{{ house.get_absolute_url }}"></a>
                                         <div class="item-wrapper">
@@ -203,6 +204,7 @@
                                         </div>
 
                                     </div>
+                                    {% endif %}
                                 {% endfor %}
                                 <div class="product-item white b-shadow"
                                      data-hystmodal="#individual_project">

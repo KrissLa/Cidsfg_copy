@@ -1,6 +1,7 @@
 from django.http import Http404
 from django.shortcuts import get_object_or_404
 from django.views.generic import ListView, DetailView
+from loguru import logger
 
 from .models import House, Series, Catalog, ConfigurationInHouses
 
@@ -83,36 +84,67 @@ class HousesListView(ListView):
     """ Страницы каталога с домами """
     model = House
     template_name = 'products/catalog.html'
-    context_object_name = 'houses'
+
+    series_slug = None
+    series_list = None
+    series = None
+    series_houses = None
+    houses = None
 
     def get_queryset(self, **kwargs):
-        series_slug = self.kwargs.get('series_slug', '')
-        if series_slug:
-            series = get_object_or_404(Series, slug=series_slug, active=True)
-            houses = House.objects.filter(category__active=True,
-                                          series=series,
-                                          active=True).order_by('sort_number')
-        else:
-            houses = House.objects.filter(category__active=True,
-                                          series__active=True,
-                                          active=True).order_by('sort_number')
-        return houses
+        self.series_slug = self.kwargs.get('series_slug', '')
+        self.houses = House.objects.select_related('series', 'category', 'main_picture').filter(category__active=True,
+                                                                                                series__active=True,
+                                                                                                active=True).order_by(
+            'sort_number').only('series__seo_title',
+                                'series__seo_description',
+                                'series__seo_og_title',
+                                'series__seo_og_image',
+                                'series__name',
+                                'series__slug',
+                                'series__sort_number',
+                                'series__active_houses_count',
+
+                                'main_picture__picture',
+                                'main_picture__alt',
+
+                                'category__name',
+                                'category__slug',
+
+                                'name',
+                                'slug',
+                                'area',
+                                'catalog_price',
+
+                                )
+        if self.series_slug:
+            self.series_houses = [house for house in self.houses if house.series.slug == self.series_slug]
+            if self.series_houses:
+                self.series = self.series_houses[0].series
+            else:
+                raise Http404
+        self.series_list = list({house.series for house in self.houses})
+        series_without_sort_number = []
+        for i, ser in enumerate(self.series_list):
+            if not ser.sort_number:
+                series_without_sort_number.append(self.series_list.pop(i))
+        n = 1
+        while n < len(self.series_list):
+            for i in range(len(self.series_list) - n):
+                if self.series_list[i].sort_number > self.series_list[i + 1].sort_number:
+                    self.series_list[i], self.series_list[i + 1] = self.series_list[i + 1], self.series_list[i]
+            n += 1
+        self.series_list += series_without_sort_number
+        return self.houses
 
     def get_context_data(self, **kwargs):
-        series_slug = self.kwargs.get('series_slug', '')
-        series_list = Series.objects.filter(active=True)
-        try:
-            series = get_object_or_404(Series, slug=series_slug, active=True)
-        except Exception:
-            series = None
         try:
             catalog_settings = get_object_or_404(Catalog)
-        except Exception:
+        except Http404:
             catalog_settings = None
         return {'catalog_settings': catalog_settings,
-                'series_slug': series_slug,
-                'series_list': series_list,
-                'series': series,
-                'all_houses': House.objects.filter(category__active=True,
-                                                   series__active=True,
-                                                   active=True).order_by('sort_number')}
+                'series_slug': self.series_slug,
+                'series_list': self.series_list,
+                'series': self.series,
+                'all_houses': self.houses,
+                'all_houses_count': len(self.houses)}
