@@ -13,7 +13,7 @@ class PrivacyPageView(View):
     def get(self, request, *args, **kwargs):
         num_data = 3
         try:
-            privacy_data = Privacy.objects.all().order_by('-id')[0]
+            privacy_data = Privacy.objects.prefetch_related('data', 'purpose', 'basis').all().order_by('-id')[0]
             if privacy_data.data.count():
                 num_data = privacy_data.data.count()
         except Exception:
