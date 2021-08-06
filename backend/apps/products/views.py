@@ -51,7 +51,7 @@ class HouseDetailView(DetailView):
             'included_in_price__category',
             'not_included_in_price',).filter(house_id=self.house.id)
 
-        def get_included_in_price(item):
+        def get_included_in_price(item, control_list):
             if item.category.name not in control_list:
                 temp_conf['included_in_price'].append({'addition_category': item.category.name,
                                                        'bodies': [item.body]})
@@ -70,11 +70,11 @@ class HouseDetailView(DetailView):
             if conf.included_in_price.all():
                 control_list = []
                 for addition in conf.included_in_price.all():
-                    get_included_in_price(addition)
+                    get_included_in_price(addition, control_list)
             else:
                 control_list = []
                 for addition in conf.configuration.included_in_price.all():
-                    get_included_in_price(addition)
+                    get_included_in_price(addition, control_list)
             configurations.append(temp_conf)
 
         return {'house': self.house,
