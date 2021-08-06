@@ -30,8 +30,14 @@ urlpatterns = [
     path('', include('backend.apps.config.urls')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
          name='django.contrib.sitemaps.views.sitemap'),
-    path('silk/', include('silk.urls', namespace='silk')),
 ]
+
+try:
+    from .local_urls import local_urlpatterns
+
+    urlpatterns += local_urlpatterns
+except Exception:
+    pass
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
