@@ -1,7 +1,6 @@
 from django import template
-from loguru import logger
 
-from ..models import Category, Series
+from ..models import Series
 
 register = template.Library()
 
@@ -21,8 +20,8 @@ def products_menu():
     ).filter(
         active=True,
         category__active=True
-    ).order_by(
-        'category__sort_number'
+    ).exclude(active_houses_count=0).order_by(
+        'category__sort_number',
         'sort_number'
     )
 

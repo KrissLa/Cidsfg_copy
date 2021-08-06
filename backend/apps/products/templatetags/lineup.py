@@ -1,5 +1,4 @@
 from django import template
-from loguru import logger
 
 from ..models import Series
 
