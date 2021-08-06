@@ -62,6 +62,7 @@ class House(SeoAbstract):
     catalog_price = models.PositiveIntegerField('Стоимость в каталоге', default=0)
     main_picture = models.OneToOneField('HousePicture', on_delete=models.SET_NULL, null=True,
                                         related_name='main_picture')
+    options = models.TextField('Текст', null=True, blank=True)
 
     class Meta:
         verbose_name = 'Дом'
@@ -136,21 +137,6 @@ class HousePicture(models.Model):
         self.house.save_main_picture()
 
 
-class Options(models.Model):
-    """ Опции и дополнения дома """
-    house = models.OneToOneField(House, verbose_name='Дом, к которому относятся опции', on_delete=models.CASCADE,
-                                 related_name='options')
-    body = models.TextField('Текст', null=True, blank=True)
-    active = models.BooleanField('Отображать', default=True, help_text='Уберите, чтобы не отображать')
-
-    class Meta:
-        verbose_name = 'Опции и дополнения'
-        verbose_name_plural = 'Опции и дополнения'
-
-    def __str__(self):
-        return f'{self.house}  - Опции и дополнения'
-
-
 class HouseAdditionCategory(models.Model):
     """ Катагория дополнительных штук, которые прилагаются к дому в зависимости от выбранной комплектации """
     name = models.CharField('Категория',
@@ -169,7 +155,8 @@ class HouseAdditionCategory(models.Model):
 
 class HouseAddition(models.Model):
     """ Дополнительные штуки, которые прилагаются к дому в зависимости от выбранной комплектации """
-    category = models.ForeignKey(HouseAdditionCategory, verbose_name='Категория', on_delete=models.CASCADE)
+    category = models.ForeignKey(HouseAdditionCategory, verbose_name='Категория', on_delete=models.CASCADE,
+                                 related_name='additions')
     body = models.CharField('Дополнительная штука, которая прилагается к дому в зависимости от выбранной комплектации',
                             max_length=500, unique=True)
 

@@ -1,7 +1,6 @@
 from django import template
-from loguru import logger
 
-from ..models import Series, House
+from ..models import House
 from ..services.sorting import sort_series
 
 register = template.Library()

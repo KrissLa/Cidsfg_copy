@@ -6,7 +6,7 @@ from django.contrib.admin.widgets import FilteredSelectMultiple
 from django.utils.safestring import mark_safe
 from nested_admin.nested import NestedTabularInline, NestedStackedInline, NestedModelAdmin
 
-from .models import House, Category, Series, HousePicture, Options, Catalog, Configuration, \
+from .models import House, Category, Series, HousePicture, Catalog, Configuration, \
     HouseAdditionCategory, HouseAddition, ConfigurationInHouses
 
 
@@ -33,9 +33,11 @@ class AdminCKEditorForm(forms.ModelForm):
     body = forms.CharField(widget=CKEditorWidget())
 
 
-class OptionsAdminForm(AdminCKEditorForm):
+class OptionsAdminForm(forms.ModelForm):
+    options = forms.CharField(widget=CKEditorWidget(), required=False, label='Опции и дополнения')
+
     class Meta:
-        model = Options
+        model = House
         fields = '__all__'
 
 
@@ -57,13 +59,6 @@ class ConfigurationInHousesAdminInline(StackedInline):
     sortable_options = ['id']
     extra = 0
     form = SelectForm
-
-
-## Опции
-class OptionsAdminInline(NestedStackedInline):
-    """ Управление опциями дома  """
-    model = Options
-    form = OptionsAdminForm
 
 
 ## Pictures
@@ -89,6 +84,7 @@ class HousePictureAdminInline(NestedTabularInline):
 @admin.register(House)
 class HouseAdmin(NestedModelAdmin):
     """ Управление домами из панели администратора """
+    form = OptionsAdminForm
     list_display = ('id', 'name', 'active', 'sort_number')
     list_display_links = ('id', 'name',)
     list_editable = ('active', 'sort_number')
@@ -118,10 +114,13 @@ class HouseAdmin(NestedModelAdmin):
             'Настройка в каталоге', {
                 'fields': ('active', 'sort_number')
             },
+        ), (
+            'Опции и дополнения', {
+                'fields': ('options',)
+            },
         ),
     )
     inlines = [HousePictureAdminInline,
-               OptionsAdminInline,
                ConfigurationInHousesAdminInline]
 
 

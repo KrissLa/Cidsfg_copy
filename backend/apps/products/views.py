@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404
 from django.views.generic import ListView, DetailView
 from loguru import logger
 
-from .models import House, Series, Catalog, ConfigurationInHouses
+from .models import House, Catalog, ConfigurationInHouses, HousePicture
 from .services.sorting import sort_series
 
 
@@ -16,39 +16,40 @@ class HouseDetailView(DetailView):
     series_slug = None
     slug = None
     house = None
+    house_pictures = None
 
     def get_object(self, **kwargs):
         self.category_slug = self.kwargs.get('category_slug', '')
         self.series_slug = self.kwargs.get('series_slug', '')
         self.slug = self.kwargs.get('slug', '')
+        self.house_pictures = HousePicture.objects.select_related('house').filter(
+            house__category__slug=self.category_slug,
+            house__category__active=True,
+            house__series__slug=self.series_slug,
+            house__series__active=True,
+            house__slug=self.slug,
+            house__active=True)
         try:
-            house = House.objects.prefetch_related('house_pictures', 'options').get(category__slug=self.category_slug,
-                                                                                    category__active=True,
-                                                                                    series__slug=self.series_slug,
-                                                                                    series__active=True,
-                                                                                    slug=self.slug,
-                                                                                    active=True)
-            self.house = house
-            return house
-        except House.DoesNotExist:
-            raise Http404
+            self.house = self.house_pictures[0].house
+        except IndexError:
+            self.house = get_object_or_404(House,
+                                           category__slug=self.category_slug,
+                                           category__active=True,
+                                           series__slug=self.series_slug,
+                                           series__active=True,
+                                           slug=self.slug,
+                                           active=True)
+
+        return self.house
 
     def get_context_data(self, **kwargs):
-        data = ConfigurationInHouses.objects.select_related('house',
-                                                            'configuration').prefetch_related(
+        data = ConfigurationInHouses.objects.select_related('configuration').prefetch_related(
             'configuration__included_in_price',
             'configuration__included_in_price__category',
             'configuration__not_included_in_price',
-            'configuration__not_included_in_price__category',
             'included_in_price',
             'included_in_price__category',
-            'not_included_in_price',
-            'not_included_in_price__category').filter(house__category__slug=self.category_slug,
-                                                      house__category__active=True,
-                                                      house__series__slug=self.series_slug,
-                                                      house__series__active=True,
-                                                      house__slug=self.slug,
-                                                      house__active=True)
+            'not_included_in_price',).filter(house_id=self.house.id)
 
         def get_included_in_price(item):
             if item.category.name not in control_list:
@@ -77,6 +78,7 @@ class HouseDetailView(DetailView):
             configurations.append(temp_conf)
 
         return {'house': self.house,
+                'house_pictures': self.house_pictures,
                 'data': data,
                 'configurations': configurations}
 

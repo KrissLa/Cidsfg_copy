@@ -44,7 +44,7 @@
             <section class="content-slider b-shadow">
                 <div class="swiper-container-detail">
                     <div class="swiper-wrapper">
-                        {% for pic in house.house_pictures.all %}
+                        {% for pic in house_pictures %}
                             {% if pic.active %}
                                 <div class="swiper-slide">
                                     <img data-hystmodal="#imageModal"
@@ -123,7 +123,7 @@
                                     <span>Не включено в стоимость</span>
                                 </div>
                             </div>
-                            {% if house.options.body and house.options.active %}
+                            {% if house.options %}
                                 <div class="tabs-controls-item info" data-for="tab-options">
                                     <div>
                                         <span>Опции и дополнения</span>
@@ -258,10 +258,10 @@
                         </div>
                     </div>
                 </div>
-                {% if house.options.body and house.options.active %}
+                {% if house.options %}
                     <div id="tab-options" class="body-item info">
                         <div class="in-cost">
-                            {{ house.options.body|safe }}
+                            {{ house.options|safe }}
                         </div>
                     </div>
                 {% endif %}
