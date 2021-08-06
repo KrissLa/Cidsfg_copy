@@ -4,6 +4,7 @@ from django.views.generic import ListView, DetailView
 from loguru import logger
 
 from .models import House, Series, Catalog, ConfigurationInHouses
+from .services.sorting import sort_series
 
 
 class HouseDetailView(DetailView):
@@ -124,17 +125,7 @@ class HousesListView(ListView):
             else:
                 raise Http404
         self.series_list = list({house.series for house in self.houses})
-        series_without_sort_number = []
-        for i, ser in enumerate(self.series_list):
-            if not ser.sort_number:
-                series_without_sort_number.append(self.series_list.pop(i))
-        n = 1
-        while n < len(self.series_list):
-            for i in range(len(self.series_list) - n):
-                if self.series_list[i].sort_number > self.series_list[i + 1].sort_number:
-                    self.series_list[i], self.series_list[i + 1] = self.series_list[i + 1], self.series_list[i]
-            n += 1
-        self.series_list += series_without_sort_number
+        self.series_list = sort_series(self.series_list)
         return self.houses
 
     def get_context_data(self, **kwargs):
